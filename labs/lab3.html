@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,10 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f1ee3210ae63f1ea454c627e8e4588eb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0f0490645a6a1a06582982a868fad8e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -260,7 +260,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"vcfR"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(<span class="st">"readr"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">=</span> <span class="fu">read_table</span>(<span class="st">"labs/data/muc_samples.txt"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>vcf <span class="ot">=</span> <span class="fu">read.vcfR</span>(<span class="st">"labs/data/muc19_samples.vcf.gz"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>vcf <span class="ot">=</span> <span class="fu">read.vcfR</span>(<span class="st">"labs/data/muc19_subsample.vcf.gz"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>GT <span class="ot">=</span> <span class="fu">extract.gt</span>(vcf,<span class="at">element=</span><span class="st">"GT"</span>,<span class="at">as.numeric=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>At this point, you should have two data structures inside <code>R</code>: one is a <code>tibble</code> containing two columns: <code>sample_id</code> and <code>population</code>. We’ll use these later, but for now let’s focus on the matrix which includes the genotype data. Again, recall that each row is formatted as:</p>
@@ -304,7 +304,7 @@ p = \frac{n_{AA}+1/2n_{Aa}}{n_{AA}+n_{Aa}+n_{aa}}
 <p>Now, how do we get out sample heterozygosity? The below code, again, works for data where there are no missing values. Change it so it does work with missing values (should only need to change the <code>n=</code> line, if you have fixed the <code>freq_GT</code> function to work right).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample_het <span class="ot">=</span> <span class="cf">function</span>(site){</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">=</span> ???</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">=</span> <span class="fu">length</span>(<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(site)))<span class="sc">*</span><span class="dv">2</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">=</span> <span class="fu">freq_GT</span>(site)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  h <span class="ot">=</span> n<span class="sc">/</span>(n<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">2</span><span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(h)</span>
@@ -329,7 +329,7 @@ p = \frac{n_{AA}+1/2n_{Aa}}{n_{AA}+n_{Aa}+n_{aa}}
 <p>For instance, if we want to see the samples that are in the <code>CEU</code> population, we could do the following:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ceu_inds <span class="ot">=</span> samples<span class="sc">$</span>sample_id[<span class="fu">which</span>(samples<span class="sc">$</span>population <span class="sc">==</span> <span class="st">"CEU"</span>)]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>col_ids <span class="ot">=</span> col_ids <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">colnames</span>(GT) <span class="sc">%in%</span> ceu_inds)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>col_ids <span class="ot">=</span> <span class="fu">which</span>(<span class="fu">colnames</span>(GT) <span class="sc">%in%</span> ceu_inds)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>CEU_GT <span class="ot">=</span> GT[,col_ids]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, given that format, try to write a function that does this for any specified GT, population and sample table:</p>
@@ -451,8 +451,8 @@ F_{ST} = 1- \frac{f_1p_1q_1+f_2p_2q_2}{(f_1p_1+f_2p_2)(f_1q_1+f_2q_2)}
 <p>The above works, but it’s a lot of code to copy paste for each set of populations, and if there’s an error that’s found later, you’ll have to go back and edit it. Write a function that calculates f_ST for any pair of populations.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fst_site <span class="ot">=</span> <span class="cf">function</span>(p1,p2,n1,n2){</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    f1 <span class="ot">=</span> ???</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    f2 <span class="ot">=</span> ???</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    f1 <span class="ot">=</span> n1<span class="sc">/</span>(n1<span class="sc">+</span>n2)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    f2 <span class="ot">=</span> <span class="dv">1</span><span class="sc">-</span>f1</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    num <span class="ot">=</span> f1<span class="sc">*</span>p1<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p1)<span class="sc">+</span>f2<span class="sc">*</span>p2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p2)</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    denom <span class="ot">=</span> (f1<span class="sc">*</span>p1<span class="sc">+</span>f2<span class="sc">*</span>p2)<span class="sc">*</span>(f1<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p1)<span class="sc">+</span>f2<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p2)) </span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    fst <span class="ot">=</span> <span class="dv">1</span><span class="sc">-</span>num<span class="sc">/</span>denom</span>
