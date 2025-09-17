@@ -415,7 +415,7 @@ window.Quarto = {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>freq_GT <span class="ot">=</span> <span class="cf">function</span>(site,<span class="at">ploidy=</span><span class="dv">2</span>){</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  clean_site <span class="ot">=</span> <span class="fu">na.omit</span>(site)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">=</span> <span class="fu">sum</span>(clean_site)<span class="sc">/</span>(ploidy<span class="sc">*</span><span class="fu">length</span>(clean_site))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">=</span> <span class="fu">sum</span>(clean_site)<span class="sc">/</span>(???) <span class="co">#How will ploidy go in here?</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(p)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -464,6 +464,7 @@ Note
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>thin_GT <span class="ot">=</span> GT[random_rows,]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cor_mat <span class="ot">=</span> <span class="fu">cor</span>(<span class="fu">t</span>(thin_GT))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Now, write a function that will take a GT matrix and thin it to whatever proportion the user desires.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -490,11 +491,11 @@ Note
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">--mind</span> 0.5 <span class="dt">\ </span>#Any individual with more than 50% missing data is tossed as well</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">--chr</span> 12 <span class="dt">\ </span>#Which chromosome should it analyze</span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="ex">--thin</span> 0.1 <span class="dt">\ </span>#Randomly sample 10% of loci, and use these for the analysis</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="ex">-r2</span> gz <span class="dt">\ </span>#Output the r2 statistic, and gzip it so it<span class="st">'s not as giant.</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">--ld-window 100 \ #Minimum distance between sites to analyze</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">--ld-window-kb 1000 \ #Maximum distance (in kb this time) of sites to analyze</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">--ld-window-r2 0 \ #Drop any sites with r2 less than 0 (so, keep all r2)</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="st">--out your_prefix # What to call the output files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="ex">-r2</span> gz <span class="dt">\ </span>#Output the r2 statistic, and gzip it so it is not as giant.</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="ex">--ld-window</span> 100 <span class="dt">\ </span>#Minimum distance between sites to analyze</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="ex">--ld-window-kb</span> 1000 <span class="dt">\ </span>#Maximum distance <span class="er">(in</span> <span class="ex">kb</span> this time<span class="kw">)</span> <span class="ex">of</span> sites to analyze</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="ex">--ld-window-r2</span> 0 <span class="dt">\ </span>#Drop any sites with r2 less than 0 <span class="er">(</span><span class="ex">so,</span> keep all r2<span class="kw">)</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="ex">--out</span> your_prefix <span class="co"># What to call the output files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This should run quite quickly on the muc19 data, even though there are quite many sites in there. Indeed, you could easily swap some parameters (say, the thin parameter) and still see decently small outputs. But, notice that the file size is nearly the same as that of the vcf even at the settings I provide above. Calculating all possible r2 values will both take the entire lab and likely fill up your hard drive.</p>
 <p>In general, as you start working on bigger data-sets you will end up seeing exponentially longer run times. It’s worth it to go back and re-think when something is actually needed, versus when you can simplify your data somewhat. In cases where you are running lots of SNP-wise stats, LD-pruning can be a very prudent approach.</p>
@@ -507,7 +508,7 @@ Note
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to LD-prune a VCF. Makes calls to subfunctions for each chromosome, and each of those runs sub-functions on each window.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#For a variety of reasons, we drop _all_ alleles with no variation (e.g. allele frequency ==0 or 1).</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ld_prune <span class="ot">=</span> <span class="cf">function</span>(vcf,window_size,<span class="at">cutoff=</span><span class="fl">0.5</span>){</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ld_prune <span class="ot">=</span> <span class="cf">function</span>(vcf,window_size,<span class="at">cutoff=</span><span class="fl">0.1</span>){</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  GT <span class="ot">=</span> <span class="fu">extract.haps</span>(vcf,<span class="at">as.numeric=</span><span class="cn">TRUE</span>)</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  freqs <span class="ot">=</span> <span class="fu">apply</span>(GT,<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="fu">freq_GT</span>(x,<span class="at">ploidy=</span><span class="dv">1</span>))</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  GT <span class="ot">=</span> GT[<span class="fu">which</span>(freqs<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>freqs)<span class="sc">&gt;</span><span class="dv">0</span>),]</span>
@@ -518,7 +519,7 @@ Note
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Within each chromosome, generate windows and find only the sites to be dropped.</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>ld_prune_chr <span class="ot">=</span> <span class="cf">function</span>(GT,window_size,<span class="at">cutoff=</span><span class="fl">0.5</span>){</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>ld_prune_chr <span class="ot">=</span> <span class="cf">function</span>(GT,window_size,<span class="at">cutoff=</span><span class="fl">0.1</span>){</span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  pos <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">".*:([0-9]*):.*"</span>,<span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>,<span class="fu">rownames</span>(GT)))</span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">=</span> <span class="fu">unique</span>(<span class="fu">c</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="fu">min</span>(pos)<span class="sc">-</span><span class="dv">1</span>,<span class="at">to=</span><span class="fu">max</span>(pos),<span class="at">by=</span>window_size),<span class="fu">max</span>(pos)))</span>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  bins <span class="ot">=</span> <span class="fu">cut</span>(pos,breaks,<span class="at">right=</span><span class="cn">TRUE</span>)</span>
@@ -531,7 +532,7 @@ Note
 <span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">#Within each window, calculate correlations, keep only the first allele with high correlations</span></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>ld_prune_window <span class="ot">=</span> <span class="cf">function</span>(GT,<span class="at">cutoff=</span><span class="fl">0.5</span>){</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>ld_prune_window <span class="ot">=</span> <span class="cf">function</span>(GT,<span class="at">cutoff=</span><span class="fl">0.1</span>){</span>
 <span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  cor_mat <span class="ot">=</span> <span class="fu">cor</span>(<span class="fu">t</span>(GT))</span>
 <span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  to_check <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(cor_mat)[<span class="dv">1</span>]</span>
 <span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  drop <span class="ot">=</span> <span class="fu">c</span>()</span>
