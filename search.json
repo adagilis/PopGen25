@@ -123,14 +123,14 @@
     "href": "notes/Lecture4.html#how-quick-is-the-decay",
     "title": "Lecture 4",
     "section": "How quick is the decay?",
-    "text": "How quick is the decay?\n\n\n[ Info: Saved animation to /tmp/jl_P89kd4rw7S.gif"
+    "text": "How quick is the decay?\n\n\n[ Info: Saved animation to /tmp/jl_PqJIVwH2jG.gif"
   },
   {
     "objectID": "notes/Lecture4.html#key-take-aways",
     "href": "notes/Lecture4.html#key-take-aways",
     "title": "Lecture 4",
     "section": "Key take-aways",
-    "text": "Key take-aways\nWhen loci are unlinked (r=0.5), LD rapidly decays to 0.\n\nUnlike HW - single generation not enough to go to 0!\n\n\nEven when loci are closely linked (\\(r \\ll 0.5\\) ), decay is fairly quick.\n\n\nWhat keeps loci in LD then?"
+    "text": "Key take-aways\nWhen loci are unlinked (\\(r=0.5\\)), LD rapidly decays to 0.\n\nUnlike HW - single generation not enough to go to 0!\n\n\nEven when loci are closely linked (\\(r \\ll 0.5\\) ), decay is fairly quick.\n\n\nWhat keeps loci in LD then?"
   },
   {
     "objectID": "notes/Lecture4.html#forces-that-generate-ld",
@@ -172,7 +172,7 @@
     "href": "notes/Lecture4.html#things-you-will-readthink-that-are-subtly-wrong",
     "title": "Lecture 4",
     "section": "Things you will read/think that are subtly wrong:",
-    "text": "Things you will read/think that are subtly wrong:\n\nThese loci are only in LD because of proximity\n\nWhat’s the population size? How did that LD build up to begin with?\n\nLong-range LD is great evidence for selection\n\nOr population structure, or structural variation.\n\nThere’s no LD expected between these loci since they are on different chromosomes.\n\nLD can build up within a generations. Selection/assortative mating can maintain it between chromosomes.\n\nI can just LD prune my data and get the same results."
+    "text": "Things you will read/think that are subtly wrong:\n\nThese loci are only in LD because of proximity\n\nWhat’s the population size? How did that LD build up to begin with?\n\nLong-range LD is great evidence for selection\n\nOr population structure, or structural variation.\n\nThere’s no LD expected between these loci since they are on different chromosomes.\n\nLD can build up within a generations. Selection/assortative mating can maintain it between chromosomes."
   },
   {
     "objectID": "notes/Lecture4.html#ld-and-pop-gen-analyses",
@@ -221,7 +221,7 @@
     "href": "notes/Lecture4.html#ihs-ehh-roh",
     "title": "Lecture 4",
     "section": "iHS, EHH, ROH",
-    "text": "iHS, EHH, ROH\nThere are multiple statistics that work off of the fact that recombination breaks apart certain patterns in the genome, thus, we can look for “runs” of patterns as evidence of recent evolutionary events, or selection acting along the whole region.\n\nROH - Runs of Homozygosity. We mentioned these previously. They can be indicators of inbreeding, since:\n\nHomozygosity is caused by more Identity-by-descent than expected from HW/WF\nThe length of such regions can tell you how far from the inbreeding event this chunk descended from (since only recombination will break up the ROH).\n\niHS, - integradted Homozygosity Score, EHH - Extended Haplotype: searching for selection. (Klassmann and Gautier 2022)\n\nSelection at a locus will force nearby regions to hitchhike. This generates long range LD, and, if selection is strong, long range homozygosity."
+    "text": "iHS, EHH, ROH\nThere are multiple statistics that work off of the fact that recombination breaks apart certain patterns in the genome, thus, we can look for “runs” of patterns as evidence of recent evolutionary events, or selection acting along the whole region.\n\nROH - Runs of Homozygosity. We mentioned these previously. They can be indicators of inbreeding, since:\n\nHomozygosity is caused by more Identity-by-descent than expected from HW/WF\nThe length of such regions can tell you how far from the inbreeding event this chunk descended from (since only recombination will break up the ROH). ## cntd.\n\niHS, - integradted Homozygosity Score, EHH - Extended Haplotype: searching for selection. (Klassmann and Gautier 2022)\n\nSelection at a locus will force nearby regions to hitchhike. This generates long range LD, and, if selection is strong, long range homozygosity."
   },
   {
     "objectID": "notes/Lecture4.html#getting-rid-of-ld---practically",
@@ -858,7 +858,7 @@
     "href": "index.html",
     "title": "Population Genetics 2025",
     "section": "",
-    "text": "Welome to PopGen!\nThis is the website for Population Genetics (EEB 5348) at UConn. Here you will find notes on each of the lectures, links to papers and other materials as they become needed.\n\n\nAbout the course\nThe focus of this course is to introduce graduate students to population genetic thinking. I firmly believe the greatest benefit of population genetics is not knowledge of any particular approach or methodology (there are too many for any course to cover adequately), but a firm grasp of how population genetics can be used to 1) test and hone your intuition of evolutionary processes, 2) understand how (and why) different population genetics approaches work and 3) develop heuristics to examine any system of interest. Throughout the course we will examine classic population genetics results, read recent literature that either uses those results or throws them completely into question and work on developing a set of scripts and skills in a language of your choice (although I will recommend either Julia or R) to investigate the population genetics of different data-sets.\n\n\nSchedule/General Logistics\nEach week, we will start with a lecture on Tuesday, followed by a paper discussion and lab on Thursday. The goal of this class structure is to be able to introduce general concepts/remind you of things you should remember from your Genetics/Evolution courses, introduce classic PopGen results, followed by a more in-depth dive in the state of the art uses of those results and some practical advice of coding how they work. Here’s a general week-by-week overlay of the topics. Lecture notes will be added as links as we go along\n\n\n\nWeek\nTopic(s)\nReading\nLecture Notes\n\n\n\n\nAug 26-28\nIntro, Wright-Fisher\nLeu et al\nLecture 1\n\n\nSep 2-4\nGenetic diversity measurements\nBuffalo\nLecture 2\n\n\nSep 9-11\nDivergence at a site, mutation, molecular models of evolution\nPeede et al\nLecture 3\n\n\nSep 16-18\nSexual reproduction, Recombination, LD\nHahn and Mishra\n\n\n\nSep 23-25\nPopulation structure, migration, the coalescent\nCousins et al\n\n\n\nSep 30-Oct 2\nSelection at a single locus, types of selection\n\n\n\n\nOct 7-9\nProject Meetings, no regular class\nNA\n\n\n\nOct 14-16\nQuantitative trait evolution\n\n\n\n\nOct 21-23\nConfounded selection, demography, mutation\n\n\n\n\nOct 28-30\nAccounting for selection/demography in quantitative traits\n\n\n\n\nNov 4-6\nAncestral Recombination Graphs\n\n\n\n\nNov 11-13\nStudents’ choice\n\n\n\n\nNov 18-20\nStudents’ choice\n\n\n\n\nNov 25-27\nTHANKSGIVING BREAK\n\n\n\n\nDec 2-4\nProject meetings, final projects due Dec 4\nNA"
+    "text": "Welome to PopGen!\nThis is the website for Population Genetics (EEB 5348) at UConn. Here you will find notes on each of the lectures, links to papers and other materials as they become needed.\n\n\nAbout the course\nThe focus of this course is to introduce graduate students to population genetic thinking. I firmly believe the greatest benefit of population genetics is not knowledge of any particular approach or methodology (there are too many for any course to cover adequately), but a firm grasp of how population genetics can be used to 1) test and hone your intuition of evolutionary processes, 2) understand how (and why) different population genetics approaches work and 3) develop heuristics to examine any system of interest. Throughout the course we will examine classic population genetics results, read recent literature that either uses those results or throws them completely into question and work on developing a set of scripts and skills in a language of your choice (although I will recommend either Julia or R) to investigate the population genetics of different data-sets.\n\n\nSchedule/General Logistics\nEach week, we will start with a lecture on Tuesday, followed by a paper discussion and lab on Thursday. The goal of this class structure is to be able to introduce general concepts/remind you of things you should remember from your Genetics/Evolution courses, introduce classic PopGen results, followed by a more in-depth dive in the state of the art uses of those results and some practical advice of coding how they work. Here’s a general week-by-week overlay of the topics. Lecture notes will be added as links as we go along\n\n\n\nWeek\nTopic(s)\nReading\nLecture Notes\n\n\n\n\nAug 26-28\nIntro, Wright-Fisher\nLeu et al\nLecture 1\n\n\nSep 2-4\nGenetic diversity measurements\nBuffalo\nLecture 2\n\n\nSep 9-11\nDivergence at a site, mutation, molecular models of evolution\nPeede et al\nLecture 3\n\n\nSep 16-18\nSexual reproduction, Recombination, LD\nHahn and Mishra\nLecture 4\n\n\nSep 23-25\nPopulation structure, migration, the coalescent\nCousins et al\n\n\n\nSep 30-Oct 2\nSelection at a single locus, types of selection\n\n\n\n\nOct 7-9\nProject Meetings, no regular class\nNA\n\n\n\nOct 14-16\nQuantitative trait evolution\n\n\n\n\nOct 21-23\nConfounded selection, demography, mutation\n\n\n\n\nOct 28-30\nAccounting for selection/demography in quantitative traits\n\n\n\n\nNov 4-6\nAncestral Recombination Graphs\n\n\n\n\nNov 11-13\nStudents’ choice\n\n\n\n\nNov 18-20\nStudents’ choice\n\n\n\n\nNov 25-27\nTHANKSGIVING BREAK\n\n\n\n\nDec 2-4\nProject meetings, final projects due Dec 4\nNA"
   },
   {
     "objectID": "labs/lab3.html",
@@ -970,7 +970,7 @@
     "href": "labs.html#lab-files",
     "title": "Labs",
     "section": "Lab files:",
-    "text": "Lab files:\nLab 1 can be accessed with Pluto, and will be found in the labs/lab1.jl file.\nLab 2 is here\nLab 3 is here"
+    "text": "Lab files:\nLab 1 can be accessed with Pluto, and will be found in the labs/lab1.jl file.\nLab 2 is here\nLab 3 is here\nLab 4 is here"
   },
   {
     "objectID": "notes/Discussion2.html#richard-lewontin",
