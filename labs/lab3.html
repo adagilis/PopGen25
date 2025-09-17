@@ -468,7 +468,7 @@ F_{ST} = 1- \frac{f_1p_1q_1+f_2p_2q_2}{(f_1p_1+f_2p_2)(f_1q_1+f_2q_2)}
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    summary_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">chr=</span>chr,<span class="at">pos=</span>pos)</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    summary_df<span class="sc">$</span>tot_het <span class="ot">=</span> <span class="fu">apply</span>(GT,<span class="dv">1</span>,sample_het)</span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    pops <span class="ot">=</span> <span class="fu">unique</span>(samples<span class="sc">$</span>population)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    pops <span class="ot">=</span> <span class="fu">sort</span>(<span class="fu">unique</span>(samples<span class="sc">$</span>population))</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Get indices for each population</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    idx_pops <span class="ot">=</span> <span class="fu">lapply</span>(pops,<span class="cf">function</span>(x) {</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">which</span>(<span class="fu">colnames</span>(GT) <span class="sc">%in%</span> samples<span class="sc">$</span>sample_id[<span class="fu">which</span>(samples<span class="sc">$</span>population <span class="sc">==</span> x)])</span>

@@ -217,7 +217,7 @@
 <p>Similarly - all other mutations not present in that lineage become lost as it becomes fixed.</p>
 </div>
 </section>
-<section id="what-is-the-genetic-diversity-of-an-asexual-population" class="slide level2">
+<section id="what-is-the-genetic-diversity-of-an-asexual-population" class="slide level2 smaller">
 <h2>What is the genetic diversity of an asexual population?</h2>
 <p>In a neutral population, dynamics remain surprisingly similar, as any sweeps take long (same logic as Neutral Theory: <span class="math inline">\(\frac{1}{N}\)</span> is the rate of fixation)</p>
 <div class="fragment">
@@ -243,7 +243,7 @@
 <p>In this sense - lots of genetic diversity within species, but not in the subset of genes that are core.</p>
 </div>
 </section>
-<section id="why-are-there-so-many-accessory-genes" class="slide level2">
+<section id="why-are-there-so-many-accessory-genes" class="slide level2 smaller">
 <h2>Why are there so many accessory genes?</h2>
 <p>Sexual reproduction is rare, but its main effect: recombination, is not.</p>
 <div class="fragment">
@@ -377,7 +377,7 @@ D_{ij}^` =\left(1-r_{ij}\right)D_{ij}
 <h2>How quick is the decay?</h2>
 <div id="4" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
-<pre><code>[ Info: Saved animation to /tmp/jl_gVM9WDYnM7.gif</code></pre>
+<pre><code>[ Info: Saved animation to /tmp/jl_P89kd4rw7S.gif</code></pre>
 </div>
 
 </div>
@@ -552,6 +552,72 @@ D_{\Bbb{A}} = P_{\Bbb{A}}-\sum_{a \in \Bbb{A}}D_aP_a
 <p><img data-src="images/paste-7.jpeg" width="632"></p></li>
 </ul></li>
 </ul>
+</section>
+<section id="getting-rid-of-ld---practically" class="slide level2">
+<h2>Getting rid of LD - practically</h2>
+<p>A common occurence in evolutionary studies is two populations that are different by some interesting trait.</p>
+<div class="fragment">
+<p>You might try to first look at divergence across the genome to detect <em>what</em> is causing this interesting trait to appear.</p>
+</div>
+<div class="fragment">
+<p>If divergence has ocurred genome-wide - might be very hard to do.</p>
+</div>
+<div class="fragment">
+<p>If populations can still interbreed: QTL analysis</p>
+</div>
+</section>
+<section id="quantitative-trait-loci" class="slide level2">
+<h2>Quantitative Trait Loci</h2>
+<p>So far we have been agnostic about <em>what</em> our genes do, because we haven’t needed to worry about it.</p>
+<div class="fragment">
+<p>Let’s consider an allele that impacts some measurable trait, say height.</p>
+</div>
+<div class="fragment">
+<p>How can we detect this allele?</p>
+</div>
+</section>
+<section id="approach-1-genome-wide-association-study" class="slide level2">
+<h2>Approach 1: Genome-wide association study</h2>
+<p>If variance within your population is high enough, you can get away with GWAS.</p>
+<div class="fragment">
+<p>We’ll talk more about how GWAS is performed later in the semester, but at it’s core: fit a linear model of <span class="math inline">\(trait ~ genotype\)</span> at each locus.</p>
+</div>
+<div class="fragment">
+<p>More likely for some traits - the whole population has the trait of interest, and no real variation.</p>
+</div>
+<div class="fragment">
+<p>In other words - the trait is <em>correlated</em> to the population’s ancestry as a whole - there’s LD here.</p>
+</div>
+</section>
+<section id="approach-2-break-apart-ld" class="slide level2">
+<h2>Approach 2: Break apart LD</h2>
+<p>If you cross this population with a closely related one, which does not have the trait, you can run a QTL analysis.</p>
+<div class="fragment">
+<p>Each generation past F1, the LD between Pop 1 ancestry and the causal allele decreases by <span class="math inline">\(r\)</span> between that allele and everywhere else in the genome.</p>
+</div>
+<div class="fragment">
+<p>Easy to narrow to causal chromosome (if single locus) within two generations. Why?</p>
+</div>
+</section>
+<section id="approach-3-let-nature-do-it" class="slide level2">
+<h2>Approach 3: Let nature do it</h2>
+<p>To narrow down the trait inheritance, it’s often useful/necessary to go many generations deeper.</p>
+<div class="fragment">
+<p>One natural alternative - areas with active hybridization.</p>
+</div>
+<div class="fragment">
+<p>If your populations are, by chance, still hybridizing, there has been a natural QTL experiment happening at the tension zone.</p>
+</div>
+</section>
+<section id="next-week-population-structure-and-migration" class="slide level2">
+<h2>Next week: population structure and migration</h2>
+<p>Considering how alleles are exchanged between populations will be the focus next week.</p>
+<div class="fragment">
+<p>We will also introduce the coalescent more formally, so be prepared for a fairly math heavy time.</p>
+</div>
+<div class="fragment">
+<p>Oc 7-9th: Initial project meetings. Keep an eye out for a sign up sheet on the slack, start thinking about a data set you’d like to analyze more thoroughly.</p>
+</div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

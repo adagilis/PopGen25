@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lab 4 – EEB5348-Fall25</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-0f0490645a6a1a06582982a868fad8e8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">EEB5348-Fall25</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../notes.html"> 
+<span class="menu-text">Useful links</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../labs.html"> 
+<span class="menu-text">Labs</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#goals-for-today" id="toc-goals-for-today" class="nav-link active" data-scroll-target="#goals-for-today">Goals for today</a></li>
+  <li><a href="#part-1-setting-up-reusable-code-re-usably" id="toc-part-1-setting-up-reusable-code-re-usably" class="nav-link" data-scroll-target="#part-1-setting-up-reusable-code-re-usably">Part 1: Setting up reusable code re-usably</a>
+  <ul class="collapse">
+  <li><a href="#how-to-structure-custom-script-files" id="toc-how-to-structure-custom-script-files" class="nav-link" data-scroll-target="#how-to-structure-custom-script-files">How to structure custom script files</a></li>
+  </ul></li>
+  <li><a href="#part-2-calculating-ld-statistics" id="toc-part-2-calculating-ld-statistics" class="nav-link" data-scroll-target="#part-2-calculating-ld-statistics">Part 2: Calculating LD statistics</a>
+  <ul class="collapse">
+  <li><a href="#phasing-101" id="toc-phasing-101" class="nav-link" data-scroll-target="#phasing-101">Phasing 101</a></li>
+  <li><a href="#back-to-calculating-ld" id="toc-back-to-calculating-ld" class="nav-link" data-scroll-target="#back-to-calculating-ld">Back to calculating LD</a>
+  <ul class="collapse">
+  <li><a href="#r2" id="toc-r2" class="nav-link" data-scroll-target="#r2"><span class="math inline">\(r^2\)</span></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#part-3-the-combinatorial-nightmare-of-ld" id="toc-part-3-the-combinatorial-nightmare-of-ld" class="nav-link" data-scroll-target="#part-3-the-combinatorial-nightmare-of-ld">Part 3: The combinatorial nightmare of LD</a>
+  <ul class="collapse">
+  <li><a href="#solution-1-dont-calculate-all-ld-values." id="toc-solution-1-dont-calculate-all-ld-values." class="nav-link" data-scroll-target="#solution-1-dont-calculate-all-ld-values.">Solution 1: Don’t calculate all LD values.</a></li>
+  <li><a href="#solution-2-use-plink-or-some-other-software" id="toc-solution-2-use-plink-or-some-other-software" class="nav-link" data-scroll-target="#solution-2-use-plink-or-some-other-software">Solution 2: Use PLINK (or some other software)</a></li>
+  </ul></li>
+  <li><a href="#part-4-ld-pruning" id="toc-part-4-ld-pruning" class="nav-link" data-scroll-target="#part-4-ld-pruning">Part 4: LD-pruning</a>
+  <ul class="collapse">
+  <li><a href="#hasnt-someone-already-written-a-faster-version-of-this" id="toc-hasnt-someone-already-written-a-faster-version-of-this" class="nav-link" data-scroll-target="#hasnt-someone-already-written-a-faster-version-of-this">Hasn’t someone already written a faster version of this</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 4</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="goals-for-today" class="level1">
+<h1>Goals for today</h1>
+<p>Today the lab will focus on getting you more acquinted with LD statistics, from calculating and plotting them to LD-pruning. Before that, however, we are now at the point where your code should be getting complex enough that you are probably ready to appreciate a good structure to your codebase. So we’ll start with setting up something I recommended a while ago: a file to hold all of your custom functions.</p>
+</section>
+<section id="part-1-setting-up-reusable-code-re-usably" class="level1">
+<h1>Part 1: Setting up reusable code re-usably</h1>
+<p>Let’s start by making a file in the popgen github project. Go into the <code>src</code> folder and create a file called <code>&lt;your_last_name&gt;.R</code> this will be a file that I won’t ever overwrite when you download code, but will be a clear space for yourself to store different useful functions as you write them. It’s a good idea to generally organize your code even more granularly (for instance, a different file for functions that are reading in/dealing with VCFs than one that works on phylogenetic trees), but for now I’ll enforce only a single file. You <em>will</em> be turning these files in, so make sure you actually create it.</p>
+<section id="how-to-structure-custom-script-files" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-structure-custom-script-files">How to structure custom script files</h2>
+<p>Within this file, it’s probably useful to set up some basic structure as well. First, start by saying what the file contains in a comment (line starting with <code>#</code>), then add <code>require()</code> statements for any packages the code might depend on. Following this, start adding the code for different functions you’ve written - but make sure to annotate them.</p>
+<p>For instance, here is what the head of a script file from one of my own projects looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This file contains functions to cluster a network of genes into communities, plot the network using the community data and then analyze each community using GOst</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(gost)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(igraph)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_void</span>())</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#This function takes an igraph network and returns labels for each node based on a fastgreedycluster. If a community contains fewer than `cutoff` members, it is returned as NA instead. This is because downstream analyses are not run on the small communities, which in practice are also often pairs of genes when dealing with ERC scores. </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>quick_cluster <span class="ot">=</span> <span class="cf">function</span>(graph){</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are two reasons to annotate code. One, to say what a function does, so that you remember what it is if the name is not great (and in this case, <code>quick_cluster</code> is not great). Two, you should add comments to your code to say <em>why</em> you did something that way. Notice my comments spell out I’ll be tossing small communities from later analyses, which is why I don’t return those.</p>
+<p>In your case - take the time now to create this file, including the functions we used last time to calculate divergence in a VCF. In particular, feel free to copy the <code>process_GT</code> function, but make sure you also include all of the functions it relies on (<code>freq_GT</code>, <code>sample_het</code>,<code>dxy_site</code>,<code>fst_site</code>, etc.). Now, when you restart <code>R</code> in some project and want to be able to run that function, all you should need to do is run:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"&lt;location of this github repository on your computer&gt;"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"src/&lt;your_last_name.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And suddenly you’ll be able to get all of the stats out of any vcf file that you have population annotations for. For the next bit of the class, we’ll work on adding more functionality to this code, this week dealing with LD.</p>
+</section>
+</section>
+<section id="part-2-calculating-ld-statistics" class="level1">
+<h1>Part 2: Calculating LD statistics</h1>
+<p>We talked in class about a broad set of LD statistics that are often used in different contexts. Some of them will be extremely easy to calculate, while others less so. We’ll start with <code>D</code> - the absolute measure of linkage disequilbrium. You have most of the bits necessary to write this function already, but we’ll need to learn to deal with one more to actually get it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>d_ij <span class="ot">=</span> <span class="cf">function</span>(site_i,site_j){</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    p_i <span class="ot">=</span> <span class="fu">freq_GT</span>(site_i)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    p_j <span class="ot">=</span> <span class="fu">freq_GT</span>(site_j)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    p_ij <span class="ot">=</span> ???</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    D_ij <span class="ot">=</span> p_ij <span class="sc">-</span> p_i<span class="sc">*</span>p_j</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(D_ij)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What is <code>p_ij</code>? It’s the frequency of haplotypes carrying the derived allele at both loci <code>i</code> and <code>j</code> (e.g.&nbsp;<code>AB</code> haplotype instead of <code>Ab</code>,<code>aB</code>, or <code>ab</code>). If you are dealing with haploid data (and I’ll assume you have no missing data for the moment), this is easy enough:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p_ij <span class="ot">=</span> <span class="fu">intersect</span>(<span class="fu">which</span>(site_i<span class="sc">==</span><span class="dv">1</span>),<span class="fu">which</span>(site_j<span class="sc">==</span><span class="dv">1</span>))<span class="sc">/</span><span class="fu">length</span>(site_i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>But, you are often going to deal with diploid data. In that case, when both individuals are coded <code>2</code>, you know they have two copies of <code>AB</code> haplotypes, but what about a 1?</p>
+<p>Here, you need to make sure your data is <em>phased</em> - each allele is essentially labeled whether it came from mom or dad (altough in practice you don’t know which is which in many phasing approaches). In your VCF file, phased data looks like <code>1|0</code> instead of <code>1/0</code>, with the <code>|</code> indicating known phase, and <code>/</code> indicating it is not known. The 1k genome data you’ll work on today happens to be phased, and I’ll show you how you can extract that information in a second. But first, let’s consider what to do if your data is not phased, but you <em>really</em> need it to be:</p>
+<section id="phasing-101" class="level2">
+<h2 class="anchored" data-anchor-id="phasing-101">Phasing 101</h2>
+<p>The most correct approach to phasing is to have data from a trio of both parents and an offspring. This lets you infer phase directly: if an individual is <code>0/1</code> and the mother is <code>0/0</code>, while the father is <code>1/1</code>, you <em>know</em> the father’s allele had to be the <code>1</code>. Even here, there’ll be ambiguous cases (all three heterozygous, for example), but you should be able to phase most of the genome. This is especially useful when you need accurate phasing but some of the assumptions of statistical phasing might not work (e.g.&nbsp;you are interested in sex chromosomes)</p>
+<p>If you (reasonably) can’t triple your sequencing costs for unclear benefits, but still need phasing, there are statistical phasing approaches. <code>shapeit</code> has, in my experience, the fastest/most reliable output, but each of the methods has its own assumptions/approaches, so if you are going down this path - read up on them: <a href="https://faculty.washington.edu/browning/beagle/beagle.html">Beagle</a>, <a href="https://jmarchini.org/shapeit3/">shapeit</a>, <a href="https://bioinformaticshome.com/tools/imputation/descriptions/fastPHASE.html#gsc.tab=0">fastPhase</a>.</p>
+<p>The short version of the approaches - the data is generally clustered in a way that best represents multiple populations in Hardy-Weinberg. Then each allele gets assigned a phase based on which of two parental populations (different for each individual, potentially) that individual’s alleles seem to come from. These approaches have gotten quite fast and efficient, but even so expect to budget a good month of effort for your project in getting the data phased to a satisfactory outcome.</p>
+</section>
+<section id="back-to-calculating-ld" class="level2">
+<h2 class="anchored" data-anchor-id="back-to-calculating-ld">Back to calculating LD</h2>
+<p>So, what about our phased data once it’s in <code>R</code>? Notice that in the past I have simply quickly converted the <code>VCF</code> to a genotype matrix. But you could instead convert it to a haplotype matrix, with the <code>vcfR</code> function <code>extract.haps</code>. This function takes the vcf as an argument, and will spit out a nice matrix where each column is one haplotype. By default, it will convert any unphased sites to <code>NA</code>s. That’s probably the right call in 99% of the cases, but make sure your functions actually work with NAs when dealing with haplotypes. Problematically for us - it returns the actual alleles at each site, rather than the numeric data you have been working with. So, we need to write a wrapper around it that returns a numeric matrix, like our GT matrices so far:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to run on each row</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>allele_2_num <span class="ot">=</span> <span class="cf">function</span>(site,name){</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  div_allele <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">".*:.*:([A,T,C,G]+):"</span>,<span class="st">""</span>,name)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  GT_row <span class="ot">=</span> <span class="fu">as.numeric</span>(site<span class="sc">==</span>div_allele)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(GT_row)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Structure for whole vcf</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>extract_haps <span class="ot">=</span> <span class="cf">function</span>(vcf){</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  haps <span class="ot">=</span> <span class="fu">extract.haps</span>(vcf)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  names <span class="ot">=</span> <span class="fu">rownames</span>(haps)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  num_mat <span class="ot">=</span> <span class="fu">t</span>(<span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(haps)[<span class="dv">1</span>],<span class="cf">function</span>(x) <span class="fu">allele_2_num</span>(haps[x,],names[x])))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(num_mat) <span class="ot">=</span> names</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(num_mat) <span class="ot">=</span> <span class="fu">colnames</span>(haps)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(num_mat)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>So, now the function I showed above for haploids should work for your diploid data, but let’s make sure it also works for cases where there are NAs. This isn’t immediately clear, but it’s easy to trip up here. Imagine you have the genotypes:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Site</th>
+<th>Ind1</th>
+<th>Ind2</th>
+<th>Ind3</th>
+<th>Ind4</th>
+<th>Ind5</th>
+<th>Ind6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>i</td>
+<td>0</td>
+<td>NA</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>j</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>NA</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>k</td>
+<td>NA</td>
+<td>NA</td>
+<td>1</td>
+<td>NA</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>If what you do is just <code>na.omit</code> each site, you will end up with the wrong LD values for i vs j comparisons, and site 3 is liable to break completely. Each vector would end up looking like:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Site</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>i</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>j</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>k</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>So, you’ll have to think of how to do this comparison differently than when we calculated allele frequencies. Think about the way to only count places where the sites match, and then similarly account for the number of individuals that have non-missing data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>freq_ij <span class="ot">=</span> <span class="cf">function</span>(site_i,site_j){</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#How can we make sure that we find every case where both i and j are equal to 1, _and_ we get the number of sites correct?</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    n_ij <span class="ot">=</span> ???</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    n_sites <span class="ot">=</span>  ???</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(n_ij<span class="sc">/</span>n_sites)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You may be immediately tempted to run all of your code solely on the haplotypes, and that can be fine. But make sure you double check that the code is set up to work with haploid data. For instance, in the example site frequency function, we made the assumption data is diploid:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>freq_GT <span class="ot">=</span> <span class="cf">function</span>(site){</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  num_derived <span class="ot">=</span> <span class="fu">sum</span>(site)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  total_sites <span class="ot">=</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">length</span>(site)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(num_derived<span class="sc">/</span>total_sites)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We need to make sure it works for any ploidy, so we might as well write a better (although less easy to read) function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>freq_GT <span class="ot">=</span> <span class="cf">function</span>(site,<span class="at">ploidy=</span><span class="dv">2</span>){</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  clean_site <span class="ot">=</span> <span class="fu">na.omit</span>(site)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">=</span> <span class="fu">sum</span>(clean_site)<span class="sc">/</span>(ploidy<span class="sc">*</span><span class="fu">length</span>(clean_site))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(p)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the above function, I’ve added a <code>ploidy</code> argument, and made the default two (so, the function will by default run on diploid data just fine). But, if you specify ploidy, it will instead use that value. In our case, we now know we’ll need to run the <code>d_ij</code> function on haploid data. So, let’s specify:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>d_ij <span class="ot">=</span> <span class="cf">function</span>(site_i,site_j){</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    p_i <span class="ot">=</span> <span class="fu">freq_GT</span>(site_i,<span class="dv">1</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    p_j <span class="ot">=</span> <span class="fu">freq_GT</span>(site_j,<span class="dv">1</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    p_ij <span class="ot">=</span> <span class="fu">freq_ij</span>(site_i,site_j)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    D_ij <span class="ot">=</span> p_ij <span class="sc">-</span> p_i<span class="sc">*</span>p_j</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(D_ij)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the average <span class="math inline">\(D_ij\)</span> in the muc19 data?</p>
+</div>
+</div>
+<section id="r2" class="level3">
+<h3 class="anchored" data-anchor-id="r2"><span class="math inline">\(r^2\)</span></h3>
+<p>In some ways, <span class="math inline">\(r^2\)</span> is much easier to calculate than other statistics, since it is just a correlation between haplotypes. You won’t need to write a fancy new function here, in fact, you can get the whole matrix of all possible correlations with a single function call (assuming you have a haploid GT):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cor_mat <span class="ot">=</span> <span class="fu">cor</span>(<span class="fu">t</span>(GT))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will take a while, however, and potentially crash <code>R</code> for you. That’s because it’s doing <em>a lot</em> of comparisons under the hood.</p>
+</section>
+</section>
+</section>
+<section id="part-3-the-combinatorial-nightmare-of-ld" class="level1">
+<h1>Part 3: The combinatorial nightmare of LD</h1>
+<p>So far we’ve discussed LD as a fun and useful statistic you can calculate for your data. The problem is that it is a pairwise statistic, so the number of comparisons we need to make grows quadratically with the number of sites. It’s useful to at least know about <a href="https://en.wikipedia.org/wiki/Big_O_notation">big O notation</a>, but the very short version is: if you have a 1000 sites and you calculate <span class="math inline">\(\pi\)</span> for each, that’s roughly 1000 calculations, and for a 1,000,000 it’s a 1,000,000. But there are <span class="math inline">\(\binom{1000}{2} = 499500\)</span> calculations for LD with a 1000 sites, and a whopping <span class="math inline">\(\binom{1000000}{2} \approxeq 5e11\)</span> for 1 million sites. Modern computers are fast, but when you ask them to do on the order of trillions of calculations - your code will be very slow. You’ll also need to <em>store</em> all of the results of those calculations. At 64 bits per LD value, you’ll be looking at about 4 Tb of data to store all the LD values between 1 million sites. So - how do we avoid this?</p>
+<section id="solution-1-dont-calculate-all-ld-values." class="level3">
+<h3 class="anchored" data-anchor-id="solution-1-dont-calculate-all-ld-values.">Solution 1: Don’t calculate all LD values.</h3>
+<p>This is the simplest and (often) best solution. Don’t bother calculating LD between every possible pair of loci - you generally don’t need to. You can vastly simplify your calculations by averaging across regions, for instance (say, pairwise LD between different genes), or by only calculating values for common alleles (require the minor allele frequency at both sites to be greater than some threshold, often 0.1). Finally, we saw in class how long-range LD tends to decay to very small values, so it may not be worth looking for LD past a certain distance. Rather than calculate <code>d_ij</code> at all pairs of sites, calculate only the ones you are deeply interested in, and if you don’t know what those are - just randomly subsample a smaller subset of sites to calculate LD. Even then, this is one place where <code>R</code>s relative slow speed compared to other programming languages can still come back to haunt you. It’s good to know <em>how</em> to calculate LD yourself, but I would often recommend you don’t do it.</p>
+<p>Here is an example of how you can thin the data randomly (to, say 10% of the data):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>random_rows <span class="ot">=</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(GT)[<span class="dv">1</span>],<span class="at">size=</span><span class="fu">round</span>(<span class="fl">0.1</span><span class="sc">*</span><span class="fu">dim</span>(GT)[<span class="dv">1</span>]),<span class="at">replace=</span><span class="cn">FALSE</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>thin_GT <span class="ot">=</span> GT[random_rows,]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cor_mat <span class="ot">=</span> <span class="fu">cor</span>(<span class="fu">t</span>(thin_GT))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What are some issues with thinning data this way?</p>
+</div>
+</div>
+</section>
+<section id="solution-2-use-plink-or-some-other-software" class="level3">
+<h3 class="anchored" data-anchor-id="solution-2-use-plink-or-some-other-software">Solution 2: Use PLINK (or some other software)</h3>
+<p>The good folks at <a href="https://www.cog-genomics.org/plink/">Plink</a> have spent a lot of time thinking about this as well, and have made their LD calculations be very nice and specific in how much data they return. The plots you saw in class are results of running <code>Plink</code> on the <code>muc19_subsample.vcf.gz</code> file, rather than running the calculations in <code>R</code>. The command to run an LD analysis is quite long, but it needs to be in order to not spit out 4Tb of data at you:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink</span> <span class="at">--vcf</span>  muc19_subsample.vcf.gz <span class="dt">\ </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">--double-id</span> <span class="dt">\ </span>#Plink expects a family, but we only have individuals. This tells it to stop that behavior <span class="er">(</span><span class="ex">and</span> just label each samples haplotype<span class="kw">)</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">--allow-extra-chr</span> <span class="dt">\ </span>#Plink assumes everything is a human, so if somehow the name of the chromosome is not in the human set it craps out. This stops that behavior.</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">--maf</span> 0.01 <span class="dt">\ </span>#Minimum allele frequency of 0.01</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">--geno</span> 0.1 <span class="dt">\ </span>#Tosses a whole site if more than 10% individuals have missing data at it</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">--mind</span> 0.5 <span class="dt">\ </span>#Any individual with more than 50% missing data is tossed as well</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">--chr</span> 12 <span class="dt">\ </span>#Which chromosome should it analyze</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="ex">--thin</span> 0.1 <span class="dt">\ </span>#Randomly sample 10% of loci, and use these for the analysis</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="ex">-r2</span> gz <span class="dt">\ </span>#Output the r2 statistic, and gzip it so it<span class="st">'s not as giant.</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="st">--ld-window 100 \ #Minimum distance between sites to analyze</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="st">--ld-window-kb 1000 \ #Maximum distance (in kb this time) of sites to analyze</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="st">--ld-window-r2 0 \ #Drop any sites with r2 less than 0 (so, keep all r2)</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="st">--out your_prefix # What to call the output files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This should run quite quickly on the muc19 data, even though there are quite many sites in there. Indeed, you could easily swap some parameters (say, the thin parameter) and still see decently small outputs. But, notice that the file size is nearly the same as that of the vcf even at the settings I provide above. Calculating all possible r2 values will both take the entire lab and likely fill up your hard drive.</p>
+<p>In general, as you start working on bigger data-sets you will end up seeing exponentially longer run times. It’s worth it to go back and re-think when something is actually needed, versus when you can simplify your data somewhat. In cases where you are running lots of SNP-wise stats, LD-pruning can be a very prudent approach.</p>
+</section>
+</section>
+<section id="part-4-ld-pruning" class="level1">
+<h1>Part 4: LD-pruning</h1>
+<p><code>Plink</code> can also run LD pruning, so if you’ve enjoyed your time with it, feel free to do generally use <code>Plink</code> for this, as it’s infinitely faster than <code>R</code>. But first, let’s discuss <em>how</em> LD pruning is done in practice. In general, when you LD prune you subdivide the genome into windows of equal size. For each window, you calculate all pairwise correlations. Then, you loop through each SNP, and toss out all later SNPs in high LD with it. Below is some code that shows you the structure of how this works:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Function to LD-prune a VCF. Makes calls to subfunctions for each chromosome, and each of those runs sub-functions on each window.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#For a variety of reasons, we drop _all_ alleles with no variation (e.g. allele frequency ==0 or 1).</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ld_prune <span class="ot">=</span> <span class="cf">function</span>(vcf,window_size,<span class="at">cutoff=</span><span class="fl">0.5</span>){</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  GT <span class="ot">=</span> <span class="fu">extract.haps</span>(vcf,<span class="at">as.numeric=</span><span class="cn">TRUE</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  freqs <span class="ot">=</span> <span class="fu">apply</span>(GT,<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="fu">freq_GT</span>(x,<span class="at">ploidy=</span><span class="dv">1</span>))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  GT <span class="ot">=</span> GT[<span class="fu">which</span>(freqs<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>freqs)<span class="sc">&gt;</span><span class="dv">0</span>),]</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  chr_id <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">":.*:.*:.*"</span>,<span class="st">""</span>,<span class="fu">rownames</span>(GT))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  chrs <span class="ot">=</span> <span class="fu">sort</span>(<span class="fu">unique</span>(chr_id))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  sub_GT <span class="ot">=</span> <span class="fu">sapply</span>(chrs,<span class="cf">function</span>(x) <span class="fu">ld_prune_chr</span>(GT[chr_id<span class="sc">==</span>x,],<span class="at">window_size=</span>window_size,<span class="at">cutoff=</span>cutoff)) </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sub_GT)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Within each chromosome, generate windows and find only the sites to be dropped.</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>ld_prune_chr <span class="ot">=</span> <span class="cf">function</span>(GT,window_size,<span class="at">cutoff=</span><span class="fl">0.5</span>){</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  pos <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">".*:([0-9]*):.*"</span>,<span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>,<span class="fu">rownames</span>(GT)))</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">=</span> <span class="fu">unique</span>(<span class="fu">c</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="fu">min</span>(pos)<span class="sc">-</span><span class="dv">1</span>,<span class="at">to=</span><span class="fu">max</span>(pos),<span class="at">by=</span>window_size),<span class="fu">max</span>(pos)))</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  bins <span class="ot">=</span> <span class="fu">cut</span>(pos,breaks,<span class="at">right=</span><span class="cn">TRUE</span>)</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Drop bins with 1 or fewer entries</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  bad_bins <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(<span class="fu">table</span>(bins)<span class="sc">&lt;</span><span class="dv">2</span>))</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  bins <span class="ot">=</span> <span class="fu">factor</span>(bins,<span class="at">exclude=</span>bad_bins)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  drop <span class="ot">=</span> <span class="fu">unlist</span>(<span class="fu">sapply</span>(<span class="fu">levels</span>(bins),<span class="cf">function</span>(x) <span class="fu">ld_prune_window</span>(GT[<span class="fu">which</span>(bins<span class="sc">==</span>x),],<span class="at">cutoff=</span>cutoff)))</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  sub_GT <span class="ot">=</span> GT[<span class="fu">setdiff</span>(<span class="fu">rownames</span>(GT),drop),]</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sub_GT)</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">#Within each window, calculate correlations, keep only the first allele with high correlations</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>ld_prune_window <span class="ot">=</span> <span class="cf">function</span>(GT,<span class="at">cutoff=</span><span class="fl">0.5</span>){</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  cor_mat <span class="ot">=</span> <span class="fu">cor</span>(<span class="fu">t</span>(GT))</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  to_check <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(cor_mat)[<span class="dv">1</span>]</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  drop <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>(<span class="fu">length</span>(to_check)<span class="sc">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    high_cor <span class="ot">=</span> <span class="fu">which</span>(cor_mat[to_check[<span class="dv">1</span>],]<span class="sc">&gt;</span>cutoff)</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    drop <span class="ot">=</span> <span class="fu">c</span>(drop,<span class="fu">setdiff</span>(high_cor,to_check[<span class="dv">1</span>]))</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    to_check <span class="ot">=</span> <span class="fu">setdiff</span>(to_check,high_cor)</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">length</span>(drop)<span class="sc">&gt;</span><span class="dv">0</span>){</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">rownames</span>(GT)[drop])</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the total number of SNPs that remain after you LD prune the muc19 data using a 250bp window?</p>
+<p>What about a 500 bp window?</p>
+</div>
+</div>
+<p>The above code will work, but suffers from all of <code>R</code>s usual issues of scaling into really big data. But, by writing the different chunks as different modules, the task is infinitely parallelizable. If you don’t know what that means - don’t worry about it. Just realize that each window calculation can be done independently of others, so if you want to use some parallel package (like <code>doSnow</code> or <code>doParallel</code>), you can easily convert the above functions to be much, much faster.</p>
+<section id="hasnt-someone-already-written-a-faster-version-of-this" class="level3">
+<h3 class="anchored" data-anchor-id="hasnt-someone-already-written-a-faster-version-of-this">Hasn’t someone already written a faster version of this</h3>
+<p>Yes! As with many stats, there are many packages that can do this in <code>R</code>, but each will want a different data type. For instance, <code>SNPRelate</code> will ask for a <code>gdsobj</code>, while the <code>STAARS</code> pipeline uses an <code>aGDS</code> file format, while <code>bigsnpr</code> will use an <code>FBM.code256</code> object to ld prune. At the end of the day, you will probably decide on <em>some</em> package that works best for you, and incorporate most of its approaches in your pipelines. But, as hard as it is managing your own code, you’ll find managing interactions with many other packages becomes quite tedious and issue-prone. What if one of the formats drops NAs, while another imputes genotypes? So, again, it is good to know how to run things yourself, even if you will largely use other tools.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/adagilis\.github\.io\/PopGen25\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
