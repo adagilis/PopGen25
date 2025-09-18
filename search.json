@@ -95,7 +95,7 @@
     "href": "notes/Lecture4.html#when-is-d-maximized",
     "title": "Lecture 4",
     "section": "When is \\(D\\) maximized?",
-    "text": "When is \\(D\\) maximized?\n\n\nPrecompiling Plots...\n    993.0 ms  ✓ FFMPEG_jll\n   1311.9 ms  ✓ ColorTypes\n    581.5 ms  ✓ FFMPEG\n    583.0 ms  ✓ ColorTypes → StyledStringsExt\n   1909.4 ms  ✓ StatsBase\n    954.9 ms  ✓ GR_jll\n   1545.6 ms  ✓ ColorVectorSpace\n   3479.3 ms  ✓ Colors\n   3057.1 ms  ✓ GR\n   2901.8 ms  ✓ ColorSchemes\n   7124.5 ms  ✓ PlotUtils\n   2208.7 ms  ✓ PlotThemes\n   3007.5 ms  ✓ RecipesPipeline\n  53810.4 ms  ✓ Plots\n   2976.5 ms  ✓ Plots → UnitfulExt\n  15 dependencies successfully precompiled in 75 seconds. 165 already precompiled."
+    "text": "When is \\(D\\) maximized?"
   },
   {
     "objectID": "notes/Lecture4.html#alternatives-to-d",
@@ -123,7 +123,7 @@
     "href": "notes/Lecture4.html#how-quick-is-the-decay",
     "title": "Lecture 4",
     "section": "How quick is the decay?",
-    "text": "How quick is the decay?\n\n\n[ Info: Saved animation to /tmp/jl_jIHapa3E5o.gif"
+    "text": "How quick is the decay?\n\n\n[ Info: Saved animation to /tmp/jl_9aT8ByTmLa.gif"
   },
   {
     "objectID": "notes/Lecture4.html#key-take-aways",
@@ -193,7 +193,7 @@
     "href": "notes/Lecture4.html#other-ways-of-dealing-with-ld-ld-decay",
     "title": "Lecture 4",
     "section": "Other ways of dealing with LD: LD-decay",
-    "text": "Other ways of dealing with LD: LD-decay\nAs you saw, LD decays fairly quickly with increasing recombination distance.\n\nWindows spaced apart by distance where \\(r^2\\) is negligible.\n\n\nPrecompiling CSV...\n    553.0 ms  ✓ InlineStrings\n    464.6 ms  ✓ InlineStrings → ParsersExt\n    762.1 ms  ✓ WeakRefStrings\n  10551.8 ms  ✓ CSV\n  4 dependencies successfully precompiled in 12 seconds. 26 already precompiled.\nPrecompiling DataFrames...\n  30519.8 ms  ✓ DataFrames\n  1 dependency successfully precompiled in 31 seconds. 32 already precompiled.\nPrecompiling MultivariateStats...\n   4152.7 ms  ✓ Distributions\n   1290.4 ms  ✓ MultivariateStats\n  2 dependencies successfully precompiled in 6 seconds. 63 already precompiled.\nPrecompiling SpecialFunctionsExt...\n    648.6 ms  ✓ ColorVectorSpace → SpecialFunctionsExt\n  1 dependency successfully precompiled in 1 seconds. 20 already precompiled."
+    "text": "Other ways of dealing with LD: LD-decay\nAs you saw, LD decays fairly quickly with increasing recombination distance.\n\nWindows spaced apart by distance where \\(r^2\\) is negligible."
   },
   {
     "objectID": "notes/Lecture4.html#another-way-of-thinking-of-ld",
