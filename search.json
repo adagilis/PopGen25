@@ -95,7 +95,7 @@
     "href": "notes/Lecture5.html#and-we-keep-doing-this-until-only-one-lineage-remains",
     "title": "Lecture 5",
     "section": "And we keep doing this until only one lineage remains",
-    "text": "And we keep doing this until only one lineage remains\n\n\n[ Info: Saved animation to /tmp/jl_lqjKhodqvy.gif"
+    "text": "And we keep doing this until only one lineage remains\n\n\n[ Info: Saved animation to /tmp/jl_LmlsJEpcvc.gif"
   },
   {
     "objectID": "notes/Lecture5.html#the-same-samples-could-have-many-different-coalescent-histories",
@@ -112,32 +112,32 @@
     "text": "Properties of the coalescent\nWe can start to understand some general properties of the coalescent. Start by imagining we samples all of the individuals in the population.\n\nThe number of coalescence events in the previous generation will be equal to:\n\\[\n\\sum_{i=1}^{N}{i\\left(\\binom{N}{i}\\frac{1}{N}^i(1-\\frac{1}{N})^{N-i}\\right)}\n\\]\nWhere \\(i\\) is the number of samples that are coalescing in the previous generation."
   },
   {
-    "objectID": "notes/Lecture5.html#most-coalescent-events-happen-early",
-    "href": "notes/Lecture5.html#most-coalescent-events-happen-early",
+    "objectID": "notes/Lecture5.html#i-thought-this-was-supposed-to-be-simpler",
+    "href": "notes/Lecture5.html#i-thought-this-was-supposed-to-be-simpler",
     "title": "Lecture 5",
-    "section": "Most coalescent events happen early",
-    "text": "Most coalescent events happen early\nThe probability scales so that the earliest coalescent events happen earliest.\n\nThe density of coalescent events can also be thought of via the geometric distribution:\nAny two lineages coalesce on the \\(n^th\\) generation back with probability:\n\\[\nP(Coal=t) = \\frac{1}{2N}(1-\\frac{1}{2N})^{n-1}\n\\]"
+    "section": "I thought this was supposed to be simpler!",
+    "text": "I thought this was supposed to be simpler!\nThe simplicity of the coalescent comes from a very simple assumption - the number of individuals you sample is far smaller than the total population.\n\nLet’s start with the most extreme case - you only sampled two lineages.\nAny two lineages have not coalesced by the \\(n^{th}\\) generation back with probability\n\\[\nP(T&gt;n) = (1-\\frac{1}{2N})^{n}\n\\]\nThis is just the geometric distribution! For big \\(N\\), it’s also well approximated by the Exponential distribution."
   },
   {
     "objectID": "notes/Lecture5.html#what-does-that-look-like",
     "href": "notes/Lecture5.html#what-does-that-look-like",
     "title": "Lecture 5",
     "section": "What does that look like?",
-    "text": "What does that look like?\n\nBecause each lineage coalesces independently, the total coalescent time is actually just proportional to the average coalescent rate.\n\nLots of variability, but we can make some very specific predictions."
+    "text": "What does that look like?\n\nWe’ll also assume lineages coalesce independently, so that . . .\nLots of variability, but we can make some very specific predictions - average time to coalescence (often called \\(T\\)) is just \\(2N\\)."
   },
   {
-    "objectID": "notes/Lecture5.html#simplifying-further",
-    "href": "notes/Lecture5.html#simplifying-further",
+    "objectID": "notes/Lecture5.html#slightly-less-assumptions",
+    "href": "notes/Lecture5.html#slightly-less-assumptions",
     "title": "Lecture 5",
-    "section": "Simplifying further",
-    "text": "Simplifying further\nImagine that the number of samples we have is much smaller than the total population, call it \\(n\\)\n\nThen, the number of coalescent events in the previous generation significantly simplifies - completely unlikely that multiple coalescent events happen in one generation:\n\\[\nP( n \\rightarrow n-1) = \\frac{n(n-1)}{4N}\n\\]"
+    "section": "Slightly less assumptions",
+    "text": "Slightly less assumptions\nImagine that the number of samples we have, \\(n\\) is much smaller than the total population.\n\nThen, the number of coalescent events in the previous generation is still fairly simple - it is completely unlikely that multiple coalescent events happen in one generation:\n\\[\nP( n \\rightarrow n-1) = \\binom{n}{2}\\frac{1}{2N} = \\frac{n(n-1)}{4N}\n\\]"
   },
   {
     "objectID": "notes/Lecture5.html#if-n-large-enough",
     "href": "notes/Lecture5.html#if-n-large-enough",
     "title": "Lecture 5",
-    "section": "If N large enough",
-    "text": "If N large enough\nWe can then back out that the waiting time for the coalescent event when \\(n\\) samples remain is \\(T_n =\\frac{4N}{n(n-1)}\\).\n\nIf we want to find the time until the most recent common ancestor, we can sum up the values of \\(T_n\\) from \\(n\\) to \\(2\\), giving:\n\n\n\\[\n\\sum_{i=2}^{n}T_n = 4N\\left(1-\\frac{1}{n}\\right)\n\\]\nIf \\(n = 2\\), then \\(T_{MRCA} = 2N\\). As \\(n\\) increases, \\(T_{MRCA} \\leftarrow 4N\\).\n\n\nHALF the time is spent waiting for the last two copies"
+    "section": "If \\(N\\) large enough",
+    "text": "If \\(N\\) large enough\nWe can then back out that the waiting time for the coalescent event when \\(n\\) samples remain is \\(E[T_n] =\\frac{4N}{n(n-1)}\\).\n\nIf we want to find the time until the most recent common ancestor, we can sum up the values of \\(T_n\\) from \\(n\\) to \\(2\\), giving:\n\n\n\\[\nE[T_{MRCA}]=\\sum_{i=2}^{n}T_n = 4N\\left(1-\\frac{1}{n}\\right)\n\\]\nIf \\(n = 2\\), then \\(T_{MRCA} = 2N\\). As \\(n\\) increases, \\(T_{MRCA} \\leftarrow 4N\\).\n\n\nHALF the time is spent waiting for the last two copies"
   },
   {
     "objectID": "notes/Lecture5.html#total-tree-length",
@@ -949,7 +949,7 @@
     "href": "index.html",
     "title": "Population Genetics 2025",
     "section": "",
-    "text": "Welome to PopGen!\nThis is the website for Population Genetics (EEB 5348) at UConn. Here you will find notes on each of the lectures, links to papers and other materials as they become needed.\n\n\nAbout the course\nThe focus of this course is to introduce graduate students to population genetic thinking. I firmly believe the greatest benefit of population genetics is not knowledge of any particular approach or methodology (there are too many for any course to cover adequately), but a firm grasp of how population genetics can be used to 1) test and hone your intuition of evolutionary processes, 2) understand how (and why) different population genetics approaches work and 3) develop heuristics to examine any system of interest. Throughout the course we will examine classic population genetics results, read recent literature that either uses those results or throws them completely into question and work on developing a set of scripts and skills in a language of your choice (although I will recommend either Julia or R) to investigate the population genetics of different data-sets.\n\n\nSchedule/General Logistics\nEach week, we will start with a lecture on Tuesday, followed by a paper discussion and lab on Thursday. The goal of this class structure is to be able to introduce general concepts/remind you of things you should remember from your Genetics/Evolution courses, introduce classic PopGen results, followed by a more in-depth dive in the state of the art uses of those results and some practical advice of coding how they work. Here’s a general week-by-week overlay of the topics. Lecture notes will be added as links as we go along\n\n\n\nWeek\nTopic(s)\nReading\nLecture Notes\n\n\n\n\nAug 26-28\nIntro, Wright-Fisher\nLeu et al\nLecture 1\n\n\nSep 2-4\nGenetic diversity measurements\nBuffalo\nLecture 2\n\n\nSep 9-11\nDivergence at a site, mutation, molecular models of evolution\nPeede et al\nLecture 3\n\n\nSep 16-18\nSexual reproduction, Recombination, LD\nHahn and Mishra\nLecture 4\n\n\nSep 23-25\nPopulation structure, migration, the coalescent\nCousins et al\n\n\n\nSep 30-Oct 2\nSelection at a single locus, types of selection\n\n\n\n\nOct 7-9\nProject Meetings, no regular class\nNA\n\n\n\nOct 14-16\nQuantitative trait evolution\n\n\n\n\nOct 21-23\nConfounded selection, demography, mutation\n\n\n\n\nOct 28-30\nAccounting for selection/demography in quantitative traits\n\n\n\n\nNov 4-6\nAncestral Recombination Graphs\n\n\n\n\nNov 11-13\nStudents’ choice\n\n\n\n\nNov 18-20\nStudents’ choice\n\n\n\n\nNov 25-27\nTHANKSGIVING BREAK\n\n\n\n\nDec 2-4\nProject meetings, final projects due Dec 4\nNA"
+    "text": "Welome to PopGen!\nThis is the website for Population Genetics (EEB 5348) at UConn. Here you will find notes on each of the lectures, links to papers and other materials as they become needed.\n\n\nAbout the course\nThe focus of this course is to introduce graduate students to population genetic thinking. I firmly believe the greatest benefit of population genetics is not knowledge of any particular approach or methodology (there are too many for any course to cover adequately), but a firm grasp of how population genetics can be used to 1) test and hone your intuition of evolutionary processes, 2) understand how (and why) different population genetics approaches work and 3) develop heuristics to examine any system of interest. Throughout the course we will examine classic population genetics results, read recent literature that either uses those results or throws them completely into question and work on developing a set of scripts and skills in a language of your choice (although I will recommend either Julia or R) to investigate the population genetics of different data-sets.\n\n\nSchedule/General Logistics\nEach week, we will start with a lecture on Tuesday, followed by a paper discussion and lab on Thursday. The goal of this class structure is to be able to introduce general concepts/remind you of things you should remember from your Genetics/Evolution courses, introduce classic PopGen results, followed by a more in-depth dive in the state of the art uses of those results and some practical advice of coding how they work. Here’s a general week-by-week overlay of the topics. Lecture notes will be added as links as we go along\n\n\n\nWeek\nTopic(s)\nReading\nLecture Notes\n\n\n\n\nAug 26-28\nIntro, Wright-Fisher\nLeu et al\nLecture 1\n\n\nSep 2-4\nGenetic diversity measurements\nBuffalo\nLecture 2\n\n\nSep 9-11\nDivergence at a site, mutation, molecular models of evolution\nPeede et al\nLecture 3\n\n\nSep 16-18\nSexual reproduction, Recombination, LD\nHahn and Mishra\nLecture 4\n\n\nSep 23-25\nPopulation structure, migration, the coalescent\nCousins et al\nLecture 5\n\n\nSep 30-Oct 2\nSelection at a single locus, types of selection\n\n\n\n\nOct 7-9\nProject Meetings, no regular class\nNA\n\n\n\nOct 14-16\nQuantitative trait evolution\n\n\n\n\nOct 21-23\nConfounded selection, demography, mutation\n\n\n\n\nOct 28-30\nAccounting for selection/demography in quantitative traits\n\n\n\n\nNov 4-6\nAncestral Recombination Graphs\n\n\n\n\nNov 11-13\nStudents’ choice\n\n\n\n\nNov 18-20\nStudents’ choice\n\n\n\n\nNov 25-27\nTHANKSGIVING BREAK\n\n\n\n\nDec 2-4\nProject meetings, final projects due Dec 4\nNA"
   },
   {
     "objectID": "about.html",
