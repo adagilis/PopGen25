@@ -32,21 +32,7 @@
     "href": "notes/Lecture5.html#the-wahlund-effect",
     "title": "Lecture 5",
     "section": "The Wahlund effect",
-    "text": "The Wahlund effect\nWhen there is population structure (multiple populations in a single sample of individuals), the deciation from HW is always the same - fewer heterozygotes than expected by chance.\ngraph G {\n  layout=fdp\n  subgraph cluster_0 {\n      style = filled;\n      color = lightgrey;\n      node [label=\"AABB\"];\n      a;\n      b;\n      c;\n      d;\n      e;\n      label = \"Population B\"\n  }\n\n  subgraph cluster_1 {\n            style = filled;\n      color = lightgrey;\n      node [label=\"aabb\"];\n      f\n      g\n      h\n      i\n      j\n      k\n      label = \"Population A\"\n  }\n}\n\nThis deficit is known as the Wahlund effect, and has fairly simple expectations."
-  },
-  {
-    "objectID": "notes/Lecture5.html#wahlund-cntd.",
-    "href": "notes/Lecture5.html#wahlund-cntd.",
-    "title": "Lecture 5",
-    "section": "Wahlund cntd.",
-    "text": "Wahlund cntd.\n\nSay you have n populations in your data. Let \\(\\sigma\\) be the standard deviation of allele frequencies among populations. Then:\n\\[\n\\begin{cases}\nE[p_{AA}]=\\bar{p}^2+\\sigma^2 \\\\\nE[p_{Aa}]=2\\bar{p}\\bar{q} - 2\\sigma^2 \\\\\nE[p_{aa}]=\\bar{q}^2+\\sigma^2\n\\end{cases}\n\\]"
-  },
-  {
-    "objectID": "notes/Lecture5.html#wahlund-cntd.-1",
-    "href": "notes/Lecture5.html#wahlund-cntd.-1",
-    "title": "Lecture 5",
-    "section": "Wahlund cntd.",
-    "text": "Wahlund cntd.\nLarger deviations in allele frequencies between the populations result in smaller and smaller numbers of heterozygotes compared to expectation.\n\nOne way we can measure this kind of deviation is through \\(F_{ST}\\), which is specifically meant to measure the Wahlund effect.\n\n\nProblem - how do we define the subpopulations accurately if we don’t even know how many there are?"
+    "text": "The Wahlund effect\nWhen there is population structure (multiple populations in a single sample of individuals), the deciation from HW is always the same - fewer heterozygotes than expected by chance. . . .\nThis deficit is known as the Wahlund effect, and has fairly simple expectations. . . .\nSay you have n populations in your data. Let \\(\\sigma\\) be the standard deviation of allele frequencies among populations. Then:\n\\[\n\\begin{cases}\nE[p_{AA}]=\\bar{p}^2+\\sigma^2 \\\\\nE[p_{Aa}]=2\\bar{p}\\bar{q} - 2\\sigma^2 \\\\\nE[p_{aa}]=\\bar{q}^2+\\sigma^2\n\\end{cases}\n\\]\nLarger deviations in allele frequencies between the populations result in smaller and smaller numbers of heterozygotes compared to expectation.\n\nOne way we can measure this kind of deviation is through \\(F_{ST}\\)."
   },
   {
     "objectID": "notes/Lecture5.html#structureadmixture",
@@ -63,11 +49,25 @@
     "text": "The other departure from expectation\nLast week, we talked about LD, and how one of the reasons it can be higher than expected is population structure.\n\nThe other form of disequlibrium that can be minimized when looking for optimal “populations” is therefore LD: with each assignment of groups, you make sure that within group LD is as small as possible.\n\n\nThink of a population with perfect LD at all sites - it is probably better to think of it as two independently evolving gene pools.\n\n\nThe benefit of using LD is you don’t need large differences in allele frequencies (the basis of the Wahlund effect) to see LD in subpopulations.\n\n\nBut now you are optimizing many different axes - HW, LD, and \\(K\\)."
   },
   {
+    "objectID": "notes/Lecture5.html#the-core-idea-in-structureadmixture",
+    "href": "notes/Lecture5.html#the-core-idea-in-structureadmixture",
+    "title": "Lecture 5",
+    "section": "The core idea in STRUCTURE/ADMIXTURE",
+    "text": "The core idea in STRUCTURE/ADMIXTURE\nAt the end of the day, each approach tries some way of estimating the genome wide covariance matrix between all samples, and then split into \\(K\\) groups such that covariance within the matrix is maximized.\n\nSamples that co-vary in genetic variation are probably in the same population.\n\n\nSamples that show co-variance between multiple groups show genetic structure consistent with admixture - they are a mix of gene pools."
+  },
+  {
     "objectID": "notes/Lecture5.html#pca-based-approaches-pcangsd",
     "href": "notes/Lecture5.html#pca-based-approaches-pcangsd",
     "title": "Lecture 5",
     "section": "PCA based approaches (PCAngsd)",
-    "text": "PCA based approaches (PCAngsd)\nThere are numerous statistical approaches to find clusters in data based on shared variability (for example, k-means-clustering)\n\nThat same logic can be applied to genetic samples, although it’s worth understanding that the clustering done here will not result in populations as close to HW as possible, but, rather, in clusters which minimize w/in cluster distance in PC space.\n\n\n\nOne amazing result, however, is that the number of significant components in a data-set is equal to \\(K-1\\) - so by running PCA first you can actually skip trying to determine significance of different \\(K\\) values.\n\n\nBut, recall, that the number of significant PCs is often tested in relatively arbitrary ways!"
+    "text": "PCA based approaches (PCAngsd)\nThere are numerous statistical approaches to find clusters in data based on shared variability (for example, k-means-clustering)\n\nThat same logic can be applied to genetic samples, although it’s worth understanding that the clustering done here will not result in populations as close to HW as possible, but, rather, in clusters which minimize w/in cluster distance in PC space.\n\n\n\nBut, not the actual Cov matrix!"
+  },
+  {
+    "objectID": "notes/Lecture5.html#why-do-pca-then",
+    "href": "notes/Lecture5.html#why-do-pca-then",
+    "title": "Lecture 5",
+    "section": "Why do PCA then?",
+    "text": "Why do PCA then?\nOne amazing result, however, is that the number of significant components in a data-set is equal to \\(K-1\\) - so by running PCA first you can actually skip trying to determine significance of different \\(K\\) values.\n\nBut, recall, that the number of significant PCs is often tested in relatively arbitrary ways!"
   },
   {
     "objectID": "notes/Lecture5.html#takeaways",
@@ -95,7 +95,7 @@
     "href": "notes/Lecture5.html#and-we-keep-doing-this-until-only-one-lineage-remains",
     "title": "Lecture 5",
     "section": "And we keep doing this until only one lineage remains",
-    "text": "And we keep doing this until only one lineage remains\n\n\n[ Info: Saved animation to /tmp/jl_8buzcBQtip.gif"
+    "text": "And we keep doing this until only one lineage remains\n\n\n[ Info: Saved animation to /tmp/jl_lqjKhodqvy.gif"
   },
   {
     "objectID": "notes/Lecture5.html#the-same-samples-could-have-many-different-coalescent-histories",
@@ -130,21 +130,70 @@
     "href": "notes/Lecture5.html#simplifying-further",
     "title": "Lecture 5",
     "section": "Simplifying further",
-    "text": "Simplifying further\nImagine that the number of samples we have is much smaller than the total population, call it \\(n\\)\n\nThen, the number of coalescent events in the previous generation significantly simplifies - completely unlikely that multiple coalescent events happen in one generation:\n\\[\nP( n \\rightarow n-1) = \\frac{n(n-1)}{4N}\n\\]"
+    "text": "Simplifying further\nImagine that the number of samples we have is much smaller than the total population, call it \\(n\\)\n\nThen, the number of coalescent events in the previous generation significantly simplifies - completely unlikely that multiple coalescent events happen in one generation:\n\\[\nP( n \\rightarrow n-1) = \\frac{n(n-1)}{4N}\n\\]"
   },
   {
     "objectID": "notes/Lecture5.html#if-n-large-enough",
     "href": "notes/Lecture5.html#if-n-large-enough",
     "title": "Lecture 5",
     "section": "If N large enough",
-    "text": "If N large enough\nWe can then back out that the waiting time for the coalescent event when \\(n\\) samples remain is \\(T_n =\\frac{4N}{n(n-1)}\\).\n\nIf we want to find the time until the most recent common ancestor, we can sum up the values of \\(T_n\\) from \\(n\\) to \\(2\\), giving:\n\\[\n\\sum_{i=2}^{n}T_n = 4N\\left(1-\\frac{1}{n}\\right)\n\\]\nNote we assumed \\(n \\ll N\\). If \\(n = 2\\), then \\(T_{MRCA} = 2N\\). As \\(n\\) increases, \\(T_{MRCA} -&gt; 4N\\).\n\n\nHALF the time is spent waiting for the last two copies to coalesce!"
+    "text": "If N large enough\nWe can then back out that the waiting time for the coalescent event when \\(n\\) samples remain is \\(T_n =\\frac{4N}{n(n-1)}\\).\n\nIf we want to find the time until the most recent common ancestor, we can sum up the values of \\(T_n\\) from \\(n\\) to \\(2\\), giving:\n\n\n\\[\n\\sum_{i=2}^{n}T_n = 4N\\left(1-\\frac{1}{n}\\right)\n\\]\nIf \\(n = 2\\), then \\(T_{MRCA} = 2N\\). As \\(n\\) increases, \\(T_{MRCA} \\leftarrow 4N\\).\n\n\nHALF the time is spent waiting for the last two copies"
   },
   {
-    "objectID": "notes/Lecture5.html#more-before-discussion",
-    "href": "notes/Lecture5.html#more-before-discussion",
+    "objectID": "notes/Lecture5.html#total-tree-length",
+    "href": "notes/Lecture5.html#total-tree-length",
     "title": "Lecture 5",
-    "section": "More before discussion",
-    "text": "More before discussion\nI completely underestimated how much time this will take, so - more on multiple populations Thursday.\n\nFor the paper: focus on the biological (not technical details)"
+    "section": "Total tree length",
+    "text": "Total tree length\nThe length of all of the branches in the resulting tree can also be described:\n\\[\nE(T_{total}) = 4N \\sum_{i=1}^{n-1}{\\frac{1}{i}}\n\\]\n\nAgain, for 2 samples: \\(4N\\) generations between their coalescene.\n\n\nIf we then want to count how many mutations have happened, we can simply provide the per-generation mutation rate.\n\n\nExpected differences between two randomly chosen samples in a population is: \\(4N \\mu = \\theta\\).\n\n\nThis is the simpler way to derive \\(\\theta\\), but it does not capture the fact that, often, the sequence diversity is capped for a variety of reasons."
+  },
+  {
+    "objectID": "notes/Lecture5.html#coalescent-and-population-size-changes",
+    "href": "notes/Lecture5.html#coalescent-and-population-size-changes",
+    "title": "Lecture 5",
+    "section": "Coalescent and population size changes",
+    "text": "Coalescent and population size changes\nHow many coalescent events do we expect at different times?\n\nWhat if the population increases?\n\n\nWhat if it decreases?"
+  },
+  {
+    "objectID": "notes/Lecture5.html#instantaneous-inverse-coalescence-rate",
+    "href": "notes/Lecture5.html#instantaneous-inverse-coalescence-rate",
+    "title": "Lecture 5",
+    "section": "Instantaneous inverse coalescence rate",
+    "text": "Instantaneous inverse coalescence rate\nThe IICR is a way to measure the rate of coalescence given an empirical distribution of coalescent rates.\n\nWhen populations are constant, it is constant over time.\n\n\nFurther - it will change predictably (and linearly) with changes in N_E."
+  },
+  {
+    "objectID": "notes/Lecture5.html#iicr-in-the-wild",
+    "href": "notes/Lecture5.html#iicr-in-the-wild",
+    "title": "Lecture 5",
+    "section": "IICR in the wild",
+    "text": "IICR in the wild\nMany methods to estimate demographic history capitalize on this expected rate of coalescence.\n\nWhen it deviates from a flat rate of coalescence events - either population increase or decrease.\n\n\nPSMC, MSMC, SCM++, SMC` -&gt; We’ll talk more about these, but all estimate the sequential Markovian coalescent across the genome.\n\n\nThat lets them estimate population change, migration rates between populations, etc."
+  },
+  {
+    "objectID": "notes/Lecture5.html#migration-rates-and-the-coalescent",
+    "href": "notes/Lecture5.html#migration-rates-and-the-coalescent",
+    "title": "Lecture 5",
+    "section": "Migration rates and the coalescent",
+    "text": "Migration rates and the coalescent\nHow does having multiple populations affect coalescence rates?\n\nImagine two populations, with a low ongoing rate of migration \\(m\\).\n\n\nAgain, assume we have a small number of individuals from each population, so that each generation at most one event happens:\n\nCoalescence in population 1, rate \\(\\binom{n_1}{2}/2N_1\\)\nCoalescence in population 2, , rate \\(\\binom{n_2}{2}/2N_2\\)\nMigration from 1 to 2, rate \\(n_1m\\)\nMigration from 2 to 1, rate \\(n_2m\\)\n\n\n\nCan simulate efficiently by summing rates of all events, picking time to event based on rate, and then picking event based on relative probability."
+  },
+  {
+    "objectID": "notes/Lecture5.html#core-results-from-migration-models",
+    "href": "notes/Lecture5.html#core-results-from-migration-models",
+    "title": "Lecture 5",
+    "section": "Core results from migration models",
+    "text": "Core results from migration models\nThe coalescent time for 2 samples in the same population is \\(4N\\) instead of \\(2N\\).\n\nEither coalescence happens (\\(2N\\)) or with very low probability one sample migrates, and then you have to wait a very long time (\\(1/m\\) and then another \\(2N\\)) to get coalescence. The average turns out to be \\(4N\\) (or, for \\(d\\) populations, \\(2Nd\\))\n\n\nThe coalescence time for 2 samples from different populations is \\(4N(1+\\frac{d-1}{4Nmd})\\)"
+  },
+  {
+    "objectID": "notes/Lecture5.html#expected-f_st-between-populations",
+    "href": "notes/Lecture5.html#expected-f_st-between-populations",
+    "title": "Lecture 5",
+    "section": "Expected \\(F_{ST}\\) between populations",
+    "text": "Expected \\(F_{ST}\\) between populations\nAnother way of finding \\(F_{ST}\\) stems from coalescent thinking.\n\n\\[\nF_{ST} = \\frac{T_w-T_b}{T_b}\n\\]\nwhere \\(T_w = 2Nd\\) and \\(T_b = 4N(1+\\frac{d-1}{4Nmd})\\)\n\n\nFor “infinite islands”: When \\(d \\gg 1\\), \\(F_{ST} = \\frac{1}{1+4Nm}\\)"
+  },
+  {
+    "objectID": "notes/Lecture5.html#discussion-thursday",
+    "href": "notes/Lecture5.html#discussion-thursday",
+    "title": "Lecture 5",
+    "section": "Discussion Thursday",
+    "text": "Discussion Thursday\nMore complicated coalescent models can be fit to data using the IICR approach. In particular, we’ll look at a case where there was population structure, but it disappeared.\n\nFocus on understanding biological story (Figures 4,5,6), we’ll talk about technical details Thursday."
   },
   {
     "objectID": "notes/Lecture3.html#visualizing-in-simulations",
