@@ -39,7 +39,7 @@
     "href": "notes/Lecture5.html#structureadmixture",
     "title": "Lecture 5",
     "section": "STRUCTURE/ADMIXTURE",
-    "text": "STRUCTURE/ADMIXTURE\nIf having multiple populations in your data increases deviations from HW, then one way we can try to identify populations is to group individuals in such a way that each group is in HW.\n\nThe simplest approaches here (STRUCTURE [cite]), have the user specify a number of groups (denoted as \\(K\\)), and try large numbers of assignments for all individuals to find the one that minimizes the departure from HW in all of the groups.\n\n\nThis is a very important, and often missed, assumption - populations may not be in HW for many reasons.\n\n\nFurther, there is no perfect way of knowing \\(K\\) - often we look at how the likelihood is changing based on \\(K\\) and choose the peak."
+    "text": "STRUCTURE/ADMIXTURE\nIf having multiple populations in your data increases deviations from HW, then one way we can try to identify populations is to group individuals in such a way that each group is in HW.\n\nThe simplest approaches here (STRUCTURE), have the user specify a number of groups (denoted as \\(K\\)), and try large numbers of assignments for all individuals to find the one that minimizes the departure from HW in all of the groups.\n\n\nThis is a very important, and often missed, assumption - populations may not be in HW for many reasons.\n\n\nFurther, there is no perfect way of knowing \\(K\\)."
   },
   {
     "objectID": "notes/Lecture5.html#the-other-departure-from-expectation",
@@ -95,7 +95,7 @@
     "href": "notes/Lecture5.html#and-we-keep-doing-this-until-only-one-lineage-remains",
     "title": "Lecture 5",
     "section": "And we keep doing this until only one lineage remains",
-    "text": "And we keep doing this until only one lineage remains\n\n\n[ Info: Saved animation to /tmp/jl_LmlsJEpcvc.gif"
+    "text": "And we keep doing this until only one lineage remains\n\n\n[ Info: Saved animation to /tmp/jl_QpSvELYBGf.gif"
   },
   {
     "objectID": "notes/Lecture5.html#the-same-samples-could-have-many-different-coalescent-histories",
