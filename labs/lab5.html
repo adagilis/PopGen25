@@ -192,7 +192,15 @@ window.Quarto = {
   <li><a href="#what-about-things-you-cant-test" id="toc-what-about-things-you-cant-test" class="nav-link" data-scroll-target="#what-about-things-you-cant-test">What about things you <em>can’t</em> test?</a></li>
   </ul></li>
   <li><a href="#short-assignment-1-gt_process-that-runs-correctly-on-a-test-data-set." id="toc-short-assignment-1-gt_process-that-runs-correctly-on-a-test-data-set." class="nav-link" data-scroll-target="#short-assignment-1-gt_process-that-runs-correctly-on-a-test-data-set.">Short assignment 1: <code>GT_process</code> that runs correctly on a test data set.</a></li>
-  <li><a href="#plink-and-pcangsd" id="toc-plink-and-pcangsd" class="nav-link" data-scroll-target="#plink-and-pcangsd">Plink and PCAngsd</a></li>
+  <li><a href="#plink-and-pcangsd" id="toc-plink-and-pcangsd" class="nav-link" data-scroll-target="#plink-and-pcangsd">Plink and PCAngsd</a>
+  <ul class="collapse">
+  <li><a href="#step-1-have-access-to-a-unix-terminal" id="toc-step-1-have-access-to-a-unix-terminal" class="nav-link" data-scroll-target="#step-1-have-access-to-a-unix-terminal">Step 1: Have access to a UNIX terminal</a></li>
+  <li><a href="#step-2-install-condaminiconda" id="toc-step-2-install-condaminiconda" class="nav-link" data-scroll-target="#step-2-install-condaminiconda">Step 2: Install conda/miniconda</a></li>
+  <li><a href="#step-3-create-a-new-virtual-environment" id="toc-step-3-create-a-new-virtual-environment" class="nav-link" data-scroll-target="#step-3-create-a-new-virtual-environment">Step 3: Create a new virtual environment</a></li>
+  <li><a href="#step-4-install-plink" id="toc-step-4-install-plink" class="nav-link" data-scroll-target="#step-4-install-plink">Step 4: Install Plink</a></li>
+  </ul></li>
+  <li><a href="#run-plink-on-the-muc19-data-to-make-.bed-.fam-files" id="toc-run-plink-on-the-muc19-data-to-make-.bed-.fam-files" class="nav-link" data-scroll-target="#run-plink-on-the-muc19-data-to-make-.bed-.fam-files">Run PLINK on the muc19 data to make .bed .fam files</a></li>
+  <li><a href="#run-pcangsd" id="toc-run-pcangsd" class="nav-link" data-scroll-target="#run-pcangsd">Run PCAngsd</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -311,7 +319,74 @@ window.Quarto = {
 </section>
 <section id="plink-and-pcangsd" class="level2">
 <h2 class="anchored" data-anchor-id="plink-and-pcangsd">Plink and PCAngsd</h2>
-<p>Let’s now move on to new things. In the interest of not introducing a bunch of new <code>R</code> stuff to work on while you sort out the assignment, today we’ll be working almost entirely from the command line.</p>
+<p>Let’s now move on to new things. In the interest of not introducing a bunch of new <code>R</code> stuff to work on while you sort out the assignment, today we’ll be working almost entirely from the command line. Today’s goal is to work on code that processes a vcf to produce population structure output.</p>
+<section id="step-1-have-access-to-a-unix-terminal" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-have-access-to-a-unix-terminal">Step 1: Have access to a UNIX terminal</h3>
+<p>If you are on a windows machine, we’ll need to make sure you have access to a UNIX terminal. Two ways to go about this - if you already have access to the HPC, feel free to work from there. The recommended option is to install <code>WSL2</code>. This is a lightweight virtual machine that will give you full Linux capabilities from inside of Windows. It’s very useful to test code/pipelines before running them on the cluster. Instructions depend partially on Windows version, but the currently recommended version seems to be: go to the Microsoft Store, type in Ubuntu, install Ubuntu. This <em>will</em> require a restart before you can actually run it.</p>
+</section>
+<section id="step-2-install-condaminiconda" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-install-condaminiconda">Step 2: Install conda/miniconda</h3>
+<p>Managing software packages is easiest with virtual environments, and Conda is the way to go for most bioinformatics tools. I’ll recommend Miniconda, as it’s a bit more lightweight: (instructions here)[https://www.anaconda.com/docs/getting-started/miniconda/install#macos-linux-installation]. DO NOT install using the graphical installer - we’ll need to work from the terminal today.</p>
+</section>
+<section id="step-3-create-a-new-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-create-a-new-virtual-environment">Step 3: Create a new virtual environment</h3>
+<p>Once conda is installed (you may have to restart your terminal), you should be able to create an environment for today’s goals. Let’s call it <code>pcangsd</code>. In your terminal, type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> pcangsd</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate pcangsd</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pcangsd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-4-install-plink" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-install-plink">Step 4: Install Plink</h3>
+<p>Plink is the next tool we’ll need. It’s an easier install than PCAngsd, but still has some potential issues. If you have a fresh install of Ubuntu, you’ll first need to install <code>unzip</code> with:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install unzip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You’ll type in your password and should get unzip installed.</p>
+<p>Then, download Plink (copy the appropriate link from this site (either Linux 64 bit or MacOS))[https://www.cog-genomics.org/plink/]</p>
+<p>For Linux (Windows too!) use this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20250819.zip</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> plink_linux_x86_64_20250819.zip <span class="at">-d</span> plink/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You will now have a directory called plink with a few files inside it.</p>
+</section>
+</section>
+<section id="run-plink-on-the-muc19-data-to-make-.bed-.fam-files" class="level2">
+<h2 class="anchored" data-anchor-id="run-plink-on-the-muc19-data-to-make-.bed-.fam-files">Run PLINK on the muc19 data to make .bed .fam files</h2>
+<p>Next we need to prepare the vcf in the necessary format. This will look like</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink</span> <span class="at">--vcf</span> <span class="op">&lt;</span>your_vcf<span class="op">&gt;</span> --make-bed <span class="at">--out</span> <span class="op">&lt;</span>output_prefix<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="run-pcangsd" class="level2">
+<h2 class="anchored" data-anchor-id="run-pcangsd">Run PCAngsd</h2>
+<p>Almost to the finish line, we can run PCAngsd:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pcangsd</span> <span class="at">-p</span> <span class="op">&lt;</span>output_prefix_from_previous_step<span class="op">&gt;</span> -o <span class="op">&lt;</span>output_prefix_for_this_step<span class="op">&gt;</span> --admix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now it will run for a little while. Or a very long while for large datasets. What will be produced is the covariance matrix for your data, and estimates of admixture given the <span class="math inline">\(K\)</span> based on the PCA. You might notice this <span class="math inline">\(K\)</span> is <em>weird</em> given what you know about the data here, but let’s take a look at the data in depth:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>admix <span class="ot">=</span> <span class="fu">read_table</span>(<span class="st">"&lt;your_output_prefix&gt;.admix.&lt;K&gt;.Q"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(admix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Each row is an individual, each column is the proportion of ancestry for that individual in that population. How can we plot this?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(admix) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">""</span>) <span class="co">#Give some putative names for the populations, depening on their number</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>admix<span class="ot">=</span> <span class="fu">as.data.frame</span>(admix)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>admix<span class="sc">$</span>ind <span class="ot">=</span>  ??? <span class="co">#How can you name each individual (hint: the vcf has the names of each of these)</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Pivot to long format</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">=</span> <span class="fu">pivot_longer</span>(admix,<span class="dv">1</span><span class="sc">:</span><span class="er">&lt;</span>your K<span class="sc">&gt;</span>,<span class="at">names_to=</span><span class="st">"Pop"</span>,<span class="at">values_to=</span><span class="st">"admix"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long,<span class="fu">aes</span>(<span class="at">x=</span>ind,<span class="at">y=</span>admix,<span class="at">fill=</span>Pop))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">col=</span><span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>At the end, you <em>should</em> obtain a plot that looks something like (except here it’s all 3202 individuals):</p>
+<p><img src="images/paste-5.png" class="img-fluid"></p>
 
 
 </section>
