@@ -377,13 +377,12 @@ window.Quarto = {
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(admix) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">""</span>) <span class="co">#Give some putative names for the populations, depening on their number</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>admix<span class="ot">=</span> <span class="fu">as.data.frame</span>(admix)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>admix<span class="sc">$</span>ind <span class="ot">=</span>  ??? <span class="co">#How can you name each individual (hint: the vcf has the names of each of these)</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Pivot to long format</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">=</span> <span class="fu">pivot_longer</span>(admix,<span class="dv">1</span><span class="sc">:</span><span class="er">&lt;</span>your K<span class="sc">&gt;</span>,<span class="at">names_to=</span><span class="st">"Pop"</span>,<span class="at">values_to=</span><span class="st">"admix"</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long,<span class="fu">aes</span>(<span class="at">x=</span>ind,<span class="at">y=</span>admix,<span class="at">fill=</span>Pop))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">col=</span><span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>admix<span class="ot">=</span> <span class="fu">as.data.frame</span>(admix)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>admix<span class="sc">$</span>ind <span class="ot">=</span>  ??? <span class="co">#How can you name each individual (hint: the vcf has the names of each of these)</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Pivot to long format</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">=</span> <span class="fu">pivot_longer</span>(admix,<span class="dv">1</span><span class="sc">:</span><span class="er">&lt;</span>your K<span class="sc">&gt;</span>,<span class="at">names_to=</span><span class="st">"Pop"</span>,<span class="at">values_to=</span><span class="st">"admix"</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long,<span class="fu">aes</span>(<span class="at">x=</span>ind,<span class="at">y=</span>admix,<span class="at">fill=</span>Pop))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">col=</span><span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>At the end, you <em>should</em> obtain a plot that looks something like (except here it’s all 3202 individuals):</p>
 <p><img src="images/paste-5.png" class="img-fluid"></p>
