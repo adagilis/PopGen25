@@ -244,12 +244,12 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>one_half_fst1 <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>))</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>one_half_fst0 <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fake_data <span class="ot">=</span> <span class="fu">rbind</span>(row_invariant,row_invariant2,one_tenth,one_half_fst1,one_half_fst0)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(fake_data) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"d"</span>,<span class="st">"e"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(fake_data) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>,<span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span>,<span class="st">"d"</span>,<span class="st">"e"</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#We also want the rows to have names that work with our code:</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(fake_data) <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"chr1:"</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">100</span>,<span class="st">":A:T"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(fake_data) <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"chr1:"</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span><span class="sc">*</span><span class="dv">100</span>,<span class="st">":A:T"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(fake_data,<span class="at">file=</span><span class="st">"&lt;your test_dir/test_data.txt&gt;"</span>,<span class="at">quote=</span><span class="cn">FALSE</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pop_file <span class="ot">=</span> <span class="fu">data_frame</span>(<span class="at">samples=</span><span class="fu">names</span>(fake_data),<span class="at">population=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(pop_file,<span class="at">row.names=</span><span class="cn">FALSE</span>,<span class="at">quote=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>pop_file <span class="ot">=</span> <span class="fu">data_frame</span>(<span class="at">samples=</span><span class="fu">colnames</span>(fake_data),<span class="at">population=</span><span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(pop_file,<span class="at">file=</span><span class="st">"pop_data.txt"</span>,<span class="at">row.names=</span><span class="cn">FALSE</span>,<span class="at">quote=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="where-should-test-data-live" class="level3">
 <h3 class="anchored" data-anchor-id="where-should-test-data-live">Where should test data live?</h3>
@@ -257,7 +257,7 @@ window.Quarto = {
 <p>The test data is something that, with care, you should only need to curate once. On the other hand, the testing scripts will be continuously updated. It should have <em>a</em> test run for each of your functions.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Load in your code</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"your_src_file.R"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"your_src_file.R"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Load in test data</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
@@ -266,14 +266,14 @@ window.Quarto = {
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#These are tests</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Assuming diploid</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>allele_freqs <span class="ot">=</span> <span class="fu">apply</span>(test_data,<span class="dv">1</span>,freq_GT)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(allele_freqs <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.3</span>)){</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">all</span>(allele_freqs <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.3</span>))){</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Diploid freqs ok."</span>)</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Diploid freqs broken!"</span>)</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Assuming haploid</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>allele_freqs_hap <span class="ot">=</span> <span class="fu">apply</span>(test_data,<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="fu">freq_GT</span>(x,<span class="dv">1</span>))</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(allele_freqs <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>,<span class="fl">0.5</span>,<span class="fl">0.6</span>)){</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">all</span>(allele_freqs <span class="sc">==</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>,<span class="fl">0.5</span>,<span class="fl">0.6</span>))){</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Diploid freqs ok."</span>)</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"Diploid freqs broken!"</span>)</span>
@@ -323,6 +323,10 @@ window.Quarto = {
 <section id="step-1-have-access-to-a-unix-terminal" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-have-access-to-a-unix-terminal">Step 1: Have access to a UNIX terminal</h3>
 <p>If you are on a windows machine, we’ll need to make sure you have access to a UNIX terminal. Two ways to go about this - if you already have access to the HPC, feel free to work from there. The recommended option is to install <code>WSL2</code>. This is a lightweight virtual machine that will give you full Linux capabilities from inside of Windows. It’s very useful to test code/pipelines before running them on the cluster. Instructions depend partially on Windows version, but the currently recommended version seems to be: go to the Microsoft Store, type in Ubuntu, install Ubuntu. This <em>will</em> require a restart before you can actually run it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install build-essential</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="step-2-install-condaminiconda" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-install-condaminiconda">Step 2: Install conda/miniconda</h3>
@@ -332,23 +336,23 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="step-3-create-a-new-virtual-environment">Step 3: Create a new virtual environment</h3>
 <p>Once conda is installed (you may have to restart your terminal), you should be able to create an environment for today’s goals. Let’s call it <code>pcangsd</code>. In your terminal, type:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> pcangsd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate pcangsd</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pcangsd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> pcangsd</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate pcangsd</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pcangsd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-4-install-plink" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-install-plink">Step 4: Install Plink</h3>
 <p>Plink is the next tool we’ll need. It’s an easier install than PCAngsd, but still has some potential issues. If you have a fresh install of Ubuntu, you’ll first need to install <code>unzip</code> with:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install unzip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install unzip</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You’ll type in your password and should get unzip installed.</p>
 <p>Then, download Plink (copy the appropriate link from this site (either Linux 64 bit or MacOS))[https://www.cog-genomics.org/plink/]</p>
 <p>For Linux (Windows too!) use this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20250819.zip</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> plink_linux_x86_64_20250819.zip <span class="at">-d</span> plink/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20250819.zip</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> plink_linux_x86_64_20250819.zip <span class="at">-d</span> plink/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You will now have a directory called plink with a few files inside it.</p>
 </section>
@@ -357,32 +361,32 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="run-plink-on-the-muc19-data-to-make-.bed-.fam-files">Run PLINK on the muc19 data to make .bed .fam files</h2>
 <p>Next we need to prepare the vcf in the necessary format. This will look like</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink</span> <span class="at">--vcf</span> <span class="op">&lt;</span>your_vcf<span class="op">&gt;</span> --make-bed <span class="at">--out</span> <span class="op">&lt;</span>output_prefix<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink</span> <span class="at">--vcf</span> <span class="op">&lt;</span>your_vcf<span class="op">&gt;</span> --make-bed <span class="at">--out</span> <span class="op">&lt;</span>output_prefix<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="run-pcangsd" class="level2">
 <h2 class="anchored" data-anchor-id="run-pcangsd">Run PCAngsd</h2>
 <p>Almost to the finish line, we can run PCAngsd:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pcangsd</span> <span class="at">-p</span> <span class="op">&lt;</span>output_prefix_from_previous_step<span class="op">&gt;</span> -o <span class="op">&lt;</span>output_prefix_for_this_step<span class="op">&gt;</span> --admix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pcangsd</span> <span class="at">-p</span> <span class="op">&lt;</span>output_prefix_from_previous_step<span class="op">&gt;</span> -o <span class="op">&lt;</span>output_prefix_for_this_step<span class="op">&gt;</span> --admix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now it will run for a little while. Or a very long while for large datasets. What will be produced is the covariance matrix for your data, and estimates of admixture given the <span class="math inline">\(K\)</span> based on the PCA. You might notice this <span class="math inline">\(K\)</span> is <em>weird</em> given what you know about the data here, but let’s take a look at the data in depth:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>admix <span class="ot">=</span> <span class="fu">read_table</span>(<span class="st">"&lt;your_output_prefix&gt;.admix.&lt;K&gt;.Q"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(admix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>admix <span class="ot">=</span> <span class="fu">read_table</span>(<span class="st">"&lt;your_output_prefix&gt;.admix.&lt;K&gt;.Q"</span>,<span class="at">colnames=</span><span class="cn">FALSE</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(admix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Each row is an individual, each column is the proportion of ancestry for that individual in that population. How can we plot this?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(admix) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">""</span>) <span class="co">#Give some putative names for the populations, depening on their number</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>admix<span class="ot">=</span> <span class="fu">as.data.frame</span>(admix)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>admix<span class="sc">$</span>ind <span class="ot">=</span>  ??? <span class="co">#How can you name each individual (hint: the vcf has the names of each of these)</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Pivot to long format</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">=</span> <span class="fu">pivot_longer</span>(admix,<span class="dv">1</span><span class="sc">:</span><span class="er">&lt;</span>your K<span class="sc">&gt;</span>,<span class="at">names_to=</span><span class="st">"Pop"</span>,<span class="at">values_to=</span><span class="st">"admix"</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long,<span class="fu">aes</span>(<span class="at">x=</span>ind,<span class="at">y=</span>admix,<span class="at">fill=</span>Pop))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">col=</span><span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(admix) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">""</span>,<span class="st">""</span>) <span class="co">#Give some putative names for the populations, depening on their number</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>admix<span class="ot">=</span> <span class="fu">as.data.frame</span>(admix)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>admix<span class="sc">$</span>ind <span class="ot">=</span>  ??? <span class="co">#How can you name each individual (hint: the vcf has the names of each of these)</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Pivot to long format</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">=</span> <span class="fu">pivot_longer</span>(admix,<span class="dv">1</span><span class="sc">:</span><span class="er">&lt;</span>your K<span class="sc">&gt;</span>,<span class="at">names_to=</span><span class="st">"Pop"</span>,<span class="at">values_to=</span><span class="st">"admix"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long,<span class="fu">aes</span>(<span class="at">x=</span>ind,<span class="at">y=</span>admix,<span class="at">fill=</span>Pop))<span class="sc">+</span><span class="fu">geom_col</span>(<span class="at">col=</span><span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>At the end, you <em>should</em> obtain a plot that looks something like (except here it’s all 3202 individuals):</p>
 <p><img src="images/paste-5.png" class="img-fluid"></p>
