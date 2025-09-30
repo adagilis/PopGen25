@@ -116,14 +116,14 @@
     "href": "notes/Lecture6.html#convert-to-relative-fitness",
     "title": "Lecture 6",
     "section": "Convert to relative fitness",
-    "text": "Convert to relative fitness\nWe often use the ancestral allele (or the major allele, e.g. the most common) as the reference point."
+    "text": "Convert to relative fitness"
   },
   {
-    "objectID": "notes/Lecture6.html#look-at-next-generation",
-    "href": "notes/Lecture6.html#look-at-next-generation",
+    "objectID": "notes/Lecture6.html#look-at-number-of-offspring",
+    "href": "notes/Lecture6.html#look-at-number-of-offspring",
     "title": "Lecture 6",
-    "section": "Look at next generation:",
-    "text": "Look at next generation:"
+    "section": "Look at number of offspring",
+    "text": "Look at number of offspring"
   },
   {
     "objectID": "notes/Lecture6.html#and-then-re-scale",
@@ -133,11 +133,18 @@
     "text": "And then re-scale"
   },
   {
+    "objectID": "notes/Lecture6.html#and-convert-to-hw-expectation-in-next-generation",
+    "href": "notes/Lecture6.html#and-convert-to-hw-expectation-in-next-generation",
+    "title": "Lecture 6",
+    "section": "And convert to HW expectation in next generation:",
+    "text": "And convert to HW expectation in next generation:"
+  },
+  {
     "objectID": "notes/Lecture6.html#what-will-the-allele-frequency-be-in-the-next-generation",
     "href": "notes/Lecture6.html#what-will-the-allele-frequency-be-in-the-next-generation",
     "title": "Lecture 6",
     "section": "What will the allele frequency be in the next generation?",
-    "text": "What will the allele frequency be in the next generation?\nLet’s spell it out fully:\n\naa individuals will leave behind \\(W_{aa} N_{aa}\\) offspring\n\n\n\nAa will leave behind \\(W_{Aa} N_{Aa}\\)\nAA will have \\(W_{AA} N_{AA}\\) offspring.\n\nSo, there will be \\(200N_{AA}+\\frac{150}{2}N_{Aa}\\) A alleles in the next generation in our example, out of a total of \\(100N_{aa}+150N_{Aa}+200N_{AA}\\) individuals."
+    "text": "What will the allele frequency be in the next generation?\nLet’s spell it out fully:\n\naa individuals will leave behind \\(W_{aa} N_{aa}\\) offspring\nAa will leave behind \\(W_{Aa} N_{Aa}\\)\nAA will have \\(W_{AA} N_{AA}\\) offspring.\n\n\nSo, there will be \\(200N_{AA}+\\frac{150}{2}N_{Aa}\\) A alleles in the next generation in our example, out of a total of \\(100N_{aa}+150N_{Aa}+200N_{AA}\\) individuals."
   },
   {
     "objectID": "notes/Lecture6.html#back-to-frequencies",
@@ -158,7 +165,7 @@
     "href": "notes/Lecture6.html#some-similarities-with-breeders-equation",
     "title": "Lecture 6",
     "section": "Some similarities with Breeder’s equation",
-    "text": "Some similarities with Breeder’s equation\nThe increase is proportional to the strength of selection ( \\(s\\) vs \\(S\\) ) and the amount of genetic variance ( \\(pq\\) vs \\(h^2\\))\n\nWhat about other forms of selection?"
+    "text": "Some similarities with Breeder’s equation\nThe increase is proportional to the strength of selection ( \\(s\\) vs \\(S\\) ) and the amount of genetic variance ( \\(pq\\) vs \\(h^2\\))\n\nWhat about other forms of selection?\n\n\nAlmost universally, the change in allele frequency will consist of two major terms: Strenght of selection and the amount of genetic variability\n\n\nThis is why we have focused so much on what creates/destroys genetic variation - without it there is no selection and adaptation."
   },
   {
     "objectID": "notes/Lecture6.html#limits-of-selection-2-drift",
@@ -242,7 +249,14 @@
     "href": "notes/Lecture6.html#in-between-reduced-diversity-increased-ld",
     "title": "Lecture 6",
     "section": "In-between: reduced diversity, increased LD",
-    "text": "In-between: reduced diversity, increased LD\nSelection will cause an area around the selected site to have reduced genetic diversity and increased LD.\n\nThis signal will decay following the allele’s fixation.\n\n\nWe can perform several different statistical tests to look for evidence of this kind of sweep."
+    "text": "In-between: reduced diversity, increased LD\nSelection will cause an area around the selected site to have reduced genetic diversity and increased LD.\n\nThis signal will decay following the allele’s fixation.\n\n\nBarton showed that (Barton 2000)\n\\[\n\\frac{\\pi}{\\pi_0} = 1-(4Ns)^{2r/s}\n\\]\ne.g. the reduction in genetic diversity is predictable."
+  },
+  {
+    "objectID": "notes/Lecture6.html#theoretical-reduction-in-diversity",
+    "href": "notes/Lecture6.html#theoretical-reduction-in-diversity",
+    "title": "Lecture 6",
+    "section": "Theoretical reduction in diversity",
+    "text": "Theoretical reduction in diversity\n\nWe can perform several different statistical tests to look for evidence of this kind of sweep."
   },
   {
     "objectID": "notes/Lecture6.html#tajimas-d",
@@ -291,14 +305,14 @@
     "href": "notes/Lecture6.html#not-hopeless",
     "title": "Lecture 6",
     "section": "Not hopeless",
-    "text": "Not hopeless\nAs we’ll discuss in the next few weeks, while each of the evolutionary forces is entangled with each other, we can make very good educated guesses by building evidence from multiple different approaches with different strengths/weaknesses.\n\nThat requires you to build a strong sense of intuition for what these different statistics mean. This week for reading: we’ll look at how chromosomal inversions can impact many genome-wide statistics.\n\n\nNext week: individual meetings. Sign ups should be open, let me know if no time works for you.\n\n\nFor your meeting: come prepared with either a data-set you know you want to work on, or ideas of what system you’d like to look at. No strict minimums on data quantity, but think of a tractable system (no giant analyses in pines or salamanders please)."
+    "text": "Not hopeless\nAs we’ll discuss in the next few weeks, while each of the evolutionary forces is entangled with each other, we can make very good educated guesses by building evidence from multiple different approaches with different strengths/weaknesses.\n\nThat requires you to build a strong sense of intuition for what these different statistics mean. This week for reading: we’ll look at adaptation in A. Aedes.\n\n\nNext week: individual meetings. Sign ups should be open, let me know if no time works for you.\n\n\nFor your meeting: come prepared with either a data-set you know you want to work on, or ideas of what system you’d like to look at. No strict minimums on data quantity, but think of a tractable system (no giant analyses in pines or salamanders please)."
   },
   {
     "objectID": "notes/Lecture6.html#references",
     "href": "notes/Lecture6.html#references",
     "title": "Lecture 6",
     "section": "References",
-    "text": "References\n\n\n\n\nBarry, Ciarrah-Jane S, Venexia M Walker, Rosa Cheesman, George Davey Smith, Tim T Morris, and Neil M Davies. 2022. “How to Estimate Heritability: A Guide for Genetic Epidemiologists.” International Journal of Epidemiology 52 (2): 624–32. https://doi.org/10.1093/ije/dyac224.\n\n\nSong, Jie, Yiqing Zou, Yuchang Wu, Jiacheng Miao, Ze Yu, Jason M. Fletcher, and Qiongshi Lu. 2023. “Decomposing Heritability and Genetic Covariance by Direct and Indirect Effect Paths.” Edited by Heather J. Cordell. PLOS Genetics 19 (1): e1010620. https://doi.org/10.1371/journal.pgen.1010620.\n\n\nVoight, Benjamin F, Sridhar Kudaravalli, Xiaoquan Wen, and Jonathan K Pritchard. 2006. “A Map of Recent Positive Selection in the Human Genome.” Edited by Laurence Hurst. PLoS Biology 4 (3): e72. https://doi.org/10.1371/journal.pbio.0040072."
+    "text": "References\n\n\n\n\nBarry, Ciarrah-Jane S, Venexia M Walker, Rosa Cheesman, George Davey Smith, Tim T Morris, and Neil M Davies. 2022. “How to Estimate Heritability: A Guide for Genetic Epidemiologists.” International Journal of Epidemiology 52 (2): 624–32. https://doi.org/10.1093/ije/dyac224.\n\n\nBarton, N. H. 2000. “Genetic Hitchhiking.” Edited by B. Charlesworth and P. H. Harvey. Philosophical Transactions of the Royal Society of London. Series B: Biological Sciences 355 (1403): 1553–62. https://doi.org/10.1098/rstb.2000.0716.\n\n\nSong, Jie, Yiqing Zou, Yuchang Wu, Jiacheng Miao, Ze Yu, Jason M. Fletcher, and Qiongshi Lu. 2023. “Decomposing Heritability and Genetic Covariance by Direct and Indirect Effect Paths.” Edited by Heather J. Cordell. PLOS Genetics 19 (1): e1010620. https://doi.org/10.1371/journal.pgen.1010620.\n\n\nVoight, Benjamin F, Sridhar Kudaravalli, Xiaoquan Wen, and Jonathan K Pritchard. 2006. “A Map of Recent Positive Selection in the Human Genome.” Edited by Laurence Hurst. PLoS Biology 4 (3): e72. https://doi.org/10.1371/journal.pbio.0040072."
   },
   {
     "objectID": "notes/Lecture4.html#sexual-reproduction-is-rare",
@@ -1131,7 +1145,7 @@
     "href": "index.html",
     "title": "Population Genetics 2025",
     "section": "",
-    "text": "Welome to PopGen!\nThis is the website for Population Genetics (EEB 5348) at UConn. Here you will find notes on each of the lectures, links to papers and other materials as they become needed.\n\n\nAbout the course\nThe focus of this course is to introduce graduate students to population genetic thinking. I firmly believe the greatest benefit of population genetics is not knowledge of any particular approach or methodology (there are too many for any course to cover adequately), but a firm grasp of how population genetics can be used to 1) test and hone your intuition of evolutionary processes, 2) understand how (and why) different population genetics approaches work and 3) develop heuristics to examine any system of interest. Throughout the course we will examine classic population genetics results, read recent literature that either uses those results or throws them completely into question and work on developing a set of scripts and skills in a language of your choice (although I will recommend either Julia or R) to investigate the population genetics of different data-sets.\n\n\nSchedule/General Logistics\nEach week, we will start with a lecture on Tuesday, followed by a paper discussion and lab on Thursday. The goal of this class structure is to be able to introduce general concepts/remind you of things you should remember from your Genetics/Evolution courses, introduce classic PopGen results, followed by a more in-depth dive in the state of the art uses of those results and some practical advice of coding how they work. Here’s a general week-by-week overlay of the topics. Lecture notes will be added as links as we go along\n\n\n\nWeek\nTopic(s)\nReading\nLecture Notes\n\n\n\n\nAug 26-28\nIntro, Wright-Fisher\nLeu et al\nLecture 1\n\n\nSep 2-4\nGenetic diversity measurements\nBuffalo\nLecture 2\n\n\nSep 9-11\nDivergence at a site, mutation, molecular models of evolution\nPeede et al\nLecture 3\n\n\nSep 16-18\nSexual reproduction, Recombination, LD\nHahn and Mishra\nLecture 4\n\n\nSep 23-25\nPopulation structure, migration, the coalescent\nCousins et al\nLecture 5\n\n\nSep 30-Oct 2\nSelection at a single locus, types of selection\n\n\n\n\nOct 7-9\nProject Meetings, no regular class\nNA\n\n\n\nOct 14-16\nQuantitative trait evolution\n\n\n\n\nOct 21-23\nConfounded selection, demography, mutation\n\n\n\n\nOct 28-30\nAccounting for selection/demography in quantitative traits\n\n\n\n\nNov 4-6\nAncestral Recombination Graphs\n\n\n\n\nNov 11-13\nStudents’ choice\n\n\n\n\nNov 18-20\nStudents’ choice\n\n\n\n\nNov 25-27\nTHANKSGIVING BREAK\n\n\n\n\nDec 2-4\nProject meetings, final projects due Dec 4\nNA"
+    "text": "Welome to PopGen!\nThis is the website for Population Genetics (EEB 5348) at UConn. Here you will find notes on each of the lectures, links to papers and other materials as they become needed.\n\n\nAbout the course\nThe focus of this course is to introduce graduate students to population genetic thinking. I firmly believe the greatest benefit of population genetics is not knowledge of any particular approach or methodology (there are too many for any course to cover adequately), but a firm grasp of how population genetics can be used to 1) test and hone your intuition of evolutionary processes, 2) understand how (and why) different population genetics approaches work and 3) develop heuristics to examine any system of interest. Throughout the course we will examine classic population genetics results, read recent literature that either uses those results or throws them completely into question and work on developing a set of scripts and skills in a language of your choice (although I will recommend either Julia or R) to investigate the population genetics of different data-sets.\n\n\nSchedule/General Logistics\nEach week, we will start with a lecture on Tuesday, followed by a paper discussion and lab on Thursday. The goal of this class structure is to be able to introduce general concepts/remind you of things you should remember from your Genetics/Evolution courses, introduce classic PopGen results, followed by a more in-depth dive in the state of the art uses of those results and some practical advice of coding how they work. Here’s a general week-by-week overlay of the topics. Lecture notes will be added as links as we go along\n\n\n\nWeek\nTopic(s)\nReading\nLecture Notes\n\n\n\n\nAug 26-28\nIntro, Wright-Fisher\nLeu et al\nLecture 1\n\n\nSep 2-4\nGenetic diversity measurements\nBuffalo\nLecture 2\n\n\nSep 9-11\nDivergence at a site, mutation, molecular models of evolution\nPeede et al\nLecture 3\n\n\nSep 16-18\nSexual reproduction, Recombination, LD\nHahn and Mishra\nLecture 4\n\n\nSep 23-25\nPopulation structure, migration, the coalescent\nCousins et al\nLecture 5\n\n\nSep 30-Oct 2\nSelection at a single locus, types of selection\nKetchum et al\nLecture 6\n\n\nOct 7-9\nProject Meetings, no regular class\nNA\n\n\n\nOct 14-16\nQuantitative trait evolution\n\n\n\n\nOct 21-23\nConfounded selection, demography, mutation\n\n\n\n\nOct 28-30\nAccounting for selection/demography in quantitative traits\n\n\n\n\nNov 4-6\nAncestral Recombination Graphs\n\n\n\n\nNov 11-13\nStudents’ choice\n\n\n\n\nNov 18-20\nStudents’ choice\n\n\n\n\nNov 25-27\nTHANKSGIVING BREAK\n\n\n\n\nDec 2-4\nProject meetings, final projects due Dec 4\nNA"
   },
   {
     "objectID": "about.html",
