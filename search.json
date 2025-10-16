@@ -53,7 +53,7 @@
     "href": "notes/Lecture6.html#estimating-heritability-linear-regressions",
     "title": "Lecture 6",
     "section": "Estimating heritability: linear regressions",
-    "text": "Estimating heritability: linear regressions\nOne way to estimate heritability (\\(h^2\\)) is to examine parent-offspring regressions:\n\nusing Plots, LaTeXStrings, Measures, Distributions, GLM, DataFrames\ntheme(:juno)\ndefault(xlabelfontsize=16,ylabelfontsize=16,margins=4mm,markerstrokewidth=0,markersize=2)\n\nxs = rand(Normal(),1000)\nys = 0.2*xs+rand(Normal(),1000)\nzs = 0.9*xs+rand(Normal(),1000)\n\np1 = scatter(xs,ys,xlabel=\"Parent average value\",ylabel=\"Offspring value\",leg=false)\nlm1 = lm(@formula(y~x),DataFrame(x=xs,y=ys))\nus = collect(range(-3,3,length=10))\nvs = predict(lm1,DataFrame(x=us))\nplot!(p1,us,vs)\nannotate!(p1,[-2],[2],[\"slope = \"*string(round(coef(lm1)[2];digits=2))])\n\np2 = scatter(xs,zs,xlabel=\"Parent average value\",ylabel=\"Offspring value\",leg=false)\nlm2 = lm(@formula(y~x),DataFrame(x=xs,y=zs))\nvs2 = predict(lm2,DataFrame(x=us))\nplot!(p2,us,vs2)\nannotate!(p2,[-2],[2],[\"slope = \"*string(round(coef(lm2)[2];digits=2))])\n\nplot(p1,p2,size=(1200,800))"
+    "text": "Estimating heritability: linear regressions\nOne way to estimate heritability (\\(h^2\\)) is to examine parent-offspring regressions:"
   },
   {
     "objectID": "notes/Lecture6.html#big-caveats-not-all-inherited-correlations-are-genetic",
@@ -74,14 +74,14 @@
     "href": "notes/Lecture6.html#in-our-toy-data",
     "title": "Lecture 6",
     "section": "In our toy data",
-    "text": "In our toy data\n\nthreshold = 1\nidx = findall(xs .&gt; threshold)\ncols = fill(:grey,1000)\ncols[idx] .= :red\nalpha = fill(0.6,1000)\nalpha[idx] .= 1\n\np1 = scatter(xs,ys,c= cols,alpha=alpha,xlabel=\"Parent average value\",ylabel=\"Offspring value\",leg=false)\nvline!(p1,[threshold])\n\np2 = scatter(xs,zs,c= cols,alpha=alpha,xlabel=\"Parent average value\",ylabel=\"Offspring value\",leg=false)\nvline!(p2,[threshold])\n\nplot(p1,p2,size=(1200,800))"
+    "text": "In our toy data"
   },
   {
     "objectID": "notes/Lecture6.html#whats-the-new-average-among-offspring",
     "href": "notes/Lecture6.html#whats-the-new-average-among-offspring",
     "title": "Lecture 6",
     "section": "What’s the new average among offspring?",
-    "text": "What’s the new average among offspring?\n\nhline!(p1,[mean(ys[idx])])\nannotate!(p1,[-1],[1],\"New mean =\"*string(round(mean(ys[idx]),digits=3)))\n\nhline!(p2,[mean(zs[idx])])\nannotate!(p2,[-1],[1],\"New mean =\"*string(round(mean(zs[idx]),digits=3)))\nS = mean(xs[idx])\n\nplot(p1,p2,size=(1200,800))"
+    "text": "What’s the new average among offspring?"
   },
   {
     "objectID": "notes/Lecture6.html#formalizing-breeders-equation",
@@ -116,35 +116,35 @@
     "href": "notes/Lecture6.html#relative-fitness-of-an-allele",
     "title": "Lecture 6",
     "section": "Relative fitness of an allele",
-    "text": "Relative fitness of an allele\nLet’s say you have the following relationships:\n\nWs = [100,150,200]\nbar([\"aa\",\"aA\",\"AA\"],Ws,leg=false,xlabel=\"Genotype\",ylabel=\"Number of Seeds\",size=(1000,600))"
+    "text": "Relative fitness of an allele\nLet’s say you have the following relationships:"
   },
   {
     "objectID": "notes/Lecture6.html#convert-to-relative-fitness",
     "href": "notes/Lecture6.html#convert-to-relative-fitness",
     "title": "Lecture 6",
     "section": "Convert to relative fitness",
-    "text": "Convert to relative fitness\n\nws = [1,1.5,2.0]\nbar([\"aa\",\"aA\",\"AA\"],ws,leg=false,xlabel=\"Genotype\",ylabel=\"Relative Fitness\",size=(1000,600))"
+    "text": "Convert to relative fitness"
   },
   {
     "objectID": "notes/Lecture6.html#look-at-number-of-offspring",
     "href": "notes/Lecture6.html#look-at-number-of-offspring",
     "title": "Lecture 6",
     "section": "Look at number of offspring",
-    "text": "Look at number of offspring\n\nps = [0.25,0.5,0.25]\nNs = Ws .* ps\nbar([\"aa\",\"aA\",\"AA\"],Ns,leg=false,xlabel=\"Genotype\",ylabel=\"Offspring\",size=(1000,600))"
+    "text": "Look at number of offspring"
   },
   {
     "objectID": "notes/Lecture6.html#and-then-re-scale",
     "href": "notes/Lecture6.html#and-then-re-scale",
     "title": "Lecture 6",
     "section": "And then re-scale",
-    "text": "And then re-scale\n\nps2 = Ns/sum(Ns)\nbar([\"aa\",\"aA\",\"AA\"],ps,leg=false,xlabel=\"Genotype\",ylabel=\"Frequency of offspring\",size=(1000,600))"
+    "text": "And then re-scale"
   },
   {
     "objectID": "notes/Lecture6.html#and-convert-to-hw-expectation-in-next-generation",
     "href": "notes/Lecture6.html#and-convert-to-hw-expectation-in-next-generation",
     "title": "Lecture 6",
     "section": "And convert to HW expectation in next generation:",
-    "text": "And convert to HW expectation in next generation:\n\np2 = 0.5*ps2[2]+ps2[3]\nNs2 = [(1-p2)^2,2*p2*(1-p2),p2^2]\nbar([\"aa\",\"aA\",\"AA\"],Ns2,leg=false,xlabel=\"Genotype\",ylabel=\"Frequency in next generation\",size=(1000,600))"
+    "text": "And convert to HW expectation in next generation:"
   },
   {
     "objectID": "notes/Lecture6.html#what-will-the-allele-frequency-be-in-the-next-generation",
@@ -263,7 +263,7 @@
     "href": "notes/Lecture6.html#theoretical-reduction-in-diversity",
     "title": "Lecture 6",
     "section": "Theoretical reduction in diversity",
-    "text": "Theoretical reduction in diversity\n\nfunction pi_red(x,N,s)\n    return(1-(4*N*s)^(-2*x/s))\nend\ndists = vcat(collect(range(0.01,0,length=50)),collect(range(0,0.01,length=50)))\npis1 = [pi_red(x,10000,0.01) for x in dists]\ndists2 = vcat(collect(range(-0.01,0,length=50)),collect(range(0,0.01,length=50)))\nplot(dists2,pis1,size(1000,600),xlabel=\"Genetic Distance\",ylabel=L\"\\frac{\\pi}{\\pi_0}\",label=L\"4Ns=100\")\npis2 = [pi_red(x,10000,0.1) for x in dists]\nplot!(dists2,pis2,label=L\"4Ns=1000\")\n\n\nWe can perform several different statistical tests to look for evidence of this kind of sweep."
+    "text": "Theoretical reduction in diversity\n\nWe can perform several different statistical tests to look for evidence of this kind of sweep."
   },
   {
     "objectID": "notes/Lecture6.html#tajimas-d",
@@ -431,7 +431,7 @@
     "href": "notes/Lecture4.html#how-quick-is-the-decay",
     "title": "Lecture 4",
     "section": "How quick is the decay?",
-    "text": "How quick is the decay?\n\n\n[ Info: Saved animation to /tmp/jl_58bKZcxc1m.gif"
+    "text": "How quick is the decay?\n\n\n[ Info: Saved animation to /tmp/jl_SrKRMxshoX.gif"
   },
   {
     "objectID": "notes/Lecture4.html#key-take-aways",
@@ -501,7 +501,7 @@
     "href": "notes/Lecture4.html#other-ways-of-dealing-with-ld-ld-decay",
     "title": "Lecture 4",
     "section": "Other ways of dealing with LD: LD-decay",
-    "text": "Other ways of dealing with LD: LD-decay\nAs you saw, LD decays fairly quickly with increasing recombination distance.\n\nWindows spaced apart by distance where \\(r^2\\) is negligible.\n\n\nPrecompiling CSV...\n    686.2 ms  ✓ InlineStrings\n    691.7 ms  ✓ InlineStrings → ParsersExt\n    698.7 ms  ✓ WeakRefStrings\n  10021.7 ms  ✓ CSV\n  4 dependencies successfully precompiled in 12 seconds. 26 already precompiled.\nPrecompiling DataFrames...\n   1566.3 ms  ✓ StringManipulation\n  12776.3 ms  ✓ PrettyTables\n  29222.4 ms  ✓ DataFrames\n  3 dependencies successfully precompiled in 44 seconds. 30 already precompiled."
+    "text": "Other ways of dealing with LD: LD-decay\nAs you saw, LD decays fairly quickly with increasing recombination distance.\n\nWindows spaced apart by distance where \\(r^2\\) is negligible."
   },
   {
     "objectID": "notes/Lecture4.html#another-way-of-thinking-of-ld",
@@ -774,7 +774,7 @@
     "href": "notes/Lecture2.html#single-data-point-for-whole-genome",
     "title": "Lecture 2",
     "section": "Single data point for whole genome?",
-    "text": "Single data point for whole genome?\n\\(\\theta\\), \\(\\pi\\), \\(h\\) and similar are summary statistics - they reduce potentially huge amounts of data into a single number. That can be useful, but sometimes it’s better to look at a denser view of the data. Let’s make a larger/more complicated data-set.\n\n\n100-element Vector{String}:\n \"CGCCACTACGTGTCGAAACGTCATGTGCAC\" ⋯ 9940 bytes ⋯ \"CTCCCAGTCTTATGAATATGCACGGTGTAC\"\n \"CGCCGCTCCTGCACCAAACGTCATGTTCAC\" ⋯ 9940 bytes ⋯ \"CTCCCAGTCGTATGAATGTGCACGGTGTGC\"\n \"CCCTACTACGTCTCCAAACGTCATGTGTAC\" ⋯ 9940 bytes ⋯ \"TTCCCAGTCTTATGAAGGTGCACGGTGCAC\"\n \"CCCCATGACGTCTCGAAACGTCATGTGCAC\" ⋯ 9940 bytes ⋯ \"CTCCCAGCCTTATGTA-GTGCATGGGGTGC\"\n \"CCCCACTACTTGTCCAAGCGTCA-GTTTAC\" ⋯ 9940 bytes ⋯ \"CTCACAGTCTTATGTATGTACACGGTGTAC\"\n \"CGCCATTACTTGTCCAAGCGTCATATGTAC\" ⋯ 9940 bytes ⋯ \"CTCACAGTCGTATGAAGGTGGATGGTGTGC\"\n \"CCCCACTACGTCTCGAAACGTCATGTTCAC\" ⋯ 9940 bytes ⋯ \"CTCACAGTCGTATGAATGTACACGGTGTAC\"\n \"CGCTGCTACTGCTCCAAAGGTCCTGTGCAC\" ⋯ 9940 bytes ⋯ \"CTCCCAGTCTTATGAATGTACACGGGGTAC\"\n \"CCCCATTCTTTCTAGAAACGGCATATGTAC\" ⋯ 9940 bytes ⋯ \"CTCCAAGCCTTATGAAGGGGCATGGTGTAC\"\n \"CCCCACTCTTGC-AGAAGCGTCATGTGCAC\" ⋯ 9940 bytes ⋯ \"CTCCAAGCCTTATGAAGATGCACGGTGTAC\"\n ⋮\n \"CCCGACTTCGTAGAGAAGCGGCATGTGTAC\" ⋯ 9940 bytes ⋯ \"GGCAGATTATTGAGATGTTAAAC-GTGGAC\"\n \"CCCGACTTCGTGGCTAAACGTCATGTGTAC\" ⋯ 9940 bytes ⋯ \"CGCAGATTCTTAAGATGGTGCCCGGTGGAA\"\n \"CGCGTCTCCGTGGCTAAACGGCATGTGTAC\" ⋯ 9940 bytes ⋯ \"CGCACATTATTAAGAAGGTACACGGTGGAC\"\n \"CCCGACTCCA-GGCTAAACGTCATATGTAC\" ⋯ 9940 bytes ⋯ \"-TCAGATTATTAAGCAGGAACACGGTGTAA\"\n \"CCCGACTCCATGGATAAACGTCATGTGTAC\" ⋯ 9940 bytes ⋯ \"CTCAGATTACTATGAAGTTGAATGGTGGAC\"\n \"CGCGACTCCGTGGCTAAACGGCATGTGTAC\" ⋯ 9940 bytes ⋯ \"CTCAGATTCTTAAGCTTTTAAATGGAGGAC\"\n \"CCCGACTCGGTAGCTAAACGTCATGTGTGC\" ⋯ 9940 bytes ⋯ \"GTCAGATTCTTATGATGGTGAATGGTCGAA\"\n \"CCCGACTTGATGGCTAAACGTCATATGTAC\" ⋯ 9940 bytes ⋯ \"CGCACATTCTTAAGCATGTAACTGGAGGAA\"\n \"CGCGACTCGGTAGCTAGACGTCATGTGTAC\" ⋯ 9940 bytes ⋯ \"GTCAGATTATTATAAAGTAAACCGGAGGAC\""
+    "text": "Single data point for whole genome?\n\\(\\theta\\), \\(\\pi\\), \\(h\\) and similar are summary statistics - they reduce potentially huge amounts of data into a single number. That can be useful, but sometimes it’s better to look at a denser view of the data. Let’s make a larger/more complicated data-set.\n\n\n100-element Vector{String}:\n \"TAATCACACTCTGCTCAAGACGAACGATCA\" ⋯ 9940 bytes ⋯ \"CTCACGGGACGTTAAACGCTAGCCATTTTC\"\n \"TAATCACGCTTTGCTCAACACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TTCGAGGGACCTTAAACGCGATGTGTTTTC\"\n \"TAATCACGCGTTGCCCT-CACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TATAAGGGACCTTATGCGCGAGGCGTTCTC\"\n \"TAATCACACGCTGCTCTACCCGAACGTTCG\" ⋯ 9940 bytes ⋯ \"TACGAGGCACCATATAGGCGA-GTGTTTTC\"\n \"TA-TCACACTTTGCTAAAGACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TACGCGGGACCATAAACGCGGTGCGTTTTC\"\n \"CAATCTCACGCTGGCCAAGACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TACGCGGGACCATATA-GCGGTGCGTTTGC\"\n \"TAATCACACTCTGCTCTACACGAACAAT-G\" ⋯ 9940 bytes ⋯ \"-ACGCGGGACCTGAAACGCTGGGCGTTTTC\"\n \"CAATCACACGTTGCTAAACCCGAACAATCG\" ⋯ 9940 bytes ⋯ \"TACGCGGCACCATATACGCGAG-CGTTTTC\"\n \"TAATCACACGTTGCTCAACACGAACAATCG\" ⋯ 9940 bytes ⋯ \"TACGCGGGACGATATACGCTGTGTGTTCTC\"\n \"TAATCACACTCTGCTCTACACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TACGAGCCACCA-AAGCGCGATGTGTTCTC\"\n ⋮\n \"AAGCCACCCTTTCC-AAATACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TAACACGGAACACAAACACGAAGCGCTTTC\"\n \"AAATCACACTTTGCTCAACACGAACGGTCG\" ⋯ 9940 bytes ⋯ \"TACCAGAGACCATAAACGCGATGAGTTTTC\"\n \"AAACCACACTCTGAC-AGCACTGACGATCG\" ⋯ 9940 bytes ⋯ \"TGAGAGACACCATAAAGGCGATGCGTTTTC\"\n \"AAATCACACTCTGATCAGCACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TACCAGGGACCATAAACGCGATGCGTTTTC\"\n \"AAACCACACTCTGCTAAACACGAAAGATCT\" ⋯ 9940 bytes ⋯ \"TACGAGAGACCATAAACGCCATGAGTTTTC\"\n \"AAACCA-ACTTTGCTCAACACGAACAATCG\" ⋯ 9940 bytes ⋯ \"TACGACGGG-CATAAACGCGAAGAGTTTTC\"\n \"ACATCACAC-CTGCTCAACACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TACGAGGGACCATACACGCGATGAGTTCTC\"\n \"A-ACCACACTCTGATCAACACGAACGATCG\" ⋯ 9940 bytes ⋯ \"TACCACGGGACATAAA-ACGATGCGTTTTC\"\n \"AAATCACACTCTGCTAAACACGAAAGATCG\" ⋯ 9940 bytes ⋯ \"TACGAGGGACCATAAACGCGATGAGTTCTC\""
   },
   {
     "objectID": "notes/Lecture2.html#windowed-statistics",
@@ -2069,7 +2069,7 @@
     "href": "notes/Lecture5.html#and-we-keep-doing-this-until-only-one-lineage-remains",
     "title": "Lecture 5",
     "section": "And we keep doing this until only one lineage remains",
-    "text": "And we keep doing this until only one lineage remains\n\n\n[ Info: Saved animation to /tmp/jl_QpSvELYBGf.gif"
+    "text": "And we keep doing this until only one lineage remains\n\n\n[ Info: Saved animation to /tmp/jl_Mned4RYj6n.gif"
   },
   {
     "objectID": "notes/Lecture5.html#the-same-samples-could-have-many-different-coalescent-histories",
@@ -2296,6 +2296,13 @@
     "text": "PIC example\nIn this case - no actual correlation between traits (or directionality): both simulated under Brownian-Motion.\n\nOne simple way to account for shared history: Phylogenetically independent contrasts.\n\n\nCalculate differences between each branch, and compare these."
   },
   {
+    "objectID": "notes/Lecture7.html#brownian-motion-as-a-null-model",
+    "href": "notes/Lecture7.html#brownian-motion-as-a-null-model",
+    "title": "Lecture 7",
+    "section": "Brownian motion as a null model",
+    "text": "Brownian motion as a null model\nWe can also use the expectations from Brownian motion to see if traits are evolving faster/slower than expected.\n\nIdeally, we can identify rates across the tree, and find rate shifts: branches on which evolutionary rates have changed.\n\n\nWithout the evolutionary context - an extreme trait value could just be a result of drift\n\n\nEspecially true if trait is highly polygenic - lots of small random changes can lead to big overall differences."
+  },
+  {
     "objectID": "notes/Lecture7.html#how-can-we-identify-genetic-structure-of-traits",
     "href": "notes/Lecture7.html#how-can-we-identify-genetic-structure-of-traits",
     "title": "Lecture 7",
@@ -2335,14 +2342,14 @@
     "href": "notes/Lecture7.html#more-details",
     "title": "Lecture 7",
     "section": "More details",
-    "text": "More details\nMost GWAS approaches are structured as linear mixed models:\n\\[\nz = x + C + \\epsilon\n\\]\nWhere \\(x\\) is the genotype at a site, \\(C\\) is a covariate matrix, and \\(\\epsilon\\) is noise.\n\nFor many analyses, the covariate will be the first few PCs of a PCA of the data.\n\n\nIdeally, these would be ancestry correlations, but as you’ve seen, these can be hard to estimate."
+    "text": "More details\nMost GWAS approaches are structured as linear mixed models:\n\\[\nz = x + C + \\epsilon\n\\]\nWhere \\(x\\) is the genotype at a site, \\(C\\) is a covariate matrix, and \\(\\epsilon\\) is noise.\n\nFor many analyses, the covariate will be the first few PCs of a PCA of the data. Why?\n\n\nIdeally, these would be ancestry correlations, but as you’ve seen, these can be hard to estimate."
   },
   {
     "objectID": "notes/Lecture7.html#some-things-you-cant-account-for",
     "href": "notes/Lecture7.html#some-things-you-cant-account-for",
     "title": "Lecture 7",
     "section": "Some things you can’t account for",
-    "text": "Some things you can’t account for"
+    "text": "Some things you can’t account for\nEven when GWAS is performed perfectly, we can still have a lot of missing information.\n\n“Missing heritability” in height. Height about 80% heritable in worst case.\n\n\nTons of studies, 5.4 million sequences, and we have 12k variants explaining about 55% of variation.\n\n\nMultiple issues: low power to detect effects of rare variants, correction for structure exclude GxE effects, etc.\n\n\nHeight is also a complex trait affected by many other selected traits (nutrition,immunity).\n\n\nPredictions harder when there is multi-trait selection and alleles are pleiotropic."
   },
   {
     "objectID": "notes/Lecture7.html#multi-trait-correlations-and-selection",
@@ -2420,6 +2427,13 @@
     "title": "Lecture 7",
     "section": "The ultimate complex trait - fitness",
     "text": "The ultimate complex trait - fitness\nWe’ve already mentioned this, but fitness is a highly composite trait.\n\nLikely affected to some degree by more or less every allele and tied to most traits.\n\n\nYet, we can often detect clear signals of adaptation, with alleles showing strong relationships w/fitness.\n\n\nSo, even when you study complex traits, you can identify the causal alleles. But optimal values may be harder to find."
+  },
+  {
+    "objectID": "notes/Lecture7.html#how-common-is-this-worry-of-complex-genetic-underpinnings-of-traits",
+    "href": "notes/Lecture7.html#how-common-is-this-worry-of-complex-genetic-underpinnings-of-traits",
+    "title": "Lecture 7",
+    "section": "How common is this worry of complex genetic underpinnings of traits?",
+    "text": "How common is this worry of complex genetic underpinnings of traits?\nThere are certainly some traits with simple genetic control (e.g. 1-2 alleles of strong effect).\n\nThe slowly building consensus is that many traits of interest may in fact be “omnigenic” - affected to some degree by pretty much any allele in the genome.\n\n\nThe rationale is that for most quantitative traits, some small portion of heritability is explained either by alleles at any genomic location, or those alleles are linked to something that influences the effect.\n\n\nIn practice, each location is at least somewhat correlated to any continuous trait of interest (if you get enough power to actually study it).\n\n\nData primarily coming from D. melanogaster, S. cerevisiae : large population sizes, rapid generation times, easy for a cell division rate to influence most traits.\n\n\nMight not be the case for other organisms, especially with smaller pop sizes and longer generation times."
   },
   {
     "objectID": "notes/Lecture7.html#back-to-speciation",
