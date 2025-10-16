@@ -2307,7 +2307,7 @@
     "href": "notes/Lecture7.html#how-can-we-identify-genetic-structure-of-traits",
     "title": "Lecture 7",
     "section": "How can we identify genetic structure of traits?",
-    "text": "How can we identify genetic structure of traits?\nUnderstanding the genetic basis of adaptive traits is not as straightforward as it may seem.\n. . . We covered this in part already - you can look at regions with differences between closely related species for selection, but not guaranteed to link to your trait.\n\nIf you can interbreed - QTL.\n\n\nIf still polymorphic - GWAS."
+    "text": "How can we identify genetic structure of traits?\nUnderstanding the genetic basis of adaptive traits is not as straightforward as it may seem.\n\nWe covered this in part already - you can look at regions with differences between closely related species for selection, but not guaranteed to link to your trait.\n\n\nIf you can interbreed - QTL.\n\n\nIf still polymorphic - GWAS."
   },
   {
     "objectID": "notes/Lecture7.html#genome-wide-association-studies",
@@ -2433,7 +2433,7 @@
     "href": "notes/Lecture7.html#how-common-is-this-worry-of-complex-genetic-underpinnings-of-traits",
     "title": "Lecture 7",
     "section": "How common is this worry of complex genetic underpinnings of traits?",
-    "text": "How common is this worry of complex genetic underpinnings of traits?\nThere are certainly some traits with simple genetic control (e.g. 1-2 alleles of strong effect).\n\nThe slowly building consensus is that many traits of interest may in fact be “omnigenic” - affected to some degree by pretty much any allele in the genome.\n\n\nThe rationale is that for most quantitative traits, some small portion of heritability is explained either by alleles at any genomic location, or those alleles are linked to something that influences the effect.\n\n\nIn practice, each location is at least somewhat correlated to any continuous trait of interest (if you get enough power to actually study it).\n\n\nData primarily coming from D. melanogaster, S. cerevisiae : large population sizes, rapid generation times, easy for a cell division rate to influence most traits.\n\n\nMight not be the case for other organisms, especially with smaller pop sizes and longer generation times."
+    "text": "How common is this worry of complex genetic underpinnings of traits?\nThere are certainly some traits with simple genetic control (e.g. 1-2 alleles of strong effect).\n\nThe slowly building consensus is that many traits of interest may in fact be “omnigenic” - affected to some degree by pretty much any allele in the genome.\n\n\nMost alleles either influence trait, or linked to something that does.\n\n\nIn practice, each location is at least somewhat correlated to any continuous trait of interest.\n\n\nData primarily coming from D. melanogaster, S. cerevisiae : large population sizes, rapid generation times, easy for a cell division rate to influence most traits.\n\n\nMight not be the case for other organisms, especially with smaller pop sizes and longer generation times."
   },
   {
     "objectID": "notes/Lecture7.html#back-to-speciation",
