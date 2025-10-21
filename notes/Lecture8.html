@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.39">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>EEB5348-Fall25 – Lecture 8</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -27,8 +27,28 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a527665ed01beaa5bc5d6c6d96bbc18d.css">
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-6ae29d241dba1d02babb97ce1fbe8bdd.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -123,7 +143,7 @@
     }
   </style>
 </head>
-<body class="quarto-light">
+<body class="quarto-dark">
   <div class="reveal">
     <div class="slides">
 
@@ -139,16 +159,514 @@
 <p>The interplay of each different force on allelic frequencies.</p>
 <ul>
 <li class="fragment">Mutation-selection balance</li>
-<li class="fragment">Selection-drift balance</li>
+<li class="fragment">Mutational load</li>
 <li class="fragment">Migration-selection balance</li>
 <li class="fragment">Consequences of divergence on migration/selection</li>
 <li class="fragment">Detecting migration/introgression</li>
 </ul>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="mutation-selection-balance" class="slide level2">
+<h2>Mutation-selection balance</h2>
+<p>We discussed earlier in the semester how mutation re-introduces variation even as selection acts against it, but we didn’t think about it much more in-depth than that.</p>
+<div class="fragment">
+<p>A consequence of constant mutation rates is that even when traits are strongly selected, mutations will introduce the deleterious allele.</p>
+</div>
+<div class="fragment">
+<p>The dynamics here <em>can</em> be complicated, but they are easiest to think about when we only consider mutation from the reference allele <code>a</code> to a deleterious allele <code>A</code>.</p>
+</div>
+</section>
+<section id="simplest-model-all-semester" class="slide level2">
+<h2>Simplest model all semester?</h2>
+<p>Let’s look for a steady state:</p>
+<p>Each generation, there are <span class="math inline">\(\mu (1-p)\)</span> mutations introduced.</p>
+<div class="fragment">
+<p>If we recall directional selection, there are <span class="math inline">\(s p (1-p)\)</span> mutations removed by selection.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{array}{rlr}
+\Delta p  = &amp; \mu (1-p) + sp(1-p)  &amp; ,p \ll 1\\
+\Delta p  \approx &amp; \mu + sp &amp; ,\Delta p = 0\\
+\hat{p}  = &amp; \frac{\mu}{s} \\
+\end{array}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>That’s nice and simple!</p>
+</div>
+</section>
+<section id="consequences-for-genetic-diversity-and-fitness" class="slide level2 smaller">
+<h2>Consequences for genetic diversity (and fitness)</h2>
+<p>We already talked about how selection is limited compared to drift.</p>
+<div class="fragment">
+<p>Turns out, selection is also limited in how it can maintain deleterious alleles in check.</p>
+</div>
+<div class="fragment">
+<p>Each individual allele may contribute very little to polymorphism (<span class="math inline">\(\mu \approx 10^{-8}\)</span>, <span class="math inline">\(s &lt;0.01\)</span>, so <span class="math inline">\(\hat{p} &lt; 10^{-6}\)</span>). But there are <em>many</em> such alleles.</p>
+</div>
+<div class="fragment">
+<p>The result is <em>mutation load</em> - the population fitness is suppressed by constant influx of deleterious mutations. How large is this decrease in fitness? Let’s work it out on the board.</p>
+</div>
+<div class="fragment">
+<p>Load only affected by mutation rate, not strength of selection. Thankfully, mutation rates are low. But, in humans - 10-15 recessive deleterious mutations expected per person<span class="citation" data-cites="Henn2015">(<a href="#/references" role="doc-biblioref" onclick="">Henn et al. 2015</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p>Debated whether there’s differences between human populations. Some evidence for increased mutational load in Out of Africa populations. Why?</p>
+</div>
+</section>
+<section id="mutational-load-cntd." class="slide level2 smaller">
+<h2>Mutational Load (cntd.)</h2>
+<p>One way to estimate the fitness cost of mutational load across the genome comes from Haldane:</p>
+<p><span class="math display">\[
+L = 1-e^{-2U}
+\]</span></p>
+<p>Where <span class="math inline">\(L\)</span> is the mutational load (equal to <span class="math inline">\(\frac{W_{max}-\bar{W}}{W_{max}}\)</span>) and <span class="math inline">\(U\)</span> is the average number of new (deleterious) mutations per genome per generation. Notice selection does not appear!</p>
+<div class="fragment">
+<p>In most species, <span class="math inline">\(N\mu \approx 1\)</span>. If all of the new mutations were deleterious, that implies <span class="math inline">\(L = 0.86\)</span>. In practice, we estimate that ~at least 60% of mutations are neutral-positive. So, <span class="math inline">\(L = 0.55\)</span> - still huge! But spontaneous abortion rate in humans also about 60%.</p>
+</div>
+</section>
+<section id="ongoing-selection-has-a-cost" class="slide level2">
+<h2>Ongoing selection has a cost!</h2>
+<p>There’s a second issue with mutational load - constantly introduced deleterious variation is selected against.</p>
+<div class="fragment">
+<p>This means that in any generation, there are potentially many deaths due to selection on this variation.</p>
+</div>
+<div class="fragment">
+<p>Two issues: 1) This has a population level cost. 2) This has effects on linked regions.</p>
+</div>
+</section>
+<section id="population-load-or-why-are-we-not-dead-100-times-over" class="slide level2 smaller">
+<h2>Population load, or why are we not dead 100 times over?</h2>
+<p>If selection happens because of <em>death</em> of individual, high load implies that population sizes are much smaller than they could be. In the extreme, these values are bizarrely high.</p>
+<div class="fragment">
+<p>In a classic paper by A. Kondrashov <span class="citation" data-cites="Kondrashov1995">(<a href="#/references" role="doc-biblioref" onclick="">Kondrashov 1995</a>)</span>, he noted that given load estimates at the time, each individual should carry ~100 lethal mutations.</p>
+</div>
+<div class="fragment">
+<p>One solution: selection is <em>soft</em> : competition between individuals rather than death.</p>
+</div>
+<div class="fragment">
+<p>An alternative: selection is stabilizing rather than purifying - this reduces the fitness effect of having many deleterious mutations, since their average effect might bring you close to optimum (Fisher’s Geometric Model logic here).</p>
+</div>
+<div class="fragment">
+<p>In either case, mutational load may play an important role in conservation: as populations shrink, effect of selection decreases, so more deleterious mutations may be found in higher and higher frequencies.</p>
+</div>
+</section>
+<section id="main-take-away-from-mutation-selection-not-all-variation-is-good" class="slide level2">
+<h2>Main take-away from mutation-selection: not all variation is good!</h2>
+<p>There are two main ways data is often misinterpreted:</p>
+<ol type="1">
+<li class="fragment"><p>No diversity == selection.</p></li>
+<li class="fragment"><p>High diversity == no selection.</p></li>
+</ol>
+<div class="fragment">
+<p>Diversity not necessarily zeroed out at selected sites, even if on average it is lower.</p>
+</div>
+</section>
+<section id="background-selection" class="slide level2">
+<h2>Background selection</h2>
+<p>The second effect of reintroducing these deleterious alleles is that linked variation is also purged.</p>
+<div class="fragment">
+<p>Even when there is no direct selection at a site, purifying selection at nearby alleles can cause fitness to decrease.</p>
+</div>
+<div class="fragment">
+<p>This is going to play a stronger role in parts of the genome with less recombination.</p>
+</div>
+</section>
+<section id="background-selection-and-null-models" class="slide level2">
+<h2>Background selection and null models</h2>
+<p>Recall that we frequently need to know something about the demography/population structure to infer other evolutionary processes accurately.</p>
+<div class="fragment">
+<p>The problem we posited was determining what part of the genome was neutral.</p>
+</div>
+<div class="fragment">
+<p>One common approach is to look at four-fold degenerate sites - What is an obvious issue now that you know more about background selection?</p>
+</div>
+<div class="fragment">
+<p>A different approach is to look at alleles far from genic regions. Is this better? Why or why not?</p>
+</div>
+</section>
+<section id="inbreeding-load" class="slide level2 smaller">
+<h2>Inbreeding load</h2>
+<p>The other form of genetic load comes from non-random mating.</p>
+<div class="fragment">
+<p>Let’s think of a <em>recessive</em> deleterious mutation.</p>
+</div>
+<div class="fragment">
+<p>Essentially invisible to selection until it appears as a homozygote (<span class="math inline">\(p^2\)</span>).</p>
+</div>
+<div class="fragment">
+<p>If <span class="math inline">\(p^2 N &lt; 1\)</span> - no individuals with lower fitness even exist.</p>
+</div>
+<div class="fragment">
+<p>So, recessive deleterious mutations can segregate at low frequencies without any selection acting on them. What happens if there’s inbreeding?</p>
+</div>
+</section>
+<section id="inbreeding-load-cntd." class="slide level2 smaller">
+<h2>Inbreeding load (cntd.)</h2>
+<p>Sudden increase of homozygotes (recall: Wahlund effect): <span class="math inline">\(p^2(1-F) + Fp\)</span></p>
+<div class="fragment">
+<p>This is going to increase the number of individuals who do express the lower fitness genotype.</p>
+</div>
+<div class="fragment">
+<p>That will cause population mean fitness to decrease compared to a theoretical maximum of randomly mating individuals.</p>
+</div>
+<div class="fragment">
+<p>Long run - if population sustains the non-random mating, deleterious recessive mutations are actually purged. (Why?)</p>
+</div>
+<div class="fragment">
+<p>This can lead to the alternative problem - outbreeding depression. Individuals that happen to outbreed introduce new recessive deleterious mutations to their offspring. If they don’t continue to outbreed, their offspring’s fitness is actually lower. Some plants evolve to be “selfers” and lose the ability to outbreed entirely.</p>
+</div>
+</section>
+<section id="selection-migration-balance" class="slide level2">
+<h2>Selection-migration balance</h2>
+<p>We considered briefly how divergence between populations will depend on the migration rate <span class="math inline">\(m\)</span> between those populations.</p>
+<div class="fragment">
+<p>In the long run: <span class="math inline">\(F_{ST} = \frac{1}{1+4Nm}\)</span></p>
+</div>
+<div class="fragment">
+<p>But what about selection? Let’s walk through a single site, two deme model.</p>
+</div>
+</section>
+<section id="migration-selection-balance" class="slide level2">
+<h2>Migration selection balance</h2>
+<p>Again, nice and simple: <span class="math inline">\(\hat{p} = \frac{m}{s}\)</span></p>
+<div class="fragment">
+<p>Again - diversity at a site can be high despite selection if migration brings in new alleles consistently.</p>
+</div>
+<div class="fragment">
+<p>Effect especially drastic if population sizes unequal (mutation swamping).</p>
+</div>
+<div class="fragment">
+<p>This is likely to play an important role for small locally adapted populations.</p>
+</div>
+</section>
+<section id="moving-across-an-environment-clines" class="slide level2 smaller">
+<h2>Moving across an environment: clines</h2>
+<p>When the population is distributed continuously in space, and there is simply a change in environment, genes don’t show a quick and clean transition.</p>
+<div class="fragment">
+<p>Offspring may not live at the same site as parents. We’ll say that on average, offspring land in the same spot, but the standard deviation of the dispersal is <span class="math inline">\(\sigma\)</span> .</p>
+</div>
+<div class="fragment">
+<p>How rapidly will allele frequencies change when there is a change in environment?</p>
+</div>
+<div class="fragment">
+<p>Several definitions (0 -&gt; 1 distance, 0.1 -&gt; 0.9), but one useful one is the slope at the transition point.</p>
+</div>
+</section>
+<section id="width-of-a-cline" class="slide level2">
+<h2>Width of a cline</h2>
+<p>The slope of the cline will go from 0-&gt;1 in approximately:</p>
+<p><span class="math display">\[
+d \approx 0.6 \frac{\sigma}{\sqrt{s}}
+\]</span></p>
+<div class="fragment">
+<p>So, as <span class="math inline">\(s\)</span> gets larger, the cline shrinks (slope gets steeper), while larger dispersal variation increases the size of the cline (decreasing the slope).</p>
+</div>
+</section>
+<section id="secondary-contact" class="slide level2">
+<h2>Secondary contact</h2>
+<p>Even when there is no obvious environmental change, you may notice a cline in allele frequencies. Why?</p>
+<div class="fragment">
+<p>One reason is that two populations that <em>had</em> diverged have come into secondary contact. If they have equal population sizes, the cline represents an unstable equilbrium of allele frequencies in space.</p>
+</div>
+<div class="fragment">
+<p>Often, such clines are maintained through many generations. How?</p>
+</div>
+</section>
+<section id="hybrid-fitness-after-secondary-contact" class="slide level2">
+<h2>Hybrid fitness after secondary contact</h2>
+<p>Hybrids are combinations of multiple parental ancestries.</p>
+<div class="fragment">
+<p>As you’ve seen in the FGM models - that can lead to hybrids showing lower fitness than either parent, even when both are evolving towards the same optimum.</p>
+</div>
+<div class="fragment">
+<p>But, there’s an alternative way to think about this!</p>
+</div>
+</section>
+<section id="gxg-interactions" class="slide level2">
+<h2>GxG interactions</h2>
+<p>We can think about hybrid fitness as a function of genetic interactions.</p>
+<div class="fragment">
+<p>So far we have thought about genetic interactions only when considering LD.</p>
+</div>
+<div class="fragment">
+<p>The BDMI model of speciation considers the probability that any pair of mutations fixed in two different populations is simply lethal for some reason.</p>
+</div>
+<div class="fragment">
+<p>Why focus on interactions rather than direct effects?</p>
+</div>
+</section>
+<section id="reason-1-direct-effects-cant-really-be-lethal" class="slide level2">
+<h2>Reason 1: direct effects <em>can’t</em> really be lethal</h2>
+<p>Imagine a scenario where a single allele is causing a hybrid to be inviable/sterile.</p>
+<div class="fragment">
+<p><span class="math inline">\(W_{AA}\)</span> can’t be 0, since it never would have fixed. So, <span class="math inline">\(W_{Aa}\)</span> must be 0.</p>
+</div>
+<div class="fragment">
+<p>But how did it evolve? When it first occurred as a mutation it <em>had</em> to be a <code>Aa</code> individual, which we just said has 0 fitness.</p>
+</div>
+<div class="fragment">
+<p>Even if we let <span class="math inline">\(0 &lt; W_{Aa} \\ll 1\)</span>, you still have to have heterozygotes survive sufficiently frequently to allow the mutation to fix.</p>
+</div>
+</section>
+<section id="reason-2-direct-effects-mostly-cancel-out" class="slide level2">
+<h2>Reason 2: direct effects mostly cancel out</h2>
+<p>Let’s look at the fitness of an individual including direct and epistatic effects. Say an individual has all the mutations in set <span class="math inline">\(\mathbb{X}\)</span>.</p>
+<p><span class="math display">\[
+W_{\mathbb{x}} = \prod_{i \in \mathbb{X}}{(1+s_i)} \prod_{i,j \in \mathbb{X}}{(1+\varepsilon_{ij})}
+\]</span></p>
+<div class="fragment">
+<p>Fitness of any genotype is equal to a product of individual fitness effects and epistatic effects between all pairs of alleles.</p>
+</div>
+</section>
+<section id="simplifying" class="slide level2">
+<h2>Simplifying</h2>
+<p>Assuming individual effects are all really weak:</p>
+<p><span class="math display">\[
+log(W_{\mathbb{X}}) \approx 1 + \sum_{i \in \mathbb{X}}s_i + \sum_{i,j \in \mathbb{X}}{\varepsilon_{ij}} = 1+ xs + x^2 \varepsilon
+\]</span></p>
+<div class="fragment">
+<p>Log fitness is just the sum of the direct and epistatic fitness effects. This will make some comparisons easier.</p>
+</div>
+<div class="fragment">
+<p>Also - if fitness is aditive, we don’t need to do this log trick.</p>
+</div>
+</section>
+<section id="what-about-hybrids" class="slide level2">
+<h2>What about hybrids?</h2>
+<p>Hybrids have fitness relative to their parents <span class="math inline">\(\frac{W_{hybrid}}{W_{parent}}\)</span>. In Log scale, this is just a difference of their fitnesses: <span class="math inline">\(log(W_{hybrid})-Log(W_{parent})\)</span>.</p>
+<div class="fragment">
+<p>If parental populations have roughly the same number of mutations fixed, direct effects cancel out. See whiteboard.</p>
+</div>
+<div class="fragment">
+<p>That leaves only epistatic effects. How are their numbers different?</p>
+</div>
+</section>
+<section id="within-versus-between-population-interactions" class="slide level2 smaller">
+<h2>Within versus between population interactions</h2>
+<p>A weird quirk of combinatorics. Let there be <span class="math inline">\(A\)</span> things in set <span class="math inline">\(\mathbb{A}\)</span>, and <span class="math inline">\(B\)</span> in <span class="math inline">\(\mathbb{B}\)</span>. If <span class="math inline">\(A=B\)</span> then there are <span class="math inline">\(A(A-1)/2\)</span> pairs in <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, but there are <span class="math inline">\(A(2A-1)\)</span> combined. e.g.&nbsp;roughly four times as many pairs.</p>
+<div class="fragment">
+<p>Some of these occurred in the parents - they cancel out. But many are new - interactions between alleles fixed in either population.</p>
+</div>
+<div class="fragment">
+<p>In other words - many more interactions in hybrids than in parents.</p>
+</div>
+<div class="fragment">
+<p>Most of these interactions have never been tested by selection.</p>
+</div>
+<div class="fragment">
+<p>Even if the chance of one of those interactions being lethal is low, it quickly increases the probability that hybrids don’t survive.</p>
+</div>
+</section>
+<section id="we-can-be-even-more-explicit" class="slide level2">
+<h2>We can be even more explicit</h2>
+<p>Let <span class="math inline">\(\varepsilon_w\)</span> be the average strength of epistasis in parents, <span class="math inline">\(\varepsilon_b\)</span> be the average strenght between the two populations. Then:</p>
+<p><span class="math display">\[
+log(W_{hyb}) \approx  \frac{1}{4} \varepsilon_b n^2/2 - \varepsilon_w(n^2-n)  
+\]</span></p>
+<div class="fragment">
+<p>Hybrid fitness is composed of adding new interactions, and removing existing ones. That makes sense!</p>
+</div>
+<div class="fragment">
+<p>Genetic interactions, rather than direct effects, are therefore likely to cause speciation.</p>
+</div>
+</section>
+<section id="can-we-detect-these" class="slide level2">
+<h2>Can we detect these?</h2>
+<p>Detecting BDMIs turns out to be quite hard.</p>
+<div class="fragment">
+<p>Need to have hybrid fitness &gt;0, or can’t do backcrosses to disentangle the genetics.</p>
+</div>
+<div class="fragment">
+<p>Need to have few BDMIs of strong effect to easily identify. If every pair of genes contributes a tiny bit to fitness decrease - impossible to map.</p>
+</div>
+</section>
+<section id="can-potentially-identify-using-clines" class="slide level2">
+<h2>Can potentially identify using clines!</h2>
+<p>Tension zones great for natural mapping experiments.</p>
+<div class="fragment">
+<p>Presumably, alleles that can cross the cline are not part of the incompatibility.</p>
+</div>
+<div class="fragment">
+<p>BDMIs should have steeper clines than neutral alleles.</p>
+</div>
+<div class="fragment">
+<p>BDMIs centers should correspond to changes in overall genome ancestry.</p>
+</div>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<p><span class="citation" data-cites="Walsh2023">(<a href="#/references" role="doc-biblioref" onclick="">Walsh et al. 2023</a>)</span></p>
+
+<img data-src="images/paste-13.png" width="801" class="r-stretch"></section>
+<section id="clines-are-permeable" class="slide level2">
+<h2>Clines are permeable?</h2>
+<p>We’ve mentioned introgression, but it’s time to actually think about how it happens.</p>
+<div class="fragment">
+<p>Migration introduces new variation.</p>
+</div>
+<div class="fragment">
+<p>This variation can be neutral, deleterious, positive in the new genetic background.</p>
+</div>
+<div class="fragment">
+<p>In all three cases, it has a non-zero chance of becoming fixed in the new population (or at least sticking around)</p>
+</div>
+<div class="fragment">
+<p>This “mixing” of ancestries is admixture, but when the ancestries become different species we call it introgression.</p>
+</div>
+</section>
+<section id="introgression-measured" class="slide level2">
+<h2>Introgression measured</h2>
+<p>Introgression was generally considered to be uncommon.</p>
+<div class="fragment">
+<p>This is because we relied on the Biological Species Concept to be a neat binary - you either produce hybrids or do not.</p>
+</div>
+<div class="fragment">
+<p>Turns out - speciation is a process, and fairly well defined pairs of species can still exchange some migrants.</p>
+</div>
+<div class="fragment">
+<p>How many migrants does it take to essentially equalize populations?</p>
+</div>
+</section>
+<section id="migration-vs-speciation" class="slide level2">
+<h2>Migration vs speciation</h2>
+<p>Even if hybrid fitness is very low, ~1 effective migrant ($Nm &gt; 1$) is enough to homogenize regions not linked to areas that are selected.</p>
+<div class="fragment">
+<p>This is the <em>long</em> term expectation, and some secondary contact only lasts a limited amount of time.</p>
+</div>
+<div class="fragment">
+<p>Sites under strong selection may not homogenize even in the long run, but reproductive barriers can be much weaker than expected.</p>
+</div>
+</section>
+<section id="divergence-vs-migration" class="slide level2">
+<h2>Divergence vs migration</h2>
+<p>How diverged to populations need to become to stop migration from occurring (and therefore make speciation “final”)?</p>
+<div class="fragment">
+<p>The simplest answer is practically useless: The effective number of hybrids needs to be smaller than 1.</p>
+</div>
+<div class="fragment">
+<p>What does that mean? <span class="math inline">\(N_2 m\)</span> migrants move into population 1. They need to mate with local residents, which will happen with some frequency based on the degree of non-random mating (often parameterized as <span class="math inline">\(a\)</span>). So, <span class="math inline">\(N_2 m N_1 a\)</span> matings occur. That produces <span class="math inline">\(W_{hyb}\)</span> offspring, on average. So, we need to know the long term trajectory of <span class="math inline">\(m\)</span>, <span class="math inline">\(a\)</span> and <span class="math inline">\(W_{hyb}\)</span>.</p>
+</div>
+<div class="fragment">
+<p>We’ve discussed several models for hybrid fitness, but there are not many great models for long term trajectories of <span class="math inline">\(a\)</span> or <span class="math inline">\(m\)</span>, as the former is highly variable, and the latter is more dependant on ecology than evolution.</p>
+</div>
+<div class="fragment">
+<p>We can look at real data to try and tell!</p>
+</div>
+</section>
+<section id="estimating-introgression" class="slide level2 smaller">
+<h2>Estimating introgression</h2>
+<p>One way to think about introgression is sharing more variation than expected by chance.</p>
+<div class="fragment">
+<p>By chance, populations may share variation because of Incomplete Lineage Sorting.</p>
+</div>
+<div class="fragment">
+<p>ILS is just the observation that coalescent times are often quite a bit longer than speciation times.</p>
+</div>
+<div class="fragment">
+<p>Some genes will be shared between a pair of species just by random chance.</p>
+</div>
+<div class="fragment">
+<p>Some genes will also show patterns inconsistent with the species tree, by chance.</p>
+</div>
+<div class="fragment">
+<p>The degree of ILS depends on the time between population splits.</p>
+</div>
+</section>
+<section id="genealogies-under-ils" class="slide level2 smaller">
+<h2>Genealogies under ILS</h2>
+<p>Under ILS we can get a few patterns when considering a three species tree. Let’s draw these out!</p>
+<div class="fragment">
+<p>But introgression should lead to only one of these. Let’s draw it out as well.</p>
+</div>
+<div class="fragment">
+<p>If we polarize the alleles with an outgroup, we can relabel them as A/B (for ancestral and b-derived).</p>
+</div>
+<div class="fragment">
+<p>So, we can look for differences between these two possibilities (ILS and introgression) to see which is more likely.</p>
+</div>
+<div class="fragment">
+<p>Under ILS, ABBA = BABA. Under introgression ABBA != BABA. Patterson’s <span class="math inline">\(D\)</span>, and most <span class="math inline">\(D\)</span> statistics measure precisely this.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+D = \frac{ABBA-BABA}{ABBA+BABA}
+\]</span></p>
+</div>
+</section>
+<section id="more-complex-approaches" class="slide level2">
+<h2>More complex approaches</h2>
+<p>We can include total derived alleles in the expectation (D’, D_f)</p>
+<div class="fragment">
+<p>We can use allele frequencies rather than fixed differences (<span class="math inline">\(f\)</span>-statistics).</p>
+</div>
+<div class="fragment">
+<p>We can include shared ancestral variation <span class="math inline">\(D_{ANC}\)</span>, <span class="math inline">\(D^+\)</span></p>
+</div>
+<div class="fragment">
+<p>In general - each statistic has some minor advantages/disadvantages. Patterson’s <span class="math inline">\(D\)</span> surprisingly robust, but has known issues.</p>
+</div>
+<div class="fragment">
+<p>DON’T interpret <span class="math inline">\(D\)</span> as the fraction of a gene that has introgressed. It’s a bad estimate of this.</p>
+</div>
+</section>
+<section id="examples-of-introgression-over-genetic-distance-birds" class="slide level2">
+<h2>Examples of introgression over genetic distance: Birds</h2>
+
+<img data-src="images/paste-8.jpeg" class="r-stretch"></section>
+<section id="solanum" class="slide level2">
+<h2>Solanum</h2>
+
+<img data-src="images/paste-9.jpeg" class="r-stretch"></section>
+<section id="eukaryotes" class="slide level2">
+<h2>Eukaryotes</h2>
+
+<img data-src="images/paste-15.png" width="498" class="r-stretch"></section>
+<section id="introgression-take-aways" class="slide level2">
+<h2>Introgression take-aways</h2>
+<p>If you are dealing with recently diverged species/populations, migration almost certainly plays a role in:</p>
+<p>1) Generating population structure.</p>
+<p>2) Introducing adaptive/maladaptive variation</p>
+<p>3) Decreasing divergence between populations</p>
+<div class="fragment">
+<p>As your populations become increasingly diverged/isolated, you need to worry about migration less and less.</p>
+</div>
+<div class="fragment">
+<p>But this comes with drawbacks for your system: less variation, less adaptability, less likely to persist.</p>
+</div>
+</section>
+<section id="interpreting-all-of-the-forces" class="slide level2">
+<h2>Interpreting all of the forces</h2>
+
+<img data-src="images/paste-14.png" class="r-stretch"></section>
+<section id="reading-for-this-week" class="slide level2">
+<h2>Reading for this week</h2>
+<p>Skua!</p>
+<div class="fragment">
+<p>Long paper - think about how they structure the whole study. This paper is a good example of how you go from raw data to making evolutionary stories in a systematic way.</p>
+</div>
+<div class="fragment">
+<p>Lab: We’ll run some introgression tests and continue working on your projects.</p>
+</div>
+<div class="fragment">
+<p>If you still don’t have your data - let’s talk ASAP (if I owe you something - ping me on slack! I <em>will</em> forget otherwise).</p>
+</div>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Henn2015" class="csl-entry" role="listitem">
+Henn, Brenna M., Laura R. Botigué, Carlos D. Bustamante, Andrew G. Clark, and Simon Gravel. 2015. <span>“Estimating the Mutation Load in Human Genomes.”</span> <em>Nature Reviews Genetics</em> 16 (6): 333–43. <a href="https://doi.org/10.1038/nrg3931">https://doi.org/10.1038/nrg3931</a>.
+</div>
+<div id="ref-Kondrashov1995" class="csl-entry" role="listitem">
+Kondrashov, Alexey S. 1995. <span>“Contamination of the Genome by Very Slightly Deleterious Mutations: Why Have We Not Died 100 Times Over?”</span> <em>Journal of Theoretical Biology</em> 175 (4): 583–94. <a href="https://doi.org/10.1006/jtbi.1995.0167">https://doi.org/10.1006/jtbi.1995.0167</a>.
+</div>
+<div id="ref-Walsh2023" class="csl-entry" role="listitem">
+Walsh, Jennifer, Shawn M. Billerman, Bronwyn G. Butcher, Vanya G. Rohwer, David P. L. Toews, Vicens Vila-Coury, and Irby J. Lovette. 2023. <span>“A Complex Genomic Architecture Underlies Reproductive Isolation in a North American Oriole Hybrid Zone.”</span> <em>Communications Biology</em> 6 (1). <a href="https://doi.org/10.1038/s42003-023-04532-8">https://doi.org/10.1038/s42003-023-04532-8</a>.
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -341,7 +859,7 @@
         margin: 0,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -368,190 +886,173 @@
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/adagilis\.github\.io\/PopGen25\/");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/adagilis\.github\.io\/PopGen25\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

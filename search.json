@@ -18,7 +18,294 @@
     "href": "notes/Lecture8.html#todays-plan",
     "title": "Lecture 8",
     "section": "Today’s plan",
-    "text": "Today’s plan\nThe interplay of each different force on allelic frequencies.\n\nMutation-selection balance\nSelection-drift balance\nMigration-selection balance\nConsequences of divergence on migration/selection\nDetecting migration/introgression"
+    "text": "Today’s plan\nThe interplay of each different force on allelic frequencies.\n\nMutation-selection balance\nMutational load\nMigration-selection balance\nConsequences of divergence on migration/selection\nDetecting migration/introgression"
+  },
+  {
+    "objectID": "notes/Lecture8.html#mutation-selection-balance",
+    "href": "notes/Lecture8.html#mutation-selection-balance",
+    "title": "Lecture 8",
+    "section": "Mutation-selection balance",
+    "text": "Mutation-selection balance\nWe discussed earlier in the semester how mutation re-introduces variation even as selection acts against it, but we didn’t think about it much more in-depth than that.\n\nA consequence of constant mutation rates is that even when traits are strongly selected, mutations will introduce the deleterious allele.\n\n\nThe dynamics here can be complicated, but they are easiest to think about when we only consider mutation from the reference allele a to a deleterious allele A."
+  },
+  {
+    "objectID": "notes/Lecture8.html#simplest-model-all-semester",
+    "href": "notes/Lecture8.html#simplest-model-all-semester",
+    "title": "Lecture 8",
+    "section": "Simplest model all semester?",
+    "text": "Simplest model all semester?\nLet’s look for a steady state:\nEach generation, there are \\(\\mu (1-p)\\) mutations introduced.\n\nIf we recall directional selection, there are \\(s p (1-p)\\) mutations removed by selection.\n\n\n\\[\n\\begin{array}{rlr}\n\\Delta p  = & \\mu (1-p) + sp(1-p)  & ,p \\ll 1\\\\\n\\Delta p  \\approx & \\mu + sp & ,\\Delta p = 0\\\\\n\\hat{p}  = & \\frac{\\mu}{s} \\\\\n\\end{array}\n\\]\n\n\nThat’s nice and simple!"
+  },
+  {
+    "objectID": "notes/Lecture8.html#consequences-for-genetic-diversity-and-fitness",
+    "href": "notes/Lecture8.html#consequences-for-genetic-diversity-and-fitness",
+    "title": "Lecture 8",
+    "section": "Consequences for genetic diversity (and fitness)",
+    "text": "Consequences for genetic diversity (and fitness)\nWe already talked about how selection is limited compared to drift.\n\nTurns out, selection is also limited in how it can maintain deleterious alleles in check.\n\n\nEach individual allele may contribute very little to polymorphism (\\(\\mu \\approx 10^{-8}\\), \\(s &lt;0.01\\), so \\(\\hat{p} &lt; 10^{-6}\\)). But there are many such alleles.\n\n\nThe result is mutation load - the population fitness is suppressed by constant influx of deleterious mutations. How large is this decrease in fitness? Let’s work it out on the board.\n\n\nLoad only affected by mutation rate, not strength of selection. Thankfully, mutation rates are low. But, in humans - 10-15 recessive deleterious mutations expected per person(Henn et al. 2015).\n\n\nDebated whether there’s differences between human populations. Some evidence for increased mutational load in Out of Africa populations. Why?"
+  },
+  {
+    "objectID": "notes/Lecture8.html#mutational-load-cntd.",
+    "href": "notes/Lecture8.html#mutational-load-cntd.",
+    "title": "Lecture 8",
+    "section": "Mutational Load (cntd.)",
+    "text": "Mutational Load (cntd.)\nOne way to estimate the fitness cost of mutational load across the genome comes from Haldane:\n\\[\nL = 1-e^{-2U}\n\\]\nWhere \\(L\\) is the mutational load (equal to \\(\\frac{W_{max}-\\bar{W}}{W_{max}}\\)) and \\(U\\) is the average number of new (deleterious) mutations per genome per generation. Notice selection does not appear!\n\nIn most species, \\(N\\mu \\approx 1\\). If all of the new mutations were deleterious, that implies \\(L = 0.86\\). In practice, we estimate that ~at least 60% of mutations are neutral-positive. So, \\(L = 0.55\\) - still huge! But spontaneous abortion rate in humans also about 60%."
+  },
+  {
+    "objectID": "notes/Lecture8.html#ongoing-selection-has-a-cost",
+    "href": "notes/Lecture8.html#ongoing-selection-has-a-cost",
+    "title": "Lecture 8",
+    "section": "Ongoing selection has a cost!",
+    "text": "Ongoing selection has a cost!\nThere’s a second issue with mutational load - constantly introduced deleterious variation is selected against.\n\nThis means that in any generation, there are potentially many deaths due to selection on this variation.\n\n\nTwo issues: 1) This has a population level cost. 2) This has effects on linked regions."
+  },
+  {
+    "objectID": "notes/Lecture8.html#population-load-or-why-are-we-not-dead-100-times-over",
+    "href": "notes/Lecture8.html#population-load-or-why-are-we-not-dead-100-times-over",
+    "title": "Lecture 8",
+    "section": "Population load, or why are we not dead 100 times over?",
+    "text": "Population load, or why are we not dead 100 times over?\nIf selection happens because of death of individual, high load implies that population sizes are much smaller than they could be. In the extreme, these values are bizarrely high.\n\nIn a classic paper by A. Kondrashov (Kondrashov 1995), he noted that given load estimates at the time, each individual should carry ~100 lethal mutations.\n\n\nOne solution: selection is soft : competition between individuals rather than death.\n\n\nAn alternative: selection is stabilizing rather than purifying - this reduces the fitness effect of having many deleterious mutations, since their average effect might bring you close to optimum (Fisher’s Geometric Model logic here).\n\n\nIn either case, mutational load may play an important role in conservation: as populations shrink, effect of selection decreases, so more deleterious mutations may be found in higher and higher frequencies."
+  },
+  {
+    "objectID": "notes/Lecture8.html#main-take-away-from-mutation-selection-not-all-variation-is-good",
+    "href": "notes/Lecture8.html#main-take-away-from-mutation-selection-not-all-variation-is-good",
+    "title": "Lecture 8",
+    "section": "Main take-away from mutation-selection: not all variation is good!",
+    "text": "Main take-away from mutation-selection: not all variation is good!\nThere are two main ways data is often misinterpreted:\n\nNo diversity == selection.\nHigh diversity == no selection.\n\n\nDiversity not necessarily zeroed out at selected sites, even if on average it is lower."
+  },
+  {
+    "objectID": "notes/Lecture8.html#background-selection",
+    "href": "notes/Lecture8.html#background-selection",
+    "title": "Lecture 8",
+    "section": "Background selection",
+    "text": "Background selection\nThe second effect of reintroducing these deleterious alleles is that linked variation is also purged.\n\nEven when there is no direct selection at a site, purifying selection at nearby alleles can cause fitness to decrease.\n\n\nThis is going to play a stronger role in parts of the genome with less recombination."
+  },
+  {
+    "objectID": "notes/Lecture8.html#background-selection-and-null-models",
+    "href": "notes/Lecture8.html#background-selection-and-null-models",
+    "title": "Lecture 8",
+    "section": "Background selection and null models",
+    "text": "Background selection and null models\nRecall that we frequently need to know something about the demography/population structure to infer other evolutionary processes accurately.\n\nThe problem we posited was determining what part of the genome was neutral.\n\n\nOne common approach is to look at four-fold degenerate sites - What is an obvious issue now that you know more about background selection?\n\n\nA different approach is to look at alleles far from genic regions. Is this better? Why or why not?"
+  },
+  {
+    "objectID": "notes/Lecture8.html#inbreeding-load",
+    "href": "notes/Lecture8.html#inbreeding-load",
+    "title": "Lecture 8",
+    "section": "Inbreeding load",
+    "text": "Inbreeding load\nThe other form of genetic load comes from non-random mating.\n\nLet’s think of a recessive deleterious mutation.\n\n\nEssentially invisible to selection until it appears as a homozygote (\\(p^2\\)).\n\n\nIf \\(p^2 N &lt; 1\\) - no individuals with lower fitness even exist.\n\n\nSo, recessive deleterious mutations can segregate at low frequencies without any selection acting on them. What happens if there’s inbreeding?"
+  },
+  {
+    "objectID": "notes/Lecture8.html#inbreeding-load-cntd.",
+    "href": "notes/Lecture8.html#inbreeding-load-cntd.",
+    "title": "Lecture 8",
+    "section": "Inbreeding load (cntd.)",
+    "text": "Inbreeding load (cntd.)\nSudden increase of homozygotes (recall: Wahlund effect): \\(p^2(1-F) + Fp\\)\n\nThis is going to increase the number of individuals who do express the lower fitness genotype.\n\n\nThat will cause population mean fitness to decrease compared to a theoretical maximum of randomly mating individuals.\n\n\nLong run - if population sustains the non-random mating, deleterious recessive mutations are actually purged. (Why?)\n\n\nThis can lead to the alternative problem - outbreeding depression. Individuals that happen to outbreed introduce new recessive deleterious mutations to their offspring. If they don’t continue to outbreed, their offspring’s fitness is actually lower. Some plants evolve to be “selfers” and lose the ability to outbreed entirely."
+  },
+  {
+    "objectID": "notes/Lecture8.html#selection-migration-balance",
+    "href": "notes/Lecture8.html#selection-migration-balance",
+    "title": "Lecture 8",
+    "section": "Selection-migration balance",
+    "text": "Selection-migration balance\nWe considered briefly how divergence between populations will depend on the migration rate \\(m\\) between those populations.\n\nIn the long run: \\(F_{ST} = \\frac{1}{1+4Nm}\\)\n\n\nBut what about selection? Let’s walk through a single site, two deme model."
+  },
+  {
+    "objectID": "notes/Lecture8.html#migration-selection-balance",
+    "href": "notes/Lecture8.html#migration-selection-balance",
+    "title": "Lecture 8",
+    "section": "Migration selection balance",
+    "text": "Migration selection balance\nAgain, nice and simple: \\(\\hat{p} = \\frac{m}{s}\\)\n\nAgain - diversity at a site can be high despite selection if migration brings in new alleles consistently.\n\n\nEffect especially drastic if population sizes unequal (mutation swamping).\n\n\nThis is likely to play an important role for small locally adapted populations."
+  },
+  {
+    "objectID": "notes/Lecture8.html#moving-across-an-environment-clines",
+    "href": "notes/Lecture8.html#moving-across-an-environment-clines",
+    "title": "Lecture 8",
+    "section": "Moving across an environment: clines",
+    "text": "Moving across an environment: clines\nWhen the population is distributed continuously in space, and there is simply a change in environment, genes don’t show a quick and clean transition.\n\nOffspring may not live at the same site as parents. We’ll say that on average, offspring land in the same spot, but the standard deviation of the dispersal is \\(\\sigma\\) .\n\n\nHow rapidly will allele frequencies change when there is a change in environment?\n\n\nSeveral definitions (0 -&gt; 1 distance, 0.1 -&gt; 0.9), but one useful one is the slope at the transition point."
+  },
+  {
+    "objectID": "notes/Lecture8.html#width-of-a-cline",
+    "href": "notes/Lecture8.html#width-of-a-cline",
+    "title": "Lecture 8",
+    "section": "Width of a cline",
+    "text": "Width of a cline\nThe slope of the cline will go from 0-&gt;1 in approximately:\n\\[\nd \\approx 0.6 \\frac{\\sigma}{\\sqrt{s}}\n\\]\n\nSo, as \\(s\\) gets larger, the cline shrinks (slope gets steeper), while larger dispersal variation increases the size of the cline (decreasing the slope)."
+  },
+  {
+    "objectID": "notes/Lecture8.html#secondary-contact",
+    "href": "notes/Lecture8.html#secondary-contact",
+    "title": "Lecture 8",
+    "section": "Secondary contact",
+    "text": "Secondary contact\nEven when there is no obvious environmental change, you may notice a cline in allele frequencies. Why?\n\nOne reason is that two populations that had diverged have come into secondary contact. If they have equal population sizes, the cline represents an unstable equilbrium of allele frequencies in space.\n\n\nOften, such clines are maintained through many generations. How?"
+  },
+  {
+    "objectID": "notes/Lecture8.html#hybrid-fitness-after-secondary-contact",
+    "href": "notes/Lecture8.html#hybrid-fitness-after-secondary-contact",
+    "title": "Lecture 8",
+    "section": "Hybrid fitness after secondary contact",
+    "text": "Hybrid fitness after secondary contact\nHybrids are combinations of multiple parental ancestries.\n\nAs you’ve seen in the FGM models - that can lead to hybrids showing lower fitness than either parent, even when both are evolving towards the same optimum.\n\n\nBut, there’s an alternative way to think about this!"
+  },
+  {
+    "objectID": "notes/Lecture8.html#gxg-interactions",
+    "href": "notes/Lecture8.html#gxg-interactions",
+    "title": "Lecture 8",
+    "section": "GxG interactions",
+    "text": "GxG interactions\nWe can think about hybrid fitness as a function of genetic interactions.\n\nSo far we have thought about genetic interactions only when considering LD.\n\n\nThe BDMI model of speciation considers the probability that any pair of mutations fixed in two different populations is simply lethal for some reason.\n\n\nWhy focus on interactions rather than direct effects?"
+  },
+  {
+    "objectID": "notes/Lecture8.html#reason-1-direct-effects-cant-really-be-lethal",
+    "href": "notes/Lecture8.html#reason-1-direct-effects-cant-really-be-lethal",
+    "title": "Lecture 8",
+    "section": "Reason 1: direct effects can’t really be lethal",
+    "text": "Reason 1: direct effects can’t really be lethal\nImagine a scenario where a single allele is causing a hybrid to be inviable/sterile.\n\n\\(W_{AA}\\) can’t be 0, since it never would have fixed. So, \\(W_{Aa}\\) must be 0.\n\n\nBut how did it evolve? When it first occurred as a mutation it had to be a Aa individual, which we just said has 0 fitness.\n\n\nEven if we let \\(0 &lt; W_{Aa} \\\\ll 1\\), you still have to have heterozygotes survive sufficiently frequently to allow the mutation to fix."
+  },
+  {
+    "objectID": "notes/Lecture8.html#reason-2-direct-effects-mostly-cancel-out",
+    "href": "notes/Lecture8.html#reason-2-direct-effects-mostly-cancel-out",
+    "title": "Lecture 8",
+    "section": "Reason 2: direct effects mostly cancel out",
+    "text": "Reason 2: direct effects mostly cancel out\nLet’s look at the fitness of an individual including direct and epistatic effects. Say an individual has all the mutations in set \\(\\mathbb{X}\\).\n\\[\nW_{\\mathbb{x}} = \\prod_{i \\in \\mathbb{X}}{(1+s_i)} \\prod_{i,j \\in \\mathbb{X}}{(1+\\varepsilon_{ij})}\n\\]\n\nFitness of any genotype is equal to a product of individual fitness effects and epistatic effects between all pairs of alleles."
+  },
+  {
+    "objectID": "notes/Lecture8.html#simplifying",
+    "href": "notes/Lecture8.html#simplifying",
+    "title": "Lecture 8",
+    "section": "Simplifying",
+    "text": "Simplifying\nAssuming individual effects are all really weak:\n\\[\nlog(W_{\\mathbb{X}}) \\approx 1 + \\sum_{i \\in \\mathbb{X}}s_i + \\sum_{i,j \\in \\mathbb{X}}{\\varepsilon_{ij}} = 1+ xs + x^2 \\varepsilon\n\\]\n\nLog fitness is just the sum of the direct and epistatic fitness effects. This will make some comparisons easier.\n\n\nAlso - if fitness is aditive, we don’t need to do this log trick."
+  },
+  {
+    "objectID": "notes/Lecture8.html#what-about-hybrids",
+    "href": "notes/Lecture8.html#what-about-hybrids",
+    "title": "Lecture 8",
+    "section": "What about hybrids?",
+    "text": "What about hybrids?\nHybrids have fitness relative to their parents \\(\\frac{W_{hybrid}}{W_{parent}}\\). In Log scale, this is just a difference of their fitnesses: \\(log(W_{hybrid})-Log(W_{parent})\\).\n\nIf parental populations have roughly the same number of mutations fixed, direct effects cancel out. See whiteboard.\n\n\nThat leaves only epistatic effects. How are their numbers different?"
+  },
+  {
+    "objectID": "notes/Lecture8.html#within-versus-between-population-interactions",
+    "href": "notes/Lecture8.html#within-versus-between-population-interactions",
+    "title": "Lecture 8",
+    "section": "Within versus between population interactions",
+    "text": "Within versus between population interactions\nA weird quirk of combinatorics. Let there be \\(A\\) things in set \\(\\mathbb{A}\\), and \\(B\\) in \\(\\mathbb{B}\\). If \\(A=B\\) then there are \\(A(A-1)/2\\) pairs in \\(A\\) and \\(B\\), but there are \\(A(2A-1)\\) combined. e.g. roughly four times as many pairs.\n\nSome of these occurred in the parents - they cancel out. But many are new - interactions between alleles fixed in either population.\n\n\nIn other words - many more interactions in hybrids than in parents.\n\n\nMost of these interactions have never been tested by selection.\n\n\nEven if the chance of one of those interactions being lethal is low, it quickly increases the probability that hybrids don’t survive."
+  },
+  {
+    "objectID": "notes/Lecture8.html#we-can-be-even-more-explicit",
+    "href": "notes/Lecture8.html#we-can-be-even-more-explicit",
+    "title": "Lecture 8",
+    "section": "We can be even more explicit",
+    "text": "We can be even more explicit\nLet \\(\\varepsilon_w\\) be the average strength of epistasis in parents, \\(\\varepsilon_b\\) be the average strenght between the two populations. Then:\n\\[\nlog(W_{hyb}) \\approx  \\frac{1}{4} \\varepsilon_b n^2/2 - \\varepsilon_w(n^2-n)  \n\\]\n\nHybrid fitness is composed of adding new interactions, and removing existing ones. That makes sense!\n\n\nGenetic interactions, rather than direct effects, are therefore likely to cause speciation."
+  },
+  {
+    "objectID": "notes/Lecture8.html#can-we-detect-these",
+    "href": "notes/Lecture8.html#can-we-detect-these",
+    "title": "Lecture 8",
+    "section": "Can we detect these?",
+    "text": "Can we detect these?\nDetecting BDMIs turns out to be quite hard.\n\nNeed to have hybrid fitness &gt;0, or can’t do backcrosses to disentangle the genetics.\n\n\nNeed to have few BDMIs of strong effect to easily identify. If every pair of genes contributes a tiny bit to fitness decrease - impossible to map."
+  },
+  {
+    "objectID": "notes/Lecture8.html#can-potentially-identify-using-clines",
+    "href": "notes/Lecture8.html#can-potentially-identify-using-clines",
+    "title": "Lecture 8",
+    "section": "Can potentially identify using clines!",
+    "text": "Can potentially identify using clines!\nTension zones great for natural mapping experiments.\n\nPresumably, alleles that can cross the cline are not part of the incompatibility.\n\n\nBDMIs should have steeper clines than neutral alleles.\n\n\nBDMIs centers should correspond to changes in overall genome ancestry."
+  },
+  {
+    "objectID": "notes/Lecture8.html#example",
+    "href": "notes/Lecture8.html#example",
+    "title": "Lecture 8",
+    "section": "Example",
+    "text": "Example\n(Walsh et al. 2023)"
+  },
+  {
+    "objectID": "notes/Lecture8.html#clines-are-permeable",
+    "href": "notes/Lecture8.html#clines-are-permeable",
+    "title": "Lecture 8",
+    "section": "Clines are permeable?",
+    "text": "Clines are permeable?\nWe’ve mentioned introgression, but it’s time to actually think about how it happens.\n\nMigration introduces new variation.\n\n\nThis variation can be neutral, deleterious, positive in the new genetic background.\n\n\nIn all three cases, it has a non-zero chance of becoming fixed in the new population (or at least sticking around)\n\n\nThis “mixing” of ancestries is admixture, but when the ancestries become different species we call it introgression."
+  },
+  {
+    "objectID": "notes/Lecture8.html#introgression-measured",
+    "href": "notes/Lecture8.html#introgression-measured",
+    "title": "Lecture 8",
+    "section": "Introgression measured",
+    "text": "Introgression measured\nIntrogression was generally considered to be uncommon.\n\nThis is because we relied on the Biological Species Concept to be a neat binary - you either produce hybrids or do not.\n\n\nTurns out - speciation is a process, and fairly well defined pairs of species can still exchange some migrants.\n\n\nHow many migrants does it take to essentially equalize populations?"
+  },
+  {
+    "objectID": "notes/Lecture8.html#migration-vs-speciation",
+    "href": "notes/Lecture8.html#migration-vs-speciation",
+    "title": "Lecture 8",
+    "section": "Migration vs speciation",
+    "text": "Migration vs speciation\nEven if hybrid fitness is very low, ~1 effective migrant ($Nm &gt; 1$) is enough to homogenize regions not linked to areas that are selected.\n\nThis is the long term expectation, and some secondary contact only lasts a limited amount of time.\n\n\nSites under strong selection may not homogenize even in the long run, but reproductive barriers can be much weaker than expected."
+  },
+  {
+    "objectID": "notes/Lecture8.html#divergence-vs-migration",
+    "href": "notes/Lecture8.html#divergence-vs-migration",
+    "title": "Lecture 8",
+    "section": "Divergence vs migration",
+    "text": "Divergence vs migration\nHow diverged to populations need to become to stop migration from occurring (and therefore make speciation “final”)?\n\nThe simplest answer is practically useless: The effective number of hybrids needs to be smaller than 1.\n\n\nWhat does that mean? \\(N_2 m\\) migrants move into population 1. They need to mate with local residents, which will happen with some frequency based on the degree of non-random mating (often parameterized as \\(a\\)). So, \\(N_2 m N_1 a\\) matings occur. That produces \\(W_{hyb}\\) offspring, on average. So, we need to know the long term trajectory of \\(m\\), \\(a\\) and \\(W_{hyb}\\).\n\n\nWe’ve discussed several models for hybrid fitness, but there are not many great models for long term trajectories of \\(a\\) or \\(m\\), as the former is highly variable, and the latter is more dependant on ecology than evolution.\n\n\nWe can look at real data to try and tell!"
+  },
+  {
+    "objectID": "notes/Lecture8.html#estimating-introgression",
+    "href": "notes/Lecture8.html#estimating-introgression",
+    "title": "Lecture 8",
+    "section": "Estimating introgression",
+    "text": "Estimating introgression\nOne way to think about introgression is sharing more variation than expected by chance.\n\nBy chance, populations may share variation because of Incomplete Lineage Sorting.\n\n\nILS is just the observation that coalescent times are often quite a bit longer than speciation times.\n\n\nSome genes will be shared between a pair of species just by random chance.\n\n\nSome genes will also show patterns inconsistent with the species tree, by chance.\n\n\nThe degree of ILS depends on the time between population splits."
+  },
+  {
+    "objectID": "notes/Lecture8.html#genealogies-under-ils",
+    "href": "notes/Lecture8.html#genealogies-under-ils",
+    "title": "Lecture 8",
+    "section": "Genealogies under ILS",
+    "text": "Genealogies under ILS\nUnder ILS we can get a few patterns when considering a three species tree. Let’s draw these out!\n\nBut introgression should lead to only one of these. Let’s draw it out as well.\n\n\nIf we polarize the alleles with an outgroup, we can relabel them as A/B (for ancestral and b-derived).\n\n\nSo, we can look for differences between these two possibilities (ILS and introgression) to see which is more likely.\n\n\nUnder ILS, ABBA = BABA. Under introgression ABBA != BABA. Patterson’s \\(D\\), and most \\(D\\) statistics measure precisely this.\n\n\n\\[\nD = \\frac{ABBA-BABA}{ABBA+BABA}\n\\]"
+  },
+  {
+    "objectID": "notes/Lecture8.html#more-complex-approaches",
+    "href": "notes/Lecture8.html#more-complex-approaches",
+    "title": "Lecture 8",
+    "section": "More complex approaches",
+    "text": "More complex approaches\nWe can include total derived alleles in the expectation (D’, D_f)\n\nWe can use allele frequencies rather than fixed differences (\\(f\\)-statistics).\n\n\nWe can include shared ancestral variation \\(D_{ANC}\\), \\(D^+\\)\n\n\nIn general - each statistic has some minor advantages/disadvantages. Patterson’s \\(D\\) surprisingly robust, but has known issues.\n\n\nDON’T interpret \\(D\\) as the fraction of a gene that has introgressed. It’s a bad estimate of this."
+  },
+  {
+    "objectID": "notes/Lecture8.html#examples-of-introgression-over-genetic-distance-birds",
+    "href": "notes/Lecture8.html#examples-of-introgression-over-genetic-distance-birds",
+    "title": "Lecture 8",
+    "section": "Examples of introgression over genetic distance: Birds",
+    "text": "Examples of introgression over genetic distance: Birds"
+  },
+  {
+    "objectID": "notes/Lecture8.html#solanum",
+    "href": "notes/Lecture8.html#solanum",
+    "title": "Lecture 8",
+    "section": "Solanum",
+    "text": "Solanum"
+  },
+  {
+    "objectID": "notes/Lecture8.html#eukaryotes",
+    "href": "notes/Lecture8.html#eukaryotes",
+    "title": "Lecture 8",
+    "section": "Eukaryotes",
+    "text": "Eukaryotes"
+  },
+  {
+    "objectID": "notes/Lecture8.html#introgression-take-aways",
+    "href": "notes/Lecture8.html#introgression-take-aways",
+    "title": "Lecture 8",
+    "section": "Introgression take-aways",
+    "text": "Introgression take-aways\nIf you are dealing with recently diverged species/populations, migration almost certainly plays a role in:\n1) Generating population structure.\n2) Introducing adaptive/maladaptive variation\n3) Decreasing divergence between populations\n\nAs your populations become increasingly diverged/isolated, you need to worry about migration less and less.\n\n\nBut this comes with drawbacks for your system: less variation, less adaptability, less likely to persist."
+  },
+  {
+    "objectID": "notes/Lecture8.html#interpreting-all-of-the-forces",
+    "href": "notes/Lecture8.html#interpreting-all-of-the-forces",
+    "title": "Lecture 8",
+    "section": "Interpreting all of the forces",
+    "text": "Interpreting all of the forces"
+  },
+  {
+    "objectID": "notes/Lecture8.html#reading-for-this-week",
+    "href": "notes/Lecture8.html#reading-for-this-week",
+    "title": "Lecture 8",
+    "section": "Reading for this week",
+    "text": "Reading for this week\nSkua!\n\nLong paper - think about how they structure the whole study. This paper is a good example of how you go from raw data to making evolutionary stories in a systematic way.\n\n\nLab: We’ll run some introgression tests and continue working on your projects.\n\n\nIf you still don’t have your data - let’s talk ASAP (if I owe you something - ping me on slack! I will forget otherwise)."
+  },
+  {
+    "objectID": "notes/Lecture8.html#references",
+    "href": "notes/Lecture8.html#references",
+    "title": "Lecture 8",
+    "section": "References",
+    "text": "References\n\n\n\n\nHenn, Brenna M., Laura R. Botigué, Carlos D. Bustamante, Andrew G. Clark, and Simon Gravel. 2015. “Estimating the Mutation Load in Human Genomes.” Nature Reviews Genetics 16 (6): 333–43. https://doi.org/10.1038/nrg3931.\n\n\nKondrashov, Alexey S. 1995. “Contamination of the Genome by Very Slightly Deleterious Mutations: Why Have We Not Died 100 Times Over?” Journal of Theoretical Biology 175 (4): 583–94. https://doi.org/10.1006/jtbi.1995.0167.\n\n\nWalsh, Jennifer, Shawn M. Billerman, Bronwyn G. Butcher, Vanya G. Rohwer, David P. L. Toews, Vicens Vila-Coury, and Irby J. Lovette. 2023. “A Complex Genomic Architecture Underlies Reproductive Isolation in a North American Oriole Hybrid Zone.” Communications Biology 6 (1). https://doi.org/10.1038/s42003-023-04532-8."
   },
   {
     "objectID": "notes/Lecture6.html#reminder-what-is-selection",
@@ -1138,7 +1425,7 @@
     "href": "labs/lab2.html#plotting-in-r",
     "title": "Lab 2",
     "section": "Plotting in R",
-    "text": "Plotting in R\nStart by checking the opened data. Just like bash, R also has a head command. If you run\n\nhead(buffalo_data)\n\nYou should see:\n# A tibble: 6 × 60\n  species             phylum habitat mating_system range_cat sexual_system abbrv\n  &lt;chr&gt;               &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;\n1 Abatus agassizi     Echin… NA      NA            NA        NA            NA   \n2 Acromyrmex echinat… Arthr… NA      NA            NA        male.haploid  NA   \n3 Acropora millepora  Cnida… NA      NA            NA        hermaphrodite NA   \n4 Acyrthosiphon pisum Arthr… Terres… Partial self… Cosmopol… parthenogenic NA   \n5 Aedes aegypti       Arthr… Terres… Obligatory o… Cosmopol… gonochorous   NA   \n6 Aedes albopictus    Arthr… NA      NA            NA        gonochorous   NA   \nNote a couple of things: the data contains 60 columns, the names of the first 8 of which are listed above. Under each name of column the data type is specified (in this case, all chr - character data, e.g. text strings). Not visible in this text, but hopefully in yours - the NA entries should be a different color, highlighting where data is missing.\nYou might want to know all of the different columns available: you can get that list by asking for the names of the data\n\nnames(buffalo_data)\n\nAnd you should see:\n [1] \"species\"               \"phylum\"                \"habitat\"              \n [4] \"mating_system\"         \"range_cat\"             \"sexual_system\"        \n [7] \"abbrv\"                 \"neut_model_conf\"       \"genome_species\"       \n[10] \"self_est\"              \"maplen_data_source\"    \"diversity_data_source\"\n[13] \"site_type\"             \"hcn\"                   \"num_markers\"          \n[16] \"parpath\"               \"pred_pi\"               \"impact_of_sel\"        \n[19] \"log10_size\"            \"log10_range\"           \"num_chr\"              \n[22] \"totalMb_covered\"       \"ave_rec\"               \"assembly_size\"        \n[25] \"selfing\"               \"map_length\"            \"genome_size\"          \n[28] \"fecundity\"             \"propagule\"             \"bodymass_g\"           \n[31] \"diversity\"             \"size\"                  \"log10_diversity\"      \n[34] \"social\"                \"species_orig\"          \"is_terrestrial\"       \n[37] \"n_occ\"                 \"range\"                 \"id\"                   \n[40] \"kingdom\"               \"superphylum\"           \"subphylum\"            \n[43] \"class\"                 \"order\"                 \"family\"               \n[46] \"genus\"                 \"clean_name\"            \"redlist_cat\"          \n[49] \"log10_body_mass\"       \"log10_body_mass_pred\"  \"log10_popsize\"        \n[52] \"log10_density\"         \"log10_density_pred\"    \"pred_log10_body_mass\" \n[55] \"pred_log10_density\"    \"pred_log10_N\"          \"RS\"                   \n[58] \"log10_RS\"              \"log10_map_length\"      \"species_lower\" \nFor your plot, you’ll want to plot pred_log10_N against log10_diversity. Calling a column from a table is done as: &lt;your data frame&gt;$&lt;your column_name&gt;. So, to look at just the predicted log 10 population size, you might call buffalo_data$pred_log10_N.\n\n\n\n\n\n\nHint\n\n\n\nHitting the Tab key will automatically try to fill out the rest of a variable/function name in R, and will even give you an overview of arguments one could call. Don’t be shy about mashing the Tab key as you code, just to avoid any coding issues.\n\n\nHow you plot is an exercise left to the reader. You can do a very basic plot with Rs innate plot functions, but I would recommend taking the time to look at something like ggplot2 (follow this guide, but just substitute your data in.)"
+    "text": "Plotting in R\nStart by checking the opened data. Just like bash, R also has a head command. If you run\n\nhead(buffalo_data)\n\nYou should see:\n# A tibble: 6 × 60\n  species             phylum habitat mating_system range_cat sexual_system abbrv\n  &lt;chr&gt;               &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;\n1 Abatus agassizi     Echin… NA      NA            NA        NA            NA   \n2 Acromyrmex echinat… Arthr… NA      NA            NA        male.haploid  NA   \n3 Acropora millepora  Cnida… NA      NA            NA        hermaphrodite NA   \n4 Acyrthosiphon pisum Arthr… Terres… Partial self… Cosmopol… parthenogenic NA   \n5 Aedes aegypti       Arthr… Terres… Obligatory o… Cosmopol… gonochorous   NA   \n6 Aedes albopictus    Arthr… NA      NA            NA        gonochorous   NA   \nNote a couple of things: the data contains 60 columns, the names of the first 8 of which are listed above. Under each name of column the data type is specified (in this case, all chr - character data, e.g. text strings). Not visible in this text, but hopefully in yours - the NA entries should be a different color, highlighting where data is missing.\nYou might want to know all of the different columns available: you can get that list by asking for the names of the data\n\nnames(buffalo_data)\n\nAnd you should see:\n [1] \"species\"               \"phylum\"                \"habitat\"              \n [4] \"mating_system\"         \"range_cat\"             \"sexual_system\"        \n [7] \"abbrv\"                 \"neut_model_conf\"       \"genome_species\"       \n[10] \"self_est\"              \"maplen_data_source\"    \"diversity_data_source\"\n[13] \"site_type\"             \"hcn\"                   \"num_markers\"          \n[16] \"parpath\"               \"pred_pi\"               \"impact_of_sel\"        \n[19] \"log10_size\"            \"log10_range\"           \"num_chr\"              \n[22] \"totalMb_covered\"       \"ave_rec\"               \"assembly_size\"        \n[25] \"selfing\"               \"map_length\"            \"genome_size\"          \n[28] \"fecundity\"             \"propagule\"             \"bodymass_g\"           \n[31] \"diversity\"             \"size\"                  \"log10_diversity\"      \n[34] \"social\"                \"species_orig\"          \"is_terrestrial\"       \n[37] \"n_occ\"                 \"range\"                 \"id\"                   \n[40] \"kingdom\"               \"superphylum\"           \"subphylum\"            \n[43] \"class\"                 \"order\"                 \"family\"               \n[46] \"genus\"                 \"clean_name\"            \"redlist_cat\"          \n[49] \"log10_body_mass\"       \"log10_body_mass_pred\"  \"log10_popsize\"        \n[52] \"log10_density\"         \"log10_density_pred\"    \"pred_log10_body_mass\" \n[55] \"pred_log10_density\"    \"pred_log10_N\"          \"RS\"                   \n[58] \"log10_RS\"              \"log10_map_length\"      \"species_lower\" \nFor your plot, you’ll want to plot pred_log10_N against log10_diversity. Calling a column from a table is done as: &lt;your data frame&gt;$&lt;your column_name&gt;. So, to look at just the predicted log 10 population size, you might call buffalo_data$pred_log10_N.\n\n\n\n\n\n\nTipHint\n\n\n\nHitting the Tab key will automatically try to fill out the rest of a variable/function name in R, and will even give you an overview of arguments one could call. Don’t be shy about mashing the Tab key as you code, just to avoid any coding issues.\n\n\nHow you plot is an exercise left to the reader. You can do a very basic plot with Rs innate plot functions, but I would recommend taking the time to look at something like ggplot2 (follow this guide, but just substitute your data in.)"
   },
   {
     "objectID": "labs/lab2.html#plotting-in-julia",
@@ -1194,7 +1481,7 @@
     "href": "index.html",
     "title": "Population Genetics 2025",
     "section": "",
-    "text": "Welome to PopGen!\nThis is the website for Population Genetics (EEB 5348) at UConn. Here you will find notes on each of the lectures, links to papers and other materials as they become needed.\n\n\nAbout the course\nThe focus of this course is to introduce graduate students to population genetic thinking. I firmly believe the greatest benefit of population genetics is not knowledge of any particular approach or methodology (there are too many for any course to cover adequately), but a firm grasp of how population genetics can be used to 1) test and hone your intuition of evolutionary processes, 2) understand how (and why) different population genetics approaches work and 3) develop heuristics to examine any system of interest. Throughout the course we will examine classic population genetics results, read recent literature that either uses those results or throws them completely into question and work on developing a set of scripts and skills in a language of your choice (although I will recommend either Julia or R) to investigate the population genetics of different data-sets.\n\n\nSchedule/General Logistics\nEach week, we will start with a lecture on Tuesday, followed by a paper discussion and lab on Thursday. The goal of this class structure is to be able to introduce general concepts/remind you of things you should remember from your Genetics/Evolution courses, introduce classic PopGen results, followed by a more in-depth dive in the state of the art uses of those results and some practical advice of coding how they work. Here’s a general week-by-week overlay of the topics. Lecture notes will be added as links as we go along\n\n\n\nWeek\nTopic(s)\nReading\nLecture Notes\n\n\n\n\nAug 26-28\nIntro, Wright-Fisher\nLeu et al\nLecture 1\n\n\nSep 2-4\nGenetic diversity measurements\nBuffalo\nLecture 2\n\n\nSep 9-11\nDivergence at a site, mutation, molecular models of evolution\nPeede et al\nLecture 3\n\n\nSep 16-18\nSexual reproduction, Recombination, LD\nHahn and Mishra\nLecture 4\n\n\nSep 23-25\nPopulation structure, migration, the coalescent\nCousins et al\nLecture 5\n\n\nSep 30-Oct 2\nSelection at a single locus, types of selection\nKetchum et al\nLecture 6\n\n\nOct 7-9\nProject Meetings, no regular class\nNA\n\n\n\nOct 14-16\nQuantitative trait evolution\nChen and Pannell\nLecture 7\n\n\nOct 21-23\nConfounded selection, demography, mutation\n\n\n\n\nOct 28-30\nAccounting for selection/demography in trait evolution\n\n\n\n\nNov 4-6\nAncestral Recombination Graphs (and where to find them)\n\n\n\n\nNov 11-13\nStudents’ choice\n\n\n\n\nNov 18-20\nStudents’ choice\n\n\n\n\nNov 25-27\nTHANKSGIVING BREAK\n\n\n\n\nDec 2-4\nProject meetings, final projects due Dec 4\nNA"
+    "text": "Welome to PopGen!\nThis is the website for Population Genetics (EEB 5348) at UConn. Here you will find notes on each of the lectures, links to papers and other materials as they become needed.\n\n\nAbout the course\nThe focus of this course is to introduce graduate students to population genetic thinking. I firmly believe the greatest benefit of population genetics is not knowledge of any particular approach or methodology (there are too many for any course to cover adequately), but a firm grasp of how population genetics can be used to 1) test and hone your intuition of evolutionary processes, 2) understand how (and why) different population genetics approaches work and 3) develop heuristics to examine any system of interest. Throughout the course we will examine classic population genetics results, read recent literature that either uses those results or throws them completely into question and work on developing a set of scripts and skills in a language of your choice (although I will recommend either Julia or R) to investigate the population genetics of different data-sets.\n\n\nSchedule/General Logistics\nEach week, we will start with a lecture on Tuesday, followed by a paper discussion and lab on Thursday. The goal of this class structure is to be able to introduce general concepts/remind you of things you should remember from your Genetics/Evolution courses, introduce classic PopGen results, followed by a more in-depth dive in the state of the art uses of those results and some practical advice of coding how they work. Here’s a general week-by-week overlay of the topics. Lecture notes will be added as links as we go along\n\n\n\nWeek\nTopic(s)\nReading\nLecture Notes\n\n\n\n\nAug 26-28\nIntro, Wright-Fisher\nLeu et al\nLecture 1\n\n\nSep 2-4\nGenetic diversity measurements\nBuffalo\nLecture 2\n\n\nSep 9-11\nDivergence at a site, mutation, molecular models of evolution\nPeede et al\nLecture 3\n\n\nSep 16-18\nSexual reproduction, Recombination, LD\nHahn and Mishra\nLecture 4\n\n\nSep 23-25\nPopulation structure, migration, the coalescent\nCousins et al\nLecture 5\n\n\nSep 30-Oct 2\nSelection at a single locus, types of selection\nKetchum et al\nLecture 6\n\n\nOct 7-9\nProject Meetings, no regular class\nNA\n\n\n\nOct 14-16\nQuantitative trait evolution\nChen and Pannell\nLecture 7\n\n\nOct 21-23\nConfounded selection, demography, mutation\nJoquera et al.\nLecture 8\n\n\nOct 28-30\nAccounting for selection/demography in trait evolution\n\n\n\n\nNov 4-6\nAncestral Recombination Graphs (and where to find them)\n\n\n\n\nNov 11-13\nStudents’ choice\n\n\n\n\nNov 18-20\nStudents’ choice\n\n\n\n\nNov 25-27\nTHANKSGIVING BREAK\n\n\n\n\nDec 2-4\nProject meetings, final projects due Dec 4\nNA"
   },
   {
     "objectID": "labs/lab3.html",
@@ -1236,7 +1523,7 @@
     "href": "labs/lab3.html#calculating-d_xy",
     "title": "Lab 3",
     "section": "Calculating \\(d_{XY}\\)",
-    "text": "Calculating \\(d_{XY}\\)\nNow, let’s write a function to calculate \\(d_{XY}\\) between each population. Remember that for a biallic locus, \\(d_{XY}\\) is defined as:\n\\[\nd_{XY} = p_1(1-p_2)+p_2(1-p_1)\n\\]\nWhere \\(p_i\\) is the frequency of the allele in the \\(i^th\\) population.\nSo, let’s write a function to calculate it at a single site:\n\ndxy_site = function(p1,p2){\n  dxy = p1*(1-p2)+p2*(1-p1)\n  return(dxy)\n}\n\nNow, we just need to get out these allele frequencies. How do we do that?\n\n\n\n\n\n\nHint\n\n\n\nYou don’t need to write any new functions to do this - just apply the ones you already have\n\n\nNow, let’s do this in a more efficient way, so that we can easily calculate \\(d_{XY}\\)."
+    "text": "Calculating \\(d_{XY}\\)\nNow, let’s write a function to calculate \\(d_{XY}\\) between each population. Remember that for a biallic locus, \\(d_{XY}\\) is defined as:\n\\[\nd_{XY} = p_1(1-p_2)+p_2(1-p_1)\n\\]\nWhere \\(p_i\\) is the frequency of the allele in the \\(i^th\\) population.\nSo, let’s write a function to calculate it at a single site:\n\ndxy_site = function(p1,p2){\n  dxy = p1*(1-p2)+p2*(1-p1)\n  return(dxy)\n}\n\nNow, we just need to get out these allele frequencies. How do we do that?\n\n\n\n\n\n\nTipHint\n\n\n\nYou don’t need to write any new functions to do this - just apply the ones you already have\n\n\nNow, let’s do this in a more efficient way, so that we can easily calculate \\(d_{XY}\\)."
   },
   {
     "objectID": "labs/lab3.html#populating-a-data-table",
