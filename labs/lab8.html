@@ -251,20 +251,10 @@ sed -i 's/YRI/Outgroup/' dsuite_samples_table.tsv</code></pre>
 <pre class="{bash}"><code>sticcs prep -i subsampled_chr22.vcf.gz -o sticcs_chr22.vcf.gz --outgroup "NA18861" #Ideally we'd have an actual outgroup here, instead I'm grapping a random YRI individual to polarize
 
 twisst2 sticcstack -i sticcs_chr22.vcf.gz -o twisst_22.vcf.gz --ploidy 2 --group_names ASW CLM MXL FIN --groups_file dsuite_samples_table.tsv --max_subtrees 512</code></pre>
-<p>If you look at the head of the <code>cmds.txt</code> file, you’ll see there’s lots of individual blocks of code for each window:</p>
-<pre class="{output}"><code>##22_0_wnd1000000
-bcftools view -r 22:1-1000001 subsampled_chr12.vcf.gz &gt; 22_0_wnd1000000.vcf
-plink --vcf 22_0_wnd1000000.vcf --snps-only --allow-extra-chrs --export phylip-phased --out 22_0_wnd1000000
-rm 22_0_wnd1000000.vcf
-iqtree3 -redo -pre 22_0_wnd1000000 -nt AUTO -ntmax 4 -bb 1000 -m auto -s 22_0_wnd1000000.phy</code></pre>
-<p>There’s 5173 windows here, so it will take it a while to actually run through them all in sequence, in principle. In practice - this data is a little funky and there’s lots of the genome with, essentially, zero information, so many of the windows will just error out. Rather than make you generate these files yourself, I’ve added some trees to the lab data folder, just so you can see how TWISST works.</p>
-<p>Just like <code>Dsuite</code>, twisst needs you to enumerate the groups. It has a slightly nicer format, in that you can have a file with group labels, and then seperately specify which groups you’d like to include in your testing. Here, we’ll only look for introgression between ACB and ASW.</p>
-<pre class="{bash}"><code>twisst.py -t trees.gz -w output_weights.csv -g ACB -g MXL -g ASW -g YRI --method complete --groupsFile dsuite_samples_table.tsv</code></pre>
-<p>The output will be a csv file which, for each tree, calculates how frequent different tree topologies are. Each column is a topology, and each row is a single tree. So, we can just plot the relative frequency of each of these as we run along the genome (in this case, a ~1Mb region on chr22).</p>
-<div id="4" class="cell" data-execution_count="0">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>twisst_out <span class="op">=</span> <span class="fu">read_csv</span>(<span class="st">"output_weights.csv"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is where I realized there's a new and better method, which outputs data quite differently.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>This wil produce two files - one which identifies intervals that have (more or less) consistent topology weights, and the second which identifies what those weights were. A topology weight is a neat idea from Simon Martin: take one individual at random from each of your groups. The topology weight is the probability that their gene tree will show that gene tree topology. You can calculate it by randomly subsampling individuals from each of your populations. What does this do? Well, it helps identify regions where different relationships between groups are supported. Introgression should drive differences in the topology in parts of the genome, and so TWISST2 can help identify not only what introgression events are likely, but <em>where</em> they are likely. There is no formal test for introgression here, so be aware of its limitations.</p>
+<p>To plot the data, you’ll need to do some further work with the output files. The easiest approach here is to use the scripts included with the twisst2 installation (<code>/plot_twisst/example_plot.R</code> has the general gist).</p>
+<p>What you’ll end up with is something like this:</p>
+<p>CODE STILL RUNNING</p>
 </section>
 <section id="treemix" class="level2">
 <h2 class="anchored" data-anchor-id="treemix">Treemix</h2>
