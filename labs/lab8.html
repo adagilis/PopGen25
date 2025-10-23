@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
 
-<title>Labs – EEB5348-Fall25</title>
+<title>Lab 8 – EEB5348-Fall25</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,27 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfe70be7e2ab6f0ddf67592a600b2b75.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-91199a61a71c296c5397e976596424c0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,9 +115,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">EEB5348-Fall25</span>
     </a>
   </div>
@@ -94,19 +128,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> 
+    <a class="nav-link" href="../notes.html"> 
 <span class="menu-text">Useful links</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./labs.html" aria-current="page"> 
+    <a class="nav-link" href="../labs.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
 </ul>
@@ -125,9 +159,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#git" id="toc-git" class="nav-link active" data-scroll-target="#git">Git?</a></li>
-  <li><a href="#pluto" id="toc-pluto" class="nav-link" data-scroll-target="#pluto">Pluto</a></li>
-  <li><a href="#lab-files" id="toc-lab-files" class="nav-link" data-scroll-target="#lab-files">Lab files:</a></li>
+  <li><a href="#calculating-introgression-statistics---three-ways." id="toc-calculating-introgression-statistics---three-ways." class="nav-link active" data-scroll-target="#calculating-introgression-statistics---three-ways.">Calculating introgression statistics - three ways.</a>
+  <ul class="collapse">
+  <li><a href="#pattersons-d" id="toc-pattersons-d" class="nav-link" data-scroll-target="#pattersons-d">Patterson’s D</a></li>
+  <li><a href="#method-2-twisst2" id="toc-method-2-twisst2" class="nav-link" data-scroll-target="#method-2-twisst2">Method 2: TWISST2</a></li>
+  <li><a href="#treemix" id="toc-treemix" class="nav-link" data-scroll-target="#treemix">Treemix</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -136,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Labs</h1>
+<h1 class="title">Lab 8</h1>
 </div>
 
 
@@ -153,29 +190,88 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Here you’ll find links for the labs on Thursdays, although they should all be available if you pull the latest version of the git before class time as well.</p>
-<section id="git" class="level2">
-<h2 class="anchored" data-anchor-id="git">Git?</h2>
-<p>The code for the class is hosted at: https://github.com/adagilis/PopGen25. Lab assignments will be placed in the creatively titled <code>labs</code> folder there. To get the latest version of the code, you’ll need to download it from git. The easiest way to do this is to clone the whole repository, and pull any changes before class time. If that doesn’t make sense to you, we’ll cover it in slightly more detail in class, or <a href="https://swcarpentry.github.io/git-novice/">do some self study</a>.</p>
+<section id="calculating-introgression-statistics---three-ways." class="level1">
+<h1>Calculating introgression statistics - three ways.</h1>
+<p>Today’s lab is all about looking for introgression. We’ll use several approaches - first, Patterson’s D statistics from lecture. Second, we’ll use a tree based approaches (TWISST and TreeMix) to see if we can get corroborating results. But first, let’s look at D-statistics.</p>
+<section id="pattersons-d" class="level2">
+<h2 class="anchored" data-anchor-id="pattersons-d">Patterson’s D</h2>
+<p>This one is surprisingly simple to calculate by yourself given pretty much all of the functions you have already written. The below is a code example of how you can take allele frequencies for four populations, and from the calculate Patterson’s D. The calculation is equivalent to ABBA-BABA, but using allele frequency differences. Suppose you have subset of the genotype matrix for each population, then:</p>
+<div id="2" class="cell" data-execution_count="0">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate allele frequencies</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>p_1 <span class="op">=</span> <span class="fu">apply</span>(pop_1_GT,<span class="fl">1</span>,freq_GT)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>p_2 <span class="op">=</span> <span class="fu">apply</span>(pop_2_GT,<span class="fl">1</span>,freq_GT)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>p_3 <span class="op">=</span> <span class="fu">apply</span>(pop_3_GT,<span class="fl">1</span>,freq_GT)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>p_4 <span class="op">=</span> <span class="fu">apply</span>(pop_4_GT,<span class="fl">1</span>,freq_GT)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Find which alleles should be re-polarized based on outgroup</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span>  <span class="fu">which</span>(p_4 <span class="op">&gt;</span> <span class="fl">0.5</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#And repolarize</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>p1[idx] <span class="op">=</span> <span class="fl">1</span><span class="op">-</span>p1[idx]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>p2[idx] <span class="op">=</span> <span class="fl">1</span><span class="op">-</span>p2[idx]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>p3[idx] <span class="op">=</span> <span class="fl">1</span><span class="op">-</span>p3[idx]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>p4[idx] <span class="op">=</span> <span class="fl">1</span><span class="op">-</span>p4[idx]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>denom_sum <span class="op">=</span> <span class="fu">sum</span>((p1<span class="op">-</span>p2)<span class="fu">*</span>(p3<span class="op">-</span>p4))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>num_sum <span class="op">=</span> <span class="fu">sum</span>((p1<span class="op">+</span>p2<span class="op">-</span><span class="fl">2</span><span class="op">*</span>p1<span class="op">*</span>p2)<span class="fu">*</span>(p3<span class="op">+</span>p4<span class="op">-</span><span class="fl">2</span><span class="op">*</span>p3<span class="op">*</span>p4))</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> denom_sum<span class="op">/</span>num_sum</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>But, this won’t return nice features like significance testing, or other bits that you’d want with your test. So, let’s use a common software tool: <a href="https://github.com/millanek/Dsuite">Dsuite</a>.</p>
+<p>Dsuite is great in its simplicity. It takes a <code>vcf</code> (we’ve got one!), and a table that lists which samples belong to which population. We’d continue working with the MUC19 data, but, problematically, we only have three populations and need four. So, we’ll use the entirety of Chromosome 12 from the 1K genomes project, and use the opportunity to learn to manipulate vcf files.</p>
+<p>First, you’ll want to download the chr12 vcf. In a terminal, you can do this with:</p>
+<pre class="{bash}"><code>wget https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr22.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz
+bcftools index ALL.chr22.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz</code></pre>
+<p>This will download chr22 data (the smallest chromosome) for ~3606 samples, and will then index it. The index will be useful for us when we manipulate the file further. In the lab data folder, you’ll find <code>samples_for_introgression.txt</code>, a file which contains the ~800 samples we’ll look for introgression in. So, the first thing you’ll want to do is to subset the vcf only to those samples.</p>
+<p>Most vcf manipulations happen with <code>bcftools</code>. This is a suite of tools which allow you to filter/subset/query/analyze vcfs in a variety of ways. You will frequently use several of its capabilities when dealing with genomic data. In this case, we want to limit ourselves only to the samples in the populations we are interested in. We’ll first need to make a list of these samples. You could import the table into R and output only the first column, or you can use <code>awk</code> to print only the first column as follows:</p>
+<pre class="{bash}"><code>awk 'NR &gt; 1{print $1}' samples_for_introgression.txt &gt; samples_to_keep.txt</code></pre>
+<p>However you make your list of samples to keep, subsetting the vcf is quite easy:</p>
+<pre class="{bash}"><code>bcftools view ALL.chr12.phase3_shapeit2_mvncall_integrated_v5b.20130502.genotypes.vcf.gz -S samples_to_keep.txt -Oz -o subsampled_chr22.vcf.gz</code></pre>
+<p>Now, many pieces of software will want you to have an index for the vcf, so index it as well:</p>
+<pre class="{bash}"><code>bcftools index subsampled_chr22.vcf.gz</code></pre>
+<p>And now we have a file that is ready for Dsuite.</p>
+<p>Dsuite also needs a file formatted as:</p>
+<pre class="{format}"><code>Ind1_name   Pop1
+Ind2_name   Pop2
+...
+Indx_name   Outgroup</code></pre>
+<p>In other words, we need to take the table from 1k genomes and do two things - return only columns 1 and 4, and then rename YRI samples to “Outgroup”. Again, <code>awk</code> is super useful here, but we’ll also use <code>sed</code>, another great command line tool for editing text. <code>awk</code> will output the first and fourth column, while sed will look for any place in the file that says “YRI” and replace it with “Outgroup”. This could go wrong if any of the samples have “YRI” in the name, but thankfully that should not be the case.</p>
+<pre class="{bash}"><code>awk 'NR &gt; 1{print $1 "\t" $4}' samples_for_introgression.txt &gt; dsuite_samples_table.tsv
+sed -i 's/YRI/Outgroup/' dsuite_samples_table.tsv</code></pre>
+<p>Alright, now we are finally ready to run <code>Dsuite</code>, assuming you have installed it.</p>
+<pre class="{bash}"><code>Dsuite Dtrios subsampled_chr22.vcf.gz dsuite_samples_table.tsv -o chr22_test</code></pre>
+<p>This will generate a couple of files, the one you will want is the one that ends in <code>_Dmin.txt</code>. This shows the arrangement of population triplets that produced the smallest possible signal of introgression.</p>
+<p>Here’s a key for the populations:</p>
+<p>ASW - American Southwest ACB - AfroCarribean CLM - Columbian MXL - Mexican FIN - Finnish</p>
+<p>Remember that ideally, Patterson’s D requires P1 and P2 to be sister. Is that true for all of the inferred arrangements?</p>
+<p>Your homework is to look at these results and <em>really</em> think about them. Which of these introgression patterns make sense given human evolutionary history? Which are likely artifacts of data?</p>
+<p>The other two methods for introgression will be presented <em>but you don’t need to run them</em>. Frankly, they will take too long.</p>
 </section>
-<section id="pluto" class="level2">
-<h2 class="anchored" data-anchor-id="pluto">Pluto</h2>
-<p>Some labs we will run using <code>Pluto</code> - an interactive notebook that uses <code>Julia</code> as the programming language, and will let us get on the same page faster for certain pieces of code.</p>
-<p>To get runnning with Pluto, you’ll just want to follow the guide at <a href="https://plutojl.org/#install">Pluto’s website</a>.</p>
-<p>Once Pluto is running, load in the lab <code>.jl</code> file provided for each lab and we’ll work from there!</p>
+<section id="method-2-twisst2" class="level2">
+<h2 class="anchored" data-anchor-id="method-2-twisst2">Method 2: TWISST2</h2>
+<p><a href="https://github.com/simonhmartin/twisst2">TWISST2</a> is not strictly a test for introgression, but it can be a useful tool to gauge whether (and where in the genome) different relationships between groups are supported. TWISST2 only requires the vcf, but it needs to be first formatted using a different tool: <a href="https://github.com/simonhmartin/sticcs">sticcs</a>. The whole process can take a while in big data sets, but is much faster than the previous approach (Twisst), which required you to build gene trees using your own favorite method.</p>
+<pre class="{bash}"><code>sticcs prep -i subsampled_chr22.vcf.gz -o sticcs_chr22.vcf.gz --outgroup "NA18861" #Ideally we'd have an actual outgroup here, instead I'm grapping a random YRI individual to polarize
+
+twisst2 sticcstack -i sticcs_chr22.vcf.gz -o twisst_22.vcf.gz --ploidy 2 --group_names ASW CLM MXL FIN --groups_file dsuite_samples_table.tsv --max_subtrees 512</code></pre>
+<p>If you look at the head of the <code>cmds.txt</code> file, you’ll see there’s lots of individual blocks of code for each window:</p>
+<pre class="{output}"><code>##22_0_wnd1000000
+bcftools view -r 22:1-1000001 subsampled_chr12.vcf.gz &gt; 22_0_wnd1000000.vcf
+plink --vcf 22_0_wnd1000000.vcf --snps-only --allow-extra-chrs --export phylip-phased --out 22_0_wnd1000000
+rm 22_0_wnd1000000.vcf
+iqtree3 -redo -pre 22_0_wnd1000000 -nt AUTO -ntmax 4 -bb 1000 -m auto -s 22_0_wnd1000000.phy</code></pre>
+<p>There’s 5173 windows here, so it will take it a while to actually run through them all in sequence, in principle. In practice - this data is a little funky and there’s lots of the genome with, essentially, zero information, so many of the windows will just error out. Rather than make you generate these files yourself, I’ve added some trees to the lab data folder, just so you can see how TWISST works.</p>
+<p>Just like <code>Dsuite</code>, twisst needs you to enumerate the groups. It has a slightly nicer format, in that you can have a file with group labels, and then seperately specify which groups you’d like to include in your testing. Here, we’ll only look for introgression between ACB and ASW.</p>
+<pre class="{bash}"><code>twisst.py -t trees.gz -w output_weights.csv -g ACB -g MXL -g ASW -g YRI --method complete --groupsFile dsuite_samples_table.tsv</code></pre>
+<p>The output will be a csv file which, for each tree, calculates how frequent different tree topologies are. Each column is a topology, and each row is a single tree. So, we can just plot the relative frequency of each of these as we run along the genome (in this case, a ~1Mb region on chr22).</p>
+<div id="4" class="cell" data-execution_count="0">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>twisst_out <span class="op">=</span> <span class="fu">read_csv</span>(<span class="st">"output_weights.csv"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is where I realized there's a new and better method, which outputs data quite differently.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="lab-files" class="level2">
-<h2 class="anchored" data-anchor-id="lab-files">Lab files:</h2>
-<p>Lab 1 can be accessed with Pluto, and will be found in the <code>labs/lab1.jl</code> file.</p>
-<p>Lab 2 is <a href="./labs/lab2.html">here</a></p>
-<p>Lab 3 is <a href="./labs/lab3.html">here</a></p>
-<p>Lab 4 is <a href="./labs/lab4.html">here</a></p>
-<p>Lab 5 is <a href="./labs/lab5.html">here</a></p>
-<p>Lab 6 can be accessed with Pluto, find it at <code>labs/lab5.jl</code> (remember you can open Pluto notebooks via url, so you don’t need to download the file!)</p>
-<p>Lab 7 is <a href="./labs/lab7.html">here</a></p>
-<p>Lab 8 is <a href="./labs/lab8.html">here</a></p>
+<section id="treemix" class="level2">
+<h2 class="anchored" data-anchor-id="treemix">Treemix</h2>
+<p>Treemix is another approach to detecting introgression. It has many known issues, but it is quite popular. Rather than reinvent the wheel, I’ll point you to the guide I used when I learned to use it, found <a href="https://speciationgenomics.github.io/Treemix/">here</a>. There’s also many other useful little guides in that page, but beware many of the methods they suggest are either slightly or very out of date, and the software has updated. So don’t be surprised if some elements don’t work.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
