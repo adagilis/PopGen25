@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <title>EEB5348-Fall25 – Lecture 8</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Lecture 8</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section>
+<section id="studying-trait-evolution-when-everything-is-complicated" class="title-slide slide level1 center">
+<h1>Studying trait evolution when everything is complicated</h1>
+
+</section>
+<section id="todays-plan" class="slide level2">
+<h2>Today’s plan</h2>
+<p>Regretably, most biologists are not population geneticists.</p>
+<div class="fragment">
+<p>That means you might be interested in the actual traits of your population, not a hypothetical Platonic population size that would evolve <em>as if</em> that model developed 100 years ago we all like.</p>
+</div>
+<div class="fragment">
+<p>Inferring history of your populations is crucial to inform their trait evolution, as we have continuously shown, but how do you actually use all of this evolutionary history to say something about traits of interest?</p>
+</div>
+</section>
+<section id="general-course-of-action-in-a-study" class="slide level2">
+<h2>General course of action in a study</h2>
+<p>Get a good idea about population structure of your samples.</p>
+<div class="fragment">
+<p>Population structure can lead to:</p>
+<ul>
+<li class="fragment">Inflated diversity at selected sites.</li>
+<li class="fragment">Increased divergence at unrelated sites.</li>
+<li class="fragment">Non-causal correlations with trait during GWAS</li>
+<li class="fragment">False inference of demography.</li>
+</ul>
+</div>
+</section>
+<section id="identifying-structure-can-also-lead-to-identifying-cryptic-speciesvariation" class="slide level2">
+<h2>Identifying structure can also lead to identifying cryptic species/variation</h2>
+<p>Another advantage of running this analysis first is that you may discover that a trait you <em>thought</em> was a local adaptation is actually indicative of a cryptic species.</p>
+</section>
+<section id="e.g.-pangolins" class="slide level2">
+<h2>E.g. pangolins</h2>
+
+<img data-src="images/paste-16.png" class="r-stretch"><p><span class="citation" data-cites="Gu2023">(<a href="#/references" role="doc-biblioref" onclick="">Gu et al. 2023</a>)</span></p>
+</section>
+<section id="another-example-aspergillus" class="slide level2">
+<h2>Another example: <em>Aspergillus</em></h2>
+
+<img data-src="images/paste-17.png" class="r-stretch"><p><span class="citation" data-cites="Steenwyk2024">(<a href="#/references" role="doc-biblioref" onclick="">Steenwyk et al. 2024</a>)</span></p>
+</section>
+<section id="and-they-can-be-old" class="slide level2">
+<h2>And they can be old!</h2>
+
+<img data-src="images/paste-18.png" class="r-stretch"></section>
+<section id="and-another-one" class="slide level2">
+<h2>And another one:</h2>
+
+<img data-src="images/paste-19.png" class="r-stretch"><p><span class="citation" data-cites="Fischer2025">(<a href="#/references" role="doc-biblioref" onclick="">Fischer et al. 2025</a>)</span></p>
+</section>
+<section id="best-approaches-for-structure-detection" class="slide level2">
+<h2>Best approaches for structure detection</h2>
+<p>Rough scan of clustering in PCA space to start.</p>
+<div class="fragment">
+<p>Run <em><code>fastStructure</code></em>, <em><code>PCANGSD</code></em> , <code>ADMIXTURE</code></p>
+</div>
+<div class="fragment">
+<p>Be aware that obvious clustering can occur due to over-sampling particular locations/families.</p>
+</div>
+<div class="fragment">
+<p>And consequently - phenotypic differences may not be unique to clusters.</p>
+</div>
+</section>
+<section id="what-to-do-once-you-have-it" class="slide level2">
+<h2>What to do once you have it</h2>
+<p>Once you have identified population structure, it is worth asking if the trait you are interested in is limited/enhanced in some subpopulation.</p>
+<div class="fragment">
+<p>If this is the case, you can follow some of the other approaches we identified previously (GWAS/PBS/QTL) to identify the genetic underpinnings of the trait.</p>
+</div>
+<div class="fragment">
+<p>If the trait is distributed across ancestries - GWAS, but keep in mind population structure as a co-variate.</p>
+</div>
+</section>
+<section id="step-2-demography-estimation" class="slide level2 smaller">
+<h2>Step 2: Demography estimation</h2>
+<p>Demographic changes essentially introduce population structure, and so <span class="math inline">\(h^2\)</span> can appear to be elevated after a bottleneck.</p>
+<div class="fragment">
+<p>Similarly, you may detect what looks like structure, even if it’s a result of recent bottlenecking in some but not all of your samples.</p>
+</div>
+<div class="fragment">
+<p>If those samples are also differentiated phenotypically, this can drive you to see patterns of selection + multi-allelic differentiation.</p>
+</div>
+<div class="fragment">
+<p>There is no practical advice of how to “fix” a population with reduced genetic diversity following a bottleneck - these are simply constraints of biology.</p>
+</div>
+</section>
+<section id="e.g." class="slide level2">
+<h2>E.g.</h2>
+
+<img data-src="images/paste-20.png" class="r-stretch"><p><span class="citation" data-cites="Lohmueller2014">(<a href="#/references" role="doc-biblioref" onclick="">Lohmueller 2014</a>)</span></p>
+</section>
+<section id="example-white-sands-lizards" class="slide level2">
+<h2>Example: white sands lizards</h2>
+<p>Too many figures to list here, so <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/mec.13385">link</a>.</p>
+</section>
+<section id="demography-how-to-estimate" class="slide level2 smaller">
+<h2>Demography: how to estimate</h2>
+<p>Depending on the number of groups, this can be extremely complex.</p>
+<div class="fragment">
+<p>We’ve talked about several approaches to estimate demography, and we’ll talk about more next week with ARG and SMC approaches.</p>
+</div>
+<div class="fragment">
+<p>Both still require some knowledge about population relationships, split timings, etc. to be efficient.</p>
+</div>
+<div class="fragment">
+<p>So, often first step is to generate gene trees across the genome, unless doing full ARG approach.</p>
+</div>
+<div class="fragment">
+<p>Alternative - run <code>PSMC</code> on individual genomes from different groups to obtain a rough idea of demography.</p>
+<p>This is easy and quick, but many better methods exist if you are explicitly interested in demographic change.</p>
+</div>
+</section>
+<section id="what-to-do-once-you-have-it-1" class="slide level2">
+<h2>What to do once you have it</h2>
+<p>Be mindful that recent demographic changes may have erased/lessened signals of selection.</p>
+<div class="fragment">
+<p>But, strong selection has probably caused a bottleneck in the whole genome.</p>
+</div>
+<div class="fragment">
+<p>So, a lack of any demographic change should inform what you think about trait evolution as well.</p>
+</div>
+<div class="fragment">
+<p>Local demographic estimates (using only regions near putative causal genes) can help inform the type/timing of selection as well.</p>
+</div>
+</section>
+<section id="step-3-identify-population-differentiation" class="slide level2">
+<h2>Step 3: Identify population differentiation</h2>
+<p>Look for where in the genome your populations are diverged.</p>
+<div class="fragment">
+<p>If there are clear differences between parts of the genome and there are phenotypic differences - these are the places to start looking.</p>
+</div>
+<div class="fragment">
+<p>If only one of your populations shows some trait of interest, recall PBS</p>
+</div>
+</section>
+<section id="pbs-in-cryptic-coral" class="slide level2">
+<h2>PBS in cryptic coral</h2>
+
+<img data-src="images/paste-23.png" class="r-stretch"><p><span class="citation" data-cites="Rose2021">(<a href="#/references" role="doc-biblioref" onclick="">Rose et al. 2021</a>)</span></p>
+</section>
+<section id="f_st-selection" class="slide level2">
+<h2><span class="math inline">\(F_{ST} !=\)</span> selection</h2>
+
+<img data-src="images/paste-24.png" class="r-stretch"><p><span class="citation" data-cites="Renaut2013">(<a href="#/references" role="doc-biblioref" onclick="">Renaut et al. 2013</a>)</span></p>
+</section>
+<section id="isolation-by-distance-can-look-like-selection" class="slide level2">
+<h2>Isolation by distance can look like selection</h2>
+<p>We’ve talked about clines/divergence among locally adapted populations.</p>
+<div class="fragment">
+<p>But clines also naturally occur between populations when each subpopulation has limited migration to the next (island chain model).</p>
+</div>
+<div class="fragment">
+<p>How can we distinguish if a trait you are interested in is different not from geographic isolation, but because of selection?</p>
+</div>
+</section>
+<section id="q_st---f_st" class="slide level2 smaller">
+<h2><span class="math inline">\(Q_{ST}\)</span> - <span class="math inline">\(F_{ST}\)</span></h2>
+<p>A simple statistic to gauge whether your trait variation is commensurate with your genetic variation is the <span class="math inline">\(Q_{ST}\)</span> statistic = $ $, where <span class="math inline">\(V_{AW}\)</span> is additive variance within populations, <span class="math inline">\(V_{AB}\)</span> is between populations.</p>
+<div class="fragment">
+<p>This is analogous to <span class="math inline">\(F_{ST}\)</span> (which asks what proportion of genetic variation is exclusive to each population), but asks what proportion of total <em>phenotypic</em> variation is exclusive to each population.</p>
+</div>
+<div class="fragment">
+<p>When <span class="math inline">\(Q_{ST}\)</span> exceeds genome-wide <span class="math inline">\(F_{ST}\)</span> - trait divergence faster than genetic: could be adaptation.</p>
+</div>
+<div class="fragment">
+<p>When <span class="math inline">\(Q_{ST} \approx F_{ST}\)</span> - could be traits diverging purely by drift.</p>
+</div>
+</section>
+<section id="example-snapdragons" class="slide level2">
+<h2>Example: Snapdragons</h2>
+<p><img data-src="images/paste-21.png"> <span class="citation" data-cites="Marin2020">(<a href="#/references" role="doc-biblioref" onclick="">Marin et al. 2020</a>)</span></p>
+</section>
+<section id="introgression-analyses" class="slide level2">
+<h2>Introgression analyses?</h2>
+<p>As you identify demography and divergence, you may see that parts of the genome show much <em>less</em> divergence than you may have expected. This is a solid first tell for introgression.</p>
+<div class="fragment">
+<p>Introgression introduces a second layer of population structure - within genome differences in structure.</p>
+</div>
+<div class="fragment">
+<p>If a locus adaptively introgresses, it may be highly structured across all samples as a single population, while the rest of the genome shows more ancestries.</p>
+</div>
+<div class="fragment">
+<p>Here, you can run simple ABBA-BABA tests to gauge evidence for introgression, or TWISST2 to look for regions with differing topologies.</p>
+</div>
+</section>
+<section id="example-butterflies" class="slide level2">
+<h2>Example: butterflies</h2>
+
+<img data-src="images/paste-25.png" class="r-stretch"><p><span class="citation" data-cites="Jay2018">(<a href="#/references" role="doc-biblioref" onclick="">Jay et al. 2018</a>)</span></p>
+</section>
+<section id="all-along---avoid-adaptationist-arguments" class="slide level2">
+<h2>All along - avoid adaptationist arguments</h2>
+<p>We took a while to talk about selection this semester - by design.</p>
+<div class="fragment">
+<p>Selection is often not the primary evolutionary force explaining genetic variation.</p>
+</div>
+<div class="fragment">
+<p>And, selection may not be ongoing in a population once you are studying the trait.</p>
+</div>
+<div class="fragment">
+<p>A fun example - cane toads in Australia.</p>
+</div>
+</section>
+<section id="cane-toads" class="slide level2">
+<h2>Cane Toads</h2>
+
+<img data-src="images/paste-26.png" class="r-stretch"><p><span class="citation" data-cites="Phillips2006">(<a href="#/references" role="doc-biblioref" onclick="">Phillips et al. 2006</a>)</span></p>
+</section>
+<section id="whats-selected-may-not-be-the-trait-you-are-focusing-on" class="slide level2">
+<h2>What’s selected may not be the trait you are focusing on</h2>
+<p>When we do talk about selection, it is worth considering arguments about the <em>levels of selection</em>.</p>
+<div class="fragment">
+<p>We have been nice and vague and referred to fitness as the number of offspring produced, but we never really named what the <em>individual</em> being studied is.</p>
+</div>
+<div class="fragment">
+<p>Is it a gene (and offspring are gene copies?)</p>
+</div>
+<div class="fragment">
+<p>Is it a whole organism?</p>
+</div>
+<div class="fragment">
+<p>Is it groups of organisms?</p>
+</div>
+<div class="fragment">
+<p>Is it species?</p>
+</div>
+</section>
+<section id="big-points" class="slide level2">
+<h2>Big points</h2>
+<p>Selection <em>will</em> operate, and evolution <em>will</em> happen at any imaginable level if its main criteria are met:</p>
+<div class="fragment">
+<ul>
+<li class="fragment"><p>There are differences in some trait among the population in the next generation.</p></li>
+<li class="fragment"><p>That difference is in some ways heritable.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<p>This is very vague, by design.</p>
+</div>
+<div class="fragment">
+<p>What levels of selection is selection <em>efficient</em> at?</p>
+</div>
+</section>
+<section id="confusions-in-trait-selection---kin-selection" class="slide level2">
+<h2>Confusions in trait selection - kin selection</h2>
+<p>When talking about group selection, a common argument is that <em>altruistic</em> traits cannot evolve as they would not be favored at the genic level.</p>
+<div class="fragment">
+<p>Is this true?</p>
+</div>
+<div class="fragment">
+<p>Hamilton’s Rule states that if <span class="math inline">\(r B &gt; C\)</span>, an “altruist” allele will spread.</p>
+</div>
+<div class="fragment">
+<p>Is this truly altruism?</p>
+</div>
+</section>
+<section id="some-examples-of-confused-levels-of-selection" class="slide level2">
+<h2>Some examples of confused levels of selection</h2>
+
+<img data-src="images/paste-27.png" width="448" class="r-stretch"><p><span class="citation" data-cites="Long2023">(<a href="#/references" role="doc-biblioref" onclick="">Long et al. 2023</a>)</span></p>
+</section>
+<section id="big-takeaways" class="slide level2">
+<h2>Big Takeaways</h2>
+<p>Even if you are uninterested in the structure/demographic history of your populations, understanding them is crucial to understanding the actual traits you are interested in.</p>
+<div class="fragment">
+<p>Thankfully, many of the approaches to do broad population genetic analyses are becoming more standardized, and easier to achieve.</p>
+</div>
+<div class="fragment">
+<p>Interpreting your trait evolution in light of this evolutionary history is still somewhat of an art - read lots of pop gen papers, expect the unexpected.</p>
+</div>
+</section>
+<section id="short-assignment-2" class="slide level2">
+<h2>Short Assignment 2</h2>
+<p>Due November 14th.</p>
+<div class="fragment">
+<p>Initial analysis of your data: a markdown script of what analyses you have run, with included figures of what results you have so far.</p>
+</div>
+<div class="fragment">
+<p>Should include at least the first analysis we discussed in your one on one meetings - for many of you this is just looking for structure. <code>PCAngsd</code> is fine, or run <code>fastSTRUCTURE</code>, <code>ADMIXTURE</code>, etc.</p>
+</div>
+<div class="fragment">
+<p>Write-up should include what follow-up analyses are warranted for your end goal. For example - will you need to run demographic analysis? What approaches will you use?</p>
+</div>
+</section>
+<section id="this-weeks-reading" class="slide level2">
+<h2>This week’s reading</h2>
+<p>TREE paper on the effects of inversions in evolution.</p>
+<div class="fragment">
+<p>Inversions, by virtue of supressing recombination, have been considered as “supergenes” - carrying many alleles with various effects on potentially many traits.</p>
+</div>
+<div class="fragment">
+<p>In empirical data - they turn out to have a variety of impacts on traits outside of suppressing recombination.</p>
+</div>
+<div class="fragment">
+<p>More specifically, they’ll point out some of the difficulties in validating evolutionary stories about inversion effects once the easy analyses are done.</p>
+</div>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Fischer2025" class="csl-entry" role="listitem">
+Fischer, Nicola M., Imogen Dumville, Benoit Nabholz, Violeta Zhelyazkova, Ruth-Marie Stecker, Anna S. Blomberg, Serena E. Dool, et al. 2025. <span>“Two Distinct Host-Specialized Fungal Species Cause White-Nose Disease in Bats.”</span> <em>Nature</em> 642 (8069): 1034–40. <a href="https://doi.org/10.1038/s41586-025-09060-5">https://doi.org/10.1038/s41586-025-09060-5</a>.
+</div>
+<div id="ref-Gu2023" class="csl-entry" role="listitem">
+Gu, Tong-Tong, Hong Wu, Feng Yang, Philippe Gaubert, Sean P. Heighton, Yeyizhou Fu, Ke Liu, et al. 2023. <span>“Genomic Analysis Reveals a Cryptic Pangolin Species.”</span> <em>Proceedings of the National Academy of Sciences</em> 120 (40). <a href="https://doi.org/10.1073/pnas.2304096120">https://doi.org/10.1073/pnas.2304096120</a>.
+</div>
+<div id="ref-Jay2018" class="csl-entry" role="listitem">
+Jay, Paul, Annabel Whibley, Lise Frézal, María Ángeles Rodríguez de Cara, Reuben W. Nowell, James Mallet, Kanchon K. Dasmahapatra, and Mathieu Joron. 2018. <span>“Supergene Evolution Triggered by the Introgression of a Chromosomal Inversion.”</span> <em>Current Biology</em> 28 (11): 1839–1845.e3. <a href="https://doi.org/10.1016/j.cub.2018.04.072">https://doi.org/10.1016/j.cub.2018.04.072</a>.
+</div>
+<div id="ref-Lohmueller2014" class="csl-entry" role="listitem">
+Lohmueller, Kirk E. 2014. <span>“The Impact of Population Demography and Selection on the Genetic Architecture of Complex Traits.”</span> Edited by Scott M. Williams. <em>PLoS Genetics</em> 10 (5): e1004379. <a href="https://doi.org/10.1371/journal.pgen.1004379">https://doi.org/10.1371/journal.pgen.1004379</a>.
+</div>
+<div id="ref-Long2023" class="csl-entry" role="listitem">
+Long, Lijiang, Wen Xu, Francisco Valencia, Annalise B Paaby, and Patrick T McGrath. 2023. <span>“A Toxin-Antidote Selfish Element Increases Fitness of Its Host.”</span> <em>eLife</em> 12 (October). <a href="https://doi.org/10.7554/elife.81640">https://doi.org/10.7554/elife.81640</a>.
+</div>
+<div id="ref-Marin2020" class="csl-entry" role="listitem">
+Marin, Sara, Anaïs Gibert, Juliette Archambeau, Vincent Bonhomme, Mylène Lascoste, and Benoit Pujol. 2020. <span>“Potential Adaptive Divergence Between Subspecies and Populations of Snapdragon Plants Inferred from <span><em>Q</em></span><span><sub>ST</sub></span><span></span><span><em>F</em></span><span><sub>ST</sub></span> Comparisons.”</span> <em>Molecular Ecology</em> 29 (16): 3010–21. <a href="https://doi.org/10.1111/mec.15546">https://doi.org/10.1111/mec.15546</a>.
+</div>
+<div id="ref-Phillips2006" class="csl-entry" role="listitem">
+Phillips, Benjamin L., Gregory P. Brown, Jonathan K. Webb, and Richard Shine. 2006. <span>“Invasion and the Evolution of Speed in Toads.”</span> <em>Nature</em> 439 (7078): 803–3. <a href="https://doi.org/10.1038/439803a">https://doi.org/10.1038/439803a</a>.
+</div>
+<div id="ref-Renaut2013" class="csl-entry" role="listitem">
+Renaut, S., C. J. Grassa, S. Yeaman, B. T. Moyers, Z. Lai, N. C. Kane, J. E. Bowers, J. M. Burke, and L. H. Rieseberg. 2013. <span>“Genomic Islands of Divergence Are Not Affected by Geography of Speciation in Sunflowers.”</span> <em>Nature Communications</em> 4 (1). <a href="https://doi.org/10.1038/ncomms2833">https://doi.org/10.1038/ncomms2833</a>.
+</div>
+<div id="ref-Rose2021" class="csl-entry" role="listitem">
+Rose, Noah H., Rachael A. Bay, Megan K. Morikawa, Luke Thomas, Elizabeth A. Sheets, and Stephen R. Palumbi. 2021. <span>“Genomic Analysis of Distinct Bleaching Tolerances Among Cryptic Coral Species.”</span> <em>Proceedings of the Royal Society B: Biological Sciences</em> 288 (1960). <a href="https://doi.org/10.1098/rspb.2021.0678">https://doi.org/10.1098/rspb.2021.0678</a>.
+</div>
+<div id="ref-Steenwyk2024" class="csl-entry" role="listitem">
+Steenwyk, Jacob L., Sonja Knowles, Rafael W. Bastos, Charu Balamurugan, David Rinker, Matthew E. Mead, Christopher D. Roberts, et al. 2024. <span>“Evolutionary Origin and Population Diversity of a Cryptic Hybrid Pathogen.”</span> <em>Nature Communications</em> 15 (1). <a href="https://doi.org/10.1038/s41467-024-52639-1">https://doi.org/10.1038/s41467-024-52639-1</a>.
+</div>
+</div>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1080,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/adagilis\.github\.io\/PopGen25\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
