@@ -203,7 +203,8 @@
 <section id="example" class="slide level2">
 <h2>Example</h2>
 
-<img data-src="images/paste-28.png" class="r-stretch"></section>
+<img data-src="images/paste-28.png" class="r-stretch"><p><span class="citation" data-cites="Lewanski2024">(<a href="#/references" role="doc-biblioref" onclick="">Lewanski, Grundler, and Bradburd 2024</a>)</span></p>
+</section>
 <section id="another-way-to-portray-an-arg" class="slide level2">
 <h2>Another way to portray an ARG</h2>
 
@@ -389,18 +390,18 @@
 <h2>Practical approaches for ARG inference.</h2>
 <p>There are the purely SMC variants, generally meant to estimate demography (population sizes and migration rates):</p>
 <ul>
-<li class="fragment"><p><code>PSMC</code></p></li>
-<li class="fragment"><p><code>SMC'</code></p></li>
-<li class="fragment"><p><code>SMC+</code></p></li>
-<li class="fragment"><p><code>MSMC</code>/<code>MSCM2</code></p></li>
+<li class="fragment"><p><code>PSMC</code> <span class="citation" data-cites="Li2011">(<a href="#/references" role="doc-biblioref" onclick="">Li and Durbin 2011</a>)</span></p></li>
+<li class="fragment"><p><code>SMC'</code> <span class="citation" data-cites="Wilton2015">(<a href="#/references" role="doc-biblioref" onclick="">Wilton, Carmi, and Hobolth 2015</a>)</span></p></li>
+<li class="fragment"><p><code>SMC++</code> <span class="citation" data-cites="Terhorst2017">(<a href="#/references" role="doc-biblioref" onclick="">Terhorst, Kamm, and Song 2016</a>)</span></p></li>
+<li class="fragment"><p><code>MSMC</code>/<code>MSCM2</code> <span class="citation" data-cites="Schiffels2020">(<a href="#/references" role="doc-biblioref" onclick="">Schiffels and Wang 2020</a>)</span></p></li>
 </ul>
 <div class="fragment">
 <p>Then there are ARG inference approaches, which do not, by themselves, give you demography, but give a good approximation of the underlying ARG for your data:</p>
 <ul>
-<li class="fragment"><code>tsinfer</code> (also does demography with <code>tsdate</code>)</li>
-<li class="fragment"><code>ARGWeaver</code> (also does)</li>
-<li class="fragment"><code>ARG-needle</code> (also does GWAS)</li>
-<li class="fragment"><code>Relate</code> (also does everything)</li>
+<li class="fragment"><code>tsinfer</code> (also does demography with <code>tsdate</code>) <span class="citation" data-cites="Kelleher2019">(<a href="#/references" role="doc-biblioref" onclick="">Kelleher et al. 2019</a>)</span></li>
+<li class="fragment"><code>ARGWeaver</code> (also does recombination) [<span class="citation" data-cites="Rasmussen2014">Rasmussen et al. (<a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span>]<span class="citation" data-cites="Hubisz2020">(<a href="#/references" role="doc-biblioref" onclick="">Hubisz and Siepel 2020</a>)</span></li>
+<li class="fragment"><code>ARG-needle</code> (also does GWAS) <span class="citation" data-cites="Zhang2023">(<a href="#/references" role="doc-biblioref" onclick="">Zhang et al. 2023</a>)</span></li>
+<li class="fragment"><code>Relate</code> (also does everything) <span class="citation" data-cites="Speidel2019">(<a href="#/references" role="doc-biblioref" onclick="">Speidel et al. 2019</a>)</span></li>
 </ul>
 </div>
 </section>
@@ -444,13 +445,50 @@
 <p><img data-src="images/paste-33.png"></p>
 </div>
 </section>
+<section id="reading-for-thursday" class="slide level2">
+<h2>Reading for Thursday</h2>
+<p>A more efficient approach to estimate demography.</p>
+<div class="fragment">
+<p>Will be compared to many of the approaches you see here, and to results we talked about in terms of bottlenecks/structure in ancient African populations.</p>
+</div>
+<div class="fragment">
+<p>Long and technical - read early/read often.</p>
+</div>
+</section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Hubisz2020" class="csl-entry" role="listitem">
+Hubisz, Melissa, and Adam Siepel. 2020. <span>“Inference of Ancestral Recombination Graphs Using ARGweaver.”</span> In, 231–66. Springer US. <a href="https://doi.org/10.1007/978-1-0716-0199-0_10">https://doi.org/10.1007/978-1-0716-0199-0_10</a>.
+</div>
 <div id="ref-Kelleher2019" class="csl-entry" role="listitem">
 Kelleher, Jerome, Yan Wong, Anthony W. Wohns, Chaimaa Fadil, Patrick K. Albers, and Gil McVean. 2019. <span>“Inferring Whole-Genome Histories in Large Population Datasets.”</span> <em>Nature Genetics</em> 51 (9): 1330–38. <a href="https://doi.org/10.1038/s41588-019-0483-y">https://doi.org/10.1038/s41588-019-0483-y</a>.
+</div>
+<div id="ref-Lewanski2024" class="csl-entry" role="listitem">
+Lewanski, Alexander L., Michael C. Grundler, and Gideon S. Bradburd. 2024. <span>“The Era of the ARG: An Introduction to Ancestral Recombination Graphs and Their Significance in Empirical Evolutionary Genomics.”</span> Edited by Bret Payseur. <em>PLOS Genetics</em> 20 (1): e1011110. <a href="https://doi.org/10.1371/journal.pgen.1011110">https://doi.org/10.1371/journal.pgen.1011110</a>.
+</div>
+<div id="ref-Li2011" class="csl-entry" role="listitem">
+Li, Heng, and Richard Durbin. 2011. <span>“Inference of Human Population History from Individual Whole-Genome Sequences.”</span> <em>Nature</em> 475 (7357): 493–96. <a href="https://doi.org/10.1038/nature10231">https://doi.org/10.1038/nature10231</a>.
+</div>
+<div id="ref-Rasmussen2014" class="csl-entry" role="listitem">
+Rasmussen, Matthew D., Melissa J. Hubisz, Ilan Gronau, and Adam Siepel. 2014. <span>“Genome-Wide Inference of Ancestral Recombination Graphs.”</span> Edited by Graham Coop. <em>PLoS Genetics</em> 10 (5): e1004342. <a href="https://doi.org/10.1371/journal.pgen.1004342">https://doi.org/10.1371/journal.pgen.1004342</a>.
+</div>
+<div id="ref-Schiffels2020" class="csl-entry" role="listitem">
+Schiffels, Stephan, and Ke Wang. 2020. <span>“MSMC and MSMC2: The Multiple Sequentially Markovian Coalescent.”</span> In, 147–66. Springer US. <a href="https://doi.org/10.1007/978-1-0716-0199-0_7">https://doi.org/10.1007/978-1-0716-0199-0_7</a>.
+</div>
+<div id="ref-Speidel2019" class="csl-entry" role="listitem">
+Speidel, Leo, Marie Forest, Sinan Shi, and Simon R. Myers. 2019. <span>“A Method for Genome-Wide Genealogy Estimation for Thousands of Samples.”</span> <em>Nature Genetics</em> 51 (9): 1321–29. <a href="https://doi.org/10.1038/s41588-019-0484-x">https://doi.org/10.1038/s41588-019-0484-x</a>.
+</div>
+<div id="ref-Terhorst2017" class="csl-entry" role="listitem">
+Terhorst, Jonathan, John A Kamm, and Yun S Song. 2016. <span>“Robust and Scalable Inference of Population History from Hundreds of Unphased Whole Genomes.”</span> <em>Nature Genetics</em> 49 (2): 303–9. <a href="https://doi.org/10.1038/ng.3748">https://doi.org/10.1038/ng.3748</a>.
+</div>
+<div id="ref-Wilton2015" class="csl-entry" role="listitem">
+Wilton, Peter R, Shai Carmi, and Asger Hobolth. 2015. <span>“The SMC<span>’</span> Is a Highly Accurate Approximation to the Ancestral Recombination Graph.”</span> <em>Genetics</em> 200 (1): 343–55. <a href="https://doi.org/10.1534/genetics.114.173898">https://doi.org/10.1534/genetics.114.173898</a>.
+</div>
+<div id="ref-Zhang2023" class="csl-entry" role="listitem">
+Zhang, Brian C., Arjun Biddanda, Árni Freyr Gunnarsson, Fergus Cooper, and Pier Francesco Palamara. 2023. <span>“Biobank-Scale Inference of Ancestral Recombination Graphs Enables Genealogical Analysis of Complex Traits.”</span> <em>Nature Genetics</em> 55 (5): 768–76. <a href="https://doi.org/10.1038/s41588-023-01379-x">https://doi.org/10.1038/s41588-023-01379-x</a>.
 </div>
 </div>
 </section>
