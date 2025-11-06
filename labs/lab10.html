@@ -205,18 +205,13 @@ seqtk mutfa chr22.fa &lt;(gzip -dc ${sample}.vcf.gz|${psmcdir}/utils/vcf2snp.pl 
 ${psmcdir}/utils/fq2psmcfa -q20 ${sample}.fq.gz &gt; ${sample}.psmcfa</code></pre>
 <p>And you’ll have the same pre-requisite files, but now filtered.</p>
 <p>Now that you have the files ready, runnning psmc is a single line:</p>
-<pre class="{bash}"><code>${psmc}/psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o ${sample}.psmc ${sample}.psmcfa</code></pre>
+<pre class="{bash}"><code>${psmcdir}/psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o ${sample}.psmc ${sample}.psmcfa</code></pre>
 <p>This might take a minute if you are running on your own computer, but once it’s done you should have a file that contains the results. As it runs - what are the parameters? <code>-N</code> specifics the maximum number of iterations (here 25). <code>-t15</code> identifies the maximum coalescent time (a multiple of <span class="math inline">\(2N_0\)</span>). <code>-r</code> specifies the initial <span class="math inline">\(\theta/\rho\)</span> ratio which is optimized over the course of the run, and <code>-p</code> specifies the bins that demography will be estimated in. The above pattern is the default for the human phylogeny - a bin of size 4, 25 bins of size 2 and then a 4 and a 6. The “size” of these depends on the parameter choices, and ideally each timespan contains at least 10 recombination events. How you determine that is essentially by fidlling with <code>-t</code> and <code>-p</code> until you either feel confident, or get tired of fiddling with the parameters. Ideally, each time period is meant to contain about ~10 recombination events in your data, but there is no hard rule for how to determine that.</p>
 <p>Generally, you will also want to bootstrap your runs (by runnning on subsets of the data). The guide for this is available on the psmc git page.</p>
 <p>Finally, you will want to plot the results. <code>PSMC</code> includes a useful script for this, although consider writing your own <code>R</code> code to plot.</p>
 <pre class="{bash}"><code>${psmcdir}/utils/psmc_plot.pl ${sample} ${sample}.psmc</code></pre>
 <p>That should produce the following:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/paste-6.png" class="img-fluid figure-img" width="582"></p>
-<figcaption><img src="images/paste-7.png" class="img-fluid figure-img"></figcaption>
-</figure>
-</div>
+<p><img src="images/paste-7.png" class="img-fluid"></p>
 <p>This plotting does a few things by default, setting the human generation time (25 years) and mutation rate (although the mutation rate has some estimation that happens during the run). The population size is scaled relative to <span class="math inline">\(N_0\)</span> - the current population size. So, the numbers you see are not necessarily meaningful off the bat for your system - you’ll need to do some conversions to figure out what they should be in your case. Pro tip - if you see the x axis look exactly like this in a publication and the system is not humans - it’s possible the authors never really fiddled around from default parameters. That could be fine - the default parameters turn out to work well enough for many systems. But also - that means they likely just ran the tool rather than understand what it’s meant to do, so take some caution in interpreting those results.</p>
 </section>
 <section id="smc" class="level3">
