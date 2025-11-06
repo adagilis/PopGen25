@@ -156,6 +156,7 @@ window.Quarto = {
   <li><a href="#psmc-and-smc" id="toc-psmc-and-smc" class="nav-link active" data-scroll-target="#psmc-and-smc">PSMC and SMC++</a>
   <ul class="collapse">
   <li><a href="#psmc" id="toc-psmc" class="nav-link" data-scroll-target="#psmc">PSMC</a></li>
+  <li><a href="#back-to-psmc-for-humans" id="toc-back-to-psmc-for-humans" class="nav-link" data-scroll-target="#back-to-psmc-for-humans">Back to PSMC for humans</a></li>
   <li><a href="#smc" id="toc-smc" class="nav-link" data-scroll-target="#smc">SMC++</a></li>
   </ul></li>
   <li><a href="#phlash" id="toc-phlash" class="nav-link" data-scroll-target="#phlash">PHLASH</a></li>
@@ -197,13 +198,20 @@ window.Quarto = {
 psmcdir="PATHTOPSMCINSTALLATION"
 bcftools view -s $sample subsampled_chr22.vcf.gz -Oz -o ${sample}.vcf.gz
 seqtk mutfa chr22.fa &lt;(gzip -dc ${sample}.vcf.gz|${psmcdir}/utils/vcf2snp.pl -) | seqtk seq | {psmcdir}/utils/fq2psmcfa - &gt; ${sample}.psmcfa</code></pre>
-<p>This should generate the psmc requisite file for your sequence. In your own data, you can use a slightly different approach if you have the raw reads for your sample. Once you have aligned them, you can then run:</p>
+<p>This should generate the psmc requisite file for your sequence.</p>
+<section id="if-you-want-to-run-on-own-data" class="level4">
+<h4 class="anchored" data-anchor-id="if-you-want-to-run-on-own-data">If you want to run on own data</h4>
+<p>In your own data, you can use a slightly different approach if you have the raw reads for your sample. Once you have aligned them, you can then run:</p>
 <pre class="{bash}"><code> ref="YOURREFERENCE.FA"
  samtools mpileup -C50 -uf ${ref}.fa ${sample}.bam | bcftools view -c - \
       | vcfutils.pl vcf2fq -d &lt;lower_quartile_depth&gt; -D &lt;upper_quartile_depth&gt; | gzip &gt; ${sample}.fq.gz
 
 ${psmcdir}/utils/fq2psmcfa -q20 ${sample}.fq.gz &gt; ${sample}.psmcfa</code></pre>
 <p>And you’ll have the same pre-requisite files, but now filtered.</p>
+</section>
+</section>
+<section id="back-to-psmc-for-humans" class="level3">
+<h3 class="anchored" data-anchor-id="back-to-psmc-for-humans">Back to PSMC for humans</h3>
 <p>Now that you have the files ready, runnning psmc is a single line:</p>
 <pre class="{bash}"><code>${psmcdir}/psmc -N25 -t15 -r5 -p "4+25*2+4+6" -o ${sample}.psmc ${sample}.psmcfa</code></pre>
 <p>This might take a minute if you are running on your own computer, but once it’s done you should have a file that contains the results. As it runs - what are the parameters? <code>-N</code> specifics the maximum number of iterations (here 25). <code>-t15</code> identifies the maximum coalescent time (a multiple of <span class="math inline">\(2N_0\)</span>). <code>-r</code> specifies the initial <span class="math inline">\(\theta/\rho\)</span> ratio which is optimized over the course of the run, and <code>-p</code> specifies the bins that demography will be estimated in. The above pattern is the default for the human phylogeny - a bin of size 4, 25 bins of size 2 and then a 4 and a 6. The “size” of these depends on the parameter choices, and ideally each timespan contains at least 10 recombination events. How you determine that is essentially by fidlling with <code>-t</code> and <code>-p</code> until you either feel confident, or get tired of fiddling with the parameters. Ideally, each time period is meant to contain about ~10 recombination events in your data, but there is no hard rule for how to determine that.</p>
@@ -221,7 +229,7 @@ ${psmcdir}/utils/fq2psmcfa -q20 ${sample}.fq.gz &gt; ${sample}.psmcfa</code></pr
 <p>Follow instructions here: <a href="https://github.com/popgenmethods/smcpp" class="uri">https://github.com/popgenmethods/smcpp</a></p>
 <p>For the human chromosome 2 data, you should focus on one of the human populations. Creating the command line to go from vcf to processed file might seem tedious, but you can make life very easy for yourself using something like <code>awk</code>, e.g.:</p>
 <pre class="{bash}"><code>
-awk 'BEGIN{printf "smc++ vcf2smc subsampled_chr22.vcf.gz chr22.smc.gz chr22 Pop1:"};$4=="FIN"{printf $1","}' samples_for_introgression.txt</code></pre>
+awk 'BEGIN{printf "smc++ vcf2smc subsampled_chr22.vcf.gz chr22.smc.gz 22 Pop1:"};$4=="FIN"{printf $1","}' samples_for_introgression.txt</code></pre>
 <p>This will leave a single hanging comma at the end, but it’ll print out a command with all of the individuals for some population formatted how <code>SMC++</code> prefers.</p>
 <p>You can then just run the estimation:</p>
 <pre class="{bash}"><code>mkdir analysis
