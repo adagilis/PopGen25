@@ -1019,14 +1019,21 @@
     "href": "notes/Lecture11.html#early-efforts---n_e-and-not-much-else",
     "title": "Lecture 11",
     "section": "Early efforts - \\(N_E\\) and not much else",
-    "text": "Early efforts - \\(N_E\\) and not much else\nEarly approaches focused on identifying heterozygosity and the implied effective population size.\n\nThe idea was rather simple - bigger effective population sizes should be more adaptable and less likely to show inbreeding, etc.\n\n\nWhy is \\(N_E\\) not the best predictor of adaptability?"
+    "text": "Early efforts - \\(N_E\\) and not much else\nEarly approaches focused on identifying heterozygosity and the implied effective population size (worries about inbreeding depression go all the way back to Darwin).\n\nThe idea was rather simple - bigger effective population sizes should be more adaptable and less likely to show inbreeding, etc.\n\n\nThe goal of many studies was therefore to initially estimate \\(N_E\\)\n\n\nWhy is \\(N_E\\) not the best predictor of adaptability?"
   },
   {
     "objectID": "notes/Lecture11.html#mutational-meltdown",
     "href": "notes/Lecture11.html#mutational-meltdown",
     "title": "Lecture 11",
     "section": "Mutational meltdown",
-    "text": "Mutational meltdown\nIn a classic paper Lynch et al showed how the ecological parameters of a population (carrying capacity and reproductive rate) directly tied to its long term \\(N_E\\) and, in turn, extinction probability.\n\nPopulations with low reproductive rates or low carrying capacities rapidly accumulated deleterious mutations that selection was simply ineffective in removing from the population.\n\n\nThis would lead to even slower reproduction - increased mutation accumulation, and continuing collapse of the population."
+    "text": "Mutational meltdown\nIn a classic paper (Lynch, Conery, and Bürger 1995) showed how the ecological parameters of a population (carrying capacity and reproductive rate) directly tied to its long term \\(N_E\\) and, in turn, extinction probability.\n\nPopulations with low reproductive rates or low carrying capacities rapidly accumulated deleterious mutations that selection was simply ineffective in removing from the population.\n\n\nThis would lead to even slower reproduction - increased mutation accumulation, and continuing collapse of the population.\n\n\nThe numbers used here were exceedingly small - carrying capacities of 150 were considered “large” populations."
+  },
+  {
+    "objectID": "notes/Lecture11.html#one-example---deer-in-ut-austin",
+    "href": "notes/Lecture11.html#one-example---deer-in-ut-austin",
+    "title": "Lecture 11",
+    "section": "One example - deer in UT Austin",
+    "text": "One example - deer in UT Austin\nBrackenridge field lab is fully enclosed by ~12 ft fencing.\n\n1982 a pregnant white-tailed doe manages to cross over, fleeing from coyotes. Gives birth to two males.\n\n\nBy early 2000s - ~40 deer in the fenced area.\n\n\nBy my graduate studies in 2013-2019: down to four individuals.\n\n\nMales with increasingly strange horns, females rarer and rarer."
   },
   {
     "objectID": "notes/Lecture11.html#pygmy-possums",
@@ -1061,14 +1068,14 @@
     "href": "notes/Lecture11.html#first-steps---measure-diversity",
     "title": "Lecture 11",
     "section": "First steps - measure diversity",
-    "text": "First steps - measure diversity\nThe first step for any conservation study is therefore to look for genetic diversity.\n\nHistorically, a few marker genes, especially mitochondrial have been used here.\n\n\nWhat is the expected heterozygosity for mtDNA versus autosomal genes?\n\n\nWhy not just use nuclear markers?"
+    "text": "First steps - measure diversity\nThe first step for any conservation study is therefore to look for genetic diversity.\n\nHistorically, a few marker genes, especially mitochondrial have been used here.\n\n\nWhat is the expected heterozygosity for mtDNA versus autosomal genes?\n\n\nWhy not sequence all nuclear DNA?"
   },
   {
-    "objectID": "notes/Lecture11.html#more-modern-approaches",
-    "href": "notes/Lecture11.html#more-modern-approaches",
+    "objectID": "notes/Lecture11.html#more-modern-approaches---more-sequencing",
+    "href": "notes/Lecture11.html#more-modern-approaches---more-sequencing",
     "title": "Lecture 11",
-    "section": "More modern approaches",
-    "text": "More modern approaches\nRecognizing that the costs of sequencing full genomes are likely too high to efficiently sample large populations, and that individual markers were potentially inaccurate, multiple axes developed.\n\nmetagenomics - identify all microbial species in a community (looking for community health, diversity, etc.) by sequencing all DNA from a sample.\n\n\neDNA - sample environmental DNA, identify sequences belonging to different species, ideally also identify diversity within species.\n\n\nRADseq/PoolSeq - either reduce the proportion of genome you sequence, or sequence to a low coverage but many samples together. Loses info on LD, but heterozygosity well estimated at many sites."
+    "section": "More modern approaches - more sequencing",
+    "text": "More modern approaches - more sequencing\nRecognizing that the costs of sequencing full genomes are likely too high to efficiently sample large populations, and that individual markers were potentially inaccurate, multiple axes developed.\n\nmetagenomics - identify all microbial species in a community (looking for community health, diversity, etc.) by sequencing all DNA from a sample.\n\n\neDNA - sample environmental DNA, identify sequences belonging to different species, ideally also identify diversity within species.\n\n\nRADseq/PoolSeq - either reduce the proportion of genome you sequence, or sequence to a low coverage but many samples together. Loses info on LD, but heterozygosity well estimated at many sites."
   },
   {
     "objectID": "notes/Lecture11.html#where-is-the-genetic-diversity",
@@ -1096,14 +1103,14 @@
     "href": "notes/Lecture11.html#geographic-distribution-of-genetic-diversity",
     "title": "Lecture 11",
     "section": "Geographic distribution of genetic diversity",
-    "text": "Geographic distribution of genetic diversity\nOne way to measure how diversity is distributed in your own data is to just look at genetic diversity across space.\n\nThis will show you what parts of the range might have lower genetic diversity, or be reservoirs for adaptability.\n\n\nBut, what can create an illusion of increased genetic diversity, from the processes we’ve looked at?"
+    "text": "Geographic distribution of genetic diversity\nOne way to measure how diversity is distributed in your own data is to just look at genetic diversity across space. (See EEMS or wingen).\n\nThis will show you what parts of the range might have lower genetic diversity, or be reservoirs for adaptability.\n\n\nBut, what can create an illusion of increased genetic diversity?"
   },
   {
     "objectID": "notes/Lecture11.html#what-are-the-conservation-units",
     "href": "notes/Lecture11.html#what-are-the-conservation-units",
     "title": "Lecture 11",
     "section": "What are the conservation units?",
-    "text": "What are the conservation units?\nWhen we think about species conservation, we think about… species\n\nBut, populations may be distinct in ways that warrant their conservation as subspecies/diverse variants.\n\n\nThis is similar to the issue of estimating population structure - are there sub-populations in your species.\n\n\nWe may want to protect all subpopulations, or only some. In practice - can’t protect everything, so what do you focus on?\n\n\nMore importantly, can we even tell species apart?"
+    "text": "What are the conservation units?\nWhen we think about species conservation, we think about species.\n\nBut, populations may be distinct in ways that warrant their conservation as subspecies/diverse variants.\n\n\nThis is similar to the issue of estimating population structure - are there sub-populations in your species.\n\n\nWe may want to protect all subpopulations, or only some. In practice - can’t protect everything, so what do you focus on?\n\n\nMore importantly, can we even tell species apart?"
   },
   {
     "objectID": "notes/Lecture11.html#multi-species-coalescent-and-testing-species-identity",
@@ -1190,11 +1197,11 @@
     "text": "Broad takeaways\n\nSmaller populations tend to have lower fitness\nSmaller populations tend to have lower adaptability\nRestoring/introducing conectivity can restore fitness and adaptability\nNo clear expectation of necessary minimum sizes for viable populations, but likely beyond what is practical for many species.\nA decline in \\(N_E\\) in recent times is a larger sign of worry than low historic \\(N_E\\)."
   },
   {
-    "objectID": "notes/Lecture11.html#things-that-havent-been-studied-much-yet",
-    "href": "notes/Lecture11.html#things-that-havent-been-studied-much-yet",
+    "objectID": "notes/Lecture11.html#emerging-areas",
+    "href": "notes/Lecture11.html#emerging-areas",
     "title": "Lecture 11",
-    "section": "Things that haven’t been studied much (yet)",
-    "text": "Things that haven’t been studied much (yet)\nOne lacking area in conservation genomics is an incorporation of other biotic factors in helping explain population persistence and evolvability.\n\nPresence of symbiotes, who can often outnumber plant/animal hosts by orders of magnitude might help explain some degree of adaptability in populations.\n\n\nE.g. heat adapted symbionts in corals. Presence not only reduces bleaching in individual corals, but can act as a source of adapted symbionts for whole community.\n\n\nCo-evolutionary theory often lacking - results easiest when assuming one partner is unchanging, which is not realistic.\n\n\nSymbionts can be horizontally inherited - heritability of traits therefore much less additive (and so not explained by classic models)."
+    "section": "Emerging areas",
+    "text": "Emerging areas\nOne lacking area in conservation genomics is an incorporation of other biotic factors in helping explain population persistence and evolvability.\n\nPresence of symbiotes, who can often outnumber plant/animal hosts by orders of magnitude might help explain some degree of adaptability in populations.\n\n\nE.g. heat adapted symbionts in corals. Presence not only reduces bleaching in individual corals, but can act as a source of adapted symbionts for whole community.\n\n\nCo-evolutionary theory often lacking - results easiest when assuming one partner is unchanging, which is not realistic.\n\n\nSymbionts can be horizontally inherited - heritability of traits therefore much less additive (and so not explained by classic models)."
   },
   {
     "objectID": "notes/Lecture11.html#some-surveys",
@@ -1222,7 +1229,7 @@
     "href": "notes/Lecture11.html#references",
     "title": "Lecture 11",
     "section": "References",
-    "text": "References"
+    "text": "References\n\n\n\n\nLynch, Michael, John Conery, and Reinhard Bürger. 1995. “MUTATIONAL MELTDOWNS IN SEXUAL POPULATIONS.” Evolution 49 (6): 1067–80. https://doi.org/10.1111/j.1558-5646.1995.tb04434.x."
   },
   {
     "objectID": "notes/Lecture1.html#welcome-to-the-class",
