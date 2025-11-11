@@ -197,7 +197,7 @@ window.Quarto = {
 <pre class="{bash}"><code>sample="YOURSAMPLENAMEGOESHERE"
 psmcdir="PATHTOPSMCINSTALLATION"
 bcftools view -s $sample subsampled_chr22.vcf.gz -Oz -o ${sample}.vcf.gz
-seqtk mutfa chr22.fa &lt;(gzip -dc ${sample}.vcf.gz|${psmcdir}/utils/vcf2snp.pl -) | seqtk seq | {psmcdir}/utils/fq2psmcfa - &gt; ${sample}.psmcfa</code></pre>
+seqtk mutfa chr22.fa &lt;(gzip -dc ${sample}.vcf.gz|${psmcdir}/utils/vcf2snp.pl -) | seqtk seq | ${psmcdir}/utils/fq2psmcfa - &gt; ${sample}.psmcfa</code></pre>
 <p>This should generate the psmc requisite file for your sequence.</p>
 <section id="if-you-want-to-run-on-own-data" class="level4">
 <h4 class="anchored" data-anchor-id="if-you-want-to-run-on-own-data">If you want to run on own data</h4>
