@@ -27,10 +27,13 @@ You can then run the following in bash (either on your machine or the cluster), 
 sample="YOURSAMPLENAMEGOESHERE"
 psmcdir="PATHTOPSMCINSTALLATION"
 bcftools view -s $sample subsampled_chr22.vcf.gz -Oz -o ${sample}.vcf.gz
-seqtk mutfa chr22.fa <(gzip -dc ${sample}.vcf.gz|${psmcdir}/utils/vcf2snp.pl -) | seqtk seq | {psmcdir}/utils/fq2psmcfa - > ${sample}.psmcfa
+seqtk mutfa chr22.fa <(gzip -dc ${sample}.vcf.gz|${psmcdir}/utils/vcf2snp.pl -) | seqtk seq | ${psmcdir}/utils/fq2psmcfa - > ${sample}.psmcfa
 ```
 
-This should generate the psmc requisite file for your sequence. In your own data, you can use a slightly different approach if you have the raw reads for your sample. Once you have aligned them, you can then run:
+This should generate the psmc requisite file for your sequence.
+
+#### If you want to run on own data
+ In your own data, you can use a slightly different approach if you have the raw reads for your sample. Once you have aligned them, you can then run:
 
 ```{bash}
  ref="YOURREFERENCE.FA"
@@ -41,6 +44,8 @@ ${psmcdir}/utils/fq2psmcfa -q20 ${sample}.fq.gz > ${sample}.psmcfa
 ```
 
 And you'll have the same pre-requisite files, but now filtered.
+
+### Back to PSMC for humans
 
 Now that you have the files ready, runnning psmc is a single line:
 
@@ -76,7 +81,7 @@ For the human chromosome 2 data, you should focus on one of the human population
 
 ```{bash}
 
-awk 'BEGIN{printf "smc++ vcf2smc subsampled_chr22.vcf.gz chr22.smc.gz chr22 Pop1:"};$4=="FIN"{printf $1","}' samples_for_introgression.txt
+awk 'BEGIN{printf "smc++ vcf2smc subsampled_chr22.vcf.gz chr22.smc.gz 22 Pop1:"};$4=="FIN"{printf $1","}' samples_for_introgression.txt
 ```
 
 This will leave a single hanging comma at the end, but it'll print out a command with all of the individuals for some population formatted how `SMC++` prefers.

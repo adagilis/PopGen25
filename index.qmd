@@ -28,7 +28,7 @@ Each week, we will start with a lecture on Tuesday, followed by a paper discussi
 | Oct 21-23 | Confounded selection, demography, mutation | [Joquera et al.](https://academic.oup.com/mbe/article/42/3/msaf053/8088191) | [Lecture 8](notes/Lecture8.qmd) |
 | Oct 28-30 | Accounting for selection/demography in trait evolution | [Lecture 9](notes/Lecture9.qmd) | [Wellenreuther et al.](https://www.cell.com/trends/ecology-evolution/fulltext/S0169-5347(25)00225-3) |
 | Nov 4-6 | Ancestral Recombination Graphs (and where to find them) | [Lecture 10](notes/Lecture10.qmd) | [Terhorst](https://www.nature.com/articles/s41588-025-02323-x) |
-| Nov 11-13 | Students' choice - Conservation Genetics |  |  |
+| Nov 11-13 | Students' choice - Conservation Genetics | [Lecture 11](notes/Lecture11.qmd)  | [Chambers et al](https://www.pnas.org/doi/epub/10.1073/pnas.2423688122) |
 | Nov 18-20 | Students' choice - Data Visualization in Genomics |  |  |
 | Nov 25-27 | THANKSGIVING BREAK |  |  |
 | Dec 2-4 | Project meetings, final projects due Dec 4 | NA |  |
