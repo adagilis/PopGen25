@@ -4,7 +4,7 @@ execute:
   freeze: auto  # re-render only when source changes
 format: 
     revealjs:
-        theme: dracula
+        theme: simple
         incremental: true
         preview-links: auto
         chalkboard: true
@@ -48,7 +48,7 @@ Early focus in quantifying genetic diversity (also a driver for many sequencing 
 
 ## Early efforts - $N_E$ and not much else
 
-Early approaches focused on identifying heterozygosity and the implied effective population size.
+Early approaches focused on identifying heterozygosity and the implied effective population size (worries about inbreeding depression go all the way back to Darwin).
 
 . . .
 
@@ -56,11 +56,15 @@ The idea was rather simple - bigger effective population sizes should be more ad
 
 . . .
 
+The goal of many studies was therefore to initially estimate $N_E$
+
+. . .
+
 Why is $N_E$ not the best predictor of adaptability?
 
 ## Mutational meltdown {.smaller}
 
-In a classic paper Lynch et al showed how the ecological parameters of a population (carrying capacity and reproductive rate) directly tied to its long term $N_E$ and, in turn, extinction probability.
+In a classic paper [@Lynch1995] showed how the ecological parameters of a population (carrying capacity and reproductive rate) directly tied to its long term $N_E$ and, in turn, extinction probability.
 
 . . .
 
@@ -70,11 +74,35 @@ Populations with low reproductive rates or low carrying capacities rapidly accum
 
 This would lead to even slower reproduction - increased mutation accumulation, and continuing collapse of the population.
 
+. . .
+
+The numbers used here were exceedingly small - carrying capacities of 150 were considered "large" populations.
+
+## One example - deer in UT Austin
+
+Brackenridge field lab is fully enclosed by \~12 ft fencing.
+
+. . .
+
+1982 a pregnant white-tailed doe manages to cross over, fleeing from coyotes. Gives birth to two males.
+
+. . .
+
+By early 2000s - \~40 deer in the fenced area.
+
+. . .
+
+By my graduate studies in 2013-2019: down to four individuals.
+
+. . .
+
+Males with increasingly strange horns, females rarer and rarer.
+
 ## Pygmy Possums
 
 ```{julia}
 using Plots, Measures, LaTeXStrings, CSV, DataFrames
-theme(:dracula)
+theme(:wong)
 default(dpi=400,xlabelfontsize=16,ylabelfontsize=16,markerstrokewidth=0)
 
 mars_data = CSV.read("data/possum_data.csv",DataFrame,header=false)
@@ -135,9 +163,9 @@ What is the expected heterozygosity for mtDNA versus autosomal genes?
 
 . . .
 
-Why not just use nuclear markers?
+Why not sequence all nuclear DNA?
 
-## More modern approaches {.smaller}
+## More modern approaches - more sequencing {.smaller}
 
 Recognizing that the costs of sequencing full genomes are likely too high to efficiently sample large populations, and that individual markers were potentially inaccurate, multiple axes developed.
 
@@ -183,7 +211,7 @@ Northern range expected to see more change due to climate/urbanization. Should w
 
 ## Geographic distribution of genetic diversity
 
-One way to measure how diversity is distributed in your own data is to just look at genetic diversity across space.
+One way to measure how diversity is distributed in your own data is to just look at genetic diversity across space. (See `EEMS` or `wingen`).
 
 . . .
 
@@ -191,11 +219,11 @@ This will show you what parts of the range might have lower genetic diversity, o
 
 . . .
 
-But, what can create an illusion of increased genetic diversity, from the processes we've looked at?
+But, what can create an illusion of increased genetic diversity?
 
 ## What are the conservation units?
 
-When we think about species conservation, we think about... species
+When we think about species conservation, we think about species.
 
 . . .
 
@@ -372,7 +400,7 @@ But this is $N_E$, not census size. Many species might sustain this level of $N_
 
 -   A decline in $N_E$ in recent times is a larger sign of worry than low historic $N_E$.
 
-## Things that haven't been studied much (yet)
+## Emerging areas {.smaller}
 
 One lacking area in conservation genomics is an incorporation of other biotic factors in helping explain population persistence and evolvability.
 
