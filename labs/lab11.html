@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 10 – EEB5348-Fall25</title>
+<title>Lab 11 – EEB5348-Fall25</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -195,6 +215,7 @@ window.Quarto = {
   <li><a href="#importing-data-installing-packages" id="toc-importing-data-installing-packages" class="nav-link" data-scroll-target="#importing-data-installing-packages">Importing data, installing packages</a></li>
   </ul></li>
   <li><a href="#selection-scans" id="toc-selection-scans" class="nav-link" data-scroll-target="#selection-scans">Selection scans</a></li>
+  <li><a href="#spoilers---wait-until-you-do-the-rest-of-the-analyses-to-read-here." id="toc-spoilers---wait-until-you-do-the-rest-of-the-analyses-to-read-here." class="nav-link" data-scroll-target="#spoilers---wait-until-you-do-the-rest-of-the-analyses-to-read-here.">Spoilers - wait until you do the rest of the analyses to read here.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -204,7 +225,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 10</h1>
+<h1 class="title">Lab 11</h1>
 </div>
 
 
@@ -236,7 +257,7 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>devtools<span class="op">::</span><span class="dt">install_github</span>(<span class="st">"bcm-uga/TESS3_encho_sen"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The data I have included for you this week comes from Schweizer et al, 2015, and contains 123 individual sequences of grey wolves across north america. We first read in the genotypes, here formatted almost exactly like the <code>GT</code> matrices you have dealt with before, but just transposed (instead of each row being a variant, and each column being an individual, each row is an individual and each column is a variant).</p>
+<p>The data I have included for you this week comes from <span class="citation" data-cites="Schweizer2016">(<a href="#ref-Schweizer2016" role="doc-biblioref">Schweizer et al. 2015</a>)</span>, and contains 94 individual sequences of grey wolves across north america. We first read in the coordinates of each sample and then the genotypes, here formatted almost exactly like the <code>GT</code> matrices you have dealt with before, but just transposed (instead of each row being a variant, and each column being an individual, each row is an individual and each column is a variant).</p>
 <div id="4" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tess3r)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
@@ -248,7 +269,7 @@ window.Quarto = {
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(add<span class="op">=</span>T,interior<span class="op">=</span>F)</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>geno <span class="op">=</span> as.<span class="fu">matrix</span>(read.<span class="fu">table</span>(<span class="st">"data/nacanids.lfmm"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now we can run the <code>TESS3</code> analysis. Recall this is quite similar to <code>ADMIXTURE</code>, but includes a spatial component.</p>
+<p>Now we can run the <code>TESS3</code> analysis. Recall this is quite similar to <code>ADMIXTURE</code>, but includes a spatial component. So, we need to specify the numbers of <span class="math inline">\(K\)</span> (ancestries) it will attempt to examine.</p>
 <div id="6" class="cell" data-execution_count="0">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>coords <span class="op">=</span> as.<span class="fu">matrix</span>(samples_table[,<span class="fl">2</span><span class="op">:</span><span class="fl">3</span>])</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tess3_res <span class="op">=</span> <span class="fu">tess3</span>(X<span class="op">=</span>geno,coord<span class="op">=</span>coords,K<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>,method<span class="op">=</span><span class="st">"projected.ls"</span>,ploidy<span class="op">=</span><span class="fl">2</span>,openMP.core.num<span class="op">=</span><span class="fl">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -263,7 +284,7 @@ window.Quarto = {
 <p>This utility plot is included with <code>tess3r</code> and is essentially just a barplot, but adds the nice bit of sorting individuals by their ancestries.</p>
 <p>We can next visualize how these ancestries are distributed across space. You will need the <code>terra</code> package for this to work (well, <code>raster</code>, but <code>raster</code> is now just a wrapper around <code>terra</code>), which will require you to install further, other packages in WSL/macOS depending on where you run the code. Follow their instructions <a href="https://github.com/rspatial/terra">here</a>.</p>
 <div id="10" class="cell" data-execution_count="0">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>area_plot <span class="op">=</span> <span class="fu">plot</span>(ancestry_matrix,method<span class="op">=</span><span class="st">"map.max"</span>,interpol<span class="op">=</span><span class="fu">FieldsKrigModel</span>(<span class="fl">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>area_plot <span class="op">=</span> <span class="fu">plot</span>(ancestry_matrix,coords,method<span class="op">=</span><span class="st">"map.max"</span>,interpol<span class="op">=</span><span class="fu">FieldsKrigModel</span>(<span class="fl">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This will be part of your submission for this week. If you chose a <span class="math inline">\(K\)</span> value larger than 3, you are probably scratching your head a little bit at this plot. Remember that choosing the right <span class="math inline">\(K\)</span> is a bit of an art - populations are often hierarchically nested. That being said - which ancestry looks to be most range limited? What environment does that seem to correlate with (pull up google maps here). One thing that might help you interpret your results - even though <code>tess3</code> takes spatial coordinates into account, it does not take into account anything about what is in that space. So, to your human eyes two samples across the Hudson Bay are essentially isolated, but to TESS they are whatever “as the crow flies” distance apart. A different (sometimes better) approach is something like <code>FEEMS</code>, but since it’s heavy in <code>python</code> I won’t make you run through that code, but you can find it <a href="https://github.com/NovembreLab/feems">here</a>, and we are using their example data.</p>
 </section>
@@ -285,13 +306,25 @@ window.Quarto = {
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pvals,pch<span class="op">=</span><span class="st">"."</span>,xlab<span class="op">=</span><span class="st">"SNP Index"</span>,ylab<span class="op">=</span><span class="st">"-log10(pvalue)"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(sig_vals,<span class="fu">-log10</span>(pvals)[sig_vals],pch<span class="op">=</span><span class="st">"."</span>,cex<span class="op">=</span><span class="fl">5</span>,col<span class="op">=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now, to actually get info on what is <em>at</em> these significant (if any) SNPs, you’d need to get their locations out from the <code>.map</code> file that is produced by plink, the <code>.lfmm</code> format does not contain information about genetic location. These SNPs are ones that show significant differentiation between your groups - they are essentially identifiers of the different ancestries.</p>
+<p>Now, to actually get info on what is <em>at</em> these significant (if any) SNPs, you’d need to get their locations out from the <code>.map</code> file that is produced by plink, the <code>.lfmm</code> format does not contain information about genetic location. These SNPs are ones that show significant differentiation between your groups - they are essentially identifiers of the different ancestries. How does the number of these outliers seem to square with the number of groups you chose?</p>
+</section>
+<section id="spoilers---wait-until-you-do-the-rest-of-the-analyses-to-read-here." class="level2">
+<h2 class="anchored" data-anchor-id="spoilers---wait-until-you-do-the-rest-of-the-analyses-to-read-here.">Spoilers - wait until you do the rest of the analyses to read here.</h2>
+<p>Once you’re done, I want you to go back and think about this analysis again. The idea is that <em>there is</em> some sort of spatial structure, which definitely makes sense for a broadly distributed species. But, if you run the broken-stick method to lok for significant PCs in the genotypes here, you will find - 1. Remember that <span class="math inline">\(K\)</span> = <span class="math inline">\(# of PCs -1\)</span>. So, the data here essentially supports no structure whatsoever (how to interpret <span class="math inline">\(K=0\)</span> is a bit of a mystery to most people - it can be a data error, but more broadly suggests that there just isn’t structure that looks like a Hardy-Weinberg population).</p>
+<p>This is all to point out that some data-sets just don’t behave in ways that we wish they would. There definitely is <em>some</em> structuring in this population, but it may not be best described by models like <code>tess3</code> or <code>ADMIXTURE</code>. <code>FEEMS</code>, for instance, finds this:</p>
+<p><img src="images/paste-1.jpeg" class="img-fluid"></p>
+<p>Here, thee blue areas show high migration, while red show low. Try to interpret what you found with <code>tess3</code> given the above patterns in migration. Do the patterns line up? Where <em>is</em> migration taking place?</p>
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Schweizer2016" class="csl-entry" role="listitem">
+Schweizer, Rena M., Bridgett M. vonHoldt, Ryan Harrigan, James C. Knowles, Marco Musiani, David Coltman, John Novembre, and Robert K. Wayne. 2015. <span>“Genetic Subdivision and Candidate Genes Under Selection in North American Grey Wolves.”</span> <em>Molecular Ecology</em> 25 (1): 380–402. <a href="https://doi.org/10.1111/mec.13364">https://doi.org/10.1111/mec.13364</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
