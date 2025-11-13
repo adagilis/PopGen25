@@ -1614,7 +1614,7 @@
     "href": "labs.html#lab-files",
     "title": "Labs",
     "section": "Lab files:",
-    "text": "Lab files:\nLab 1 can be accessed with Pluto, and will be found in the labs/lab1.jl file.\nLab 2 is here\nLab 3 is here\nLab 4 is here\nLab 5 is here\nLab 6 can be accessed with Pluto, find it at labs/lab5.jl (remember you can open Pluto notebooks via url, so you don’t need to download the file!)\nLab 7 is here\nLab 8 is here\nLab 10 is here"
+    "text": "Lab files:\nLab 1 can be accessed with Pluto, and will be found in the labs/lab1.jl file.\nLab 2 is here\nLab 3 is here\nLab 4 is here\nLab 5 is here\nLab 6 can be accessed with Pluto, find it at labs/lab5.jl (remember you can open Pluto notebooks via url, so you don’t need to download the file!)\nLab 7 is here\nLab 8 is here\nLab 10 is here\nLab 11 is here"
   },
   {
     "objectID": "labs/lab7.html",
