@@ -36,3 +36,5 @@ Lab 7 is [here](labs/lab7.qmd)
 Lab 8 is [here](labs/lab8.qmd)
 
 Lab 10 is [here](labs/lab10.qmd)
+
+Lab 11 is [here](labs/lab11.qmd)
