@@ -1148,11 +1148,25 @@
     "text": "PCoA\nPrinciple Coordinate Analysis - calculate distances between all samples across all measured variables and collapse distance matrix to lower dimension. Output axes represent how much distance between samples is explained along that axis."
   },
   {
+    "objectID": "notes/Lecture12.html#example-1",
+    "href": "notes/Lecture12.html#example-1",
+    "title": "Lecture 12",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
     "objectID": "notes/Lecture12.html#dapc",
     "href": "notes/Lecture12.html#dapc",
     "title": "Lecture 12",
     "section": "DAPC",
     "text": "DAPC\nDiscriminant analysis of PCs: pre-defined groups are as separated in space as possible. Output axes represent how differentiated different groups are."
+  },
+  {
+    "objectID": "notes/Lecture12.html#example-2",
+    "href": "notes/Lecture12.html#example-2",
+    "title": "Lecture 12",
+    "section": "Example",
+    "text": "Example"
   },
   {
     "objectID": "notes/Lecture12.html#nmds",
@@ -1162,11 +1176,32 @@
     "text": "NMDS\nNon-metric Multidimensional Scaling: Similar to PCoA, but based on rank of distances. Output axes are arbitrary and have no meaning."
   },
   {
+    "objectID": "notes/Lecture12.html#example-3",
+    "href": "notes/Lecture12.html#example-3",
+    "title": "Lecture 12",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
     "objectID": "notes/Lecture12.html#t-sne",
     "href": "notes/Lecture12.html#t-sne",
     "title": "Lecture 12",
     "section": "t-SNE",
     "text": "t-SNE\nt-distributed stochastic neighbor embedding: similar objects are placed near each other probabilistically. Placement varies by run, axes have no meaning, and some methods allow for pre-defined clusters being placed closer to each other."
+  },
+  {
+    "objectID": "notes/Lecture12.html#example-4",
+    "href": "notes/Lecture12.html#example-4",
+    "title": "Lecture 12",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
+    "objectID": "notes/Lecture12.html#so-which-to-use",
+    "href": "notes/Lecture12.html#so-which-to-use",
+    "title": "Lecture 12",
+    "section": "So, which to use?",
+    "text": "So, which to use?\nDepends on your data and what you want to show:\n\nPCA for how variation is partitioned\nPCoA for how differences are distributed\nNMDS when data doesn’t meet PCA assumptions\nt-SNE when data highly multi-dimensional and there are many true clusters, but you don’t need axes to mean anything"
   },
   {
     "objectID": "notes/Lecture12.html#structure---best-in-context",
@@ -1295,8 +1330,8 @@
     "text": "Minor tip\nWhen plotting a curve over a cloud of points, it’s often hard to see the confidence interval/the curve itself.\n\nSimple fix: remove confidence interval, plot the same curve first as a thick white line."
   },
   {
-    "objectID": "notes/Lecture12.html#example-1",
-    "href": "notes/Lecture12.html#example-1",
+    "objectID": "notes/Lecture12.html#example-5",
+    "href": "notes/Lecture12.html#example-5",
     "title": "Lecture 12",
     "section": "Example",
     "text": "Example"
@@ -1323,8 +1358,8 @@
     "text": "Complex plots\nFunctions like plot_grid from cowplot let you create quite complex layouts.\n\nGrammar of graphics (the background philosophy behind ggplot2) deals with images as layers - build up complex figures slowly.\n\n\nYou can take multiple different figures you’ve made and add them in various sizings, with automatic panel labels, etc."
   },
   {
-    "objectID": "notes/Lecture12.html#example-2",
-    "href": "notes/Lecture12.html#example-2",
+    "objectID": "notes/Lecture12.html#example-6",
+    "href": "notes/Lecture12.html#example-6",
     "title": "Lecture 12",
     "section": "Example",
     "text": "Example"
