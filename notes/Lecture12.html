@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <title>EEB5348-Fall25 – Lecture 12</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+  <script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <script src="../site_libs/plotly-binding-4.11.0/plotly.js"></script>
+  <script src="../site_libs/typedarray-0.1/typedarray.min.js"></script>
+  <script src="../site_libs/jquery-3.5.1/jquery.min.js"></script>
+  <link href="../site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+  <script src="../site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+  <link href="../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+  <script src="../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Lecture 12</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section>
+<section id="data-visualization-for-genomics" class="title-slide slide level1 center">
+<h1>Data Visualization for Genomics</h1>
+
+</section>
+<section id="what-this-lecture-will-cover" class="slide level2">
+<h2>What this lecture will cover</h2>
+<p>We’ll look at some common examples of genomic data presentation.</p>
+<div class="fragment">
+<p>The source code (this time in <code>R</code>) will also supply some example code of plots.</p>
+</div>
+<div class="fragment">
+<p>We will not cover the full gamut of data visualization theory.</p>
+</div>
+<div class="fragment">
+<p>A good book on that is Claus Wilke’s <a href="https://clauswilke.com/dataviz/">Fundamental’s of Data Visualization</a></p>
+</div>
+</section>
+<section id="some-general-pointers" class="slide level2 smaller">
+<h2>Some general pointers</h2>
+<p>There are many aspects of data visualization that are <em>aesthetic</em> choices - therefore they are largely subjective.</p>
+<div class="fragment">
+<p>There are some aspects, however, that are not purely subjective, but may mislead/misinform the reader: these you should avoid when possible.</p>
+</div>
+<div class="fragment">
+<p>At the end of the day, however, your data is telling a <em>story</em>. Figures, like models, are simplifications of the data. What you plot implicitly assumes what you didn’t plot does not matter.</p>
+</div>
+<div class="fragment">
+<p>Be clear about what you are displaying and why, and make replicating your work as easy as possible, and as a result you can take some more liberties in what aspects you decide to plot vs not.</p>
+</div>
+</section>
+<section id="biggest-tip" class="slide level2">
+<h2>Biggest tip</h2>
+<p>DON’T STOP AT THE DEFAULT PLOT!</p>
+<div class="fragment">
+<p>Many packages make it easy to plot their data by including convencience functions.</p>
+</div>
+<div class="fragment">
+<p>Use these for data exploration, and getting a general idea for what the data shows. Do not copy these plots directly into your manuscript.</p>
+</div>
+<div class="fragment">
+<p>The aesthetic choices are often based on their example data/defaults in R - these might not be right for your data.</p>
+</div>
+<div class="fragment">
+<p>Your readers and reviewers <em>will</em> clock a default plot from a mile away, and in a subtle way it will make them doubt your skills.</p>
+</div>
+<div class="fragment">
+<p>The defaults just plain look bad!</p>
+</div>
+</section>
+<section id="what-is-considered-bad-changes" class="slide level2">
+<h2>What is considered bad changes</h2>
+<p>3-4 decades ago, one major piece of advice on figures was to keep the “data density” high - put as much data into each plot as possible.</p>
+<div class="fragment">
+<p>We now tend to advise people to decrease visual clutter in graphs by being selective about which aspects of data to plot - not every statistic deserves a main figure.</p>
+</div>
+</section>
+<section id="low-data-density" class="slide level2">
+<h2>Low data density</h2>
+
+<img data-src="images/paste-39.png" class="r-stretch"></section>
+<section id="high-data-density" class="slide level2">
+<h2>High data density</h2>
+
+<img data-src="images/paste-40.png" width="726" class="r-stretch"><p><span class="citation" data-cites="Zeng2019">(<a href="#/thursday---figure-critiques" role="doc-biblioref" onclick="">Zeng et al. 2019</a>)</span></p>
+</section>
+<section id="why-genomic-data-visualization-is-complicated" class="slide level2 smaller">
+<h2>Why genomic data visualization is complicated</h2>
+<p>One reason you will have to spend more time thinking about how to best visualize data in genomics than, say, chemistry, is that most of our data is highly hierarchically structured.</p>
+<div class="fragment">
+<p>This includes both distance across the genome, but also similarities between populations/species, relationships between different statistics that need to be compared side-by-side, etc.</p>
+</div>
+</section>
+<section id="starting-from-the-forest" class="slide level2">
+<h2>Starting from the forest</h2>
+<p>As you begin any project in population genetics, often the first step is to account for population structure.</p>
+<div class="fragment">
+<p>We’ve shown you before how to plot a PCA, but it’s often useful to plot that PCA including colors based on the inferred clustering/structure.</p>
+</div>
+<div class="fragment">
+<p>It’s often to choose a color scheme early and define it at the start of your project - this will let you have one place to change it as you need to update different aspects of the project.</p>
+</div>
+</section>
+<section id="todays-example-data---d.-melanogaster" class="slide level2">
+<h2>Today’s example data - <em>D. melanogaster</em></h2>
+<p>Today, we’ll use some <em>D. melanogaster</em> data.</p>
+<div class="fragment">
+<p>Three major clusters - southeastern Africa (AFR1), the rest of Africa (AFR2), and cosmopolitan (OOA).</p>
+</div>
+<div class="fragment">
+<p>Many small subsets within. Color scheme should ideally let anyone visually identify the major clusters <em>and</em> distinguish within the rest.</p>
+</div>
+</section>
+<section id="defining-our-color-scheme" class="slide level2">
+<h2>Defining our color scheme</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb1-3"><a></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-4"><a></a><span class="fu">theme_set</span>(<span class="fu">theme_cowplot</span>())</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a>cols_3 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"AFR1"</span><span class="ot">=</span><span class="st">"red2"</span>,<span class="st">"AFR2"</span><span class="ot">=</span><span class="st">"purple2"</span>,<span class="st">"OOA"</span><span class="ot">=</span><span class="st">"royalblue2"</span>)</span>
+<span id="cb1-7"><a></a><span class="fu">show_col</span>(cols_3,<span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>cols_5 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"East"</span><span class="ot">=</span><span class="st">"purple2"</span>,<span class="st">"West"</span><span class="ot">=</span><span class="st">"mediumpurple"</span>,<span class="st">"OOA"</span><span class="ot">=</span><span class="st">"royalblue2"</span>,<span class="st">"South"</span><span class="ot">=</span><span class="st">"red2"</span>,<span class="st">"ET"</span><span class="ot">=</span><span class="st">"turquoise4"</span>)</span>
+<span id="cb2-2"><a></a>cols_14 <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"OOA_1-anc10"</span><span class="ot">=</span><span class="st">"royalblue2"</span>,</span>
+<span id="cb2-3"><a></a>            <span class="st">"OOA_2-anc5"</span><span class="ot">=</span><span class="st">"navyblue"</span>,</span>
+<span id="cb2-4"><a></a>            <span class="st">"OOA_minor_1-anc11"</span><span class="ot">=</span><span class="st">"steelblue"</span>,</span>
+<span id="cb2-5"><a></a>            <span class="st">"OOA_minor_2-anc12"</span><span class="ot">=</span><span class="st">"steelblue2"</span>,</span>
+<span id="cb2-6"><a></a>            <span class="st">"OOA_minor_3-anc6"</span><span class="ot">=</span><span class="st">"steelblue3"</span>,</span>
+<span id="cb2-7"><a></a>            <span class="st">"Beijing-anc14"</span><span class="ot">=</span><span class="st">"skyblue"</span>,</span>
+<span id="cb2-8"><a></a>            <span class="st">"South_1-anc13"</span><span class="ot">=</span><span class="st">"red2"</span>,</span>
+<span id="cb2-9"><a></a>            <span class="st">"South_2-anc2"</span><span class="ot">=</span><span class="st">"tomato"</span>,</span>
+<span id="cb2-10"><a></a>            <span class="st">"South_minor_1-anc8"</span><span class="ot">=</span><span class="st">"tomato3"</span>,</span>
+<span id="cb2-11"><a></a>            <span class="st">"South_minor_2-anc9"</span><span class="ot">=</span><span class="st">"tomato4"</span>,</span>
+<span id="cb2-12"><a></a>            <span class="st">"HD-anc1"</span><span class="ot">=</span><span class="st">"seagreen"</span>,</span>
+<span id="cb2-13"><a></a>            <span class="st">"Ethiopia-anc7"</span><span class="ot">=</span><span class="st">"turquoise4"</span>,</span>
+<span id="cb2-14"><a></a>            <span class="st">"East-anc4"</span><span class="ot">=</span><span class="st">"purple2"</span>,</span>
+<span id="cb2-15"><a></a>            <span class="st">"West-anc3"</span><span class="ot">=</span><span class="st">"mediumpurple"</span></span>
+<span id="cb2-16"><a></a>            )</span>
+<span id="cb2-17"><a></a><span class="fu">show_col</span>(cols_14,<span class="at">ncol=</span><span class="dv">14</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-1-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="notes-on-pca" class="slide level2">
+<h2>Notes on PCA</h2>
+<p>Here, I’ll have pre-computed the PCA outside of R.</p>
+<div class="fragment">
+<p>Often a good idea, since the data-set could be quite huge.</p>
+</div>
+</section>
+<section id="pca-default-vs-custom" class="slide level2">
+<h2>PCA default vs custom</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="other-good-ideas" class="slide level2">
+<h2>Other good ideas</h2>
+<p>It can be worth your time to rescale the axes to their relative contributions. In this case, the figure should be ~3x as wide as it is tall, so that visually the PCs match their variance explained ratios.</p>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-3-1.png" width="1152" class="r-stretch"></section>
+<section id="color-choices-for-more-groups" class="slide level2">
+<h2>Color choices for more groups</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="double-code" class="slide level2">
+<h2>Double-code!</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="more-pcs" class="slide level2">
+<h2>More PCs?</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="d-plots---avoid" class="slide level2">
+<h2>3D plots - avoid</h2>
+<p>It may be tempting to tie across dimensions by plotting in 3D. This can work in rare cases.</p>
+<div class="fragment">
+<p>Generally - some points will be hidden/distances will be less clear in 3D.</p>
+</div>
+<div class="fragment">
+<p>Often, 3D plots also show up poorly in print.</p>
+</div>
+<div class="fragment">
+<p>Great for presentations/interactive data!</p>
+</div>
+</section>
+<section id="plot3d-example" class="slide level2">
+<h2>Plot3d Example</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-ab726b88ab94c9e3efd3" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-ab726b88ab94c9e3efd3">{"x":{"visdat":{"6084a157d290c":["function () ","plotlyVisDat"]},"cur_data":"6084a157d290c","attrs":{"6084a157d290c":{"x":{},"y":{},"z":{},"color":{},"colors":["royalblue2","navyblue","steelblue","steelblue2","steelblue3","skyblue","red2","tomato","tomato3","tomato4","seagreen","turquoise4","purple2","mediumpurple"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"PC1"},"yaxis":{"title":"PC2"},"zaxis":{"title":"PC3"}},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[-0.045403199999999998,-0.045978100000000001,-0.046070300000000002,-0.041659000000000002,-0.045068900000000002,-0.043669300000000001,-0.045488500000000001,-0.047795700000000003,-0.045190800000000003,-0.032416100000000003,-0.045392599999999998,-0.043596599999999999,-0.043539799999999997,-0.048941999999999999,-0.044719000000000002,-0.041172,-0.044339099999999999,-0.045804999999999998,-0.046965300000000001,-0.044950900000000002,-0.040933900000000002,-0.046045700000000002,-0.04317,-0.044158099999999999,-0.039565900000000001,-0.046323900000000001,-0.045866999999999998,-0.045846100000000001,-0.0453485,-0.041309199999999997,-0.047616400000000003,-0.045531799999999997,-0.041822699999999997,-0.037192999999999997,-0.038062499999999999,-0.046579599999999999,-0.0470509,-0.041799799999999998,-0.042626900000000002,-0.046244500000000001,-0.044575200000000002,-0.039691400000000002,-0.037053799999999998,-0.039248600000000002,-0.047163200000000002,-0.0453205,-0.044354600000000001,-0.027587899999999999,-0.045508800000000002,-0.047260700000000003,-0.0443763,-0.035837399999999998,-0.046048499999999999,-0.039338199999999997,-0.046317700000000003,-0.042512099999999997,-0.041080800000000001,-0.044886500000000003,-0.0457341,-0.033239600000000001,-0.044943299999999999,-0.051924499999999998,-0.038233000000000003,-0.047839399999999997,-0.042886000000000001,-0.0453847,-0.035807600000000002,-0.044975500000000002,-0.039427799999999999,-0.044090400000000002,-0.0437086,-0.038493399999999997,-0.036775299999999997,-0.040211499999999997,-0.0451253,-0.0385449,-0.041518300000000001,-0.040333399999999998,-0.031356599999999998,-0.040465000000000001,-0.040198600000000001,-0.042374099999999998,-0.040239499999999997,-0.0399563,-0.041234699999999999,-0.037173900000000003,-0.039819899999999998,-0.036585300000000001,-0.043133999999999999,-0.047355899999999999,-0.049073199999999997,-0.049317699999999999,-0.048026300000000001,-0.047812100000000003,-0.042356199999999997,-0.046236199999999998,-0.051036999999999999,-0.048004199999999997,-0.042819799999999998,-0.043770900000000001,-0.046695800000000003,-0.047733900000000003,-0.0467295,-0.047894699999999998,-0.047555500000000001,-0.049685899999999998,-0.0435713,-0.041225600000000001,-0.043165099999999998,-0.046515000000000001,-0.040563599999999998,-0.046896800000000002,-0.048727699999999999,-0.0492212,-0.047626099999999998,-0.043679900000000001,-0.046977199999999997,-0.048020300000000002,-0.046989999999999997,-0.042133999999999998,-0.044323300000000003,-0.047486199999999999,-0.043928099999999998,-0.049378400000000003,-0.041452799999999998,-0.048332399999999998,-0.044291999999999998,-0.043509600000000002,-0.046613300000000003,-0.040805500000000001,-0.043859599999999999,-0.048425099999999999,-0.052154399999999997,-0.046826899999999998,-0.047653599999999997,-0.045528100000000002,-0.047878200000000003,-0.044508800000000001,-0.0473861,-0.047239799999999998,-0.048008599999999998,-0.047620999999999997,-0.045904100000000003,-0.046518499999999997,-0.044823599999999998,-0.044874299999999999,-0.045137999999999998,-0.049107999999999999,-0.046792599999999997,-0.041945099999999999,-0.04453,-0.043693900000000001,-0.042160099999999999,-0.046145100000000001,-0.042549900000000002,-0.043073800000000002,-0.050266199999999997,-0.045059399999999999,-0.043416000000000003,-0.045870000000000001,-0.041362700000000002,-0.046517299999999998,-0.039349299999999997,-0.042170399999999997,-0.042131500000000002,-0.050134999999999999,-0.044497000000000002,-0.047102699999999997,-0.0416908,-0.041583599999999998,-0.041664199999999998,-0.017103799999999999,-0.0361765,-0.037734200000000002,-0.0441077,-0.033267600000000001,-0.032490699999999997,-0.036840499999999998,-0.046050800000000003,-0.032994799999999998,-0.037026400000000001,-0.036566300000000003,-0.045229900000000003,-0.0355175,-0.036003300000000002,-0.043615000000000001,-0.036732300000000002,-0.0387278,-0.038039700000000003,-0.041325899999999999,-0.033010499999999998,-0.0369197,-0.035894700000000002,-0.042415300000000003,-0.037579599999999998,-0.038061499999999998,-0.031658499999999999,-0.033439999999999998,-0.037611699999999998],"y":[-0.034785799999999999,-0.040898900000000002,-0.036046099999999998,-0.024178399999999999,-0.034032300000000001,-0.027201900000000001,-0.029942199999999999,-0.032829299999999999,-0.035260100000000003,-0.0308043,-0.037966600000000003,-0.032113700000000002,-0.030646799999999998,-0.042561300000000003,-0.0389614,-0.031025199999999999,-0.035207299999999997,-0.035216999999999998,-0.034639700000000002,-0.034817399999999998,-0.025387699999999999,-0.035909700000000003,-0.033473799999999998,-0.034710499999999998,-0.019266700000000001,-0.040569800000000003,-0.030725200000000001,-0.035446499999999999,-0.029692300000000001,-0.033338899999999998,-0.036162100000000003,-0.0328069,-0.022071899999999998,-0.013687400000000001,-0.0190168,-0.034429399999999999,-0.040239400000000002,-0.026284399999999999,-0.026582000000000001,-0.042186599999999998,-0.030891600000000002,-0.0257164,-0.021264700000000001,-0.024288299999999999,-0.035385,-0.0313038,-0.032749599999999997,-0.033030499999999997,-0.036217199999999998,-0.040951500000000002,-0.033126200000000001,-0.0082201300000000008,-0.042878600000000003,-0.022231600000000001,-0.0413952,-0.024036100000000001,-0.0297906,-0.029420200000000001,-0.036416799999999999,-0.023309400000000001,-0.035466200000000003,-0.042755799999999997,-0.018556,-0.0382587,-0.026640199999999999,-0.032725200000000003,-0.016654800000000001,-0.036003300000000002,-0.016200200000000001,-0.034153999999999997,-0.0365505,-0.025537399999999998,-0.0187698,-0.023810499999999998,-0.038641500000000002,-0.0253314,-0.027327799999999999,-0.028800200000000001,-0.019036299999999999,-0.028328200000000001,-0.0250675,-0.033010699999999997,-0.024757600000000001,-0.017187600000000001,-0.027322800000000001,-0.0154042,-0.024496899999999999,-0.0150388,-0.033065900000000002,-0.041430000000000002,-0.044903600000000002,-0.044923200000000003,-0.043203900000000003,-0.037772399999999998,-0.036079300000000002,-0.038798899999999997,-0.041799099999999999,-0.0408156,-0.0300577,-0.025947100000000001,-0.032513199999999999,-0.040589600000000003,-0.0417907,-0.043270200000000002,-0.043915900000000001,-0.044611199999999997,-0.031635700000000003,-0.019681799999999999,-0.031982499999999997,-0.042759499999999999,-0.032656699999999997,-0.041385199999999997,-0.041032399999999997,-0.037670099999999998,-0.041003100000000001,-0.0304976,-0.044266600000000003,-0.0372539,-0.037283499999999997,-0.030837799999999999,-0.035011800000000003,-0.045137400000000001,-0.030151600000000001,-0.043581799999999997,-0.02053,-0.043486200000000003,-0.029542499999999999,-0.034338399999999998,-0.035927399999999998,-0.0353073,-0.0330405,-0.040841000000000002,-0.044638299999999999,-0.0341616,-0.042693099999999998,-0.035030600000000002,-0.045426099999999997,-0.027861,-0.0385502,-0.033327299999999997,-0.043270999999999997,-0.043935799999999997,-0.037336099999999997,-0.0373485,-0.0354106,-0.035312799999999998,-0.026846600000000002,-0.042894500000000002,-0.035342400000000003,-0.0227475,-0.025488400000000001,-0.0277085,-0.025600500000000002,-0.034912600000000002,-0.032810699999999998,-0.030127600000000001,-0.046018700000000003,-0.033275300000000001,-0.031929399999999997,-0.039616400000000003,-0.024879800000000001,-0.039506199999999998,-0.016344500000000001,-0.0254086,-0.0306565,-0.046475700000000002,-0.035048000000000003,-0.034635199999999998,-0.029787399999999999,-0.018936499999999998,-0.031778500000000001,-0.0407391,-0.0165731,-0.013917499999999999,-0.041256899999999999,-0.0125962,-0.0116141,-0.017087999999999999,-0.0385717,-0.0200754,-0.016413500000000001,-0.014764599999999999,-0.037906200000000001,-0.0133939,-0.016493399999999998,-0.029261599999999999,-0.014978999999999999,-0.017613899999999998,-0.0137836,-0.034245600000000001,-0.0028511299999999999,-0.0123587,-0.014916799999999999,-0.035897999999999999,-0.0146125,-0.023777199999999998,-0.0204025,-0.017326899999999999,-0.020797300000000001],"z":[-0.021225000000000001,-0.031412099999999998,-0.025174599999999998,-0.0105773,-0.022482599999999998,-0.0106135,-0.0121504,-0.014156999999999999,-0.0053130800000000004,-0.021181999999999999,-0.028258999999999999,0.00064204900000000001,-0.017813499999999999,-0.033274999999999999,-0.028411499999999999,-0.020001700000000001,-0.00699273,-0.024659400000000001,-0.0081775900000000002,-0.022368499999999999,0.0059071899999999997,-0.022570099999999999,-0.022785799999999998,-0.023904100000000001,0.014511899999999999,-0.014566600000000001,-0.0164242,-0.0230555,3.7447599999999997e-05,-0.0195509,-0.00616345,-0.019266499999999999,0.017631999999999998,0.021599299999999998,0.024306299999999999,-0.018583800000000001,-0.02776,-0.0103365,-0.0095681399999999993,-0.031305300000000001,-0.015813399999999998,0.00069552500000000001,-0.0074028499999999999,-0.0080157400000000004,-0.019618099999999999,-0.0028568000000000001,-0.025180299999999999,-0.018374100000000001,-0.023614199999999998,-0.028413899999999999,-0.021478199999999999,0.024255599999999999,-0.029042399999999999,-0.0092565000000000008,-0.028703900000000001,0.0050962100000000003,-0.0185449,0.00468557,-0.024269499999999999,-0.0090341499999999995,-0.0224794,-0.0272797,0.0126461,-0.0101826,-0.0086376999999999999,-0.019158399999999999,0.0160895,-0.023309400000000001,0.022323699999999998,-0.0077198900000000001,-0.0263947,-0.016105299999999999,-0.0076911999999999996,-0.014303,-0.026967399999999999,0.0040480100000000003,0.0071486800000000001,-0.0192131,8.3036400000000007e-06,-0.0148717,-0.011235500000000001,-0.022313599999999999,-0.0121621,0.018770700000000001,-0.0096092,0.020407999999999999,-0.013539300000000001,0.018756100000000001,-0.018817799999999999,-0.030745700000000001,-0.033217200000000002,-0.032541899999999999,-0.032325,-0.025228299999999999,-0.023528500000000001,-0.029076899999999999,-0.025065299999999999,-0.031478399999999997,-0.019718699999999999,-0.0131506,-0.018751899999999998,-0.030399499999999999,-0.032166399999999998,-0.033011400000000003,-0.032509000000000003,-0.0329302,-0.019343699999999998,0.0165205,-0.018561399999999999,-0.033289800000000001,-0.0196718,-0.030004200000000002,-0.028261600000000001,-0.0052316100000000003,-0.029403800000000001,-0.018119400000000001,-0.033715599999999998,-0.024079300000000001,-0.026706799999999999,-0.016330999999999998,-0.023582599999999999,-0.034073699999999998,-0.017404599999999999,-0.033505800000000002,0.017189599999999999,-0.033060600000000002,-0.0158183,-0.018984000000000001,-0.020652500000000001,-0.022626799999999999,-0.022986900000000001,-0.030002600000000001,-0.029667499999999999,-0.0059613799999999996,-0.029677100000000001,-0.0219058,-0.030497300000000001,0.0051073400000000001,-0.0258555,-0.016070299999999999,-0.031135900000000001,-0.034173799999999997,-0.026920599999999999,-0.025140599999999999,-0.021108999999999999,-0.023666,-0.0098523399999999994,-0.0324604,-0.021928199999999998,-0.0055186699999999998,0.0093668999999999992,-0.0056113999999999999,-0.011702799999999999,-0.020160000000000001,-0.021958100000000001,-0.0151025,-0.033829100000000001,-0.021255599999999999,-0.024593199999999999,-0.030235700000000001,-0.0117687,-0.028140100000000001,-0.00107723,0.0046988000000000004,-0.0208968,-0.034396500000000003,-0.021741199999999999,-0.0025294699999999998,-0.0178707,0.014825899999999999,-0.020481599999999999,-0.0297544,-0.0017230399999999999,0.00074143699999999996,-0.0299794,0.0044339699999999998,0.0029459899999999999,-0.0027183200000000002,-0.028385400000000002,-0.0048517100000000004,-0.0022820399999999999,0.000338952,-0.030474399999999999,0.0016621699999999999,-0.0038359399999999999,-0.0044931800000000003,-0.00322216,-0.0074244899999999997,0.00063043400000000003,-0.024750500000000002,0.0095973599999999992,-0.000223859,-0.0026044800000000002,-0.028602300000000001,-0.00086889200000000002,-0.0132897,-0.010305399999999999,-0.00420142,-0.0091135999999999995],"type":"scatter3d","mode":"markers","name":"South_1-anc13","marker":{"color":"rgba(238,0,0,1)","line":{"color":"rgba(238,0,0,1)"}},"textfont":{"color":"rgba(238,0,0,1)"},"error_y":{"color":"rgba(238,0,0,1)"},"error_x":{"color":"rgba(238,0,0,1)"},"line":{"color":"rgba(238,0,0,1)"},"frame":null},{"x":[-0.018467600000000001,-0.00023634400000000001,-0.0118765,-0.026597900000000001,-0.018171,-0.027570500000000001,0.014079,-0.0191413,0.010480099999999999,-0.020496199999999999,-0.0187768,-0.0111374,-0.023252800000000001,-0.019427300000000002,-0.0186593,-0.0144104,-0.0067810800000000001,-0.038751099999999997,-0.025861700000000001,-0.0289296,-0.032029700000000001,-0.040186800000000002,-0.029138600000000001,-0.030911299999999999,-0.014361000000000001,-0.027086499999999999,-0.024270099999999999,-0.016741700000000002,-0.026278099999999999,-0.029297199999999999,-0.0277541,-0.029506899999999999,-0.023413,-0.024883099999999998,-0.027562300000000001,-0.029812000000000002],"y":[0.019457800000000001,0.014500900000000001,0.0271138,0.0051126000000000001,0.025274399999999999,0.033714800000000003,-0.00041867800000000002,0.0109468,0.0079153399999999999,0.030563099999999999,0.018774900000000001,0.010129900000000001,0.0176195,0.0284931,0.0393972,0.0245709,0.0060582700000000001,-0.0121852,0.023077500000000001,0.0103637,-0.011872199999999999,-0.017094100000000001,0.012684000000000001,0.00996353,0.016889100000000001,0.016817800000000001,0.0275129,0.029948300000000001,0.0165574,0.011470599999999999,0.018204399999999999,0.015275199999999999,0.019303299999999999,0.0266728,0.034002499999999998,0.0148182],"z":[0.0725494,0.064897499999999997,0.083128599999999997,0.059132400000000002,0.085939000000000002,0.121291,0.058243299999999998,0.065313300000000005,0.064308199999999996,0.098279000000000005,0.079496200000000003,0.065666199999999994,0.092578599999999997,0.088577100000000006,0.096893300000000002,0.0877584,0.067652599999999993,0.045458499999999999,0.085646,0.072461399999999995,0.056063599999999998,0.038282400000000001,0.073527599999999999,0.073843000000000006,0.082304699999999995,0.074734400000000006,0.092863100000000004,0.100314,0.093124799999999994,0.071359900000000004,0.086685499999999999,0.068165699999999996,0.0846219,0.095628299999999999,0.122048,0.067427500000000001],"type":"scatter3d","mode":"markers","name":"South_2-anc2","marker":{"color":"rgba(255,99,71,1)","line":{"color":"rgba(255,99,71,1)"}},"textfont":{"color":"rgba(255,99,71,1)"},"error_y":{"color":"rgba(255,99,71,1)"},"error_x":{"color":"rgba(255,99,71,1)"},"line":{"color":"rgba(255,99,71,1)"},"frame":null},{"x":[-0.0057719700000000004,-0.0228024,-0.0142227,-0.0069561500000000004,-0.0228024,-0.0142227],"y":[0.000198748,-0.0064978500000000003,0.017965999999999999,-0.0061926500000000001,-0.0064978500000000003,0.017965999999999999],"z":[0.029688599999999999,0.012996799999999999,0.083259200000000005,0.0127721,0.012996799999999999,0.083259200000000005],"type":"scatter3d","mode":"markers","name":"South_minor_1-anc8","marker":{"color":"rgba(205,79,57,1)","line":{"color":"rgba(205,79,57,1)"}},"textfont":{"color":"rgba(205,79,57,1)"},"error_y":{"color":"rgba(205,79,57,1)"},"error_x":{"color":"rgba(205,79,57,1)"},"line":{"color":"rgba(205,79,57,1)"},"frame":null},{"x":[-0.031375899999999998,-0.0289921,-0.031981700000000002,-0.033320299999999997,-0.0193025,-0.029821299999999999,-0.028634900000000001,-0.029967899999999999,-0.027229900000000001,-0.033181500000000003,-0.032552200000000003,-0.032929199999999999,-0.030771300000000001,-0.0290447,-0.030837300000000002],"y":[0.0141441,0.0142059,0.00023125500000000001,-0.000776317,-0.0080983300000000008,0.00799068,-0.00072920099999999996,0.0022197100000000002,0.010208999999999999,0.0040971899999999997,0.0029520499999999999,-0.0038178000000000001,0.0063620300000000003,0.0138511,0.0133711],"z":[0.067549399999999996,0.063107300000000005,0.015878199999999999,0.0153213,0.00287317,0.0258871,0.012403900000000001,0.015850599999999999,0.026967999999999999,0.0266091,0.0249582,0.0087214400000000004,0.0281385,0.062207100000000001,0.063830499999999998],"type":"scatter3d","mode":"markers","name":"South_minor_2-anc9","marker":{"color":"rgba(139,54,38,1)","line":{"color":"rgba(139,54,38,1)"}},"textfont":{"color":"rgba(139,54,38,1)"},"error_y":{"color":"rgba(139,54,38,1)"},"error_x":{"color":"rgba(139,54,38,1)"},"line":{"color":"rgba(139,54,38,1)"},"frame":null},{"x":[-0.024456599999999998,-0.0059806800000000004,-0.013609700000000001,-0.0060773700000000003,-0.0082676399999999997,-0.0138207],"y":[-0.0128556,0.0018998000000000001,-0.0030074500000000001,0.0024604700000000002,-0.0079393699999999994,-0.0054505100000000004],"z":[0.031028400000000001,0.046543000000000001,0.016750999999999999,0.048456899999999997,0.0197056,0.020065],"type":"scatter3d","mode":"markers","name":"HD-anc1","marker":{"color":"rgba(46,139,87,1)","line":{"color":"rgba(46,139,87,1)"}},"textfont":{"color":"rgba(46,139,87,1)"},"error_y":{"color":"rgba(46,139,87,1)"},"error_x":{"color":"rgba(46,139,87,1)"},"line":{"color":"rgba(46,139,87,1)"},"frame":null},{"x":[-0.0088071399999999998,0.0094644199999999994,-0.0029203100000000002,-4.9568999999999999e-06,-0.0098472000000000004,-0.0090886999999999999,-0.010270100000000001,-0.0103494,-0.0069748400000000004,-0.00717689,-0.0100208,-0.0097094099999999999,-0.0101323,-0.0090537299999999994,-0.010288200000000001,-0.0071892600000000003,-0.0086392900000000009,-0.0097082699999999997,-0.011365399999999999,-0.0086861100000000004,-0.0093632699999999999,-0.0086372399999999992,-0.0088097799999999997,-0.0042457800000000002,-0.0080324799999999998,-0.0090810200000000004,-0.0074713699999999997,-0.0112494,-0.0074179299999999997,-0.0098537899999999994,-0.010795799999999999,-0.0062401499999999999,-0.0087405399999999998,-0.0083534999999999998,-0.0093365600000000007,-0.0064128199999999996,0.000485673,-0.00089428100000000003,-0.00316884,-0.0086861100000000004,-0.0104692,-0.0088492899999999992,-0.0099485500000000004,-0.0097610400000000003,-0.00979176,-0.0054918800000000002,-0.0104549,-0.0086788400000000002,-0.0078995200000000002,-0.0105617,-0.00915441,-0.0029203100000000002,-0.0082022899999999992,-0.0090820299999999996,-0.010685999999999999,-4.9568999999999999e-06,-0.0096385099999999994,-0.0080507800000000004,-0.0094794600000000003,-0.010652699999999999,-0.010898100000000001,0.00458319],"y":[0.082895099999999999,0.054219499999999997,0.078529500000000002,0.066795599999999997,0.080598699999999995,0.087819599999999998,0.094653399999999999,0.094423599999999996,0.073710300000000006,0.083865099999999998,0.099315100000000003,0.101809,0.106502,0.10237499999999999,0.10252699999999999,0.094190499999999996,0.098492099999999999,0.099729600000000002,0.100425,0.100828,0.101562,0.097961900000000005,0.10212400000000001,0.070492700000000005,0.095832500000000001,0.101559,0.096597000000000002,0.103616,0.076527300000000006,0.092913399999999993,0.091203599999999996,0.099583000000000005,0.104446,0.10299800000000001,0.103368,0.098017499999999994,0.080281599999999995,0.078152700000000005,0.094258099999999997,0.100828,0.10240100000000001,0.101038,0.10322199999999999,0.10127700000000001,0.0996972,0.091283799999999998,0.10397199999999999,0.100263,0.095562499999999995,0.10030699999999999,0.10204100000000001,0.078529500000000002,0.100451,0.10116700000000001,0.10198,0.066795599999999997,0.10337,0.090764399999999995,0.098023100000000002,0.10351,0.10234,0.057518399999999997],"z":[-0.046970400000000002,-0.0426466,-0.049997399999999997,-0.021720900000000001,-0.0275625,-0.064878900000000003,-0.070177400000000001,-0.0661495,-0.028468199999999999,-0.054879600000000001,-0.081234600000000004,-0.084105700000000005,-0.089060200000000006,-0.0848135,-0.081876099999999993,-0.072468900000000003,-0.076383000000000006,-0.078982499999999997,-0.080033300000000002,-0.085688600000000004,-0.078728800000000002,-0.076773999999999995,-0.078512799999999994,-0.0053728100000000004,-0.0700046,-0.073259000000000005,-0.071941000000000005,-0.078523999999999997,-0.030920300000000001,-0.066293500000000005,-0.060535400000000003,-0.080729099999999998,-0.088397400000000001,-0.0847247,-0.083962599999999998,-0.082631200000000002,-0.022950399999999999,-0.0187849,-0.078262700000000004,-0.085688600000000004,-0.079361399999999999,-0.080315999999999999,-0.082071699999999997,-0.079350799999999999,-0.078185900000000003,-0.073132100000000005,-0.083260299999999995,-0.0798489,-0.074154499999999998,-0.075279600000000002,-0.080899899999999997,-0.049997399999999997,-0.080685900000000005,-0.080754300000000001,-0.081298899999999993,-0.021720900000000001,-0.081608,-0.068459900000000004,-0.075303300000000004,-0.080875699999999995,-0.081217399999999995,-0.029234],"type":"scatter3d","mode":"markers","name":"Ethiopia-anc7","marker":{"color":"rgba(0,134,139,1)","line":{"color":"rgba(0,134,139,1)"}},"textfont":{"color":"rgba(0,134,139,1)"},"error_y":{"color":"rgba(0,134,139,1)"},"error_x":{"color":"rgba(0,134,139,1)"},"line":{"color":"rgba(0,134,139,1)"},"frame":null},{"x":[-0.0071272499999999999,-0.016145199999999998,-0.015969400000000002,-0.0173309,-0.0154927,-0.015448399999999999,-0.0012746000000000001,-0.0165416,-0.0155928,-0.017000000000000001,-0.017237200000000001,-0.0165259,-0.016884099999999999,-0.017681100000000002,-0.0151857,-0.016092100000000002,-0.017162299999999998,-0.0184963,-0.018620600000000001,-0.014530899999999999,-0.017848900000000001,-0.016948000000000001,-0.00065941899999999996,-0.0153811,-0.0069740599999999998,-0.0092219899999999994,-0.0069569200000000001,-0.0086642899999999998,-0.014534999999999999,-0.0133816],"y":[0.042149899999999997,0.0379028,0.037468500000000002,0.0417229,0.043050199999999997,0.0416131,0.030650500000000001,0.043757900000000002,0.041359800000000002,0.036869199999999998,0.042970099999999997,0.044391800000000002,0.044309399999999999,0.041302899999999997,0.042302300000000001,0.043173400000000001,0.042725300000000001,0.037562600000000002,0.036990099999999998,0.042680799999999998,0.041498800000000002,0.038576199999999998,0.024725299999999999,0.040541399999999998,0.0420706,0.045307100000000003,0.039450199999999998,0.0443963,0.043066399999999998,0.0412509],"z":[0.0513249,0.046876300000000003,0.045125699999999998,0.050974999999999999,0.051789399999999999,0.048274600000000001,0.038745300000000003,0.0496833,0.048941400000000003,0.0482116,0.051591499999999998,0.050353099999999998,0.051266699999999998,0.0530845,0.048654599999999999,0.085214799999999993,0.051356600000000002,0.046799899999999998,0.047957600000000003,0.053769299999999999,0.049800999999999998,0.047872900000000003,0.035178099999999997,0.051673299999999998,0.038259500000000002,0.044128300000000002,0.042346099999999998,0.046283100000000001,0.049653799999999998,0.047664100000000001],"type":"scatter3d","mode":"markers","name":"East-anc4","marker":{"color":"rgba(145,44,238,1)","line":{"color":"rgba(145,44,238,1)"}},"textfont":{"color":"rgba(145,44,238,1)"},"error_y":{"color":"rgba(145,44,238,1)"},"error_x":{"color":"rgba(145,44,238,1)"},"line":{"color":"rgba(145,44,238,1)"},"frame":null},{"x":[-0.0046406599999999996,-0.0068534299999999998,-0.0051593699999999999,-0.0061926300000000002,-0.0061725299999999999,-0.0070992800000000003,-0.0065428300000000003,-0.0052066500000000002,-0.0043539800000000003,-0.0018832600000000001,0.0087066699999999997,-3.4280899999999999e-05,-0.0031312100000000002,-0.0027837000000000001,-0.0026739899999999998,0.0120073,0.00014182600000000001,0.0043948600000000004,0.0103269,0.0112856,0.00508531,-0.00173193,-0.00154269,-0.0021770100000000001,0.0053286100000000001,0.0028830000000000001,-0.00176231,-0.00087060299999999996,-0.0010968,-0.0031691000000000002,-0.00050764199999999999,-0.0030758199999999999,-0.0052952800000000003,-0.0048303799999999996,-0.0055347699999999996,-0.0042270500000000004,-0.00420361,-0.00346058,-0.0059080299999999999,-0.0048793700000000001,0.00054558600000000003,0.0080970999999999994],"y":[0.050916400000000001,0.051541900000000002,0.053224300000000002,0.052812699999999997,0.053994800000000003,0.053646100000000002,0.053001399999999997,0.051704800000000002,0.048625000000000002,0.049630899999999999,0.037277299999999999,0.040992300000000002,0.049759299999999999,0.048441100000000001,0.043677599999999997,0.0289272,0.040519899999999998,0.038072799999999997,0.032499899999999998,0.032956899999999997,0.037963999999999998,0.045019099999999999,0.045400999999999997,0.0472109,0.037574799999999998,0.039603399999999997,0.0444021,0.045988099999999997,0.044302599999999998,0.047008399999999999,0.046334300000000002,0.049023499999999998,0.052230400000000003,0.049853399999999999,0.053095000000000003,0.052239099999999997,0.0496862,0.053878200000000001,0.055546699999999997,0.054769199999999997,0.045628000000000002,0.041302699999999998],"z":[0.058675699999999997,0.060533499999999997,0.082239499999999993,0.061080799999999998,0.062021100000000003,0.0606393,0.0623663,0.060578399999999998,0.054476999999999998,0.075046699999999994,0.068579200000000007,0.052840199999999997,0.079250399999999999,0.080978499999999995,0.054058299999999997,0.037730399999999997,0.048262199999999998,0.059523600000000003,0.063927899999999996,0.0594569,0.056621499999999998,0.076379699999999995,0.077421000000000004,0.076636999999999997,0.058023100000000001,0.060776400000000001,0.074581900000000007,0.0745894,0.066757200000000003,0.077429799999999993,0.073534100000000005,0.077373200000000003,0.060182399999999997,0.055431599999999998,0.059474600000000002,0.080540899999999999,0.0617078,0.087066900000000003,0.086911500000000003,0.083158200000000002,0.052369699999999998,0.075967699999999999],"type":"scatter3d","mode":"markers","name":"West-anc3","marker":{"color":"rgba(147,112,219,1)","line":{"color":"rgba(147,112,219,1)"}},"textfont":{"color":"rgba(147,112,219,1)"},"error_y":{"color":"rgba(147,112,219,1)"},"error_x":{"color":"rgba(147,112,219,1)"},"line":{"color":"rgba(147,112,219,1)"},"frame":null},{"x":[0.051114399999999997,0.034025,0.053596400000000002,0.0369764,0.037115099999999998,0.040771000000000002,0.0405907,0.051103799999999998,0.037461599999999998,0.044053000000000002,0.048780200000000003,0.0505228,0.043148699999999998,0.049278200000000001,0.051413399999999998,0.049314900000000002,0.0491276,0.052587599999999998,0.036250900000000003,0.048136199999999997,0.044833199999999997,0.026417,0.028568,0.029338900000000001,0.029822499999999998,0.047184799999999999,0.045709600000000003,0.056084500000000002,0.055933700000000003,0.054046400000000001,0.048079999999999998,0.055668700000000002,0.048169299999999998,0.056460299999999998,0.055039299999999999,0.053252800000000003,0.055843999999999998,0.027202400000000002,0.0298076,0.050854000000000003,0.044479100000000001,0.048575399999999998,0.0399669,0.053901499999999998,0.053605800000000002,0.052148699999999999,0.053220000000000003,0.053099300000000002,0.0517788,0.054720400000000002,0.0557618,0.052338999999999997,0.053380400000000001,0.054277400000000003,0.054955700000000003,0.0547126,0.053126399999999997,0.0534653,0.049613600000000001,0.053898399999999999,0.052047400000000001,0.050316300000000001,0.053400299999999998,0.049177600000000002,0.056073999999999999,0.055538200000000003,0.053290200000000003,0.0510713,0.051654800000000001,0.050437999999999997,0.054458300000000001,0.050635199999999998,0.052225899999999999,0.053449799999999999,0.0541383,0.052793399999999997,0.055498100000000002,0.054527600000000002,0.054117999999999999,0.051396400000000002,0.054223899999999998,0.051191500000000001,0.050161900000000002,0.052734200000000002,0.053006200000000003,0.041359199999999999,0.052347299999999999,0.0506618,0.053936699999999997,0.055241999999999999,0.054414999999999998,0.039722500000000001,0.051791400000000001,0.051656199999999999,0.055400999999999999,0.053666699999999998,0.0542208,0.054741699999999997,0.054584300000000002,0.0552039,0.0536412,0.054156500000000003,0.053957199999999997,0.055123900000000003,0.054795900000000002,0.054381800000000001,0.050912600000000002,0.054427299999999998,0.055426700000000002,0.054516299999999997,0.052332700000000003,0.054242899999999997,0.052736199999999997,0.053309599999999999,0.0527071,0.056687599999999998,0.054907600000000001,0.055320000000000001,0.053421099999999999,0.053845499999999998,0.053786899999999999,0.053441200000000001,0.049378900000000003,0.044099899999999997,0.032706699999999998,0.031098399999999998,0.041746100000000001],"y":[-0.015848500000000001,0.00036563600000000002,-0.016972600000000001,0.0020508499999999999,0.00354178,-0.0044530300000000002,-0.0043053400000000004,-0.015341499999999999,0.00049973599999999997,-0.0078860400000000004,-0.0128176,-0.0156124,-0.0047743300000000002,-0.0129785,-0.0165918,-0.0138087,-0.0132024,-0.017172099999999999,0.0052381600000000004,-0.010531199999999999,-0.0088022399999999994,0.0144733,0.0124005,0.0098375200000000006,0.0075035700000000002,-0.0108801,-0.0073662099999999998,-0.019564600000000001,-0.020937799999999999,-0.018545699999999998,-0.0098486400000000005,-0.020315,-0.0114682,-0.020870300000000001,-0.019533499999999999,-0.018876500000000001,-0.020326799999999999,0.010095399999999999,0.0103517,-0.014652399999999999,-0.0065408200000000001,-0.011729399999999999,-0.0044286600000000001,-0.019514299999999998,-0.018026500000000001,-0.0166683,-0.018314299999999999,-0.0176235,-0.016771000000000001,-0.0195322,-0.021394799999999999,-0.0167268,-0.017156000000000001,-0.019179700000000001,-0.0194725,-0.018515,-0.0185489,-0.018279500000000001,-0.011909899999999999,-0.019020800000000001,-0.016903600000000001,-0.014137200000000001,-0.017124500000000001,-0.0120135,-0.021539900000000001,-0.020816899999999999,-0.017795399999999999,-0.0170423,-0.016449800000000001,-0.0165948,-0.020794,-0.0153642,-0.017010299999999999,-0.0170989,-0.0192512,-0.0176861,-0.019819199999999999,-0.0182983,-0.019749599999999999,-0.016652,-0.0202851,-0.0157927,-0.0140561,-0.018402999999999999,-0.018489100000000001,-0.0058532300000000001,-0.016130200000000001,-0.0144038,-0.017003000000000001,-0.020185600000000001,-0.0195373,6.2607900000000001e-05,-0.017238799999999999,-0.0164633,-0.020424500000000002,-0.018569800000000001,-0.017865800000000001,-0.018109799999999999,-0.018528800000000002,-0.020305500000000001,-0.0166421,-0.018550199999999999,-0.017422099999999999,-0.0189299,-0.0179039,-0.019063099999999999,-0.015262400000000001,-0.017248099999999999,-0.018893,-0.019101400000000001,-0.018628700000000002,-0.0191974,-0.017614399999999999,-0.017487200000000001,-0.018694800000000001,-0.020522700000000001,-0.018261800000000002,-0.019197499999999999,-0.0166356,-0.0186366,-0.017123699999999999,-0.018573200000000002,-0.0145291,-0.0055743800000000003,0.0079724800000000005,0.0084823999999999993,-0.0051135],"z":[-0.0043765000000000002,0.015325999999999999,-0.0056149399999999997,0.026699299999999999,0.038962900000000002,0.0101537,0.012154,-0.00105645,0.022064,0.016100199999999999,0.0044918600000000003,-0.00032628399999999998,0.018191499999999999,0.0091024299999999999,-0.0015578499999999999,0.0030074099999999999,0.0081532500000000008,-0.0027625700000000002,0.040591099999999998,0.0098325500000000007,0.0083344300000000003,0.0451417,0.044694900000000003,0.034013000000000002,0.019370399999999999,0.012142999999999999,0.0128115,-0.0090203799999999997,-0.0082068000000000002,-0.0088811299999999992,0.0027608200000000002,-0.0087998399999999997,0.00178195,-0.0092764600000000003,-0.0072406700000000003,-0.0078245299999999997,-0.00832426,0.032063099999999997,0.032943199999999999,-0.00058128900000000002,0.018247800000000002,0.0097921099999999997,0.0048051500000000002,-0.00622128,-0.00567886,-0.0051546600000000001,-0.0078399899999999998,-0.0077404199999999996,-0.0075504300000000003,-0.0079796299999999997,-0.010954500000000001,-0.0057101499999999998,-0.0064462299999999998,-0.0072976500000000001,-0.0077963099999999999,-0.0052211699999999998,-0.0073286499999999999,-0.0092179900000000006,-0.00054783800000000004,-0.00707129,-0.0057532499999999997,-0.0023139900000000001,-0.0040147799999999999,0.0115394,-0.012055700000000001,-0.010902200000000001,-0.0086008899999999999,-0.0059825299999999998,-0.0035664500000000001,-0.0050821099999999999,-0.0090877100000000006,-0.0048530600000000002,-0.0066775699999999999,-0.0057091099999999999,-0.00810372,-0.0066491600000000003,-0.010889899999999999,-0.0088280200000000007,-0.0077925099999999999,-0.0062289299999999997,-0.00904837,-0.00422902,-0.0015210899999999999,-0.00730732,-0.0064184300000000001,0.016978500000000001,-0.0049890400000000001,-0.0027609000000000002,-0.0051539400000000001,-0.0115598,-0.0080535999999999993,0.033257500000000002,-0.0064046499999999996,-0.0035491799999999999,-0.0068529200000000002,-0.0073203499999999998,-0.0028790199999999999,-0.0061288599999999999,-0.0069602400000000004,-0.010885199999999999,-0.00408472,-0.0072990700000000004,-0.0076834900000000003,-0.0090203200000000001,-0.0049964299999999996,-0.00867653,-0.0052803700000000004,-0.0063261699999999999,-0.0088472299999999993,-0.0085112199999999999,-0.0077179400000000004,-0.0076304500000000004,-0.0061056299999999999,-0.0051337300000000004,-0.0064766299999999997,-0.0091006699999999999,-0.0072341200000000001,-0.0081299800000000002,-0.0029807900000000001,-0.0074162799999999999,-0.0054421900000000004,-0.0051228799999999998,-0.0015210099999999999,0.0058692700000000002,0.026501799999999999,0.034986200000000002,0.0081764400000000001],"type":"scatter3d","mode":"markers","name":"OOA_1-anc10","marker":{"color":"rgba(67,110,238,1)","line":{"color":"rgba(67,110,238,1)"}},"textfont":{"color":"rgba(67,110,238,1)"},"error_y":{"color":"rgba(67,110,238,1)"},"error_x":{"color":"rgba(67,110,238,1)"},"line":{"color":"rgba(67,110,238,1)"},"frame":null},{"x":[0.063267299999999999,0.059240500000000001,0.062961100000000006,0.054567900000000003,0.056653299999999997,0.063433600000000007,0.0618948,0.049834200000000002,0.0634826,0.065497200000000005,0.065720500000000001,0.059443099999999999,0.064091200000000001,0.063319,0.045624100000000001,0.062710100000000005,0.056760100000000001,0.057283000000000001,0.064299499999999996,0.048888300000000003,0.0626467,0.063362399999999999,0.058529299999999999,0.061166199999999997,0.063374399999999997,0.0566609,0.065082399999999999,0.060363199999999999,0.065467999999999998,0.064945000000000003,0.042110000000000002,0.0665245,0.054726299999999999,0.064687900000000007,0.063670400000000002,0.061875899999999998,0.061431600000000003,0.0621699,0.054749399999999997,0.053738000000000001,0.054462099999999999,0.061703800000000003,0.055062399999999997,0.054056,0.062322000000000002,0.055004400000000002,0.060709600000000002,0.053981500000000002,0.061444499999999999,0.056997399999999997],"y":[-0.0328542,-0.027764500000000001,-0.031015299999999999,-0.020223100000000001,-0.025972800000000001,-0.032072999999999997,-0.028974099999999999,-0.0121146,-0.032830600000000001,-0.032985,-0.034563799999999999,-0.026657299999999998,-0.031923,-0.031626700000000001,-0.0090958399999999991,-0.0309643,-0.0211579,-0.023556899999999999,-0.033224799999999999,-0.0140453,-0.030617800000000001,-0.031317900000000003,-0.0261026,-0.0302726,-0.030525199999999999,-0.035116000000000001,-0.033059499999999999,-0.029026199999999999,-0.030974100000000001,-0.031335599999999998,-0.00312174,-0.034524800000000001,-0.0221213,-0.032141700000000002,-0.032594600000000001,-0.028683500000000001,-0.027641099999999998,-0.028892399999999999,-0.017507700000000001,-0.017514999999999999,-0.020845900000000001,-0.0286416,-0.022172500000000001,-0.018687800000000001,-0.028134200000000002,-0.0185916,-0.026237099999999999,-0.0175739,-0.027124100000000002,-0.026158899999999999],"z":[-0.0262049,-0.020018600000000001,-0.02477,-0.013672200000000001,-0.0194147,-0.027133000000000001,-0.021600100000000001,0.0056211799999999999,-0.026991899999999999,-0.0283016,-0.0280463,-0.0178963,-0.025266299999999998,-0.024918200000000001,-0.0018602099999999999,-0.0250078,-0.0019829000000000001,-0.0161467,-0.0266044,0.0107172,-0.025847100000000001,-0.025776400000000001,-0.017894,-0.025723099999999999,-0.023646400000000001,-0.0255949,-0.027028699999999999,-0.023412800000000001,-0.022768500000000001,-0.023382500000000001,0.031899900000000002,-0.026121700000000001,-0.0087109200000000005,-0.022595899999999999,-0.025099799999999999,-0.021382999999999999,-0.018471399999999999,-0.020375600000000001,0.00374523,0.0016319500000000001,-0.00966033,-0.0220967,-0.0141911,0.0014933500000000001,-0.021400800000000001,0.0017002,-0.0184648,0.0028769199999999998,-0.018076499999999999,-0.017263400000000002],"type":"scatter3d","mode":"markers","name":"OOA_2-anc5","marker":{"color":"rgba(0,0,128,1)","line":{"color":"rgba(0,0,128,1)"}},"textfont":{"color":"rgba(0,0,128,1)"},"error_y":{"color":"rgba(0,0,128,1)"},"error_x":{"color":"rgba(0,0,128,1)"},"line":{"color":"rgba(0,0,128,1)"},"frame":null},{"x":[0.043123700000000001,0.034047399999999998,0.033417700000000002,0.028525700000000001,0.041675799999999999,0.022010100000000001,0.029350999999999999,0.044279100000000002,0.039993099999999997,0.048179399999999997,0.0304596,0.046787099999999998],"y":[-0.0066374600000000004,0.0158833,0.012876,0.019830400000000001,0.0013089899999999999,0.030889,-0.0048449000000000001,-0.012190299999999999,-0.0086371699999999996,-0.014195599999999999,0.0017683099999999999,-0.016853900000000002],"z":[-0.0013187699999999999,-0.0327444,-0.0237992,-0.018318500000000001,-0.025423000000000001,-0.0206368,-2.04459e-05,-0.012145299999999999,-0.0071894300000000001,-0.012098899999999999,0.0011820699999999999,-0.0116124],"type":"scatter3d","mode":"markers","name":"OOA_minor_1-anc11","marker":{"color":"rgba(70,130,180,1)","line":{"color":"rgba(70,130,180,1)"}},"textfont":{"color":"rgba(70,130,180,1)"},"error_y":{"color":"rgba(70,130,180,1)"},"error_x":{"color":"rgba(70,130,180,1)"},"line":{"color":"rgba(70,130,180,1)"},"frame":null},{"x":[0.039064599999999998,0.0317893,0.025486399999999999,0.034852899999999999,0.045133199999999998,0.0272383,0.034852899999999999,0.045133199999999998,0.048255300000000001],"y":[0.0014880900000000001,0.0086101400000000005,0.0164476,0.00604485,-0.0069027799999999999,0.0038360099999999999,0.00604485,-0.0069027799999999999,-0.0103984],"z":[0.032770500000000001,0.0379882,0.044698700000000001,0.043506900000000001,0.0134971,0.031036600000000001,0.043506900000000001,0.0134971,0.0091554300000000009],"type":"scatter3d","mode":"markers","name":"OOA_minor_2-anc12","marker":{"color":"rgba(92,172,238,1)","line":{"color":"rgba(92,172,238,1)"}},"textfont":{"color":"rgba(92,172,238,1)"},"error_y":{"color":"rgba(92,172,238,1)"},"error_x":{"color":"rgba(92,172,238,1)"},"line":{"color":"rgba(92,172,238,1)"},"frame":null},{"x":[0.050168999999999998,0.050168999999999998],"y":[-0.0149268,-0.0149268],"z":[-0.0090931499999999995,-0.0090931499999999995],"type":"scatter3d","mode":"markers","name":"OOA_minor_3-anc6","marker":{"color":"rgba(79,148,205,1)","line":{"color":"rgba(79,148,205,1)"}},"textfont":{"color":"rgba(79,148,205,1)"},"error_y":{"color":"rgba(79,148,205,1)"},"error_x":{"color":"rgba(79,148,205,1)"},"line":{"color":"rgba(79,148,205,1)"},"frame":null},{"x":[0.0591367,0.044462700000000001,0.057840000000000003,0.053660199999999998,0.050629199999999999,0.058408099999999998,0.050449899999999999,0.060855899999999997,0.051558199999999998,0.046507,0.053926200000000001,0.0489097,0.053520600000000002,0.054736800000000002,0.051878399999999998],"y":[-0.025210099999999999,-0.0085518399999999998,-0.023422700000000001,-0.018371200000000001,-0.019445899999999999,-0.023782000000000001,-0.0160894,-0.027247400000000001,-0.018674400000000001,-0.0112158,-0.019319800000000002,-0.0136451,-0.0188673,-0.0186733,-0.018033],"z":[-0.021023300000000002,-0.00084012099999999999,-0.0186506,0.000150216,0.00031296200000000002,-0.0187657,-0.0091563900000000004,-0.021641000000000001,-0.013496899999999999,-0.0056779600000000001,-0.0144812,-0.0065828299999999996,-0.014448900000000001,-0.00101811,-0.0027973999999999998],"type":"scatter3d","mode":"markers","name":"Beijing-anc14","marker":{"color":"rgba(135,206,235,1)","line":{"color":"rgba(135,206,235,1)"}},"textfont":{"color":"rgba(135,206,235,1)"},"error_y":{"color":"rgba(135,206,235,1)"},"error_x":{"color":"rgba(135,206,235,1)"},"line":{"color":"rgba(135,206,235,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="pca-alternatives" class="slide level2 smaller">
+<h2>PCA alternatives</h2>
+<p>You will often encounter plots that <em>look</em> like PCA, but are not PCA.</p>
+<div class="fragment">
+<p>It’s good to know what each is and what they are used for:</p>
+</div>
+</section>
+<section id="pcoa" class="slide level2">
+<h2>PCoA</h2>
+<p>Principle Coordinate Analysis - calculate distances between all samples across all measured variables and collapse distance matrix to lower dimension. Output axes represent how much distance between samples is explained along that axis.</p>
+</section>
+<section id="dapc" class="slide level2">
+<h2>DAPC</h2>
+<p>Discriminant analysis of PCs: pre-defined groups are as separated in space as possible. Output axes represent how differentiated different groups are.</p>
+</section>
+<section id="nmds" class="slide level2">
+<h2>NMDS</h2>
+<p>Non-metric Multidimensional Scaling: Similar to PCoA, but based on rank of distances. Output axes are arbitrary and have <em>no</em> meaning.</p>
+</section>
+<section id="t-sne" class="slide level2">
+<h2>t-SNE</h2>
+<p>t-distributed stochastic neighbor embedding: similar objects are placed near each other probabilistically. Placement varies by run, axes have no meaning, and some methods allow for pre-defined clusters being placed closer to each other.</p>
+</section>
+<section id="structure---best-in-context" class="slide level2">
+<h2>STRUCTURE - best in context</h2>
+<p>It’s often tempting to just plot STRUCTURE results.</p>
+<div class="fragment">
+<p>Keep in mind that this may make the data seem either chaotic (as its ordered relatively arbitrarily), or highly structured when individuals are grouped by similarity.</p>
+</div>
+<div class="fragment">
+<p>Often good to plot next to a phylogeny showing relationships between samples.</p>
+</div>
+</section>
+<section id="d.-melanogaster-structure" class="slide level2">
+<h2><em>D. melanogaster</em> structure</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="better---along-tree" class="slide level2">
+<h2>Better - along tree</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-9-1.png" width="1440" class="r-stretch"></section>
+<section id="different-layout---harder" class="slide level2">
+<h2>Different layout - harder</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="visualizing-structure-across-space" class="slide level2">
+<h2>Visualizing structure across space</h2>
+<p>You saw examples of these plots in lab last week, but we can then look at <em>where</em> structure is distributed across space.</p>
+<div class="fragment">
+<p>Generally a good idea to do this for small numbers of <span class="math inline">\(K\)</span> - large number of colors can be quite difficult to distinguish.</p>
+</div>
+<div class="fragment">
+<p>Let’s look at <em>D. melanogaster</em> data.</p>
+</div>
+</section>
+<section id="d.-melanogaster-in-space" class="slide level2">
+<h2><em>D. melanogaster</em> in space</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-11-1.png" width="960" class="r-stretch"></section>
+<section id="big-takeaways-from-structure-and-pca" class="slide level2">
+<h2>Big takeaways from structure and PCA</h2>
+<p>Color choice matters - define palettes to make your code usable.</p>
+<div class="fragment">
+<p>Be careful when <span class="math inline">\(K\)</span> is large! Hard to choose distinctive color sets.</p>
+</div>
+<div class="fragment">
+<p>Embrace hierarchical nature of populations - find similarities between groups.</p>
+</div>
+</section>
+<section id="looking-across-the-genome" class="slide level2">
+<h2>Looking across the genome</h2>
+<p>As you visualize statistics across the genome, it’s good to include the relative locations of sites as part of the information.</p>
+<div class="fragment">
+<p>Raw distributions of, say, <span class="math inline">\(/pi\)</span> can be useful when comparing between species/populations, but often good to see how they vary across the genome.</p>
+</div>
+</section>
+<section id="manhattan-plots" class="slide level2">
+<h2>Manhattan plots</h2>
+<p>Manhattan plots are standard approach here: the X-axis is location in genome, with chromosomes strung together front to back, and the Y-axis is whatever statistic you are interested in.</p>
+<div class="fragment">
+<p>Most packages have their own implementation of this, but good to know how to do manually.</p>
+</div>
+</section>
+<section id="option-1-facets" class="slide level2">
+<h2>Option 1: Facets</h2>
+<p>The first option is to use <code>ggplot</code>s faceting option to plot each chromosome as a facet, and just plot them in a single row with no space between facets</p>
+<div class="fragment">
+<p>Biggest benefit is that any <code>loess</code> or similar curves you plot are plotted per chromosome, rather than fitting one curve for whole genome.</p>
+</div>
+</section>
+<section id="option-1-d.-melanogaster" class="slide level2">
+<h2>Option 1: <em>D. melanogaster</em></h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-12-1.png" width="960" class="r-stretch"></section>
+<section id="option-2-recode-positions" class="slide level2">
+<h2>Option 2: Recode positions</h2>
+<p>Using something like <code>dplyr</code>, you can group the chromosomes together first, and then create a position column that is the bp of each site + total bp up to that point.</p>
+<div class="fragment">
+<p>Can be more finicky, but produces generally nicer looking plots.</p>
+</div>
+<div class="fragment">
+<p>But, plotting anything like <code>geom_smooth()</code> you have to be super careful to not plot across whole genome.</p>
+</div>
+</section>
+<section id="secret-third-option" class="slide level2">
+<h2>Secret third option</h2>
+<p><code>Circos</code> plots arrange the genome in a circle.</p>
+<div class="fragment">
+<p>Horrible for actual comparisons (inner axes squinched, axes labels unreadable, etc.)</p>
+</div>
+<div class="fragment">
+<p>Great for visualizing <em>interactions</em> (LD, epistasis, etc.)</p>
+</div>
+</section>
+<section id="circos-in-d.-melanogaster" class="slide level2">
+<h2>Circos in <em>D. melanogaster</em></h2>
+</section>
+<section id="color-choice-for-genomic-plots" class="slide level2">
+<h2>Color choice for genomic plots</h2>
+<p>Some aspects of the plots are easy to keep consistent with your chosen color scheme (<span class="math inline">\(\pi\)</span> or demographic history per population can just use the pre-defined scheme).</p>
+<div class="fragment">
+<p>Pairwise comparisons are more difficult - this is why we’ve saved some primary colors when defining our base scheme.</p>
+</div>
+<div class="fragment">
+<p>You won’t have a unique color for everything (in our <em>D. melanogaster</em> data: <span class="math inline">\(14\)</span> pops, so <span class="math inline">\(105\)</span> colors for a unique sheme).</p>
+</div>
+<div class="fragment">
+<p>Remember that your figures are meant to both display the overall data <em>and</em> tell a story.</p>
+</div>
+</section>
+<section id="solution-1-choose-focal-species-color-by-second" class="slide level2">
+<h2>Solution 1: choose focal species, color by second</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-13-1.png" width="960" class="r-stretch"></section>
+<section id="solution-2-new-colors-entirely" class="slide level2">
+<h2>Solution 2: new colors entirely</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
+<section id="minor-tip" class="slide level2">
+<h2>Minor tip</h2>
+<p>When plotting a curve over a cloud of points, it’s often hard to see the confidence interval/the curve itself.</p>
+<div class="fragment">
+<p>Simple fix: remove confidence interval, plot the same curve first as a thick white line.</p>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-15-1.png" width="960" class="r-stretch"></section>
+<section id="alternative---lighter-conf-int" class="slide level2">
+<h2>Alternative - lighter conf int</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
+<section id="some-practical-details" class="slide level2">
+<h2>Some practical details</h2>
+<p>Often, you will not be satisfied with the end result of your figure fully.</p>
+<div class="fragment">
+<p>Minor edits, changing layouts, adding details <em>are</em> useful, but be careful about how much you do outside of <code>R</code>/other programming language.</p>
+</div>
+<div class="fragment">
+<p>Your workflow needs to be rapidly repeatable!</p>
+</div>
+</section>
+<section id="complex-plots" class="slide level2">
+<h2>Complex plots</h2>
+<p>Functions like <code>plot_grid</code> from <code>cowplot</code> let you create quite complex layouts.</p>
+<div class="fragment">
+<p>Grammar of graphics (the background philosophy behind <code>ggplot2</code>) deals with images as layers - build up complex figures slowly.</p>
+</div>
+<div class="fragment">
+<p>You can take multiple different figures you’ve made and add them in various sizings, with automatic panel labels, etc.</p>
+</div>
+</section>
+<section id="example-2" class="slide level2">
+<h2>Example</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-17-1.png" width="960" class="r-stretch"></section>
+<section id="very-busy" class="slide level2">
+<h2>Very Busy!</h2>
+<p>Lots of twiddling to get to the right point.</p>
+<div class="fragment">
+<p>Controversial: remove axes labels that will not be readable in real figures.</p>
+</div>
+<div class="fragment">
+<p>Adjust text size so the bits that matter are readable.</p>
+</div>
+<div class="fragment">
+<p>Submit full versions in the supplement.</p>
+</div>
+</section>
+<section id="e.g." class="slide level2">
+<h2>E.g.</h2>
+
+<img data-src="Lecture12_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
+<section id="no-figure-is-really-perfect" class="slide level2">
+<h2>No figure is really perfect!</h2>
+<p>Don’t keep twiddling on the figures endlessly!</p>
+<div class="fragment">
+<p>At some point, the data is displayed clearly, there are few distractions, and so you are good to go.</p>
+</div>
+</section>
+<section id="if-this-got-published-so-can-you" class="slide level2">
+<h2>If this got published so can you</h2>
+
+<img data-src="images/paste-41.png" width="640" class="r-stretch"></section>
+<section id="thursday---figure-critiques" class="slide level2 smaller scrollable">
+<h2>Thursday - Figure critiques</h2>
+<p>Instead of reading, either bring in your own figure, or find a figure in a paper that you like.</p>
+<div class="fragment">
+<p>We’ll spend some time thinking about how the relevant data could have been portrayed better, and what aspects of the figure can be changed for the better.</p>
+</div>
+<div class="fragment">
+<p>If you have your own data - treat this as an opportunity to get feedback on presentation.</p>
+</div>
+<div class="fragment">
+<p>If you don’t - treat this as an opportunity to see how your favorite plots can be improved.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Zeng2019" class="csl-entry" role="listitem">
+Zeng, Li, Stein B. Jacobsen, Dimitar D. Sasselov, Michail I. Petaev, Andrew Vanderburg, Mercedes Lopez-Morales, Juan Perez-Mercader, et al. 2019. <span>“Growth Model Interpretation of Planet Size Distribution.”</span> <em>Proceedings of the National Academy of Sciences</em> 116 (20): 9723–28. <a href="https://doi.org/10.1073/pnas.1812905116">https://doi.org/10.1073/pnas.1812905116</a>.
+</div>
+</div>
+</div>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1080,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/adagilis\.github\.io\/PopGen25\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
