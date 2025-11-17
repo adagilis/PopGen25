@@ -47,7 +47,7 @@ At the end of the day, however, your data is telling a *story*. Figures, like mo
 
 Be clear about what you are displaying and why, and make replicating your work as easy as possible, and as a result you can take some more liberties in what aspects you decide to plot vs not.
 
-## Biggest tip
+## Biggest tip {.smaller}
 
 DON'T STOP AT THE DEFAULT PLOT!
 
@@ -299,7 +299,7 @@ Great for presentations/interactive data!
 
 ```{r}
 library(plotly)
-fig = plot_ly(samples_table,x=~PC1,y=~PC2,z=~PC3,color=~K14,colors=cols_14)
+fig = plot_ly(samples_table,x=~PC1*42,y=~PC2*15,z=~PC3*8,color=~K14,colors=cols_14)
 fig <- fig %>% add_markers()
 fig <- fig %>% layout(scene=list(xaxis=list(title="PC1"),
     yaxis = list(title = 'PC2'),
@@ -319,17 +319,49 @@ It's good to know what each is and what they are used for:
 
 Principle Coordinate Analysis - calculate distances between all samples across all measured variables and collapse distance matrix to lower dimension. Output axes represent how much distance between samples is explained along that axis.
 
+## Example
+:::{layout-ncol=2}
+![](images/paste-43.png){width="350"}
+
+![](images/paste-44.png){width="350"}
+:::
 ## DAPC
 
 Discriminant analysis of PCs: pre-defined groups are as separated in space as possible. Output axes represent how differentiated different groups are.
 
+## Example 
+::: {layout-ncol=2}
+![](images/paste-45.png)
+
+![](images/paste-46.png)
+:::
 ## NMDS
 
 Non-metric Multidimensional Scaling: Similar to PCoA, but based on rank of distances. Output axes are arbitrary and have *no* meaning.
 
+## Example
+
+![](images/paste-47.png)
+
 ## t-SNE
 
 t-distributed stochastic neighbor embedding: similar objects are placed near each other probabilistically. Placement varies by run, axes have no meaning, and some methods allow for pre-defined clusters being placed closer to each other.
+
+## Example
+
+![](images/paste-48.png)
+
+## So, which to use?
+
+Depends on your data and what you want to show:
+
+- PCA for how variation is partitioned
+
+- PCoA for how differences are distributed
+
+- NMDS when data doesn't meet PCA assumptions
+
+- t-SNE when data highly multi-dimensional _and_ there are many true clusters, but you don't need axes to mean anything
 
 ## STRUCTURE - best in context
 
@@ -495,6 +527,8 @@ Horrible for actual comparisons (inner axes squinched, axes labels unreadable, e
 Great for visualizing *interactions* (LD, epistasis, etc.)
 
 ## Circos in *D. melanogaster*
+
+![](images/paste-42.png){width="740"}
 
 ## Color choice for genomic plots
 
