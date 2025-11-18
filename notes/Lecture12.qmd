@@ -320,21 +320,38 @@ It's good to know what each is and what they are used for:
 Principle Coordinate Analysis - calculate distances between all samples across all measured variables and collapse distance matrix to lower dimension. Output axes represent how much distance between samples is explained along that axis.
 
 ## Example
-:::{layout-ncol=2}
-![](images/paste-43.png){width="350"}
 
-![](images/paste-44.png){width="350"}
-:::
+```{r}
+#| results: hide
+library(vcfR)
+vcf=read.vcfR("data/dmel_thin.vcf.gz")
+gt = extract.gt(vcf,element="GT",as.numeric=TRUE)
+inds = gsub("0_","",colnames(gt))
+pops = pops14=samples_table$K14[match(inds,samples_table$Sample)]
+pops14[which(is.na(pops14))] = "South_1-anc13"
+gt = t(as.matrix(apply(gt,1,function(x){tmp=x;tmp[which(is.na(x))] = mean(x,na.rm=TRUE);return(tmp)})))
+dist_mat = dist(t(gt))
+pcoa = princomp(as.matrix(dist_mat))
+pcoa$sdev = pcoa$sdev/sum(pcoa$sdev)
+pco_plot=ggplot()+geom_point(aes(x=pcoa$scores[,1],y=pcoa$scores[,2],col=pops14,shape=pops14))+scale_color_manual(values=cols_14)+scale_shape_manual(values=shapes_14)+theme(legend.position="none")+
+labs(x=paste("PCoA 1 (",round(pcoa$sdev[1]*100,2),"%)",sep=""),
+y=paste("PCoA 2 (",round(pcoa$sdev[2]*100,2),"%)",sep=""))
+
+plot_grid(pca_plot2+theme(legend.position="none"),pco_plot)
+```
+
 ## DAPC
 
 Discriminant analysis of PCs: pre-defined groups are as separated in space as possible. Output axes represent how differentiated different groups are.
 
 ## Example 
-::: {layout-ncol=2}
-![](images/paste-45.png)
+```{r}
+#| results: hide
+library(adegenet)
+dapc_dmel = dapc(t(gt),pops14,n.pca=15,n.da=2)
+scatter(dapc_dmel)
+```
 
-![](images/paste-46.png)
-:::
 ## NMDS
 
 Non-metric Multidimensional Scaling: Similar to PCoA, but based on rank of distances. Output axes are arbitrary and have *no* meaning.
@@ -347,9 +364,18 @@ Non-metric Multidimensional Scaling: Similar to PCoA, but based on rank of dista
 
 t-distributed stochastic neighbor embedding: similar objects are placed near each other probabilistically. Placement varies by run, axes have no meaning, and some methods allow for pre-defined clusters being placed closer to each other.
 
-## Example
+. . . 
 
-![](images/paste-48.png)
+Optimal when there are many groups, you have equal sampling for each group and you mainly want to display that they do cluster next to each other, but distances between groups don't matter.
+
+## Example
+```{r}
+#| results: hide
+library(Rtsne)
+tsne_res = Rtsne(unique(t(gt)),dims=2,perplexity=40,initial_dims=20,vecbose=TRUE)
+idx = which(duplicated(t(gt)))
+ggplot()+geom_point(aes(x=tsne_res$Y[,1],tsne_res$Y[,2],col=pops14[-idx],shape=pops14[-idx]))+scale_color_manual(values=cols_14)+scale_shape_manual(values=shapes_14)+theme_void()
+```
 
 ## So, which to use?
 
@@ -361,7 +387,7 @@ Depends on your data and what you want to show:
 
 - NMDS when data doesn't meet PCA assumptions
 
-- t-SNE when data highly multi-dimensional _and_ there are many true clusters, but you don't need axes to mean anything
+- t-SNE when data highly multi-dimensional _and_ there are many true clusters, but you don't need axes to mean anything (and distances between groups are arbitrary)
 
 ## STRUCTURE - best in context
 
