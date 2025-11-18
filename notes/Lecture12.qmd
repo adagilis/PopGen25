@@ -372,7 +372,7 @@ Optimal when there are many groups, you have equal sampling for each group and y
 ```{r}
 #| results: hide
 library(Rtsne)
-tsne_res = Rtsne(unique(t(gt)),dims=2,perplexity=40,initial_dims=20,vecbose=TRUE)
+tsne_res = Rtsne(unique(t(gt)),dims=2,perplexity=40,initial_dims=20,vecbose=TRUE,max_iter=2000)
 idx = which(duplicated(t(gt)))
 ggplot()+geom_point(aes(x=tsne_res$Y[,1],tsne_res$Y[,2],col=pops14[-idx],shape=pops14[-idx]))+scale_color_manual(values=cols_14)+scale_shape_manual(values=shapes_14)+theme_void()
 ```
