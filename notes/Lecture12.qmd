@@ -472,7 +472,7 @@ coordinates = as.matrix(cbind(long,lat))[which(is.finite(idx)),]
 admix = as.matrix(q_matrix[,2:15])
 class(admix) = "tess3Q"
 my.palette = CreatePalette(cols_14[names(q_matrix[,2:15])],9)
-plot(admix,coordinates,method="map.max",cex-0.2,interpol=FieldsKrigModel(10),col.palette=my.palette,resolution=c(1000,1000))
+plot(admix,coordinates,method="map.max",cex=0.2,interpol=FieldsKrigModel(10),col.palette=my.palette,resolution=c(1000,1000),xlab="Longitude",ylab="Latitude",main="Ancestry")
 ```
 
 ## Big takeaways from structure and PCA
@@ -514,6 +514,7 @@ Biggest benefit is that any `loess` or similar curves you plot are plotted per c
 ## Option 1: *D. melanogaster*
 
 ```{r}
+library(latex2exp)
 pi_dxy = read_table("data/pi_dxy.txt")
 #Plink loves to convert X to human numbers...
 pi_dxy$chr[which(pi_dxy$chr=="23")] = "chrX"
@@ -524,7 +525,7 @@ geom_smooth(method="loess",fill=NA,aes(group=pop1),col="white",size=2)+
 geom_smooth(method="loess",fill=NA)+
 facet_grid(~chr,space="free_x",scale="free_x")+
 scale_color_manual(values=cols_3)+
-labs(x="Position (Mb)",y="Pi",col="Ancestry")
+labs(x="Position (Mb)",y=TeX("$\\pi$"),col="Ancestry")
 pi_plot
 ```
 
@@ -580,7 +581,7 @@ geom_point(size=0.1)+
 geom_smooth()+
 facet_grid(~chr,space="free_x",scale="free_x")+
 scale_color_manual(values=cols_3)+
-labs(x="Position (Mb)",y="Dxy with OOA",col="Ancestry")
+labs(x="Position (Mb)",y=TeX("$D_{xy}$ with OOA"),col="Ancestry")
 
 ```
 
@@ -596,7 +597,7 @@ geom_point(size=0.1)+
 geom_smooth()+
 facet_grid(~chr,space="free_x",scale="free_x")+
 scale_color_manual(values=cols_3_pair)+
-labs(x="Position (Mb)",y="Dxy",col="Ancestry")
+labs(x="Position (Mb)",y=TeX("$D_{xy}$",col="Ancestry")
 ```
 
 ## Minor tip
@@ -616,7 +617,7 @@ geom_smooth(aes(group=pair),fill=NA,col="white",size=2)+
 geom_smooth(fill=NA)+
 facet_grid(~chr,space="free_x",scale="free_x")+
 scale_color_manual(values=cols_3_pair)+
-labs(x="Position (Mb)",y="Dxy",col="Ancestry")
+labs(x="Position (Mb)",y=TeX("$D_{xy}$"),col="Ancestry")
 dxy_plot
 ```
 
@@ -628,7 +629,7 @@ geom_point(size=0.1)+
 geom_smooth(fill=rgb(1,1,1,alpha=1))+
 facet_grid(~chr,space="free_x",scale="free_x")+
 scale_color_manual(values=cols_3_pair)+
-labs(x="Position (Mb)",y="Dxy",col="Ancestry")
+labs(x="Position (Mb)",y=TeX("$D_{xy}$"),col="Ancestry")
 ```
 
 ## Manhattan plots and log scales
@@ -656,16 +657,16 @@ pi_AFR2 = subset(pi_dxy,metric=="pi" & pop1=="AFR2")
 pi_AFR1$pi_rat1 = pi_OOA$value/pi_AFR1$value
 pi_AFR1$pi_rat2 = pi_AFR2$value/pi_AFR2$value
 
-non_log_plot = ggplot(pi_AFR1,aes(x=pi_AFR1$start/1000000,y=pi_rat1))+geom_point(size=0.1,col=cols_3["OOA"])+geom_smooth(col="white",fill=NA,size=2)+geom_smooth(col=cols_3["OOA"],fill=NA)+facet_grid(~chr,space="free_x",scale="free_x")+labs(x="Position(Mb)",y="pi_OOA/pi_AFR1")
+non_log_plot = ggplot(pi_AFR1,aes(x=pi_AFR1$start/1000000,y=pi_rat1))+geom_point(size=0.1,col=cols_3["OOA"])+geom_smooth(col="white",fill=NA,size=2)+geom_smooth(col=cols_3["OOA"],fill=NA)+facet_grid(~chr,space="free_x",scale="free_x")+labs(x="Position(Mb)",y=TeX("$\\frac{\\pi_{OOA}{\\pi_{AFR1}}$"))
 
 log_plot = non_log_plot+scale_y_continuous(trans="log10")
 
 plot_grid(non_log_plot,log_plot)
 ```
 
-## Other genomic standards
+## Other genomic standards {.smaller}
 
-JBrowse - great for visualizing features along a genome (genes,TEs,series of statistics) in a single platform. Not great for running from R, but own data format is very simple to adapt to.
+JBrowse - great for visualizing features along a genome (genes,TEs,series of statistics) in a single platform. Not great for running from R, but their data format is very simple to adapt to.
 
 . . . 
 
@@ -742,11 +743,12 @@ Submit full versions in the supplement.
 ## E.g.
 
 ```{r}
+library(latex2exp)
 #Column 1
-row_1 = plot_grid(pca_plot2+theme(legend.position="none",axis.text.x=element_blank(),axis.text.y=element_blank()),pca_plot34+theme(legend.position="none",axis.text.x=element_blank(),axis.text.y=element_blank()),rel_widths=c(1,1),labels=c("A","B"))
+row_1 = plot_grid(pca_plot2+theme(legend.position="none",axis.text.x=element_blank(),axis.text.y=element_blank(),axis_title=element_text(size=12)),pca_plot34+theme(legend.position="none",axis.text.x=element_blank(),axis.text.y=element_blank(),axis_title=element_text(size=12)),rel_widths=c(1,1),labels=c("A","B"))
 
-row_2 = plot_grid(pi_plot+theme(legend.position="none",axis.title.x=element_blank(),axis.ticks.x=element_blank(),axis.text.x=element_blank(),strip.background=element_rect(fill="white"),panel.spacing=unit(0,"lines")),
-dxy_plot+theme(legend.position="none",strip.background=element_blank(),strip.text.x=element_blank(),panel.spacing=unit(0,"lines"),axis.ticks.x=element_blank(),axis.text.x=element_blank()),nrow=2,labels=c("C","D"),align="v",axis="b")
+row_2 = plot_grid(pi_plot+theme(legend.position="none",axis.title.x=element_blank(),axis.ticks.x=element_blank(),axis.text.x=element_blank(),strip.background=element_rect(fill="white"),panel.spacing.x=unit(0,"mm")),
+dxy_plot+theme(legend.position="none",strip.background=element_blank(),strip.text.x=element_blank(),panel.spacingx=unit(0,"mm"),axis.text.x=element_blank()),nrow=2,labels=c("C","D"),align="v",axis="b")
 
 col_2 = tree_plot+theme(legend.position="none",strip.background=element_rect(fill="white"))
 
