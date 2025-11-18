@@ -1344,22 +1344,43 @@
     "text": "Alternative - lighter conf int"
   },
   {
+    "objectID": "notes/Lecture12.html#manhattan-plots-and-log-scales",
+    "href": "notes/Lecture12.html#manhattan-plots-and-log-scales",
+    "title": "Lecture 12",
+    "section": "Manhattan plots and log scales",
+    "text": "Manhattan plots and log scales\nYou may sometimes have data points that are distant outliers to most of the data.\n\nUsing a log-scale for the Y can be tempting here, but be careful!\n\n\nOften, Manhattan plots show the results of something like a GWAS, and the Y-axis is therefore a \\(-log(p-val)\\). This is fine.\n\n\nAny time the Y axis is a ratio of something, log scale is also better."
+  },
+  {
+    "objectID": "notes/Lecture12.html#example-6",
+    "href": "notes/Lecture12.html#example-6",
+    "title": "Lecture 12",
+    "section": "Example",
+    "text": "Example"
+  },
+  {
+    "objectID": "notes/Lecture12.html#other-genomic-standards",
+    "href": "notes/Lecture12.html#other-genomic-standards",
+    "title": "Lecture 12",
+    "section": "Other genomic standards",
+    "text": "Other genomic standards\nJBrowse - great for visualizing features along a genome (genes,TEs,series of statistics) in a single platform. Not great for running from R, but own data format is very simple to adapt to.\n\nVolcano plots - visualizing excess of p-values vs effect sizes, often for expression data. Really just a scatter plot, but with some own conventions.\n\n\nGO enrichment plots - various libraries and approaches, I suggest looking at GOSemSim for fairly good standards for GO enrichment plots.\n\n\nDistributions of data have surprisingly no standards: boxplots, violins, ridgelines, hexbins, histograms, etc. Each depends on specific shape of distribution and goal of plot (comparison, description,highlighting outliers, etc.)"
+  },
+  {
     "objectID": "notes/Lecture12.html#some-practical-details",
     "href": "notes/Lecture12.html#some-practical-details",
     "title": "Lecture 12",
     "section": "Some practical details",
-    "text": "Some practical details\nOften, you will not be satisfied with the end result of your figure fully.\n\nMinor edits, changing layouts, adding details are useful, but be careful about how much you do outside of R/other programming language.\n\n\nYour workflow needs to be rapidly repeatable!"
+    "text": "Some practical details\nOften, you will not be satisfied with the end result of your figure fully.\n\nMinor edits, changing layouts, adding details are useful, but be careful about how much you do outside of R/other programming language.\n\n\nYour workflow needs to be rapidly repeatable!\n\n\nSome helper packages: ggpubr, ggextras add functions that make certain elements closer to publication ready graphics."
   },
   {
     "objectID": "notes/Lecture12.html#complex-plots",
     "href": "notes/Lecture12.html#complex-plots",
     "title": "Lecture 12",
     "section": "Complex plots",
-    "text": "Complex plots\nFunctions like plot_grid from cowplot let you create quite complex layouts.\n\nGrammar of graphics (the background philosophy behind ggplot2) deals with images as layers - build up complex figures slowly.\n\n\nYou can take multiple different figures you’ve made and add them in various sizings, with automatic panel labels, etc."
+    "text": "Complex plots\nFunctions like plot_grid from cowplot let you create quite complex layouts (or the whole patchworks package)\n\nGrammar of graphics (the background philosophy behind ggplot2) deals with images as layers - build up complex figures slowly.\n\n\nYou can take multiple different figures you’ve made and add them in various sizings, with automatic panel labels, etc."
   },
   {
-    "objectID": "notes/Lecture12.html#example-6",
-    "href": "notes/Lecture12.html#example-6",
+    "objectID": "notes/Lecture12.html#example-7",
+    "href": "notes/Lecture12.html#example-7",
     "title": "Lecture 12",
     "section": "Example",
     "text": "Example"
