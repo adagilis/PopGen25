@@ -631,6 +631,55 @@ scale_color_manual(values=cols_3_pair)+
 labs(x="Position (Mb)",y="Dxy",col="Ancestry")
 ```
 
+## Manhattan plots and log scales
+
+You may sometimes have data points that are distant outliers to most of the data.
+
+. . . 
+
+Using a log-scale for the Y can be tempting here, but be careful!
+
+. . . 
+
+Often, Manhattan plots show the results of something like a GWAS, and the Y-axis is therefore a $-log(p-val)$. This is fine.
+
+. . . 
+
+Any time the Y axis is a ratio of something, log scale is also better.
+
+## Example
+
+```{r}
+pi_OOA = subset(pi_dxy,metric=="pi" & pop1=="OOA")
+pi_AFR1 = subset(pi_dxy,metric=="pi" & pop1=="AFR1")
+pi_AFR2 = subset(pi_dxy,metric=="pi" & pop1=="AFR2")
+pi_AFR1$pi_rat1 = pi_OOA$value/pi_AFR1$value
+pi_AFR1$pi_rat2 = pi_AFR2$value/pi_AFR2$value
+
+non_log_plot = ggplot(pi_AFR1,aes(x=pi_AFR1$start/1000000,y=pi_rat1))+geom_point(size=0.1,col=cols_3["OOA"])+geom_smooth(col="white",fill=NA,size=2)+geom_smooth(col=cols_3["OOA"],fill=NA)+facet_grid(~chr,space="free_x",scale="free_x")+labs(x="Position(Mb)",y="pi_OOA/pi_AFR1")
+
+log_plot = non_log_plot+scale_y_continuous(trans="log10")
+
+plot_grid(non_log_plot,log_plot)
+```
+
+## Other genomic standards
+
+JBrowse - great for visualizing features along a genome (genes,TEs,series of statistics) in a single platform. Not great for running from R, but own data format is very simple to adapt to.
+
+. . . 
+
+Volcano plots - visualizing excess of p-values vs effect sizes, often for expression data. Really just a scatter plot, but with some own conventions.
+
+. . . 
+
+GO enrichment plots - various libraries and approaches, I suggest looking at `GOSemSim` for fairly good standards for GO enrichment plots.
+
+. . . 
+
+Distributions of data have surprisingly no standards: boxplots, violins, ridgelines, hexbins, histograms, etc. Each depends on specific shape of distribution and goal of plot (comparison, description,highlighting outliers, etc.)
+
+
 ## Some practical details
 
 Often, you will not be satisfied with the end result of your figure fully.
@@ -643,9 +692,13 @@ Minor edits, changing layouts, adding details *are* useful, but be careful about
 
 Your workflow needs to be rapidly repeatable!
 
+. . . 
+
+Some helper packages: `ggpubr`, `ggextras` add functions that make certain elements closer to publication ready graphics. 
+
 ## Complex plots
 
-Functions like `plot_grid` from `cowplot` let you create quite complex layouts.
+Functions like `plot_grid` from `cowplot` let you create quite complex layouts (or the whole `patchworks` package)
 
 . . .
 
