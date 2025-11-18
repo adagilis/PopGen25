@@ -472,7 +472,7 @@ coordinates = as.matrix(cbind(long,lat))[which(is.finite(idx)),]
 admix = as.matrix(q_matrix[,2:15])
 class(admix) = "tess3Q"
 my.palette = CreatePalette(cols_14[names(q_matrix[,2:15])],9)
-plot(admix,coordinates,method="map.max",interpol=FieldsKrigModel(10),col.palette=my.palette)
+plot(admix,coordinates,method="map.max",cex-0.2,interpol=FieldsKrigModel(10),col.palette=my.palette,resolution=c(1000,1000))
 ```
 
 ## Big takeaways from structure and PCA
@@ -493,7 +493,7 @@ As you visualize statistics across the genome, it's good to include the relative
 
 . . .
 
-Raw distributions of, say, $/pi$ can be useful when comparing between species/populations, but often good to see how they vary across the genome.
+Raw distributions of, say, $\pi$ can be useful when comparing between species/populations, but often good to see how they vary across the genome.
 
 ## Manhattan plots
 
