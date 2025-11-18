@@ -1362,7 +1362,7 @@
     "href": "notes/Lecture12.html#other-genomic-standards",
     "title": "Lecture 12",
     "section": "Other genomic standards",
-    "text": "Other genomic standards\nJBrowse - great for visualizing features along a genome (genes,TEs,series of statistics) in a single platform. Not great for running from R, but own data format is very simple to adapt to.\n\nVolcano plots - visualizing excess of p-values vs effect sizes, often for expression data. Really just a scatter plot, but with some own conventions.\n\n\nGO enrichment plots - various libraries and approaches, I suggest looking at GOSemSim for fairly good standards for GO enrichment plots.\n\n\nDistributions of data have surprisingly no standards: boxplots, violins, ridgelines, hexbins, histograms, etc. Each depends on specific shape of distribution and goal of plot (comparison, description,highlighting outliers, etc.)"
+    "text": "Other genomic standards\nJBrowse - great for visualizing features along a genome (genes,TEs,series of statistics) in a single platform. Not great for running from R, but their data format is very simple to adapt to.\n\nVolcano plots - visualizing excess of p-values vs effect sizes, often for expression data. Really just a scatter plot, but with some own conventions.\n\n\nGO enrichment plots - various libraries and approaches, I suggest looking at GOSemSim for fairly good standards for GO enrichment plots.\n\n\nDistributions of data have surprisingly no standards: boxplots, violins, ridgelines, hexbins, histograms, etc. Each depends on specific shape of distribution and goal of plot (comparison, description,highlighting outliers, etc.)"
   },
   {
     "objectID": "notes/Lecture12.html#some-practical-details",
@@ -1418,7 +1418,14 @@
     "href": "notes/Lecture12.html#thursday---figure-critiques",
     "title": "Lecture 12",
     "section": "Thursday - Figure critiques",
-    "text": "Thursday - Figure critiques\nInstead of reading, either bring in your own figure, or find a figure in a paper that you like.\n\nWe’ll spend some time thinking about how the relevant data could have been portrayed better, and what aspects of the figure can be changed for the better.\n\n\nIf you have your own data - treat this as an opportunity to get feedback on presentation.\n\n\nIf you don’t - treat this as an opportunity to see how your favorite plots can be improved.\n\n\n\n\nZeng, Li, Stein B. Jacobsen, Dimitar D. Sasselov, Michail I. Petaev, Andrew Vanderburg, Mercedes Lopez-Morales, Juan Perez-Mercader, et al. 2019. “Growth Model Interpretation of Planet Size Distribution.” Proceedings of the National Academy of Sciences 116 (20): 9723–28. https://doi.org/10.1073/pnas.1812905116."
+    "text": "Thursday - Figure critiques\nInstead of reading, either bring in your own figure, or find a figure in a paper that you like.\n\nWe’ll spend some time thinking about how the relevant data could have been portrayed better, and what aspects of the figure can be changed for the better.\n\n\nIf you have your own data - treat this as an opportunity to get feedback on presentation.\n\n\nIf you don’t - treat this as an opportunity to see how your favorite plots can be improved."
+  },
+  {
+    "objectID": "notes/Lecture12.html#references",
+    "href": "notes/Lecture12.html#references",
+    "title": "Lecture 12",
+    "section": "References",
+    "text": "References\n\n\n\n\nZeng, Li, Stein B. Jacobsen, Dimitar D. Sasselov, Michail I. Petaev, Andrew Vanderburg, Mercedes Lopez-Morales, Juan Perez-Mercader, et al. 2019. “Growth Model Interpretation of Planet Size Distribution.” Proceedings of the National Academy of Sciences 116 (20): 9723–28. https://doi.org/10.1073/pnas.1812905116."
   },
   {
     "objectID": "notes/Lecture10.html#genealogies-along-the-genome",
