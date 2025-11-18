@@ -1187,7 +1187,7 @@
     "href": "notes/Lecture12.html#t-sne",
     "title": "Lecture 12",
     "section": "t-SNE",
-    "text": "t-SNE\nt-distributed stochastic neighbor embedding: similar objects are placed near each other probabilistically. Placement varies by run, axes have no meaning, and some methods allow for pre-defined clusters being placed closer to each other."
+    "text": "t-SNE\nt-distributed stochastic neighbor embedding: similar objects are placed near each other probabilistically. Placement varies by run, axes have no meaning, and some methods allow for pre-defined clusters being placed closer to each other.\n\nOptimal when there are many groups, you have equal sampling for each group and you mainly want to display that they do cluster next to each other, but distances between groups don’t matter."
   },
   {
     "objectID": "notes/Lecture12.html#example-4",
@@ -1201,7 +1201,7 @@
     "href": "notes/Lecture12.html#so-which-to-use",
     "title": "Lecture 12",
     "section": "So, which to use?",
-    "text": "So, which to use?\nDepends on your data and what you want to show:\n\nPCA for how variation is partitioned\nPCoA for how differences are distributed\nNMDS when data doesn’t meet PCA assumptions\nt-SNE when data highly multi-dimensional and there are many true clusters, but you don’t need axes to mean anything"
+    "text": "So, which to use?\nDepends on your data and what you want to show:\n\nPCA for how variation is partitioned\nPCoA for how differences are distributed\nNMDS when data doesn’t meet PCA assumptions\nt-SNE when data highly multi-dimensional and there are many true clusters, but you don’t need axes to mean anything (and distances between groups are arbitrary)"
   },
   {
     "objectID": "notes/Lecture12.html#structure---best-in-context",
