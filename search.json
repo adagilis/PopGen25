@@ -1257,7 +1257,7 @@
     "href": "notes/Lecture12.html#looking-across-the-genome",
     "title": "Lecture 12",
     "section": "Looking across the genome",
-    "text": "Looking across the genome\nAs you visualize statistics across the genome, it’s good to include the relative locations of sites as part of the information.\n\nRaw distributions of, say, \\(/pi\\) can be useful when comparing between species/populations, but often good to see how they vary across the genome."
+    "text": "Looking across the genome\nAs you visualize statistics across the genome, it’s good to include the relative locations of sites as part of the information.\n\nRaw distributions of, say, \\(\\pi\\) can be useful when comparing between species/populations, but often good to see how they vary across the genome."
   },
   {
     "objectID": "notes/Lecture12.html#manhattan-plots",
