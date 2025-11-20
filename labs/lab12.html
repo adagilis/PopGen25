@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
 
-<title>Labs – EEB5348-Fall25</title>
+<title>Lab 11 – EEB5348-Fall25</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,27 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-cfe70be7e2ab6f0ddf67592a600b2b75.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-91199a61a71c296c5397e976596424c0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,8 +104,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -81,9 +144,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">EEB5348-Fall25</span>
     </a>
   </div>
@@ -94,19 +157,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> 
+    <a class="nav-link" href="../notes.html"> 
 <span class="menu-text">Useful links</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./labs.html" aria-current="page"> 
+    <a class="nav-link" href="../labs.html"> 
 <span class="menu-text">Labs</span></a>
   </li>  
 </ul>
@@ -125,9 +188,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#git" id="toc-git" class="nav-link active" data-scroll-target="#git">Git?</a></li>
-  <li><a href="#pluto" id="toc-pluto" class="nav-link" data-scroll-target="#pluto">Pluto</a></li>
-  <li><a href="#lab-files" id="toc-lab-files" class="nav-link" data-scroll-target="#lab-files">Lab files:</a></li>
+  <li><a href="#lab-12" id="toc-lab-12" class="nav-link active" data-scroll-target="#lab-12">Lab 12</a>
+  <ul class="collapse">
+  <li><a href="#todays-goal" id="toc-todays-goal" class="nav-link" data-scroll-target="#todays-goal">Today’s goal</a></li>
+  <li><a href="#the-starting-point" id="toc-the-starting-point" class="nav-link" data-scroll-target="#the-starting-point">The starting point</a></li>
+  <li><a href="#off-you-go" id="toc-off-you-go" class="nav-link" data-scroll-target="#off-you-go">Off you go</a></li>
+  <li><a href="#when-youre-done" id="toc-when-youre-done" class="nav-link" data-scroll-target="#when-youre-done">When you’re done</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -136,7 +203,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Labs</h1>
+<h1 class="title">Lab 11</h1>
 </div>
 
 
@@ -153,32 +220,85 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Here you’ll find links for the labs on Thursdays, although they should all be available if you pull the latest version of the git before class time as well.</p>
-<section id="git" class="level2">
-<h2 class="anchored" data-anchor-id="git">Git?</h2>
-<p>The code for the class is hosted at: https://github.com/adagilis/PopGen25. Lab assignments will be placed in the creatively titled <code>labs</code> folder there. To get the latest version of the code, you’ll need to download it from git. The easiest way to do this is to clone the whole repository, and pull any changes before class time. If that doesn’t make sense to you, we’ll cover it in slightly more detail in class, or <a href="https://swcarpentry.github.io/git-novice/">do some self study</a>.</p>
+<section id="lab-12" class="level1">
+<h1>Lab 12</h1>
+<section id="todays-goal" class="level2">
+<h2 class="anchored" data-anchor-id="todays-goal">Today’s goal</h2>
+<p>I have included a plot of some data from the <em>D. melanogaster</em> set in the class.</p>
+<p>The plots are the defaults for ggplot, with few edits. Your task is to change them up as close to a publication ready plot as possible. Exactly how you do that is up to you, but here are a few starter suggestions:</p>
+<ol type="1">
+<li><p>Make the color consistent</p></li>
+<li><p>Change font label sizes</p></li>
+<li><p>Change visualizations to something that makes differences between populations clearer</p></li>
+</ol>
 </section>
-<section id="pluto" class="level2">
-<h2 class="anchored" data-anchor-id="pluto">Pluto</h2>
-<p>Some labs we will run using <code>Pluto</code> - an interactive notebook that uses <code>Julia</code> as the programming language, and will let us get on the same page faster for certain pieces of code.</p>
-<p>To get runnning with Pluto, you’ll just want to follow the guide at <a href="https://plutojl.org/#install">Pluto’s website</a>.</p>
-<p>Once Pluto is running, load in the lab <code>.jl</code> file provided for each lab and we’ll work from there!</p>
+<section id="the-starting-point" class="level2">
+<h2 class="anchored" data-anchor-id="the-starting-point">The starting point</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sum_table <span class="ot">=</span> <span class="fu">read_table</span>(<span class="st">"https://raw.githubusercontent.com/adagilis/PopGen25/refs/heads/main/notes/data/pi_dxy.txt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+── Column specification ────────────────────────────────────────────────────────
+cols(
+  chr = col_character(),
+  start = col_double(),
+  end = col_double(),
+  pop1 = col_character(),
+  pop2 = col_character(),
+  metric = col_character(),
+  value = col_double()
+)</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pi <span class="ot">=</span> <span class="fu">subset</span>(sum_table,metric<span class="sc">==</span><span class="st">"pi"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dxy <span class="ot">=</span> <span class="fu">subset</span>(sum_table,metric<span class="sc">==</span><span class="st">"Dxy"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">=</span> <span class="fu">ggplot</span>(pi,<span class="fu">aes</span>(<span class="at">x=</span>pop1,<span class="at">y=</span>value))<span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">=</span> <span class="fu">ggplot</span>(pi,<span class="fu">aes</span>(<span class="at">x=</span>start,<span class="at">y=</span>value,<span class="at">col=</span>pop1))<span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>()<span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_grid</span>(<span class="sc">~</span>chr)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">=</span> <span class="fu">ggplot</span>(dxy,<span class="fu">aes</span>(<span class="at">x=</span>value,<span class="at">fill=</span>pop1,<span class="at">col=</span>pop2))<span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(p1,p2,p3,<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab12_files/figure-html/Start-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="lab-files" class="level2">
-<h2 class="anchored" data-anchor-id="lab-files">Lab files:</h2>
-<p>Lab 1 can be accessed with Pluto, and will be found in the <code>labs/lab1.jl</code> file.</p>
-<p>Lab 2 is <a href="./labs/lab2.html">here</a></p>
-<p>Lab 3 is <a href="./labs/lab3.html">here</a></p>
-<p>Lab 4 is <a href="./labs/lab4.html">here</a></p>
-<p>Lab 5 is <a href="./labs/lab5.html">here</a></p>
-<p>Lab 6 can be accessed with Pluto, find it at <code>labs/lab5.jl</code> (remember you can open Pluto notebooks via url, so you don’t need to download the file!)</p>
-<p>Lab 7 is <a href="./labs/lab7.html">here</a></p>
-<p>Lab 8 is <a href="./labs/lab8.html">here</a></p>
-<p>Lab 10 is <a href="./labs/lab10.html">here</a></p>
-<p>Lab 11 is <a href="./labs/lab11.html">here</a></p>
-<p>Lab 12 is <a href="./labs/lab12.html">here</a></p>
+<section id="off-you-go" class="level2">
+<h2 class="anchored" data-anchor-id="off-you-go">Off you go</h2>
+<p>Some common bits to add to all of them that will improve the plots:</p>
+<ul>
+<li><p><code>labs(x=&lt;your x label&gt;,y=&lt;your y label&gt;,...)</code> : will let you customize what the labels say. For something like <span class="math inline">\(\pi\)</span>, you’ll also need to look into how to display mathematical symbols in the label.</p></li>
+<li><p><code>scale_color_manual(values=&lt;your color choices&gt;)</code> : this will let you customize the colors</p></li>
+<li><p>consider changing the theme. <code>theme_set(&lt;your theme&gt;)</code> will let you set the default for all plots including lots of little details. See a bunch of examples <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>.</p></li>
+<li><p>Don’t be wed to any of the specific visualizations. The figure should try to get across differences between the populations, and panel C, right now, is not doing a good job. Panel A could use indicators for significance. Panel B could use some approach to make differences between populations clearer.</p></li>
+<li><p>Learn to play with the layout - there’s tons of wasted space in the current arrangement. Either use the <code>patchworks</code> package, or if you stick to <code>plot_grid</code>, look at it’s <a href="https://wilkelab.org/cowplot/articles/plot_grid.html">documentation</a>.</p></li>
+</ul>
+</section>
+<section id="when-youre-done" class="level2">
+<h2 class="anchored" data-anchor-id="when-youre-done">When you’re done</h2>
+<p>Submit your figure to me in the slack. I will post all of the figures as a little contest to see which version people preferred, and the winner gets the pleasure of knowing they are the best and the inaugural <code>EEB5348 - Best Figure Award</code>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
