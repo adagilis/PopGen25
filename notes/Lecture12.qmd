@@ -597,7 +597,7 @@ geom_point(size=0.1)+
 geom_smooth()+
 facet_grid(~chr,space="free_x",scale="free_x")+
 scale_color_manual(values=cols_3_pair)+
-labs(x="Position (Mb)",y=TeX("$D_{xy}$",col="Ancestry")
+labs(x="Position (Mb)",y=TeX("$D_{xy}$"),col="Ancestry")
 ```
 
 ## Minor tip
@@ -657,7 +657,7 @@ pi_AFR2 = subset(pi_dxy,metric=="pi" & pop1=="AFR2")
 pi_AFR1$pi_rat1 = pi_OOA$value/pi_AFR1$value
 pi_AFR1$pi_rat2 = pi_AFR2$value/pi_AFR2$value
 
-non_log_plot = ggplot(pi_AFR1,aes(x=pi_AFR1$start/1000000,y=pi_rat1))+geom_point(size=0.1,col=cols_3["OOA"])+geom_smooth(col="white",fill=NA,size=2)+geom_smooth(col=cols_3["OOA"],fill=NA)+facet_grid(~chr,space="free_x",scale="free_x")+labs(x="Position(Mb)",y=TeX("$\\frac{\\pi_{OOA}{\\pi_{AFR1}}$"))
+non_log_plot = ggplot(pi_AFR1,aes(x=pi_AFR1$start/1000000,y=pi_rat1))+geom_point(size=0.1,col=cols_3["OOA"])+geom_smooth(col="white",fill=NA,size=2)+geom_smooth(col=cols_3["OOA"],fill=NA)+facet_grid(~chr,space="free_x",scale="free_x")+labs(x="Position(Mb)",y=TeX("$\\frac{\\pi_{OOA}}{\\pi_{AFR1}}$"))
 
 log_plot = non_log_plot+scale_y_continuous(trans="log10")
 
@@ -788,3 +788,5 @@ If you have your own data - treat this as an opportunity to get feedback on pres
 . . .
 
 If you don't - treat this as an opportunity to see how your favorite plots can be improved.
+
+## References
