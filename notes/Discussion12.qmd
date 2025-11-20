@@ -37,7 +37,7 @@ We'll then have the person who chose the figure describe what it's supposed to s
 
 ## Figure 1
 
-![](images/paste-49.png){width="721"}
+![](images/paste-51.png){width="828"}
 
 ## Figure 2
 
@@ -45,4 +45,14 @@ We'll then have the person who chose the figure describe what it's supposed to s
 
 ## Figure 3
 
+![](images/paste-52.png)
+
 ## Figure 4
+
+![](images/paste-14.jpeg)
+
+## Figure 5
+
+![](images/paste-15.jpeg){width="925"}
+
+## Figure 6
